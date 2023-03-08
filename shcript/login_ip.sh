@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "koden er 12345678"
-ssh pi@100.111.54.9
+echo "koden er turtlebot"
+ssh ubuntu@100.102.101.103
 
 
