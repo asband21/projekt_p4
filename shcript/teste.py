@@ -1,4 +1,3 @@
-from djitellopy import Tello
 
 # Connect to the drone
 tello = Tello()
