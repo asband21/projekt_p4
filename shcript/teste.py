@@ -1,3 +1,4 @@
+import Tello
 
 # Connect to the drone
 tello = Tello()
