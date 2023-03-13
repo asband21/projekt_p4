@@ -1,4 +1,7 @@
-import Tello
+import threading 
+import socket
+import sys
+import time
 
 # Connect to the drone
 tello = Tello()
