@@ -30,6 +30,6 @@ while True:
         startcounter = 1
 
     cv2.imshow("Sut", img)
-    if cv2.waitKey(1) 0xFF == ord('q'):
+    if cv2.waitKey(1) & 0xFF == ord('q'):
         te.land()
         break
