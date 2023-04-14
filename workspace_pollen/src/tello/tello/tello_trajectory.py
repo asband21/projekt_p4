@@ -1,183 +1,219 @@
 import rclpy
 from rclpy.node import Node
 
+from tf2_ros import TransformListener
+
+import builtin_interfaces.msg
+from rclpy.duration import Duration
+
 from std_msgs.msg import String, Empty
 from geometry_msgs.msg import Twist 
-import numpy as np
-import math
 import time
 from djitellopy import Tello
+from tf2_msgs.msg import TFMessage
+
+from geometry_msgs.msg import TransformStamped
+
+from tf2_ros.buffer import Buffer
+
+from klampt.math import vectorops
+from tf2_ros import TransformBroadcaster
+
+from klampt.model import trajectory as KTrajectory
+
+def computeViapoints(transforms):
+
+    via_points = []
+    for i in range(len(transforms)+1):
+        via_points.append([0,0,0])
 
 
+    for i in range(len(transforms)):
+        if i == 0:
+            via_points[i+1][0] = transforms[i].transform.translation.x
+            via_points[i+1][1] = transforms[i].transform.translation.y
+            via_points[i+1][2] = transforms[i].transform.translation.z
+
+        else:
+            via_points[i+1][0]  = via_points[i][0] + transforms[i].transform.translation.x 
+            via_points[i+1][1]  = via_points[i][1] + transforms[i].transform.translation.y 
+            via_points[i+1][2]  = via_points[i][2] + transforms[i].transform.translation.z 
+
+    return via_points
 
 
-class trajectory():
+from klampt import vis
 
-    def computeCubicCoeff(self, t0, tf, pos_q0, vec_q0, pos_qf, vec_qf):
-        X = np.zeros((4, 4))
-        B = np.zeros((4, 1))
 
-        X[0, 0] = 1
-        X[0, 1] = t0
-        X[0, 2] = np.power(t0, 2)
-        X[0, 3] = np.power(t0, 3)
-
-        X[1, 0] = 0
-        X[1, 1] = 1
-        X[1, 2] = 2 * t0
-        X[1, 3] = 3 * np.power(t0, 2)
-
-        X[2, 0] = 1
-        X[2, 1] = tf
-        X[2, 2] = np.power(tf, 2)
-        X[2, 3] = np.power(tf, 3)
-
-        X[3, 0] = 0
-        X[3, 1] = 1
-        X[3, 2] = 2 * tf
-        X[3, 3] = 3 * np.power(tf, 2)
-
-        B[0, 0] = pos_q0
-        B[1, 0] = vec_q0
-        B[2, 0] = pos_qf
-        B[3, 0] = vec_qf
-
-        return np.dot(np.linalg.inv(X), B)
+def computeTrajectory(transforms, vmax , amax):
     
+        via_points = computeViapoints(transforms)
+        # via_points = [[0,0,0],[.5,.5,.5],[.2,.2,0]]
+        print("via_points",via_points)
+        traj = KTrajectory.Trajectory(milestones=via_points)
 
-    def computeCubicTrajectory(self, t, t0, tf, pos_q0, vec_q0, pos_qf, vec_qf):
-        # if the trajectory is not defined, return 0
-        if pos_q0 == pos_qf and vec_q0 == vec_qf:
-            return 0.0
+        traj_timed = KTrajectory.path_to_trajectory(traj,velocities='minimum-jerk',vmax=vmax,amax=amax,dt=1/30)
+        vis.add("point",[0,0,0])
+        vis.animate("point",traj_timed)
+        vis.add("traj_timed",traj_timed)
+        vis.spin(float('inf'))   #show the window until you close it
 
-        # if the trajectory is defined, compute the coefficients
-        coeff = self.computeCubicCoeff(t0, tf, pos_q0, vec_q0, pos_qf, vec_qf)
-        # q[i] = coeff[0] + coeff[1] * t[i] + coeff[2] * np.power(t[i], 2) + coeff[3] * np.power(t[i], 3) # this computes position
-        # differtiate to get velocity
-        q = coeff[1] + 2 * coeff[2] * t + 3 * coeff[3] * np.power(t, 2)
-
-        return q
 
     
-    
-
-
+        return traj_timed
 
 class tello_trajectory(Node):
 
     def __init__(self):
         super().__init__('tello_trajectory')
 
-        self.trajectory_time=1
-
-        self.publisher_control = self.create_publisher(Twist, 'control', 10)
-        self.publisher_takeoff = self.create_publisher(Empty, 'takeoff', 1)
-        self.publisher_land = self.create_publisher(Empty, 'land', 1)
-
-        
-        # make a variable that can hold an float
-        self.current_time = 0.0
-
-        self.timer_callback()
+        #rclpy.time.Duration(seconds=1.0)
+        # self._tf_buffer = Buffer( )
+        # self._tf_listener = TransformListener(self._tf_buffer, self)
 
 
-        
+        # self._tf_broadcaster = TransformBroadcaster(self)
+        # self.pub_velocities = self.create_publisher(TransformStamped, 'velocites', 1)
+        # self.pub_takeoff = self.create_publisher(Empty, 'takeoff', 1)
+        # self.pub_land = self.create_publisher(Empty, 'land', 1)
+        self.sub_tf = self.create_subscription(TFMessage, 'tf_test', self.tf_callback, 10)
+        # self.sub_velocites = self.create_subscription(TransformStamped,'velocites',self.stabeliser,1)
 
-    # create a function that knows the current time in seconds
-    def get_time(self):
-        return time.time()
+
+        self.create_timer(6, self.timer_callback)
+        self.start = time.time()
+        self.tello = Tello()
+
+        self.viconTransform = TransformStamped()
+        self.viconTransform.header.stamp = builtin_interfaces.msg.Time(sec=0, nanosec=0)
+
+        self.stop = False
+        # tello.connect()
+
+
+
+
+    def tf_callback(self, msg):
+        '''Callback function for the tf message.
+        It just saves the curent transform of a desired path'''
+        self.transform = msg.transforms
 
 
     def timer_callback(self):
-        tello = Tello()
+        # if self.transform is None:
+            # print("No transform recieved")
+            # return
+        if self.stop == True:
+            return
 
-        tello.connect()
-        # create a message of type Twist
-        msg = Twist()
-        
-        # create a message of type Empty to publish to the takeoff and land topics
-        empty = Empty()
-        i=0
-        while i <1:
-            # self.publisher_takeoff.publish(empty)
-            tello.takeoff()
-            time.sleep(0.1)
-            i +=1
-            print(i)
-        time.sleep(3)
+        try:
 
-        # make a vector for end effector position and velocity
-        pos_q0 = [0, 0, 0]
-        vec_q0 = [0, 0, 0]
-        pos_qf = [0, 200, 100]
-        vec_qf = [0, 0, 0]
+            # self.end = time.time()
+            # print("Time to call funciton: ", self.end - self.start)
 
-        xdir = trajectory()
-        ydir = trajectory()
-        zdir = trajectory()
+            # tello.takeoff()
 
-        msg.linear.x = float(xdir.computeCubicTrajectory(0,0, self.trajectory_time, pos_q0[0], vec_q0[0], pos_qf[0], vec_qf[0]))
-        msg.linear.y = float(ydir.computeCubicTrajectory(0,0, self.trajectory_time, pos_q0[1], vec_q0[1], pos_qf[1], vec_qf[1]))
-        msg.linear.z = float(zdir.computeCubicTrajectory(0,0, self.trajectory_time, pos_q0[2], vec_q0[2], pos_qf[2], vec_qf[2]))
+            # tfDesired = TransformStamped()
+            # velocities = TransformStamped()
 
+
+            # start = time.time()
+            traject = computeTrajectory(self.transform, 0.7, 0.7)
+            # end = time.time()
+            # print("Time to compute trajectory: ", end - start)
 
             
-        threshold = 50
-        t = 0
-        # while any of the linear velocities are greater or lower than threshold, add one seocond to the trajectory time and recompute the trajectory
-        while t <= self.trajectory_time:
-            msg.linear.x = float(xdir.computeCubicTrajectory(t,0, self.trajectory_time, pos_q0[0], vec_q0[0], pos_qf[0], vec_qf[0]))
-            msg.linear.y = float(ydir.computeCubicTrajectory(t,0, self.trajectory_time, pos_q0[1], vec_q0[1], pos_qf[1], vec_qf[1]))
-            msg.linear.z = float(zdir.computeCubicTrajectory(t,0, self.trajectory_time, pos_q0[2], vec_q0[2], pos_qf[2], vec_qf[2]))
-            t += 0.1
+            # start = time.time()
+            # while time.time() - start < traject.duration():
+            #     t = time.time() - start
+            #     vel = traject.deriv(t)
+            #     self.tello.send_rc_control(int(vel[0]*100), int(vel[1]*100), int(vel[2]*100), 0)
+            #     time.sleep(1/30)
             
-            if msg.linear.x > threshold or msg.linear.x < -threshold or msg.linear.y > threshold or msg.linear.y < -threshold or msg.linear.z > threshold or msg.linear.z < -threshold:
-                self.trajectory_time += 1
-                t = 0
-            self.current_time = self.get_time()
+            for i in range(len(traject.milestones)):
+                if i == 0:
+                    pt = 0
+                else:
+                    pt = traject.times[i-1]
 
-  
+                ct = traject.times[i]
+                # print("ct",ct)
+                # vel = traject.deriv(ct,'loop')
+                # pos = traject.milestones[i]
+                if i == len(traject.milestones)-1:
+                    dpos = vectorops.sub(traject.milestones[i],traject.milestones[i])
+                else:
+                    dpos = vectorops.sub(traject.milestones[i+1],traject.milestones[i])
+                if i == 0:
+                    vel = [dpos[0],dpos[1],dpos[2]]
+                else:
+                    vel = [dpos[0]/(ct-pt),dpos[1]/(ct-pt),dpos[2]/(ct-pt)]
+
+                # print("vel",vel)
+                # velocities.header.stamp = self.get_clock().now().to_msg()
+                # velocities.transform.translation.x = vel[0]
+                # velocities.transform.translation.y = vel[1]
+                # velocities.transform.translation.z = vel[2]
 
 
-        i = 0
-        # puplish the message to the control topic every nanosecond until the trajectory time is reached 
-        while  self.get_time()- self.current_time <= self.trajectory_time:
-            #print(self.get_time()-self.current_time)
-            msg.linear.x = float(xdir.computeCubicTrajectory(self.get_time()-self.current_time,0, self.trajectory_time, pos_q0[0], vec_q0[0], pos_qf[0], vec_qf[0]))
-            msg.linear.y = float(ydir.computeCubicTrajectory(self.get_time()-self.current_time,0, self.trajectory_time, pos_q0[1], vec_q0[1], pos_qf[1], vec_qf[1]))
-            msg.linear.z = float(zdir.computeCubicTrajectory(self.get_time()-self.current_time,0, self.trajectory_time, pos_q0[2], vec_q0[2], pos_qf[2], vec_qf[2]))
-            i += 0.001
-            #print(self.trajectory_time)
-            # print(msg.linear.x, msg.linear.y, msg.linear.z)
-            # self.publisher_control.publish(msg)
-            tello.send_rc_control(int(msg.linear.x), int(msg.linear.y), int(msg.linear.z), 0)
+                self.tello.send_rc_control(int(vel[0]*100), int(vel[1]*100), int(vel[2]*100), 0)
+                # self.pub_velocities.publish(velocities)
+
+                # tfDesired.header.stamp = self.get_clock().now().to_msg()
+                # tfDesired.header.frame_id = "world"
+                # tfDesired.child_frame_id = "desired_pose"
+                # tfDesired.transform.translation.x = float(pos[0])
+                # tfDesired.transform.translation.y = float(pos[1])
+                # tfDesired.transform.translation.z = float(pos[2])
+                # tfDesired.transform.rotation.x = 0.0
+                # tfDesired.transform.rotation.y = 0.0
+                # tfDesired.transform.rotation.z = 0.0
+                # tfDesired.transform.rotation.w = 1.0
+
+                # self._tf_broadcaster.sendTransform(tfDesired)
+                time.sleep(ct-pt)
+                self.stop = True
+
+
+        except Exception as e:
+            print(e)
+            pass
+
+
+    # def vicon(self, msg):
+    #     self.viconTransform = msg.transform
+
+    # def stabeliser(self,msg):
+        
+    #     # if the self.viconTransform is within 0.01 of the msg.transform.header.stamp then return.
+    #     # if 0.01 < abs(self.viconTransform.header.stamp- msg.header.stamp):
+    #     #     return
+
+        
+    #     time = self.get_clock().now().to_msg()
+    #     vel = [msg.transform.translation.x,msg.transform.translation.y,msg.transform.translation.z]
+
+    #     lookuptransform = self._tf_buffer.lookup_transform('desired_pose', 'vicon',0,Duration(seconds=0, nanoseconds=1))
+
+    #     print("lookuptransform",lookuptransform)
+    #     a = 0.05
+
+    #     kx = a * lookuptransform.translation.x - 0.01
+    #     ky = a * lookuptransform.translation.y - 0.01
+    #     kz = a * lookuptransform.translation.z - 0.01
+
+    #     if [kx,ky,kz] > [0,0,0]:
+    #         vel[0] = vel[0] + 0.1*kx
+    #         vel[1] = vel[1] + 0.1*ky
+    #         vel[2] = vel[2] + 0.1*kz
+
+    #     print("vel",vel)
+    #     self.tello.send_rc_control(int(vel[0]*100), int(vel[1]*100), int(vel[2]*100), 0)
+
+
         
 
-        # send a message of 0 velocity to the drone to stop it
-        msg.linear.x = float(0.0)
-        msg.linear.y = float(0.0)
-        msg.linear.z = float(0.0)
-        for i in range(10):
-            # self.publisher_control.publish(msg)
-            tello.send_rc_control(int(msg.linear.x), int(msg.linear.y), int(msg.linear.z), 0)
-            print(msg.linear.x, msg.linear.y, msg.linear.z)
-
-
-        time.sleep(5)
-        # send the land command to the drone
-        i= 0
-        while i <1:
-            tello.land()
-            self.publisher_land.publish(empty)
-            i+=1
-
-
-
-
-
-        self.get_time()
-        
-
+    
 
 
 
@@ -188,12 +224,15 @@ def main(args=None):
 
     rclpy.spin(tellotrajectory)
 
-    # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
     tellotrajectory.destroy_node()
+
+
     rclpy.shutdown()
 
 
 if __name__ == '__main__':
     main()
+
+
+
+

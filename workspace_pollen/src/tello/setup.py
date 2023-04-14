@@ -20,7 +20,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'tello_reciver = tello.tello_reciver:main'
+            'tello_reciver = tello.tello_reciver:main',
+            'tf_broadcaster = tello.broadcaster:main',
+            'tf_listener = tello.listener:main'
         ],
     },
 )

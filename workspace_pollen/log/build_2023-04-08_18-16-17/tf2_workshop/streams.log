@@ -1,0 +1,25 @@
+[0.907s] Invoking command in '/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/src/tf2_workshop': PYTHONPATH=/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/prefix_override:/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/tf2_workshop build --build-base /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build install --record /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/install.log --install-scripts $base/lib/tf2_workshop --single-version-externally-managed
+[1.126s] running egg_info
+[1.127s] writing ../../build/tf2_workshop/tf2_workshop.egg-info/PKG-INFO
+[1.127s] writing dependency_links to ../../build/tf2_workshop/tf2_workshop.egg-info/dependency_links.txt
+[1.127s] writing entry points to ../../build/tf2_workshop/tf2_workshop.egg-info/entry_points.txt
+[1.127s] writing requirements to ../../build/tf2_workshop/tf2_workshop.egg-info/requires.txt
+[1.128s] writing top-level names to ../../build/tf2_workshop/tf2_workshop.egg-info/top_level.txt
+[1.169s] reading manifest file '../../build/tf2_workshop/tf2_workshop.egg-info/SOURCES.txt'
+[1.170s] writing manifest file '../../build/tf2_workshop/tf2_workshop.egg-info/SOURCES.txt'
+[1.171s] running build
+[1.171s] running build_py
+[1.171s] copying tf2_workshop/broadcaster.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib/tf2_workshop
+[1.171s] running install
+[1.172s] running install_lib
+[1.173s] copying /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib/tf2_workshop/broadcaster.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop
+[1.174s] byte-compiling /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop/broadcaster.py to broadcaster.cpython-38.pyc
+[1.175s] running install_data
+[1.176s] running install_egg_info
+[1.177s] removing '/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop-0.0.0-py3.8.egg-info' (and everything under it)
+[1.178s] Copying ../../build/tf2_workshop/tf2_workshop.egg-info to /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop-0.0.0-py3.8.egg-info
+[1.179s] running install_scripts
+[1.195s] Installing broadcaster script to /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/tf2_workshop
+[1.196s] Installing listener script to /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/tf2_workshop
+[1.196s] writing list of installed files to '/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/install.log'
+[1.225s] Invoked command in '/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/src/tf2_workshop' returned '0': PYTHONPATH=/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/prefix_override:/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/tf2_workshop build --build-base /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build install --record /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/install.log --install-scripts $base/lib/tf2_workshop --single-version-externally-managed

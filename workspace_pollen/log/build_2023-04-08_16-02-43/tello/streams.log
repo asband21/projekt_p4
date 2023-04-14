@@ -1,0 +1,43 @@
+[0.723s] Invoking command in '/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/src/tello': PYTHONPATH=/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/prefix_override:/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/tello build --build-base /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/build install --record /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/install.log --install-scripts $base/lib/tello --single-version-externally-managed
+[0.945s] running egg_info
+[0.945s] creating ../../build/tello/tello.egg-info
+[0.946s] writing ../../build/tello/tello.egg-info/PKG-INFO
+[0.946s] writing dependency_links to ../../build/tello/tello.egg-info/dependency_links.txt
+[0.946s] writing entry points to ../../build/tello/tello.egg-info/entry_points.txt
+[0.946s] writing requirements to ../../build/tello/tello.egg-info/requires.txt
+[0.946s] writing top-level names to ../../build/tello/tello.egg-info/top_level.txt
+[0.948s] writing manifest file '../../build/tello/tello.egg-info/SOURCES.txt'
+[0.978s] reading manifest file '../../build/tello/tello.egg-info/SOURCES.txt'
+[0.980s] writing manifest file '../../build/tello/tello.egg-info/SOURCES.txt'
+[0.980s] running build
+[0.980s] running build_py
+[0.980s] creating /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/build
+[0.980s] creating /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/build/lib
+[0.980s] creating /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/build/lib/tello
+[0.980s] copying tello/tf2_broadcaster.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/build/lib/tello
+[0.981s] copying tello/__init__.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/build/lib/tello
+[0.981s] copying tello/tello_reciver.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/build/lib/tello
+[0.981s] copying tello/tello_trajectory.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/build/lib/tello
+[0.981s] running install
+[0.982s] running install_lib
+[0.983s] creating /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/lib/python3.8/site-packages/tello
+[0.983s] copying /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/build/lib/tello/tf2_broadcaster.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/lib/python3.8/site-packages/tello
+[0.983s] copying /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/build/lib/tello/__init__.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/lib/python3.8/site-packages/tello
+[0.983s] copying /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/build/lib/tello/tello_reciver.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/lib/python3.8/site-packages/tello
+[0.984s] copying /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/build/lib/tello/tello_trajectory.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/lib/python3.8/site-packages/tello
+[0.984s] byte-compiling /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/lib/python3.8/site-packages/tello/tf2_broadcaster.py to tf2_broadcaster.cpython-38.pyc
+[0.986s] byte-compiling /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/lib/python3.8/site-packages/tello/__init__.py to __init__.cpython-38.pyc
+[0.986s] byte-compiling /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/lib/python3.8/site-packages/tello/tello_reciver.py to tello_reciver.cpython-38.pyc
+[0.989s] byte-compiling /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/lib/python3.8/site-packages/tello/tello_trajectory.py to tello_trajectory.cpython-38.pyc
+[0.990s] running install_data
+[0.991s] creating /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/share/ament_index
+[0.991s] creating /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/share/ament_index/resource_index
+[0.991s] creating /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/share/ament_index/resource_index/packages
+[0.991s] copying resource/tello -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/share/ament_index/resource_index/packages
+[0.992s] copying package.xml -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/share/tello
+[0.992s] running install_egg_info
+[0.994s] Copying ../../build/tello/tello.egg-info to /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/lib/python3.8/site-packages/tello-0.0.0-py3.8.egg-info
+[0.995s] running install_scripts
+[1.011s] Installing tello_reciver = tello.tello_reciver:maintf_broadcaster script to /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/lib/tello
+[1.011s] writing list of installed files to '/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/install.log'
+[1.030s] Invoked command in '/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/src/tello' returned '0': PYTHONPATH=/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/prefix_override:/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tello/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/tello build --build-base /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/build install --record /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tello/install.log --install-scripts $base/lib/tello --single-version-externally-managed
