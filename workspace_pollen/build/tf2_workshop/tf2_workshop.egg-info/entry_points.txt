@@ -1,6 +1,0 @@
-[console_scripts]
-broadcaster = tf2_workshop.broadcaster:main
-listener = tf2_workshop.listener:main
-staticTF = tf2_workshop.staticTF:main
-treeFinder = tf2_workshop.treeFinder:main
-

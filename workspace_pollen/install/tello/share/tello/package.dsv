@@ -1,6 +1,0 @@
-source;share/tello/hook/pythonpath.ps1
-source;share/tello/hook/pythonpath.dsv
-source;share/tello/hook/pythonpath.sh
-source;share/tello/hook/ament_prefix_path.ps1
-source;share/tello/hook/ament_prefix_path.dsv
-source;share/tello/hook/ament_prefix_path.sh
