@@ -1,0 +1,3 @@
+[console_scripts]
+vel = vel_err.err:main
+

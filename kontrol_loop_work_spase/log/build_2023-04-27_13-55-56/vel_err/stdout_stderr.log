@@ -1,0 +1,22 @@
+running egg_info
+writing ../../build/vel_err/vel_err.egg-info/PKG-INFO
+writing dependency_links to ../../build/vel_err/vel_err.egg-info/dependency_links.txt
+writing entry points to ../../build/vel_err/vel_err.egg-info/entry_points.txt
+writing requirements to ../../build/vel_err/vel_err.egg-info/requires.txt
+writing top-level names to ../../build/vel_err/vel_err.egg-info/top_level.txt
+reading manifest file '../../build/vel_err/vel_err.egg-info/SOURCES.txt'
+writing manifest file '../../build/vel_err/vel_err.egg-info/SOURCES.txt'
+running build
+running build_py
+copying vel_err/err.py -> /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/build/lib/vel_err
+running install
+running install_lib
+copying /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/build/lib/vel_err/err.py -> /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages/vel_err
+byte-compiling /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages/vel_err/err.py to err.cpython-38.pyc
+running install_data
+running install_egg_info
+removing '/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages/vel_err-0.0.0-py3.8.egg-info' (and everything under it)
+Copying ../../build/vel_err/vel_err.egg-info to /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages/vel_err-0.0.0-py3.8.egg-info
+running install_scripts
+Installing vel script to /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/vel_err
+writing list of installed files to '/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/install.log'

@@ -1,0 +1,99 @@
+[0.000000] (-) TimerEvent: {}
+[0.001439] (vel_err) JobQueued: {'identifier': 'vel_err', 'dependencies': OrderedDict()}
+[0.002235] (vel_err) JobStarted: {'identifier': 'vel_err'}
+[0.098781] (-) TimerEvent: {}
+[0.200369] (-) TimerEvent: {}
+[0.301906] (-) TimerEvent: {}
+[0.402772] (-) TimerEvent: {}
+[0.503512] (-) TimerEvent: {}
+[0.604159] (-) TimerEvent: {}
+[0.704872] (-) TimerEvent: {}
+[0.805607] (-) TimerEvent: {}
+[0.906253] (-) TimerEvent: {}
+[1.006921] (-) TimerEvent: {}
+[1.107741] (-) TimerEvent: {}
+[1.208581] (-) TimerEvent: {}
+[1.309827] (-) TimerEvent: {}
+[1.410757] (-) TimerEvent: {}
+[1.511630] (-) TimerEvent: {}
+[1.612299] (-) TimerEvent: {}
+[1.712959] (-) TimerEvent: {}
+[1.813624] (-) TimerEvent: {}
+[1.914264] (-) TimerEvent: {}
+[2.014930] (-) TimerEvent: {}
+[2.115668] (-) TimerEvent: {}
+[2.216310] (-) TimerEvent: {}
+[2.317108] (-) TimerEvent: {}
+[2.417879] (-) TimerEvent: {}
+[2.518955] (-) TimerEvent: {}
+[2.619859] (-) TimerEvent: {}
+[2.721029] (-) TimerEvent: {}
+[2.822126] (-) TimerEvent: {}
+[2.923020] (-) TimerEvent: {}
+[3.023922] (-) TimerEvent: {}
+[3.124760] (-) TimerEvent: {}
+[3.225751] (-) TimerEvent: {}
+[3.326699] (-) TimerEvent: {}
+[3.427853] (-) TimerEvent: {}
+[3.528745] (-) TimerEvent: {}
+[3.629586] (-) TimerEvent: {}
+[3.730424] (-) TimerEvent: {}
+[3.831137] (-) TimerEvent: {}
+[3.931794] (-) TimerEvent: {}
+[4.032474] (-) TimerEvent: {}
+[4.133245] (-) TimerEvent: {}
+[4.235268] (-) TimerEvent: {}
+[4.284123] (vel_err) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/vel_err', 'build', '--build-base', '/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/build', 'install', '--record', '/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/install.log', '--install-scripts', '$base/lib/vel_err', '--single-version-externally-managed'], 'cwd': '/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/src/vel_err', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'ubuntu', 'SSH_CLIENT': '100.109.194.3 33210 22', 'LC_TIME': 'da_DK.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/ubuntu/turtlebot3_ws/install/realsense2_camera/lib:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib', 'MOTD_SHOWN': 'pam', 'HOME': '/home/ubuntu', 'OLDPWD': '/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/src', 'SSH_TTY': '/dev/pts/5', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'da_DK.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLCON_PREFIX_PATH': '/home/ubuntu/vicon/vicon_udp/install:/home/ubuntu/turtlebot3_ws/install', 'ROS_DISTRO': 'foxy', 'LOGNAME': 'ubuntu', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '17', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'LC_ADDRESS': 'da_DK.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LC_TELEPHONE': 'da_DK.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'ROS_DOMAIN_ID': '1', 'AMENT_PREFIX_PATH': '/home/ubuntu/vicon/vicon_udp/install/vicon_udp:/home/ubuntu/turtlebot3_ws/install/turtlebot3:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/home/ubuntu/turtlebot3_ws/install/realsense2_description:/home/ubuntu/turtlebot3_ws/install/realsense2_camera:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs:/home/ubuntu/turtlebot3_ws/install/ld08_driver:/opt/ros/foxy', 'SHELL': '/bin/bash', 'LC_NAME': 'da_DK.UTF-8', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'da_DK.UTF-8', 'LC_IDENTIFICATION': 'da_DK.UTF-8', 'PWD': '/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err', 'TURTLEBOT3_MODEL': 'burger', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '100.109.194.3 33210 192.168.0.100 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'LDS_MODEL': 'LDS-01', 'PYTHONPATH': '/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/prefix_override:/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages', 'LC_NUMERIC': 'da_DK.UTF-8', 'LC_PAPER': 'da_DK.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/ubuntu/vicon/vicon_udp/install/vicon_udp:/home/ubuntu/turtlebot3_ws/install/turtlebot3:/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/home/ubuntu/turtlebot3_ws/install/realsense2_description:/home/ubuntu/turtlebot3_ws/install/realsense2_camera:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs:/home/ubuntu/turtlebot3_ws/install/ld08_driver'}, 'shell': False}
+[4.335490] (-) TimerEvent: {}
+[4.436339] (-) TimerEvent: {}
+[4.537027] (-) TimerEvent: {}
+[4.637803] (-) TimerEvent: {}
+[4.738463] (-) TimerEvent: {}
+[4.839141] (-) TimerEvent: {}
+[4.939792] (-) TimerEvent: {}
+[5.040415] (-) TimerEvent: {}
+[5.141084] (-) TimerEvent: {}
+[5.221338] (vel_err) StdoutLine: {'line': b'running egg_info\n'}
+[5.223587] (vel_err) StdoutLine: {'line': b'creating ../../build/vel_err/vel_err.egg-info\n'}
+[5.224320] (vel_err) StdoutLine: {'line': b'writing ../../build/vel_err/vel_err.egg-info/PKG-INFO\n'}
+[5.225709] (vel_err) StdoutLine: {'line': b'writing dependency_links to ../../build/vel_err/vel_err.egg-info/dependency_links.txt\n'}
+[5.226466] (vel_err) StdoutLine: {'line': b'writing entry points to ../../build/vel_err/vel_err.egg-info/entry_points.txt\n'}
+[5.227232] (vel_err) StdoutLine: {'line': b'writing requirements to ../../build/vel_err/vel_err.egg-info/requires.txt\n'}
+[5.227917] (vel_err) StdoutLine: {'line': b'writing top-level names to ../../build/vel_err/vel_err.egg-info/top_level.txt\n'}
+[5.240527] (vel_err) StdoutLine: {'line': b"writing manifest file '../../build/vel_err/vel_err.egg-info/SOURCES.txt'\n"}
+[5.241373] (-) TimerEvent: {}
+[5.342415] (-) TimerEvent: {}
+[5.392513] (vel_err) StdoutLine: {'line': b"reading manifest file '../../build/vel_err/vel_err.egg-info/SOURCES.txt'\n"}
+[5.396150] (vel_err) StdoutLine: {'line': b"writing manifest file '../../build/vel_err/vel_err.egg-info/SOURCES.txt'\n"}
+[5.396989] (vel_err) StdoutLine: {'line': b'running build\n'}
+[5.397505] (vel_err) StdoutLine: {'line': b'running build_py\n'}
+[5.398354] (vel_err) StdoutLine: {'line': b'creating /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/build\n'}
+[5.399271] (vel_err) StdoutLine: {'line': b'creating /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/build/lib\n'}
+[5.399837] (vel_err) StdoutLine: {'line': b'creating /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/build/lib/vel_err\n'}
+[5.400223] (vel_err) StdoutLine: {'line': b'copying vel_err/__init__.py -> /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/build/lib/vel_err\n'}
+[5.400738] (vel_err) StdoutLine: {'line': b'copying vel_err/vel_err.py -> /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/build/lib/vel_err\n'}
+[5.401086] (vel_err) StdoutLine: {'line': b'running install\n'}
+[5.403816] (vel_err) StdoutLine: {'line': b'running install_lib\n'}
+[5.407503] (vel_err) StdoutLine: {'line': b'creating /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages/vel_err\n'}
+[5.408206] (vel_err) StdoutLine: {'line': b'copying /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/build/lib/vel_err/__init__.py -> /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages/vel_err\n'}
+[5.408726] (vel_err) StdoutLine: {'line': b'copying /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/build/lib/vel_err/vel_err.py -> /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages/vel_err\n'}
+[5.411148] (vel_err) StdoutLine: {'line': b'byte-compiling /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages/vel_err/__init__.py to __init__.cpython-38.pyc\n'}
+[5.416065] (vel_err) StdoutLine: {'line': b'byte-compiling /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages/vel_err/vel_err.py to vel_err.cpython-38.pyc\n'}
+[5.418044] (vel_err) StdoutLine: {'line': b'running install_data\n'}
+[5.420154] (vel_err) StdoutLine: {'line': b'creating /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/share/ament_index\n'}
+[5.420896] (vel_err) StdoutLine: {'line': b'creating /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/share/ament_index/resource_index\n'}
+[5.421454] (vel_err) StdoutLine: {'line': b'creating /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/share/ament_index/resource_index/packages\n'}
+[5.422000] (vel_err) StdoutLine: {'line': b'copying resource/vel_err -> /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/share/ament_index/resource_index/packages\n'}
+[5.422593] (vel_err) StdoutLine: {'line': b'copying package.xml -> /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/share/vel_err\n'}
+[5.423157] (vel_err) StdoutLine: {'line': b'running install_egg_info\n'}
+[5.430000] (vel_err) StdoutLine: {'line': b'Copying ../../build/vel_err/vel_err.egg-info to /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages/vel_err-0.0.0-py3.8.egg-info\n'}
+[5.435746] (vel_err) StdoutLine: {'line': b'running install_scripts\n'}
+[5.442558] (-) TimerEvent: {}
+[5.507714] (vel_err) StdoutLine: {'line': b'Installing vel script to /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/vel_err\n'}
+[5.509111] (vel_err) StdoutLine: {'line': b"writing list of installed files to '/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/install.log'\n"}
+[5.542880] (-) TimerEvent: {}
+[5.609496] (vel_err) CommandEnded: {'returncode': 0}
+[5.643132] (-) TimerEvent: {}
+[5.743888] (-) TimerEvent: {}
+[5.764150] (vel_err) JobEnded: {'identifier': 'vel_err', 'rc': 0}
+[5.767092] (-) EventReactorShutdown: {}

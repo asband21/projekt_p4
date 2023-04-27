@@ -1,0 +1,24 @@
+[2.784s] Invoking command in '/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/src/vel_err': PYTHONPATH=/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/prefix_override:/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/vel_err build --build-base /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/build install --record /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/install.log --install-scripts $base/lib/vel_err --single-version-externally-managed
+[3.702s] running egg_info
+[3.705s] writing ../../build/vel_err/vel_err.egg-info/PKG-INFO
+[3.706s] writing dependency_links to ../../build/vel_err/vel_err.egg-info/dependency_links.txt
+[3.707s] writing entry points to ../../build/vel_err/vel_err.egg-info/entry_points.txt
+[3.707s] writing requirements to ../../build/vel_err/vel_err.egg-info/requires.txt
+[3.708s] writing top-level names to ../../build/vel_err/vel_err.egg-info/top_level.txt
+[3.863s] reading manifest file '../../build/vel_err/vel_err.egg-info/SOURCES.txt'
+[3.868s] writing manifest file '../../build/vel_err/vel_err.egg-info/SOURCES.txt'
+[3.868s] running build
+[3.869s] running build_py
+[3.869s] copying vel_err/err.py -> /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/build/lib/vel_err
+[3.871s] running install
+[3.874s] running install_lib
+[3.879s] copying /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/build/lib/vel_err/err.py -> /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages/vel_err
+[3.882s] byte-compiling /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages/vel_err/err.py to err.cpython-38.pyc
+[3.888s] running install_data
+[3.890s] running install_egg_info
+[3.896s] removing '/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages/vel_err-0.0.0-py3.8.egg-info' (and everything under it)
+[3.899s] Copying ../../build/vel_err/vel_err.egg-info to /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages/vel_err-0.0.0-py3.8.egg-info
+[3.904s] running install_scripts
+[3.976s] Installing vel script to /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/vel_err
+[3.978s] writing list of installed files to '/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/install.log'
+[4.076s] Invoked command in '/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/src/vel_err' returned '0': PYTHONPATH=/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/prefix_override:/home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/vel_err build --build-base /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/build install --record /home/ubuntu/git/projekt_p4/kontrol_loop_work_spase/build/vel_err/install.log --install-scripts $base/lib/vel_err --single-version-externally-managed
