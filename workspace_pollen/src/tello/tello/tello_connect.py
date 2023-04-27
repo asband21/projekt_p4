@@ -15,15 +15,21 @@ class tello_connecter(Node):
         self.sub_velocity = self.create_subscription(Twist, 'control', self.velocity_callback, 10)        
         self.sub_land = self.create_subscription(String, 'land', self.land_callback, 1)
         self.sub_takeoff = self.create_subscription(String, 'takeoff', self.takeoff_callback, 1)
-
+        self.create_service(String, 'takeoff', self.takeoff_callback)
 
         self.pub_takeoff = self.create_publisher(String, 'takeoff', 1)
         self.pub_land = self.create_publisher(String, 'land', 1)
 
     def velocity_callback(self, msg):
+        '''This is the callback function that listens to the control topic.
+        The unit it accepts is m/s. It converts it to cm/s and sends it to the drone'''
         self.velocity = msg
+        x = int(self.velocity.linear.x) * 100
+        y = int(self.velocity.linear.y) * 100
+        z = int(self.velocity.linear.z) * 100
+        z = int(self.velocity.angular.z) * 100
 
-        self.tello.send_rc_control(self.velocity.linear.x, self.velocity.linear.y, self.velocity.linear.z, self.velocity.angular.z)
+        self.tello.send_rc_control(x, y, z, z)
 
     def takeoff_callback(self, msg):
         self.tello.takeoff()
