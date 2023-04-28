@@ -1,0 +1,28 @@
+[0.192s] Invoking command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/turtlebot3_ws/build/turtlebot3_node -- -j4 -l4
+[1.322s] [ 85%] Built target turtlebot3_node_lib
+[1.324s] [100%] Built target turtlebot3_ros
+[2.239s] Invoked command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/turtlebot3_ws/build/turtlebot3_node -- -j4 -l4
+[2.568s] Invoking command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3_node': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/opt/ros/foxy /usr/bin/cmake --install /home/ubuntu/turtlebot3_ws/build/turtlebot3_node
+[2.637s] -- Install configuration: ""
+[2.641s] -- Execute custom install script
+[2.649s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/param/burger.yaml
+[2.651s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/param/waffle.yaml
+[2.653s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/param/waffle_pi.yaml
+[2.659s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/lib/turtlebot3_node/turtlebot3_ros
+[2.665s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/ament_index/resource_index/package_run_dependencies/turtlebot3_node
+[2.679s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/ament_index/resource_index/parent_prefix_path/turtlebot3_node
+[2.680s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/environment/ament_prefix_path.sh
+[2.681s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/environment/ament_prefix_path.dsv
+[2.683s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/environment/path.sh
+[2.683s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/environment/path.dsv
+[2.685s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/local_setup.bash
+[2.689s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/local_setup.sh
+[2.693s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/local_setup.zsh
+[2.695s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/local_setup.dsv
+[2.696s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/package.dsv
+[2.765s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/ament_index/resource_index/packages/turtlebot3_node
+[2.774s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/cmake/ament_cmake_export_include_directories-extras.cmake
+[2.777s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/cmake/turtlebot3_nodeConfig.cmake
+[2.794s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/cmake/turtlebot3_nodeConfig-version.cmake
+[2.800s] -- Up-to-date symlink: /home/ubuntu/turtlebot3_ws/install/turtlebot3_node/share/turtlebot3_node/package.xml
+[2.842s] Invoked command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3_node' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/opt/ros/foxy /usr/bin/cmake --install /home/ubuntu/turtlebot3_ws/build/turtlebot3_node

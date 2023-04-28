@@ -1,0 +1,17 @@
+[2.060s] Invoking command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3_teleop': PYTHONPATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --prefix /home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop --editable --build-directory /home/ubuntu/turtlebot3_ws/build/turtlebot3_teleop/build --no-deps install_data --install-dir /home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop
+[3.312s] running develop
+[3.917s] running egg_info
+[3.917s] writing turtlebot3_teleop.egg-info/PKG-INFO
+[3.918s] writing dependency_links to turtlebot3_teleop.egg-info/dependency_links.txt
+[3.920s] writing entry points to turtlebot3_teleop.egg-info/entry_points.txt
+[3.920s] writing requirements to turtlebot3_teleop.egg-info/requires.txt
+[3.921s] writing top-level names to turtlebot3_teleop.egg-info/top_level.txt
+[4.075s] reading manifest file 'turtlebot3_teleop.egg-info/SOURCES.txt'
+[4.079s] writing manifest file 'turtlebot3_teleop.egg-info/SOURCES.txt'
+[4.086s] running build_ext
+[4.087s] Creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages/turtlebot3-teleop.egg-link (link to .)
+[4.094s] Installing teleop_keyboard script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/turtlebot3_teleop
+[4.097s] 
+[4.098s] Installed /home/ubuntu/turtlebot3_ws/build/turtlebot3_teleop
+[4.100s] running install_data
+[4.291s] Invoked command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3_teleop' returned '0': PYTHONPATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --prefix /home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop --editable --build-directory /home/ubuntu/turtlebot3_ws/build/turtlebot3_teleop/build --no-deps install_data --install-dir /home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop

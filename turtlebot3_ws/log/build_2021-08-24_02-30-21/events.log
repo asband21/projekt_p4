@@ -1,0 +1,234 @@
+[0.000000] (-) TimerEvent: {}
+[0.001205] (turtlebot3_description) JobQueued: {'identifier': 'turtlebot3_description', 'dependencies': OrderedDict()}
+[0.001834] (turtlebot3_example) JobQueued: {'identifier': 'turtlebot3_example', 'dependencies': OrderedDict()}
+[0.002866] (turtlebot3_node) JobQueued: {'identifier': 'turtlebot3_node', 'dependencies': OrderedDict()}
+[0.003468] (turtlebot3_teleop) JobQueued: {'identifier': 'turtlebot3_teleop', 'dependencies': OrderedDict()}
+[0.005537] (turtlebot3_bringup) JobQueued: {'identifier': 'turtlebot3_bringup', 'dependencies': OrderedDict([('turtlebot3_description', '/home/ubuntu/turtlebot3_ws/install/turtlebot3_description'), ('turtlebot3_node', '/home/ubuntu/turtlebot3_ws/install/turtlebot3_node')])}
+[0.006898] (turtlebot3) JobQueued: {'identifier': 'turtlebot3', 'dependencies': OrderedDict([('turtlebot3_description', '/home/ubuntu/turtlebot3_ws/install/turtlebot3_description'), ('turtlebot3_example', '/home/ubuntu/turtlebot3_ws/install/turtlebot3_example'), ('turtlebot3_node', '/home/ubuntu/turtlebot3_ws/install/turtlebot3_node'), ('turtlebot3_teleop', '/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop'), ('turtlebot3_bringup', '/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup')])}
+[0.008806] (turtlebot3_description) JobStarted: {'identifier': 'turtlebot3_description'}
+[0.091004] (turtlebot3_node) JobStarted: {'identifier': 'turtlebot3_node'}
+[0.098626] (-) TimerEvent: {}
+[0.138802] (turtlebot3_example) JobStarted: {'identifier': 'turtlebot3_example'}
+[0.199229] (-) TimerEvent: {}
+[0.203998] (turtlebot3_teleop) JobStarted: {'identifier': 'turtlebot3_teleop'}
+[0.284314] (turtlebot3_description) JobProgress: {'identifier': 'turtlebot3_description', 'progress': 'cmake'}
+[0.286402] (turtlebot3_description) Command: {'cmd': ['/usr/bin/cmake', '/home/ubuntu/turtlebot3_ws/src/turtlebot3/turtlebot3_description', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/ubuntu/turtlebot3_ws/install/turtlebot3_description'], 'cwd': '/home/ubuntu/turtlebot3_ws/build/turtlebot3_description', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'ubuntu'), ('SSH_CLIENT', '192.168.3.232 53960 22'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/ubuntu'), ('OLDPWD', '/home/ubuntu/turtlebot3_ws/src/turtlebot3'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/ubuntu/colcon_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'ubuntu'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '3'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '30'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/home/ubuntu/turtlebot3_ws/build/turtlebot3_description'), ('SSH_CONNECTION', '192.168.3.232 53960 192.168.3.92 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.306353] (-) TimerEvent: {}
+[0.335639] (turtlebot3_node) JobProgress: {'identifier': 'turtlebot3_node', 'progress': 'cmake'}
+[0.338410] (turtlebot3_node) Command: {'cmd': ['/usr/bin/cmake', '/home/ubuntu/turtlebot3_ws/src/turtlebot3/turtlebot3_node', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/ubuntu/turtlebot3_ws/install/turtlebot3_node'], 'cwd': '/home/ubuntu/turtlebot3_ws/build/turtlebot3_node', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'ubuntu'), ('SSH_CLIENT', '192.168.3.232 53960 22'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/ubuntu'), ('OLDPWD', '/home/ubuntu/turtlebot3_ws/src/turtlebot3'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/ubuntu/colcon_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'ubuntu'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '3'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '30'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/home/ubuntu/turtlebot3_ws/build/turtlebot3_node'), ('SSH_CONNECTION', '192.168.3.232 53960 192.168.3.92 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.407059] (-) TimerEvent: {}
+[0.509721] (-) TimerEvent: {}
+[0.611353] (-) TimerEvent: {}
+[0.712929] (-) TimerEvent: {}
+[0.814680] (-) TimerEvent: {}
+[0.916166] (-) TimerEvent: {}
+[1.018000] (-) TimerEvent: {}
+[1.119651] (-) TimerEvent: {}
+[1.221150] (-) TimerEvent: {}
+[1.322731] (-) TimerEvent: {}
+[1.424259] (-) TimerEvent: {}
+[1.525904] (-) TimerEvent: {}
+[1.627613] (-) TimerEvent: {}
+[1.729054] (-) TimerEvent: {}
+[1.831981] (-) TimerEvent: {}
+[1.934301] (-) TimerEvent: {}
+[2.036626] (-) TimerEvent: {}
+[2.138203] (-) TimerEvent: {}
+[2.239706] (-) TimerEvent: {}
+[2.343046] (-) TimerEvent: {}
+[2.447615] (-) TimerEvent: {}
+[2.549166] (-) TimerEvent: {}
+[2.652380] (-) TimerEvent: {}
+[2.716176] (turtlebot3_description) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.3.0\n'}
+[2.718757] (turtlebot3_description) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.3.0\n'}
+[2.723777] (turtlebot3_description) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[2.730190] (turtlebot3_node) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.3.0\n'}
+[2.732647] (turtlebot3_node) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.3.0\n'}
+[2.746136] (turtlebot3_node) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[2.752450] (-) TimerEvent: {}
+[2.854647] (-) TimerEvent: {}
+[2.956146] (-) TimerEvent: {}
+[3.057933] (-) TimerEvent: {}
+[3.161168] (-) TimerEvent: {}
+[3.216126] (turtlebot3_description) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[3.217420] (turtlebot3_node) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[3.229156] (turtlebot3_description) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[3.230608] (turtlebot3_node) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[3.261372] (-) TimerEvent: {}
+[3.364319] (-) TimerEvent: {}
+[3.466059] (-) TimerEvent: {}
+[3.568952] (-) TimerEvent: {}
+[3.672855] (-) TimerEvent: {}
+[3.775709] (-) TimerEvent: {}
+[3.877435] (-) TimerEvent: {}
+[3.933418] (turtlebot3_description) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[3.935686] (turtlebot3_node) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[3.977753] (-) TimerEvent: {}
+[4.041760] (turtlebot3_description) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[4.043043] (turtlebot3_node) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[4.046563] (turtlebot3_description) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[4.047874] (turtlebot3_node) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[4.076973] (turtlebot3_node) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[4.078262] (-) TimerEvent: {}
+[4.080695] (turtlebot3_description) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[4.178510] (-) TimerEvent: {}
+[4.280965] (-) TimerEvent: {}
+[4.382486] (-) TimerEvent: {}
+[4.512180] (-) TimerEvent: {}
+[4.615137] (-) TimerEvent: {}
+[4.718272] (-) TimerEvent: {}
+[4.822059] (-) TimerEvent: {}
+[4.920133] (turtlebot3_description) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[4.928264] (-) TimerEvent: {}
+[4.931631] (turtlebot3_description) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[4.933048] (turtlebot3_node) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[4.941045] (turtlebot3_node) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[5.028647] (-) TimerEvent: {}
+[5.130677] (-) TimerEvent: {}
+[5.238369] (-) TimerEvent: {}
+[5.271843] (turtlebot3_example) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'develop', '--prefix', '/home/ubuntu/turtlebot3_ws/install/turtlebot3_example', '--editable', '--build-directory', '/home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build', '--no-deps', 'install_data', '--install-dir', '/home/ubuntu/turtlebot3_ws/install/turtlebot3_example'], 'cwd': '/home/ubuntu/turtlebot3_ws/build/turtlebot3_example', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'ubuntu', 'SSH_CLIENT': '192.168.3.232 53960 22', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib', 'MOTD_SHOWN': 'pam', 'HOME': '/home/ubuntu', 'OLDPWD': '/home/ubuntu/turtlebot3_ws/src/turtlebot3', 'SSH_TTY': '/dev/pts/0', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLCON_PREFIX_PATH': '/home/ubuntu/colcon_ws/install', 'ROS_DISTRO': 'foxy', 'LOGNAME': 'ubuntu', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'ROS_DOMAIN_ID': '30', 'AMENT_PREFIX_PATH': '/opt/ros/foxy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'PWD': '/home/ubuntu/turtlebot3_ws/build/turtlebot3_example', 'SSH_CONNECTION': '192.168.3.232 53960 192.168.3.92 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages', 'COLCON': '1'}, 'shell': False}
+[5.319712] (turtlebot3_teleop) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'develop', '--prefix', '/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop', '--editable', '--build-directory', '/home/ubuntu/turtlebot3_ws/build/turtlebot3_teleop/build', '--no-deps', 'install_data', '--install-dir', '/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop'], 'cwd': '/home/ubuntu/turtlebot3_ws/build/turtlebot3_teleop', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'ubuntu', 'SSH_CLIENT': '192.168.3.232 53960 22', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib', 'MOTD_SHOWN': 'pam', 'HOME': '/home/ubuntu', 'OLDPWD': '/home/ubuntu/turtlebot3_ws/src/turtlebot3', 'SSH_TTY': '/dev/pts/0', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLCON_PREFIX_PATH': '/home/ubuntu/colcon_ws/install', 'ROS_DISTRO': 'foxy', 'LOGNAME': 'ubuntu', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'ROS_DOMAIN_ID': '30', 'AMENT_PREFIX_PATH': '/opt/ros/foxy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'PWD': '/home/ubuntu/turtlebot3_ws/build/turtlebot3_teleop', 'SSH_CONNECTION': '192.168.3.232 53960 192.168.3.92 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages', 'COLCON': '1'}, 'shell': False}
+[5.358903] (-) TimerEvent: {}
+[5.462232] (-) TimerEvent: {}
+[5.564154] (-) TimerEvent: {}
+[5.665748] (-) TimerEvent: {}
+[5.767370] (-) TimerEvent: {}
+[5.869275] (-) TimerEvent: {}
+[5.923604] (turtlebot3_node) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[5.934493] (turtlebot3_description) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[5.969566] (-) TimerEvent: {}
+[6.042935] (turtlebot3_node) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[6.048464] (turtlebot3_node) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[6.067924] (turtlebot3_description) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[6.069876] (-) TimerEvent: {}
+[6.077589] (turtlebot3_description) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[6.100779] (turtlebot3_node) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[6.126559] (turtlebot3_description) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[6.170271] (-) TimerEvent: {}
+[6.271963] (-) TimerEvent: {}
+[6.373602] (-) TimerEvent: {}
+[6.441962] (turtlebot3_description) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[6.443791] (turtlebot3_node) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[6.445069] (turtlebot3_description) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[6.447836] (turtlebot3_node) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[6.473921] (-) TimerEvent: {}
+[6.576790] (-) TimerEvent: {}
+[6.679719] (-) TimerEvent: {}
+[6.781663] (-) TimerEvent: {}
+[6.883420] (-) TimerEvent: {}
+[6.985134] (-) TimerEvent: {}
+[7.086784] (-) TimerEvent: {}
+[7.188440] (-) TimerEvent: {}
+[7.290083] (-) TimerEvent: {}
+[7.391642] (-) TimerEvent: {}
+[7.493303] (-) TimerEvent: {}
+[7.594993] (-) TimerEvent: {}
+[7.696709] (-) TimerEvent: {}
+[7.798345] (-) TimerEvent: {}
+[7.899945] (-) TimerEvent: {}
+[8.001613] (-) TimerEvent: {}
+[8.029788] (turtlebot3_teleop) StdoutLine: {'line': b'running develop\n'}
+[8.031622] (turtlebot3_example) StdoutLine: {'line': b'running develop\n'}
+[8.101979] (-) TimerEvent: {}
+[8.203602] (-) TimerEvent: {}
+[8.305278] (-) TimerEvent: {}
+[8.407209] (-) TimerEvent: {}
+[8.485190] (turtlebot3_description) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[8.507574] (-) TimerEvent: {}
+[8.521640] (turtlebot3_node) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[8.607845] (-) TimerEvent: {}
+[8.709532] (-) TimerEvent: {}
+[8.811181] (-) TimerEvent: {}
+[8.912929] (-) TimerEvent: {}
+[9.009196] (turtlebot3_description) StdoutLine: {'line': b'-- Found urdf: 2.4.0 (/opt/ros/foxy/share/urdf/cmake)\n'}
+[9.013196] (-) TimerEvent: {}
+[9.114287] (turtlebot3_node) StderrLine: {'line': b'CMake Error at CMakeLists.txt:19 (find_package):\n'}
+[9.115695] (-) TimerEvent: {}
+[9.116823] (turtlebot3_node) StderrLine: {'line': b'  By not providing "Finddynamixel_sdk.cmake" in CMAKE_MODULE_PATH this\n'}
+[9.118066] (turtlebot3_node) StderrLine: {'line': b'  project has asked CMake to find a package configuration file provided by\n'}
+[9.119060] (turtlebot3_node) StderrLine: {'line': b'  "dynamixel_sdk", but CMake did not find one.\n'}
+[9.119927] (turtlebot3_node) StderrLine: {'line': b'\n'}
+[9.120775] (turtlebot3_node) StderrLine: {'line': b'  Could not find a package configuration file provided by "dynamixel_sdk"\n'}
+[9.121738] (turtlebot3_node) StderrLine: {'line': b'  with any of the following names:\n'}
+[9.122792] (turtlebot3_node) StderrLine: {'line': b'\n'}
+[9.123616] (turtlebot3_node) StderrLine: {'line': b'    dynamixel_sdkConfig.cmake\n'}
+[9.124406] (turtlebot3_node) StderrLine: {'line': b'    dynamixel_sdk-config.cmake\n'}
+[9.125190] (turtlebot3_node) StderrLine: {'line': b'\n'}
+[9.138485] (turtlebot3_node) StderrLine: {'line': b'  Add the installation prefix of "dynamixel_sdk" to CMAKE_PREFIX_PATH or set\n'}
+[9.139613] (turtlebot3_node) StderrLine: {'line': b'  "dynamixel_sdk_DIR" to a directory containing one of the above files.  If\n'}
+[9.140761] (turtlebot3_node) StderrLine: {'line': b'  "dynamixel_sdk" provides a separate development package or SDK, be sure it\n'}
+[9.141980] (turtlebot3_node) StderrLine: {'line': b'  has been installed.\n'}
+[9.143133] (turtlebot3_node) StderrLine: {'line': b'\n'}
+[9.144226] (turtlebot3_node) StderrLine: {'line': b'\n'}
+[9.148224] (turtlebot3_node) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[9.149508] (turtlebot3_node) StdoutLine: {'line': b'See also "/home/ubuntu/turtlebot3_ws/build/turtlebot3_node/CMakeFiles/CMakeOutput.log".\n'}
+[9.191867] (turtlebot3_node) CommandEnded: {'returncode': 1}
+[9.216065] (-) TimerEvent: {}
+[9.318043] (-) TimerEvent: {}
+[9.412415] (turtlebot3_teleop) StdoutLine: {'line': b'running egg_info\n'}
+[9.414968] (turtlebot3_teleop) StdoutLine: {'line': b'creating turtlebot3_teleop.egg-info\n'}
+[9.417614] (turtlebot3_teleop) StdoutLine: {'line': b'writing turtlebot3_teleop.egg-info/PKG-INFO\n'}
+[9.419422] (-) TimerEvent: {}
+[9.420812] (turtlebot3_teleop) StdoutLine: {'line': b'writing dependency_links to turtlebot3_teleop.egg-info/dependency_links.txt\n'}
+[9.422175] (turtlebot3_teleop) StdoutLine: {'line': b'writing entry points to turtlebot3_teleop.egg-info/entry_points.txt\n'}
+[9.429150] (turtlebot3_teleop) StdoutLine: {'line': b'writing requirements to turtlebot3_teleop.egg-info/requires.txt\n'}
+[9.446794] (turtlebot3_teleop) StdoutLine: {'line': b'writing top-level names to turtlebot3_teleop.egg-info/top_level.txt\n'}
+[9.448473] (turtlebot3_example) StdoutLine: {'line': b'running egg_info\n'}
+[9.449849] (turtlebot3_example) StdoutLine: {'line': b'creating turtlebot3_example.egg-info\n'}
+[9.450986] (turtlebot3_example) StdoutLine: {'line': b'writing turtlebot3_example.egg-info/PKG-INFO\n'}
+[9.452094] (turtlebot3_example) StdoutLine: {'line': b'writing dependency_links to turtlebot3_example.egg-info/dependency_links.txt\n'}
+[9.454557] (turtlebot3_example) StdoutLine: {'line': b'writing entry points to turtlebot3_example.egg-info/entry_points.txt\n'}
+[9.457061] (turtlebot3_example) StdoutLine: {'line': b'writing requirements to turtlebot3_example.egg-info/requires.txt\n'}
+[9.458964] (turtlebot3_example) StdoutLine: {'line': b'writing top-level names to turtlebot3_example.egg-info/top_level.txt\n'}
+[9.463193] (turtlebot3_teleop) StdoutLine: {'line': b"writing manifest file 'turtlebot3_teleop.egg-info/SOURCES.txt'\n"}
+[9.464523] (turtlebot3_example) StdoutLine: {'line': b"writing manifest file 'turtlebot3_example.egg-info/SOURCES.txt'\n"}
+[9.498821] (turtlebot3_node) JobEnded: {'identifier': 'turtlebot3_node', 'rc': 1}
+[9.519729] (-) TimerEvent: {}
+[9.621132] (-) TimerEvent: {}
+[9.724000] (-) TimerEvent: {}
+[9.810800] (turtlebot3_teleop) StdoutLine: {'line': b"reading manifest file 'turtlebot3_teleop.egg-info/SOURCES.txt'\n"}
+[9.816424] (turtlebot3_example) StdoutLine: {'line': b"reading manifest file 'turtlebot3_example.egg-info/SOURCES.txt'\n"}
+[9.818435] (turtlebot3_teleop) StdoutLine: {'line': b"writing manifest file 'turtlebot3_teleop.egg-info/SOURCES.txt'\n"}
+[9.824298] (-) TimerEvent: {}
+[9.825985] (turtlebot3_example) StdoutLine: {'line': b"writing manifest file 'turtlebot3_example.egg-info/SOURCES.txt'\n"}
+[9.847758] (turtlebot3_example) StdoutLine: {'line': b'running build_ext\n'}
+[9.849329] (turtlebot3_teleop) StdoutLine: {'line': b'running build_ext\n'}
+[9.851450] (turtlebot3_example) StdoutLine: {'line': b'Creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/site.py\n'}
+[9.852854] (turtlebot3_teleop) StdoutLine: {'line': b'Creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages/site.py\n'}
+[9.874182] (turtlebot3_example) StdoutLine: {'line': b'Creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3-example.egg-link (link to .)\n'}
+[9.875515] (turtlebot3_teleop) StdoutLine: {'line': b'Creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages/turtlebot3-teleop.egg-link (link to .)\n'}
+[9.882331] (turtlebot3_example) StdoutLine: {'line': b'Installing turtlebot3_obstacle_detection script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example\n'}
+[9.883789] (turtlebot3_teleop) StdoutLine: {'line': b'Installing teleop_keyboard script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/turtlebot3_teleop\n'}
+[9.886527] (turtlebot3_example) StdoutLine: {'line': b'Installing turtlebot3_patrol_client script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example\n'}
+[9.889001] (turtlebot3_teleop) StdoutLine: {'line': b'\n'}
+[9.892411] (turtlebot3_teleop) StdoutLine: {'line': b'Installed /home/ubuntu/turtlebot3_ws/build/turtlebot3_teleop\n'}
+[9.895987] (turtlebot3_teleop) StdoutLine: {'line': b'running install_data\n'}
+[9.897958] (turtlebot3_example) StdoutLine: {'line': b'Installing turtlebot3_patrol_server script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example\n'}
+[9.900816] (turtlebot3_teleop) StdoutLine: {'line': b'creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/share/ament_index\n'}
+[9.903584] (turtlebot3_teleop) StdoutLine: {'line': b'creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/share/ament_index/resource_index\n'}
+[9.906399] (turtlebot3_example) StdoutLine: {'line': b'Installing turtlebot3_position_control script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example\n'}
+[9.909403] (turtlebot3_teleop) StdoutLine: {'line': b'creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/share/ament_index/resource_index/packages\n'}
+[9.912429] (turtlebot3_teleop) StdoutLine: {'line': b'copying resource/turtlebot3_teleop -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/share/ament_index/resource_index/packages\n'}
+[9.915538] (turtlebot3_example) StdoutLine: {'line': b'\n'}
+[9.918453] (turtlebot3_example) StdoutLine: {'line': b'Installed /home/ubuntu/turtlebot3_ws/build/turtlebot3_example\n'}
+[9.921167] (turtlebot3_example) StdoutLine: {'line': b'running install_data\n'}
+[9.924134] (turtlebot3_teleop) StdoutLine: {'line': b'copying package.xml -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/share/turtlebot3_teleop\n'}
+[9.927024] (-) TimerEvent: {}
+[9.930123] (turtlebot3_example) StdoutLine: {'line': b'creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/share/ament_index\n'}
+[9.933108] (turtlebot3_example) StdoutLine: {'line': b'creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/share/ament_index/resource_index\n'}
+[9.935952] (turtlebot3_example) StdoutLine: {'line': b'creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/share/ament_index/resource_index/packages\n'}
+[9.938815] (turtlebot3_example) StdoutLine: {'line': b'copying resource/turtlebot3_example -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/share/ament_index/resource_index/packages\n'}
+[9.941545] (turtlebot3_example) StdoutLine: {'line': b'copying package.xml -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/share/turtlebot3_example\n'}
+[10.027546] (-) TimerEvent: {}
+[10.131091] (-) TimerEvent: {}
+[10.160267] (turtlebot3_teleop) JobEnded: {'identifier': 'turtlebot3_teleop', 'rc': 'SIGINT'}
+[10.170054] (turtlebot3_example) JobEnded: {'identifier': 'turtlebot3_example', 'rc': 'SIGINT'}
+[10.231302] (-) TimerEvent: {}
+[10.283849] (turtlebot3_description) StdoutLine: {'line': b'-- Configuring done\n'}
+[10.308209] (turtlebot3_description) StdoutLine: {'line': b'-- Generating done\n'}
+[10.318128] (turtlebot3_description) StdoutLine: {'line': b'-- Build files have been written to: /home/ubuntu/turtlebot3_ws/build/turtlebot3_description\n'}
+[10.331730] (-) TimerEvent: {}
+[10.345357] (turtlebot3_description) JobEnded: {'identifier': 'turtlebot3_description', 'rc': 'SIGINT'}
+[10.359007] (turtlebot3_bringup) JobSkipped: {'identifier': 'turtlebot3_bringup'}
+[10.359614] (turtlebot3) JobSkipped: {'identifier': 'turtlebot3'}
+[10.360000] (-) EventReactorShutdown: {}

@@ -1,0 +1,4 @@
+[01m[K/home/ubuntu/turtlebot3_ws/src/ld08_driver/src/transform.cpp:[m[K In constructor ‘[01m[KSlTransform::SlTransform(LDVersion, bool)[m[K’:
+[01m[K/home/ubuntu/turtlebot3_ws/src/ld08_driver/src/transform.cpp:30:50:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kto_right_hand[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   30 | SlTransform::SlTransform(LDVersion version, [01;35m[Kbool to_right_hand[m[K)
+      |                                             [01;35m[K~~~~~^~~~~~~~~~~~~[m[K

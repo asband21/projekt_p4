@@ -1,0 +1,23 @@
+[0.284s] Invoking command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3_description': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/ubuntu/turtlebot3_ws/src/turtlebot3/turtlebot3_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ubuntu/turtlebot3_ws/install/turtlebot3_description
+[2.708s] -- The C compiler identification is GNU 9.3.0
+[2.713s] -- The CXX compiler identification is GNU 9.3.0
+[2.717s] -- Check for working C compiler: /usr/bin/cc
+[3.208s] -- Check for working C compiler: /usr/bin/cc -- works
+[3.221s] -- Detecting C compiler ABI info
+[3.925s] -- Detecting C compiler ABI info - done
+[4.034s] -- Detecting C compile features
+[4.038s] -- Detecting C compile features - done
+[4.072s] -- Check for working CXX compiler: /usr/bin/c++
+[4.912s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[4.923s] -- Detecting CXX compiler ABI info
+[5.926s] -- Detecting CXX compiler ABI info - done
+[6.060s] -- Detecting CXX compile features
+[6.069s] -- Detecting CXX compile features - done
+[6.118s] -- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)
+[6.434s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[6.437s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[8.477s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[9.001s] -- Found urdf: 2.4.0 (/opt/ros/foxy/share/urdf/cmake)
+[10.276s] -- Configuring done
+[10.300s] -- Generating done
+[10.310s] -- Build files have been written to: /home/ubuntu/turtlebot3_ws/build/turtlebot3_description

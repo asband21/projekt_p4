@@ -1,0 +1,44 @@
+[0.137s] Invoking command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3': AMENT_PREFIX_PATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/opt/ros/foxy PYTHONPATH=/home/ubuntu/turtlebot3_ws/build/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/build/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake /home/ubuntu/turtlebot3_ws/src/turtlebot3/turtlebot3 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ubuntu/turtlebot3_ws/install/turtlebot3
+[0.643s] -- The C compiler identification is GNU 9.3.0
+[1.146s] -- The CXX compiler identification is GNU 9.3.0
+[1.189s] -- Check for working C compiler: /usr/bin/cc
+[1.919s] -- Check for working C compiler: /usr/bin/cc -- works
+[1.927s] -- Detecting C compiler ABI info
+[2.722s] -- Detecting C compiler ABI info - done
+[2.821s] -- Detecting C compile features
+[2.823s] -- Detecting C compile features - done
+[2.847s] -- Check for working CXX compiler: /usr/bin/c++
+[3.556s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[3.565s] -- Detecting CXX compiler ABI info
+[4.285s] -- Detecting CXX compiler ABI info - done
+[4.388s] -- Detecting CXX compile features
+[4.392s] -- Detecting CXX compile features - done
+[4.438s] -- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)
+[4.784s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[4.785s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[6.405s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[7.500s] -- Configuring done
+[7.522s] -- Generating done
+[7.532s] -- Build files have been written to: /home/ubuntu/turtlebot3_ws/build/turtlebot3
+[7.555s] Invoked command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3' returned '0': AMENT_PREFIX_PATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/opt/ros/foxy PYTHONPATH=/home/ubuntu/turtlebot3_ws/build/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/build/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake /home/ubuntu/turtlebot3_ws/src/turtlebot3/turtlebot3 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ubuntu/turtlebot3_ws/install/turtlebot3
+[7.567s] Invoking command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3': AMENT_PREFIX_PATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/opt/ros/foxy PYTHONPATH=/home/ubuntu/turtlebot3_ws/build/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/build/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/ubuntu/turtlebot3_ws/build/turtlebot3 -- -j4 -l4
+[7.901s] Invoked command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3' returned '0': AMENT_PREFIX_PATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/opt/ros/foxy PYTHONPATH=/home/ubuntu/turtlebot3_ws/build/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/build/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /home/ubuntu/turtlebot3_ws/build/turtlebot3 -- -j4 -l4
+[8.097s] Invoking command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3': AMENT_PREFIX_PATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/opt/ros/foxy PYTHONPATH=/home/ubuntu/turtlebot3_ws/build/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/build/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/ubuntu/turtlebot3_ws/build/turtlebot3
+[8.174s] -- Install configuration: ""
+[8.177s] -- Execute custom install script
+[8.181s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3/share/ament_index/resource_index/package_run_dependencies/turtlebot3
+[8.257s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3/share/ament_index/resource_index/parent_prefix_path/turtlebot3
+[8.334s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3/share/turtlebot3/environment/ament_prefix_path.sh
+[8.409s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3/share/turtlebot3/environment/ament_prefix_path.dsv
+[8.483s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3/share/turtlebot3/environment/path.sh
+[8.558s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3/share/turtlebot3/environment/path.dsv
+[8.632s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3/share/turtlebot3/local_setup.bash
+[8.707s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3/share/turtlebot3/local_setup.sh
+[8.782s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3/share/turtlebot3/local_setup.zsh
+[8.857s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3/share/turtlebot3/local_setup.dsv
+[8.931s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3/share/turtlebot3/package.dsv
+[9.007s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3/share/ament_index/resource_index/packages/turtlebot3
+[9.083s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3/share/turtlebot3/cmake/turtlebot3Config.cmake
+[9.157s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3/share/turtlebot3/cmake/turtlebot3Config-version.cmake
+[9.232s] -- Symlinking: /home/ubuntu/turtlebot3_ws/install/turtlebot3/share/turtlebot3/package.xml
+[9.327s] Invoked command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3' returned '0': AMENT_PREFIX_PATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/opt/ros/foxy PYTHONPATH=/home/ubuntu/turtlebot3_ws/build/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/build/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --install /home/ubuntu/turtlebot3_ws/build/turtlebot3

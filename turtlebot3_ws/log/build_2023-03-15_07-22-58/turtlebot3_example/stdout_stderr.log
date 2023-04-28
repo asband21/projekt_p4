@@ -1,0 +1,80 @@
+running develop
+Removing /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3-example.egg-link (link to .)
+running egg_info
+writing ../../../build/turtlebot3_example/turtlebot3_example.egg-info/PKG-INFO
+writing dependency_links to ../../../build/turtlebot3_example/turtlebot3_example.egg-info/dependency_links.txt
+writing entry points to ../../../build/turtlebot3_example/turtlebot3_example.egg-info/entry_points.txt
+writing requirements to ../../../build/turtlebot3_example/turtlebot3_example.egg-info/requires.txt
+writing top-level names to ../../../build/turtlebot3_example/turtlebot3_example.egg-info/top_level.txt
+reading manifest file '../../../build/turtlebot3_example/turtlebot3_example.egg-info/SOURCES.txt'
+writing manifest file '../../../build/turtlebot3_example/turtlebot3_example.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build
+creating /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib
+creating /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example
+copying turtlebot3_example/__init__.py -> /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example
+creating /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_server
+copying turtlebot3_example/turtlebot3_patrol_server/__init__.py -> /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_server
+copying turtlebot3_example/turtlebot3_patrol_server/main.py -> /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_server
+copying turtlebot3_example/turtlebot3_patrol_server/turtlebot3_patrol_server.py -> /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_server
+copying turtlebot3_example/turtlebot3_patrol_server/turtlebot3_path.py -> /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_server
+creating /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_position_control
+copying turtlebot3_example/turtlebot3_position_control/__init__.py -> /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_position_control
+copying turtlebot3_example/turtlebot3_position_control/turtlebot3_position_control.py -> /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_position_control
+copying turtlebot3_example/turtlebot3_position_control/main.py -> /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_position_control
+copying turtlebot3_example/turtlebot3_position_control/turtlebot3_path.py -> /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_position_control
+creating /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_obstacle_detection
+copying turtlebot3_example/turtlebot3_obstacle_detection/__init__.py -> /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_obstacle_detection
+copying turtlebot3_example/turtlebot3_obstacle_detection/turtlebot3_obstacle_detection.py -> /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_obstacle_detection
+copying turtlebot3_example/turtlebot3_obstacle_detection/main.py -> /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_obstacle_detection
+creating /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_client
+copying turtlebot3_example/turtlebot3_patrol_client/__init__.py -> /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_client
+copying turtlebot3_example/turtlebot3_patrol_client/main.py -> /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_client
+copying turtlebot3_example/turtlebot3_patrol_client/turtlebot3_patrol_client.py -> /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_client
+running install
+running install_lib
+creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example
+copying /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/__init__.py -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example
+creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_server
+copying /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_server/__init__.py -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_server
+copying /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_server/main.py -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_server
+copying /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_server/turtlebot3_patrol_server.py -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_server
+copying /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_server/turtlebot3_path.py -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_server
+creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_position_control
+copying /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_position_control/__init__.py -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_position_control
+copying /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_position_control/turtlebot3_position_control.py -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_position_control
+copying /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_position_control/main.py -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_position_control
+copying /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_position_control/turtlebot3_path.py -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_position_control
+creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_obstacle_detection
+copying /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_obstacle_detection/__init__.py -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_obstacle_detection
+copying /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_obstacle_detection/turtlebot3_obstacle_detection.py -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_obstacle_detection
+copying /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_obstacle_detection/main.py -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_obstacle_detection
+creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_client
+copying /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_client/__init__.py -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_client
+copying /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_client/main.py -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_client
+copying /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build/lib/turtlebot3_example/turtlebot3_patrol_client/turtlebot3_patrol_client.py -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_client
+byte-compiling /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_server/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_server/main.py to main.cpython-38.pyc
+byte-compiling /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_server/turtlebot3_patrol_server.py to turtlebot3_patrol_server.cpython-38.pyc
+byte-compiling /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_server/turtlebot3_path.py to turtlebot3_path.cpython-38.pyc
+byte-compiling /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_position_control/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_position_control/turtlebot3_position_control.py to turtlebot3_position_control.cpython-38.pyc
+byte-compiling /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_position_control/main.py to main.cpython-38.pyc
+byte-compiling /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_position_control/turtlebot3_path.py to turtlebot3_path.cpython-38.pyc
+byte-compiling /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_obstacle_detection/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_obstacle_detection/turtlebot3_obstacle_detection.py to turtlebot3_obstacle_detection.cpython-38.pyc
+byte-compiling /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_obstacle_detection/main.py to main.cpython-38.pyc
+byte-compiling /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_client/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_client/main.py to main.cpython-38.pyc
+byte-compiling /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example/turtlebot3_patrol_client/turtlebot3_patrol_client.py to turtlebot3_patrol_client.cpython-38.pyc
+running install_data
+running install_egg_info
+Copying ../../../build/turtlebot3_example/turtlebot3_example.egg-info to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3_example-2.1.4-py3.8.egg-info
+running install_scripts
+Installing turtlebot3_obstacle_detection script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example
+Installing turtlebot3_patrol_client script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example
+Installing turtlebot3_patrol_server script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example
+Installing turtlebot3_position_control script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example
+writing list of installed files to '/home/ubuntu/turtlebot3_ws/build/turtlebot3_example/install.log'

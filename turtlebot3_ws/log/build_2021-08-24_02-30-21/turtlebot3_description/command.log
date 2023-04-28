@@ -1,0 +1,1 @@
+Invoking command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3_description': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/ubuntu/turtlebot3_ws/src/turtlebot3/turtlebot3_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ubuntu/turtlebot3_ws/install/turtlebot3_description

@@ -1,0 +1,39 @@
+[0.265s] Invoking command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3_node': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/ubuntu/turtlebot3_ws/src/turtlebot3/turtlebot3_node -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ubuntu/turtlebot3_ws/install/turtlebot3_node
+[2.639s] -- The C compiler identification is GNU 9.3.0
+[2.643s] -- The CXX compiler identification is GNU 9.3.0
+[2.659s] -- Check for working C compiler: /usr/bin/cc
+[3.126s] -- Check for working C compiler: /usr/bin/cc -- works
+[3.139s] -- Detecting C compiler ABI info
+[3.844s] -- Detecting C compiler ABI info - done
+[3.951s] -- Detecting C compile features
+[3.956s] -- Detecting C compile features - done
+[3.985s] -- Check for working CXX compiler: /usr/bin/c++
+[4.841s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[4.850s] -- Detecting CXX compiler ABI info
+[5.832s] -- Detecting CXX compiler ABI info - done
+[5.952s] -- Detecting CXX compile features
+[5.957s] -- Detecting CXX compile features - done
+[6.010s] -- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)
+[6.352s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[6.356s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[8.430s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[9.023s] CMake Error at CMakeLists.txt:19 (find_package):
+[9.025s]   By not providing "Finddynamixel_sdk.cmake" in CMAKE_MODULE_PATH this
+[9.026s]   project has asked CMake to find a package configuration file provided by
+[9.027s]   "dynamixel_sdk", but CMake did not find one.
+[9.028s] 
+[9.029s]   Could not find a package configuration file provided by "dynamixel_sdk"
+[9.030s]   with any of the following names:
+[9.031s] 
+[9.032s]     dynamixel_sdkConfig.cmake
+[9.032s]     dynamixel_sdk-config.cmake
+[9.045s] 
+[9.047s]   Add the installation prefix of "dynamixel_sdk" to CMAKE_PREFIX_PATH or set
+[9.048s]   "dynamixel_sdk_DIR" to a directory containing one of the above files.  If
+[9.049s]   "dynamixel_sdk" provides a separate development package or SDK, be sure it
+[9.050s]   has been installed.
+[9.051s] 
+[9.052s] 
+[9.057s] -- Configuring incomplete, errors occurred!
+[9.058s] See also "/home/ubuntu/turtlebot3_ws/build/turtlebot3_node/CMakeFiles/CMakeOutput.log".
+[9.104s] Invoked command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3_node' returned '1': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/ubuntu/turtlebot3_ws/src/turtlebot3/turtlebot3_node -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/ubuntu/turtlebot3_ws/install/turtlebot3_node

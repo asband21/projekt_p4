@@ -1,0 +1,27 @@
+[5.150s] Invoking command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3_example': PYTHONPATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --prefix /home/ubuntu/turtlebot3_ws/install/turtlebot3_example --editable --build-directory /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build --no-deps install_data --install-dir /home/ubuntu/turtlebot3_ws/install/turtlebot3_example
+[7.892s] running develop
+[9.309s] running egg_info
+[9.310s] creating turtlebot3_example.egg-info
+[9.311s] writing turtlebot3_example.egg-info/PKG-INFO
+[9.314s] writing dependency_links to turtlebot3_example.egg-info/dependency_links.txt
+[9.315s] writing entry points to turtlebot3_example.egg-info/entry_points.txt
+[9.318s] writing requirements to turtlebot3_example.egg-info/requires.txt
+[9.322s] writing top-level names to turtlebot3_example.egg-info/top_level.txt
+[9.325s] writing manifest file 'turtlebot3_example.egg-info/SOURCES.txt'
+[9.677s] reading manifest file 'turtlebot3_example.egg-info/SOURCES.txt'
+[9.687s] writing manifest file 'turtlebot3_example.egg-info/SOURCES.txt'
+[9.708s] running build_ext
+[9.712s] Creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/site.py
+[9.735s] Creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3-example.egg-link (link to .)
+[9.743s] Installing turtlebot3_obstacle_detection script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example
+[9.748s] Installing turtlebot3_patrol_client script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example
+[9.759s] Installing turtlebot3_patrol_server script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example
+[9.768s] Installing turtlebot3_position_control script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example
+[9.777s] 
+[9.780s] Installed /home/ubuntu/turtlebot3_ws/build/turtlebot3_example
+[9.783s] running install_data
+[9.792s] creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/share/ament_index
+[9.794s] creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/share/ament_index/resource_index
+[9.797s] creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/share/ament_index/resource_index/packages
+[9.800s] copying resource/turtlebot3_example -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/share/ament_index/resource_index/packages
+[9.803s] copying package.xml -> /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/share/turtlebot3_example

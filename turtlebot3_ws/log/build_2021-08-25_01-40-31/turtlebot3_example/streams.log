@@ -1,0 +1,20 @@
+[2.072s] Invoking command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3_example': PYTHONPATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --prefix /home/ubuntu/turtlebot3_ws/install/turtlebot3_example --editable --build-directory /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build --no-deps install_data --install-dir /home/ubuntu/turtlebot3_ws/install/turtlebot3_example
+[3.346s] running develop
+[3.943s] running egg_info
+[3.944s] writing turtlebot3_example.egg-info/PKG-INFO
+[3.945s] writing dependency_links to turtlebot3_example.egg-info/dependency_links.txt
+[3.946s] writing entry points to turtlebot3_example.egg-info/entry_points.txt
+[3.947s] writing requirements to turtlebot3_example.egg-info/requires.txt
+[3.948s] writing top-level names to turtlebot3_example.egg-info/top_level.txt
+[4.104s] reading manifest file 'turtlebot3_example.egg-info/SOURCES.txt'
+[4.109s] writing manifest file 'turtlebot3_example.egg-info/SOURCES.txt'
+[4.115s] running build_ext
+[4.117s] Creating /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages/turtlebot3-example.egg-link (link to .)
+[4.121s] Installing turtlebot3_obstacle_detection script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example
+[4.122s] Installing turtlebot3_patrol_client script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example
+[4.123s] Installing turtlebot3_patrol_server script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example
+[4.125s] Installing turtlebot3_position_control script to /home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/turtlebot3_example
+[4.126s] 
+[4.127s] Installed /home/ubuntu/turtlebot3_ws/build/turtlebot3_example
+[4.128s] running install_data
+[4.285s] Invoked command in '/home/ubuntu/turtlebot3_ws/build/turtlebot3_example' returned '0': PYTHONPATH=/home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --prefix /home/ubuntu/turtlebot3_ws/install/turtlebot3_example --editable --build-directory /home/ubuntu/turtlebot3_ws/build/turtlebot3_example/build --no-deps install_data --install-dir /home/ubuntu/turtlebot3_ws/install/turtlebot3_example
