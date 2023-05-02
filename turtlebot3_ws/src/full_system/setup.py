@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'FullSystem'
+package_name = 'full_system'
 
 setup(
     name=package_name,

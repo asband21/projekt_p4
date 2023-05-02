@@ -6,7 +6,7 @@ from std_srvs.srv import Empty
 from tf2_ros import TransformException
 from tf2_ros.buffer import Buffer
 from tf2_ros.transform_listener import TransformListener
-from OwnSrvAndMsg import TargetPose, TakePicture, ContinuePath
+from personal_robotics_interfaces import TargetPose, TakePicture, ContinuePath
 from geometry_msgs.msg import Twist
 
 
