@@ -9,6 +9,9 @@ from tf2_ros.buffer import Buffer
 from tf2_ros.transform_listener import TransformListener
 
 
+import math
+
+
 from OwnSrvAndMsg import TargetPose, TakePicture, ContinuePath
 
 import time
@@ -16,21 +19,31 @@ import time
 import tf_transformations as tf
 
 
-tf.quaternion_matrix()
+
+from geometry_msgs.msg import Twist
 
 
 
 
 
-
-
-class trajectory(Node):
+class Trajectory(Node):
     def __init__(self):
         super().__init__("trajectory") 
-        self.targetPose = self.create_service(TargetPose, 'target_pose', self.FindAtoB)
+        self.sub_node_trajectory = rclpy.create_node("sub_cli_trajectory")
+
+        self.sub_cli_drone = self.sub_node_trajectory.create_client(TakePicture,"Drone")
+        self.sub_cli_position = self.sub_node_trajectory.create_client(TakePicture,"Position")
+        
+        self.targetPose = self.create_service(TargetPose, 'go_to_target_pose', self.FindAtoB)
+
+        self.desired_pose_pub = self.create_publisher(Twist,"desired_pose")
 
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
+
+
+
+
 
 
     def trajectory(self,t, pos_q0, pos_qf):
@@ -98,9 +111,9 @@ class trajectory(Node):
             else:
                 break
 
-        return axis
+        return t[1], axis # this is an array with the coefficents to the trajectories
 
-    def pos(self, dt, axis):
+    def desired_pose(self, dt, axis):
 
         pos_x = axis[0,0] + axis[0,1]*dt + axis[0,2]*np.power(dt,2) + axis[0,3]*np.power(dt,3)
         pos_y = axis[1,0] + axis[1,1]*dt + axis[1,2]*np.power(dt,2) + axis[1,3]*np.power(dt,3)
@@ -113,6 +126,8 @@ class trajectory(Node):
         pose[2] = pos_z
         pose[3] = yaw_z
 
+        return pose # this is a 4 d array with the unit of meters for the first 3 elements and the last is radiens
+
 
 
     def oariantationDifference(self, q1, q2):
@@ -122,11 +137,38 @@ class trajectory(Node):
         q1.orientation.z
         q1.orientation.w
 
+        start_rotation_M = tf.quaternion_matrix(q1[0],q1[1],q1[2],q1[3])
+
         q2.target_pose.pose.orientation.x
         q2.target_pose.pose.orientation.y
         q2.target_pose.pose.orientation.z
         q2.target_pose.pose.orientation.w
 
+        end_rotation_M = tf.quaternion_matrix(q2[0],q2[1],q2[2],q2[3])
+
+        start_y = [0,0]
+        end_y   = [0,0]
+
+        start_y[0] = start_rotation_M[0,1]
+        start_y[1] = start_rotation_M[1,1]
+        
+        
+        end_y[0] = end_rotation_M[1,1]
+        end_y[1] = end_rotation_M[1,1]
+
+        return math.atan2(end_y[1],end_y[0]) # returns the oriantation diff of the end y vector to the drones oriantation. THE UNIT IS RADIANS
+
+
+
+    def send_request(self,request_to, request, repsons):
+        while not self.sub_cli_trajectory.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('service not available, waiting again...')
+
+
+        
+
+
+    
 
 
     def FindAtoB(self,request,response):
@@ -135,30 +177,64 @@ class trajectory(Node):
         x_drone = telloTransform.position.x 
         y_drone = telloTransform.position.y
         z_drone = telloTransform.position.z
+        yaw_drone = 0 
+
 
         x_target = request.target_pose.pose.position.x
         y_target = request.target_pose.pose.position.y
         z_target = request.target_pose.pose.position.z
 
+        radians = self.oariantationDifference(telloTransform,request)
+ 
+        yaw_target = radians
 
+        start_pose = [x_drone,y_drone,z_drone,yaw_drone]
+        end_pose = [x_target,y_target,z_target,yaw_target]
+
+        t,axis = self.AxisTrajectory(start_pose,end_pose)
+        
+        
+        pose = Twist()
 
         
 
+        start_time = time.time()
+        current_time = time.time()
+
+        while current_time-start_time < t :
+
+            dt= current_time-start_time
+
+            numbers = self.desired_pose(dt,axis)
+
+            pose.linear.x = numbers[0]
+            pose.linear.y = numbers[1]
+            pose.linear.z = numbers[2]
+            pose.angular.z = numbers[3]
+
+            self.desired_pose_pub(pose)
+
+            time.sleep(1/30)
+            current_time = time.time()
 
 
 
 
-    start_time = rclpy.time.time()
-
-    while rclpy.time.time() - start_time < 5.0:
-
-        dt = rclpy.time.time() - start_time
-        pos = pos(dt)
-
-        self.pub.publish(pos)
-
-        time.sleep(1/30)
 
 
+    
+
+def main(args=None):
+    rclpy.init(args=args)
+
+    node = Trajectory()
+
+    rclpy.spin(node)
+
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
         
 

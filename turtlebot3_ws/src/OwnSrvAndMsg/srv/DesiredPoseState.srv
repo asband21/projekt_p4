@@ -1,0 +1,4 @@
+bool follow_turtle False
+bool follow_trajectory False
+---
+bool success
