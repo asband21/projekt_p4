@@ -1,4 +1,3 @@
-bool follow_turtle False
-bool follow_trajectory False
+string state
 ---
 bool success

@@ -12,7 +12,7 @@ from tf2_ros.transform_listener import TransformListener
 import math
 
 
-from OwnSrvAndMsg import TargetPose, TakePicture, ContinuePath
+from personal_robotics_interfaces import TargetPose, TakePicture, ContinuePath,DesiredPoseState
 
 import time
 
@@ -32,10 +32,11 @@ class Trajectory(Node):
         self.sub_node_trajectory = rclpy.create_node("sub_cli_trajectory")
 
         self.sub_cli_drone = self.sub_node_trajectory.create_client(TakePicture,"Drone")
-        self.sub_cli_position = self.sub_node_trajectory.create_client(TakePicture,"Position")
+        self.sub_cli_position = self.sub_node_trajectory.create_client(TargetPose,"Position")
+        self.sub_cli_position = self.sub_node_trajectory.create_client(TargetPose,"Position")
         
         self.targetPose = self.create_service(TargetPose, 'go_to_target_pose', self.FindAtoB)
-
+        
         self.desired_pose_pub = self.create_publisher(Twist,"desired_pose")
 
         self.tf_buffer = Buffer()
@@ -160,9 +161,26 @@ class Trajectory(Node):
 
 
 
-    def send_request(self,request_to, request, repsons):
-        while not self.sub_cli_trajectory.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('service not available, waiting again...')
+    def send_request(self,request_to, request, respons):
+
+        if request_to == "desired_position":
+            while not self.sub_cli_trajectory.wait_for_service(timeout_sec=1.0):
+                self.get_logger().info('service not available, waiting again...')
+            req = DesiredPoseState.Request()
+
+            future = self.sub_cli_position.call_async(req)
+            rclpy.spin_until_future_complete(self.sub_node_trajectory,future)
+            return future.result()
+        
+        elif request_to == "turtle_path_follower":
+            while not self.sub_cli_trajectory.wait_for_service(timeout_sec=1.0):
+                self.get_logger().info('service not available, waiting again...')
+            req = DesiredPoseState.Request()
+
+            future = self.sub_cli_position.call_async(req)
+            rclpy.spin_until_future_complete(self.sub_node_trajectory,future)
+            return future.result()
+        
 
 
         
@@ -217,8 +235,76 @@ class Trajectory(Node):
             time.sleep(1/30)
             current_time = time.time()
 
+        req_drone = TakePicture.Request()
+        future_drone =self.sub_cli_drone.call_async(req_drone)
+        rclpy.spin_until_future_complete(self.sub_node_trajectory,future_drone)
+
+        result_drone = future_drone.result()
+
+        if result_drone.success == False:
+            # log that the drone failed to take a picture.
+            print("drone failed to take a picture")
+            
+            pass
+        
+        self.target2turtle()
+
+        self.send_request("turtle_path_follower")
+        
 
 
+    def target2turtle(self):
+        world2drone = self.tf_buffer.lookup_transform("drone","world")
+        world2Turtle = self.tf_buffer.lookup_transform("turtle","world")
+
+        hover_distance = 0.2 # how fare the drone hover over the turtle in meters
+        hover_frame = world2Turtle
+        hover_frame.transform.position.z = hover_frame.transform.position.z + hover_distance
+
+        x_drone = world2drone.transform.position.x 
+        y_drone = world2drone.transform.position.y
+        z_drone = world2drone.transform.position.z
+        yaw_drone = 0 
+
+
+        x_target = hover_frame.transform.position.x 
+        y_target = hover_frame.transform.position.y
+        z_target = hover_frame.transform.position.z
+
+        radians = self.oariantationDifference(world2drone,hover_frame)
+ 
+        yaw_target = radians
+
+        start_pose = [x_drone,y_drone,z_drone,yaw_drone]
+        end_pose = [x_target,y_target,z_target,yaw_target]
+
+        t,axis = self.AxisTrajectory(start_pose,end_pose)
+        
+        
+        pose = Twist()
+
+        self.send_request("desired_position",)
+
+        start_time = time.time()
+        current_time = time.time()
+
+        while current_time-start_time < t :
+
+            dt= current_time-start_time
+
+            numbers = self.desired_pose(dt,axis)
+
+            pose.linear.x = numbers[0]
+            pose.linear.y = numbers[1]
+            pose.linear.z = numbers[2]
+            pose.angular.z = numbers[3]
+
+            self.desired_pose_pub(pose)
+
+            time.sleep(1/30)
+            current_time = time.time()
+
+        
 
 
 
