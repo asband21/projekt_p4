@@ -1,0 +1,50 @@
+running egg_info
+creating ../../build/tf2_workshop/tf2_workshop.egg-info
+writing ../../build/tf2_workshop/tf2_workshop.egg-info/PKG-INFO
+writing dependency_links to ../../build/tf2_workshop/tf2_workshop.egg-info/dependency_links.txt
+writing entry points to ../../build/tf2_workshop/tf2_workshop.egg-info/entry_points.txt
+writing requirements to ../../build/tf2_workshop/tf2_workshop.egg-info/requires.txt
+writing top-level names to ../../build/tf2_workshop/tf2_workshop.egg-info/top_level.txt
+writing manifest file '../../build/tf2_workshop/tf2_workshop.egg-info/SOURCES.txt'
+reading manifest file '../../build/tf2_workshop/tf2_workshop.egg-info/SOURCES.txt'
+writing manifest file '../../build/tf2_workshop/tf2_workshop.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build
+creating /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib
+creating /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib/tf2_workshop
+copying tf2_workshop/broadcaster.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib/tf2_workshop
+copying tf2_workshop/treeFinder.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib/tf2_workshop
+copying tf2_workshop/listener.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib/tf2_workshop
+copying tf2_workshop/__init__.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib/tf2_workshop
+copying tf2_workshop/staticTF.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib/tf2_workshop
+copying tf2_workshop/tfsub.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib/tf2_workshop
+running install
+running install_lib
+creating /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop
+copying /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib/tf2_workshop/broadcaster.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop
+copying /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib/tf2_workshop/treeFinder.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop
+copying /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib/tf2_workshop/listener.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop
+copying /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib/tf2_workshop/__init__.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop
+copying /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib/tf2_workshop/staticTF.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop
+copying /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/build/lib/tf2_workshop/tfsub.py -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop
+byte-compiling /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop/broadcaster.py to broadcaster.cpython-38.pyc
+byte-compiling /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop/treeFinder.py to treeFinder.cpython-38.pyc
+byte-compiling /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop/listener.py to listener.cpython-38.pyc
+byte-compiling /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop/staticTF.py to staticTF.cpython-38.pyc
+byte-compiling /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop/tfsub.py to tfsub.cpython-38.pyc
+running install_data
+creating /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/share/ament_index
+creating /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/share/ament_index/resource_index
+creating /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/share/ament_index/resource_index/packages
+copying resource/tf2_workshop -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/share/ament_index/resource_index/packages
+copying package.xml -> /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/share/tf2_workshop
+running install_egg_info
+Copying ../../build/tf2_workshop/tf2_workshop.egg-info to /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/python3.8/site-packages/tf2_workshop-0.0.0-py3.8.egg-info
+running install_scripts
+Installing broadcaster script to /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/tf2_workshop
+Installing listener script to /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/tf2_workshop
+Installing staticTF script to /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/tf2_workshop
+Installing treeFinder script to /home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/install/tf2_workshop/lib/tf2_workshop
+writing list of installed files to '/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/workspace_pollen/build/tf2_workshop/install.log'
