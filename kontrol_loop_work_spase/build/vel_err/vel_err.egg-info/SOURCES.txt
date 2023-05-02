@@ -14,3 +14,4 @@ test/test_flake8.py
 test/test_pep257.py
 vel_err/__init__.py
 vel_err/err.py
+vel_err/req_vel.py
