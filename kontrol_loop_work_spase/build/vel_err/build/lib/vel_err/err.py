@@ -62,10 +62,13 @@ class FrameListener(Node):
                 vec[4] = (vec[0] - tra.transform.translation.x)/(del_tid/1000000000)
                 vec[5] = (vec[1] - tra.transform.translation.y)/(del_tid/1000000000)
                 vec[6] = (vec[2] - tra.transform.translation.z)/(del_tid/1000000000)
-                vec[7] = (vec[4] - self.quat2yor(tra.transform.rotation.x, tra.transform.rotation.y, tra.transform.rotation.z, tra.transform.rotation.w))/(del_tid/1000000000)
+                vec[7] = (vec[3] - self.quat2yor(tra.transform.rotation.x, tra.transform.rotation.y, tra.transform.rotation.z, tra.transform.rotation.w))/(del_tid/1000000000)
 
+        formatted_vector = [f"{value:8.5f}" for value in vec]
+        self.get_logger().info(f"vec: {formatted_vector}")
         
-        self.get_logger().info("vec:" + str(vec))
+        #self.get_logger().info("vec:" + str(vec))
+        
         #self.get_logger().info("delta tid:" + str(del_tid))    
         #self.get_logger().info("x:" + str(self.gammel_tf.msg.transform.translation.x))
         #from_frame_rel = self.target_frame
