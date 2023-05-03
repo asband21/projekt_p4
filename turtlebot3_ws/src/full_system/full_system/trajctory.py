@@ -12,7 +12,7 @@ from tf2_ros.transform_listener import TransformListener
 import math
 
 
-from personal_robotics_interfaces import TargetPose, TakePicture, ContinuePath,DesiredPoseState
+from personal_interface import TargetPose, TakePicture, ContinuePath,DesiredPoseState
 
 import time
 
@@ -21,8 +21,7 @@ import tf_transformations as tf
 
 
 from geometry_msgs.msg import Twist
-
-
+from std_srvs.srv import SetBool
 
 
 
@@ -31,12 +30,13 @@ class Trajectory(Node):
         super().__init__("trajectory") 
         self.sub_node_trajectory = rclpy.create_node("sub_cli_trajectory")
 
-        self.sub_cli_drone = self.sub_node_trajectory.create_client(TakePicture,"Drone")
-        self.sub_cli_position = self.sub_node_trajectory.create_client(TargetPose,"Position")
-        self.sub_cli_position = self.sub_node_trajectory.create_client(TargetPose,"Position")
+        self.sub_cli_drone = self.sub_node_trajectory.create_client(TakePicture,"take_picture")
+        self.sub_cli_state = self.sub_node_trajectory.create_client(DesiredPoseState,"Position")
         
-        self.targetPose = self.create_service(TargetPose, 'go_to_target_pose', self.FindAtoB)
-        
+        self.srv_targetPose = self.create_service(TargetPose, 'go_to_target_pose', self.FindAtoB)
+        self.srv_drone2turtle = self.create_service(SetBool, 'drone2turtle', self.service_drone2turtle)
+
+
         self.desired_pose_pub = self.create_publisher(Twist,"desired_pose")
 
         self.tf_buffer = Buffer()
@@ -85,9 +85,11 @@ class Trajectory(Node):
         B[3, 0] = 0
 
         X_inv = np.linalg.inv(G)
-        result = X_inv.dot(B)
+        coefficients = X_inv.dot(B)
 
-        return result
+        return coefficients
+
+
 
     def AxisTrajectory(self, A, B):
         t = np.zeros((2,1))
@@ -163,24 +165,27 @@ class Trajectory(Node):
 
     def send_request(self,request_to, request, respons):
 
-        if request_to == "desired_position":
+        if request_to == "follow_trajectory":
             while not self.sub_cli_trajectory.wait_for_service(timeout_sec=1.0):
                 self.get_logger().info('service not available, waiting again...')
             req = DesiredPoseState.Request()
 
+            req.state = "follow_trajectory"
             future = self.sub_cli_position.call_async(req)
             rclpy.spin_until_future_complete(self.sub_node_trajectory,future)
             return future.result()
         
-        elif request_to == "turtle_path_follower":
+        elif request_to == "follow_turtle":
             while not self.sub_cli_trajectory.wait_for_service(timeout_sec=1.0):
                 self.get_logger().info('service not available, waiting again...')
             req = DesiredPoseState.Request()
 
+            req.state = "follow_turtle"
             future = self.sub_cli_position.call_async(req)
             rclpy.spin_until_future_complete(self.sub_node_trajectory,future)
             return future.result()
         
+
 
 
         
@@ -192,15 +197,15 @@ class Trajectory(Node):
     def FindAtoB(self,request,response):
         telloTransform = self.tf_buffer.lookup_transform('tello','world')
         
-        x_drone = telloTransform.position.x 
-        y_drone = telloTransform.position.y
-        z_drone = telloTransform.position.z
-        yaw_drone = 0 
+        x_drone = telloTransform.transform.translation.x 
+        y_drone = telloTransform.transform.translation.y
+        z_drone = telloTransform.transform.translation.z
+        yaw_drone = 0 # do better. calculate the yaw.
 
 
-        x_target = request.target_pose.pose.position.x
-        y_target = request.target_pose.pose.position.y
-        z_target = request.target_pose.pose.position.z
+        x_target = request.target_pose.transform.translation.x
+        y_target = request.target_pose.transform.translation.y
+        z_target = request.target_pose.transform.translation.z
 
         radians = self.oariantationDifference(telloTransform,request)
  
@@ -214,7 +219,7 @@ class Trajectory(Node):
         
         pose = Twist()
 
-        
+        self.send_request("follow_trajectory")
 
         start_time = time.time()
         current_time = time.time()
@@ -247,29 +252,38 @@ class Trajectory(Node):
             
             pass
         
-        self.target2turtle()
+        self.drone2turtle()
 
-        self.send_request("turtle_path_follower")
+        self.send_request("follow_turtle")
+
+        response.success = True
         
 
+    def service_drone2turtle(self, request,respons): #srv_drone2turtle. this is the service that the turtle calls to make the drone go to the turtle
+        self.drone2turtle()
 
-    def target2turtle(self):
+        respons.success = True
+
+        return respons
+
+
+    def drone2turtle(self):
         world2drone = self.tf_buffer.lookup_transform("drone","world")
         world2Turtle = self.tf_buffer.lookup_transform("turtle","world")
 
-        hover_distance = 0.2 # how fare the drone hover over the turtle in meters
+        hover_distance = 0.5 # how fare the drone hover over the turtle in meters
         hover_frame = world2Turtle
-        hover_frame.transform.position.z = hover_frame.transform.position.z + hover_distance
+        hover_frame.transform.translation.z = hover_frame.transform.translation.z + hover_distance
 
-        x_drone = world2drone.transform.position.x 
-        y_drone = world2drone.transform.position.y
-        z_drone = world2drone.transform.position.z
+        x_drone = world2drone.transform.translation.x 
+        y_drone = world2drone.transform.translation.y
+        z_drone = world2drone.transform.translation.z
         yaw_drone = 0 
 
 
-        x_target = hover_frame.transform.position.x 
-        y_target = hover_frame.transform.position.y
-        z_target = hover_frame.transform.position.z
+        x_target = hover_frame.transform.translation.x 
+        y_target = hover_frame.transform.translation.y
+        z_target = hover_frame.transform.translation.z
 
         radians = self.oariantationDifference(world2drone,hover_frame)
  
@@ -283,7 +297,7 @@ class Trajectory(Node):
         
         pose = Twist()
 
-        self.send_request("desired_position",)
+        self.send_request("follow_trajectory")
 
         start_time = time.time()
         current_time = time.time()
@@ -303,6 +317,8 @@ class Trajectory(Node):
 
             time.sleep(1/30)
             current_time = time.time()
+        
+        self.send_request("follow_turtle")
 
         
 

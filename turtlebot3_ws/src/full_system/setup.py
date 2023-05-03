@@ -13,13 +13,16 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='ubuntu',
-    maintainer_email='turtlebor@aau.dk',
+    maintainer='carsten',
+    maintainer_email='cars2109@gmail.com',
     description='TODO: Package description',
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            "desired_position = full_system.desired_position:main",
+            "trajectory = full_system.trajectory:main",
+            "simulation_vi = full_system.simulated_vicon:main",
         ],
     },
 )

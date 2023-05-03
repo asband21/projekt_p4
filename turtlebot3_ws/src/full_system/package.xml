@@ -4,7 +4,7 @@
   <name>full_system</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="turtlebor@aau.dk">ubuntu</maintainer>
+  <maintainer email="cars2109@gmail.com">carsten</maintainer>
   <license>TODO: License declaration</license>
 
   <test_depend>ament_copyright</test_depend>

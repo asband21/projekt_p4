@@ -2,12 +2,13 @@ import rclpy
 from rclpy.node import Node
 
 
+from geometry_msgs.msg import Twist
 
 
 from djitellopy import Tello
 
 
-from personal_robotics_interfaces.srv import TakePicture
+from personal_interface.srv import TakePicture
 
 class SimulatedDrone(Node):
     def __init__(self):
@@ -19,6 +20,9 @@ class SimulatedDrone(Node):
         self.drone.connect()
 
         self.create_service(TakePicture,"take_picture",self.take_picture)
+
+        self.create_subscription(Twist,"drone_rc",self.callback)
+
 
 
 

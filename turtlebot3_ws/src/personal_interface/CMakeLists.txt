@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(personal_robotics_interfaces)
+project(personal_interface)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -26,11 +26,11 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/TakePicture.srv"
   "srv/TargetPose.srv"
   "srv/DesiredPoseState.srv"
+  
   DEPENDENCIES geometry_msgs
 )
 
 ament_export_dependencies(rosidl_default_runtime)
-
 
 
 ament_package()
