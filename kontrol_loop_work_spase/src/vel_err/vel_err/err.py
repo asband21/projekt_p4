@@ -13,7 +13,10 @@ from tf2_ros.transform_listener import TransformListener
 
 
 class FrameListener(Node):
-     
+    
+    def quat2yor (self,x,y,z,w):
+        return math.atan2(w*w + x*x - y*y - z*z , 2.0*(x*y + w*z))
+ 
 
     def __init__(self):
         super().__init__('oel')
@@ -34,33 +37,36 @@ class FrameListener(Node):
             self.gammel_tf = copy.deepcopy(dd)
             #dd.transform.translation.x = dd.transform.translation.x+2
             for tra in self.gammel_tf.transforms:
-                if(tra.child_frame_id == "Drone"):
+                if(tra.child_frame_id == "Drone" or tra.child_frame_id == "drone"):
                     tra.transform.translation.x = tra.transform.translation.x + 1
             return 
 
         vec = [0,0,0,0,0,0,0,0]
         del_tid = 0
         for tra in dd.transforms:
-            if(tra.child_frame_id == "Drone"):
+            if(tra.child_frame_id == "Drone" or tra.child_frame_id == "drone" ):
                 #self.get_logger().info("x:" + str(tra.transform.translation.x))
                 vec[0] = tra.transform.translation.x
                 vec[1] = tra.transform.translation.y
                 vec[2] = tra.transform.translation.z
+                vec[3] = self.quat2yor(tra.transform.rotation.x, tra.transform.rotation.y, tra.transform.rotation.z, tra.transform.rotation.w)
                 del_tid = tra.header.stamp
 
         for tra in self.gammel_tf.transforms:
-            if(tra.child_frame_id == "Drone"):
+            if(tra.child_frame_id == "Drone" or tra.child_frame_id == "drone" ):
                 #self.get_logger().info("x:" + str(tra.transform.translation.x))
                 if(del_tid.sec-tra.header.stamp.sec != 0):
                     del_tid =  del_tid.nanosec - tra.header.stamp.nanosec +1000000000
                 else:
                     del_tid =  del_tid.nanosec - tra.header.stamp.nanosec
-                vec[4] = (vec[0] - tra.transform.translation.x)/del_tid
-                vec[5] = (vec[1] - tra.transform.translation.y)/del_tid
-                vec[6] = (vec[2] - tra.transform.translation.z)/del_tid
+                vec[4] = (vec[0] - tra.transform.translation.x)/(del_tid/1000000000)
+                vec[5] = (vec[1] - tra.transform.translation.y)/(del_tid/1000000000)
+                vec[6] = (vec[2] - tra.transform.translation.z)/(del_tid/1000000000)
+                vec[7] = (vec[4] - self.quat2yor(tra.transform.rotation.x, tra.transform.rotation.y, tra.transform.rotation.z, tra.transform.rotation.w))/(del_tid/1000000000)
+
         
         self.get_logger().info("vec:" + str(vec))
-        #self.get_logger().info("delta tid:" + str(del_tid))
+        #self.get_logger().info("delta tid:" + str(del_tid))    
         #self.get_logger().info("x:" + str(self.gammel_tf.msg.transform.translation.x))
         #from_frame_rel = self.target_frame
         """
