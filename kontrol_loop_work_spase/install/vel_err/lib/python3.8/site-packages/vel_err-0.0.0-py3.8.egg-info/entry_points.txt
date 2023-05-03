@@ -1,3 +1,5 @@
 [console_scripts]
+rc = vel_err.drone_rc:main
+reg = vel_err.drone_rek:main
 vel = vel_err.err:main
 

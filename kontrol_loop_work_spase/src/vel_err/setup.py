@@ -20,7 +20,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'vel = vel_err.err:main'
+            'vel = vel_err.err:main',
+            'rc = vel_err.drone_rc:main',
+            'reg = vel_err.drone_rek:main'
         ],
     },
 )

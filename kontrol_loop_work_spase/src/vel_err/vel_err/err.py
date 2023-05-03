@@ -6,7 +6,7 @@ from geometry_msgs.msg import Twist
 
 import rclpy
 from rclpy.node import Node
-
+from std_msgs.msg import Float32MultiArray
 from tf2_ros import TransformException
 from tf2_ros.buffer import Buffer
 from tf2_ros.transform_listener import TransformListener
@@ -14,13 +14,10 @@ from tf2_ros.transform_listener import TransformListener
 
 class FrameListener(Node):
     
-    def quat2yor (self,x,y,z,w):
-        return math.atan2(w*w + x*x - y*y - z*z , 2.0*(x*y + w*z))
- 
-
     def __init__(self):
         super().__init__('oel')
         self.subscription = self.create_subscription(tf2_msgs.msg.TFMessage, 'tf', self.on_timer,10)
+        self.publisher_ = self.create_publisher(Float32MultiArray, "drone_error", 10)
 
         # Declare and acquire `target_frame` parameter
         self.target_frame = self.declare_parameter('vicon', 'Drone').get_parameter_value().string_value
@@ -30,6 +27,9 @@ class FrameListener(Node):
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
         self.get_logger().info("fldfldlf")
+    
+    def quat2yor (self,x,y,z,w):
+        return math.atan2(w*w + x*x - y*y - z*z , 2.0*(x*y + w*z))
 
     def on_timer(self, dd):
 
@@ -82,6 +82,15 @@ class FrameListener(Node):
         """
         #self.get_logger().info(f"llll{str(from_frame_rel)}")
         self.gammel_tf = copy.deepcopy(dd)
+        
+        ##### error
+        err = [1,1,1,1]
+        self.publish_array(err)
+    
+    def publish_array(self,array):
+        msg = Float32MultiArray(data=array)
+        self.publisher_.publish(msg)
+        #self.get_logger().info(f"Published: {array}")
 
 def main():
     rclpy.init()
