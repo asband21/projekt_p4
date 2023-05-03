@@ -6,7 +6,7 @@ from std_srvs.srv import Empty
 from tf2_ros import TransformException
 from tf2_ros.buffer import Buffer
 from tf2_ros.transform_listener import TransformListener
-from personal_robotics_interfaces import TargetPose, TakePicture, ContinuePath, DesiredPoseState
+from personal_interface import DesiredPoseState
 from geometry_msgs.msg import Twist
 
 
@@ -20,12 +20,15 @@ class DesiredPosition(Node):
     def __init__(self):
         super().__init__("desired_position") 
 
-        self.state = string 
+        self.state = "initiation"
         
         
-        self.targetPose = self.create_service(TargetPose, 'change_state', self.state_changer)
+
+        self.change_state = self.create_service(DesiredPoseState, 'change_state', self.state_changer)
+        self.srv_desired_pose = self.create_service(DesiredPoseState, 'change_state', self.state_changer)
 
         self.desired_pose_sub = self.create_subscription(Twist,"desired_pose",self.trajectroy_pose)
+
 
         hz = 1/30
         self.create_timer(hz,self.desired_pose)
@@ -43,6 +46,14 @@ class DesiredPosition(Node):
             self.turtle_wait_frame()
         elif self.state == "follow_trajectory":
             self.current_pose
+        elif self.state == "initiation":
+            #wait for trajectory.
+            self.tf_buffer.lookup_transform("drone","world")
+
+
+
+        print(self.current_pose)
+
 
 
     def state_changer(self,request,reponse):
@@ -57,7 +68,7 @@ class DesiredPosition(Node):
     def turtle_wait_frame(self):
         worldToTurtle = self.tf_buffer.lookup_transform("turtle","world")
 
-        hover_distance = 0.2 # how fare the drone hover over the turtle in meters
+        hover_distance = 0.5 # how fare the drone hover over the turtle in meters
         hover_frame = worldToTurtle
         hover_frame.transform.position.z = hover_frame.transform.position.z + hover_distance
 
