@@ -6,7 +6,7 @@ from std_srvs.srv import Empty
 from tf2_ros import TransformException
 from tf2_ros.buffer import Buffer
 from tf2_ros.transform_listener import TransformListener
-from personal_interface import DesiredPoseState
+from personal_interface.srv import DesiredPoseState
 from geometry_msgs.msg import Twist
 
 
@@ -27,7 +27,7 @@ class DesiredPosition(Node):
         self.change_state = self.create_service(DesiredPoseState, 'change_state', self.state_changer)
         self.srv_desired_pose = self.create_service(DesiredPoseState, 'change_state', self.state_changer)
 
-        self.desired_pose_sub = self.create_subscription(Twist,"desired_pose",self.trajectroy_pose)
+        self.desired_pose_sub = self.create_subscription(Twist,"desired_pose",self.trajectroy_pose,10)
 
 
         hz = 1/30
@@ -48,7 +48,7 @@ class DesiredPosition(Node):
             self.current_pose
         elif self.state == "initiation":
             #wait for trajectory.
-            self.tf_buffer.lookup_transform("drone","world")
+            self.tf_buffer.lookup_transform("drone","world",rclpy.time.Time())
 
 
 

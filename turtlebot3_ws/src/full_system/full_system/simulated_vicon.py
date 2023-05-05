@@ -8,7 +8,7 @@ from tf2_ros.transform_broadcaster import TransformBroadcaster
 from geometry_msgs.msg import TransformStamped
 
 
-from personal_interface import TargetPose
+from personal_interface.srv import TargetPose
 
 class SimulatedVicon(Node):
     def __init__(self):

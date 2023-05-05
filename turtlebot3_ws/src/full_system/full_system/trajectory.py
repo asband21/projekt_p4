@@ -12,7 +12,7 @@ from tf2_ros.transform_listener import TransformListener
 import math
 
 
-from personal_interface import TargetPose, TakePicture, ContinuePath,DesiredPoseState
+from personal_interface.srv import TargetPose, TakePicture, ContinuePath, DesiredPoseState
 
 import time
 
@@ -41,8 +41,6 @@ class Trajectory(Node):
 
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
-
-
 
 
 
@@ -189,9 +187,6 @@ class Trajectory(Node):
 
 
         
-
-
-    
 
 
     def FindAtoB(self,request,response):
