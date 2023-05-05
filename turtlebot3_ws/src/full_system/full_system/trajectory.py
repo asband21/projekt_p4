@@ -37,10 +37,12 @@ class Trajectory(Node):
         self.srv_drone2turtle = self.create_service(SetBool, 'drone2turtle', self.service_drone2turtle)
 
 
-        self.desired_pose_pub = self.create_publisher(Twist,"desired_pose")
+        self.desired_pose_pub = self.create_publisher(Twist,"desired_pose",10)
 
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
+
+        self.get_logger().info("Trajectory is now running")
 
 
 
@@ -133,19 +135,19 @@ class Trajectory(Node):
 
     def oariantationDifference(self, q1, q2):
         
-        q1.orientation.x
-        q1.orientation.y
-        q1.orientation.z
-        q1.orientation.w
+        rot_x_1 =q1.transform.rotation.x
+        rot_y_1 =q1.transform.rotation.y
+        rot_z_1 =q1.transform.rotation.z
+        rot_w_1 =q1.transform.rotation.w
 
-        start_rotation_M = tf.quaternion_matrix(q1[0],q1[1],q1[2],q1[3])
+        start_rotation_M = tf.quaternion_matrix(rot_x_1,rot_y_1,rot_z_1,rot_w_1)
 
-        q2.target_pose.pose.orientation.x
-        q2.target_pose.pose.orientation.y
-        q2.target_pose.pose.orientation.z
-        q2.target_pose.pose.orientation.w
+        rot_x_2 = q2.target_pose.transform.rotation.x
+        rot_y_2 = q2.target_pose.transform.rotation.y
+        rot_z_2 = q2.target_pose.transform.rotation.z
+        rot_w_2 = q2.target_pose.transform.rotation.w
 
-        end_rotation_M = tf.quaternion_matrix(q2[0],q2[1],q2[2],q2[3])
+        end_rotation_M = tf.quaternion_matrix(rot_x_2,rot_y_2,rot_z_2,rot_w_2)
 
         start_y = [0,0]
         end_y   = [0,0]
@@ -190,7 +192,8 @@ class Trajectory(Node):
 
 
     def FindAtoB(self,request,response):
-        telloTransform = self.tf_buffer.lookup_transform('tello','world')
+        self.get_logger().info('Incoming request')
+        telloTransform = self.tf_buffer.lookup_transform('drone','world',rclpy.time.Time())
         
         x_drone = telloTransform.transform.translation.x 
         y_drone = telloTransform.transform.translation.y
@@ -215,7 +218,7 @@ class Trajectory(Node):
         pose = Twist()
 
         self.send_request("follow_trajectory")
-
+        self.get_logger().info('Sending goal request...')
         start_time = time.time()
         current_time = time.time()
 
@@ -234,6 +237,8 @@ class Trajectory(Node):
 
             time.sleep(1/30)
             current_time = time.time()
+
+        self.get_logger().info('Goal reached!')
 
         req_drone = TakePicture.Request()
         future_drone =self.sub_cli_drone.call_async(req_drone)
