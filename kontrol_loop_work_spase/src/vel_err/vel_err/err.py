@@ -67,21 +67,12 @@ class FrameListener(Node):
         formatted_vector = [f"{value:8.5f}" for value in vec]
         self.get_logger().info(f"vec: {formatted_vector}")
         
-        #self.get_logger().info("vec:" + str(vec))
-        
-        #self.get_logger().info("delta tid:" + str(del_tid))    
-        #self.get_logger().info("x:" + str(self.gammel_tf.msg.transform.translation.x))
-        #from_frame_rel = self.target_frame
-        """
-        self.get_logger().info("--------------------------------")
-        self.get_logger().info(str(dd.transforms[0].child_frame_id))
-        self.get_logger().info(str(dd.transforms[0].header.stamp))
-        self.get_logger().info("x:" + str(dd.transforms[0].transform.translation.x))
-        self.get_logger().info("y:" + str(dd.transforms[0].transform.translation.y))
-        self.get_logger().info("z:" + str(dd.transforms[0].transform.translation.z))
-        """
-        #self.get_logger().info(f"llll{str(from_frame_rel)}")
+### ---------------- emile V
+
+### ----------------- 
+
         self.gammel_tf = copy.deepcopy(dd)
+
         
         ##### error
         err = [1,1,1,1]

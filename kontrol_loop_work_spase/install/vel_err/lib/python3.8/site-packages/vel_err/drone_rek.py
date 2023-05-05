@@ -28,8 +28,9 @@ class MySubscriber(Node):
 
         # Set the angular component of the Twist message
         twist_msg.angular.z = float(array[3])
-        twist_msg.angular.z = 0
-        twist_msg.angular.z = 0 
+        self.get_logger().info(str(array[3]))
+        twist_msg.angular.y = 0.0
+        twist_msg.angular.x = 0.0
         
         self.publisher_.publish(twist_msg)
 
