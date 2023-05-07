@@ -47,7 +47,7 @@ class Trajectory(Node):
 
 
 
-    def trajectory(self,t, pos_q0, pos_qf):
+    def trajectory(self,t0,tx, pos_q0, pos_qf):
 
 
         G = np.zeros((4,4))
@@ -55,8 +55,6 @@ class Trajectory(Node):
         x = np.zeros((4,1))
 
 
-        t0 = t[0]
-        tf = t[1]
 
         G[0, 0] = 1
         G[0, 1] = t0
@@ -69,14 +67,14 @@ class Trajectory(Node):
         G[1, 3] = np.multiply(3, np.power(t0,2))
 
         G[2, 0] = 1
-        G[2, 1] = tf
-        G[2, 2] = np.power(tf,2)
-        G[2, 3] = np.power(tf,3)
+        G[2, 1] = tx
+        G[2, 2] = np.power(tx,2)
+        G[2, 3] = np.power(tx,3)
 
         G[3, 0] = 0
         G[3, 1] = 1
-        G[3, 2] = np.multiply(2,tf)
-        G[3, 3] = np.multiply(3, np.power(tf,2))
+        G[3, 2] = np.multiply(2,tx)
+        G[3, 3] = np.multiply(3, np.power(tx,2))
 
 
         B[0, 0] = pos_q0
@@ -86,35 +84,44 @@ class Trajectory(Node):
 
         X_inv = np.linalg.inv(G)
         coefficients = X_inv.dot(B)
-
-        return coefficients
+        array = np.zeros((4))
+        array[0] = coefficients[0]
+        array[1] = coefficients[1]
+        array[2] = coefficients[2]
+        array[3] = coefficients[3]
+        self.get_logger().info("Coefficients: " + str(array))
+        return array
 
 
 
     def AxisTrajectory(self, A, B):
-        t = np.zeros((2,1))
-        t[0] = 0
-        t[1] = 1
+        
+        t0 = 0
+        tx = 1
+        axis_max = np.zeros((4))
+        axis = np.zeros((4,4))
 
         while True:
-            axis = np.zeros((4,1))
-            axis[0] = self.trajectory(t, A[0], B[0])
-            axis[1] = self.trajectory(t, A[1], B[1])
-            axis[2] = self.trajectory(t, A[2], B[2])
-            axis[3] = self.trajectory(t, A[3], B[3])
+            value = 0            
+            axis[0] = self.trajectory(t0,tx, A[0], B[0])
+            axis[1] = self.trajectory(t0,tx, A[1], B[1])
+            axis[2] = self.trajectory(t0,tx, A[2], B[2])
+            axis[3] = self.trajectory(t0,tx, A[3], B[3])
 
-            axis_max = np.zeros((4,1))
             axis_max[0]=-axis[0,2]/(2*axis[0,3])
             axis_max[1]=-axis[1,2]/(2*axis[1,3])
             axis_max[2]=-axis[2,2]/(2*axis[2,3])
             axis_max[3]=-axis[3,2]/(2*axis[3,3])
 
-            if axis_max.any > 0.9:
-                t[1] += 0.5
+            for i in range(4):
+                if axis_max[i] > 0.9:
+                    value = 1
+            if value==1:
+                tx += 0.5
             else:
                 break
 
-        return t[1], axis # this is an array with the coefficents to the trajectories
+        return tx, axis # this is an array with the coefficents to the trajectories
 
     def desired_pose(self, dt, axis):
 
@@ -123,7 +130,7 @@ class Trajectory(Node):
         pos_z = axis[2,0] + axis[2,1]*dt + axis[2,2]*np.power(dt,2) + axis[2,3]*np.power(dt,3)
         yaw_z = axis[3,0] + axis[3,1]*dt + axis[3,2]*np.power(dt,2) + axis[3,3]*np.power(dt,3)
 
-        pose = np.zeros((4,1))
+        pose = np.zeros((4))
         pose[0] = pos_x
         pose[1] = pos_y
         pose[2] = pos_z
@@ -205,12 +212,12 @@ class Trajectory(Node):
         y_target = request.target_pose.transform.translation.y
         z_target = request.target_pose.transform.translation.z
 
-        radians = self.oariantationDifference(telloTransform,request)
+        # radians = self.oariantationDifference(telloTransform,request)
  
-        yaw_target = radians
+        # yaw_target = radians
 
-        start_pose = [x_drone,y_drone,z_drone,yaw_drone]
-        end_pose = [x_target,y_target,z_target,yaw_target]
+        start_pose = [x_drone,y_drone,z_drone,0]
+        end_pose = [x_target,y_target,z_target,0]
 
         t,axis = self.AxisTrajectory(start_pose,end_pose)
         
