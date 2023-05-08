@@ -3,6 +3,9 @@ from rclpy.node import Node
 
 import numpy as np
 
+import asyncio
+
+
 from std_srvs.srv import Empty
 from tf2_ros import TransformException
 from tf2_ros.buffer import Buffer
@@ -12,7 +15,7 @@ from tf2_ros.transform_listener import TransformListener
 import math
 
 
-from personal_interface.srv import TargetPose, TakePicture, ContinuePath, DesiredPoseState
+from personal_interface.srv import TargetPose, TakePicture, ContinuePath, StateChanger
 
 import time
 
@@ -31,7 +34,7 @@ class Trajectory(Node):
         self.sub_node_trajectory = rclpy.create_node("sub_cli_trajectory")
 
         self.sub_cli_drone = self.sub_node_trajectory.create_client(TakePicture,"take_picture")
-        self.sub_cli_state = self.sub_node_trajectory.create_client(DesiredPoseState,"Position")
+        self.sub_cli_state = self.sub_node_trajectory.create_client(StateChanger,"Position")
         
         self.srv_targetPose = self.create_service(TargetPose, 'go_to_target_pose', self.FindAtoB)
         self.srv_drone2turtle = self.create_service(SetBool, 'drone2turtle', self.service_drone2turtle)
@@ -175,7 +178,7 @@ class Trajectory(Node):
         if request_to == "follow_trajectory":
             while not self.sub_cli_trajectory.wait_for_service(timeout_sec=1.0):
                 self.get_logger().info('service not available, waiting again...')
-            req = DesiredPoseState.Request()
+            req = StateChanger.Request()
 
             req.state = "follow_trajectory"
             future = self.sub_cli_position.call_async(req)
@@ -185,7 +188,7 @@ class Trajectory(Node):
         elif request_to == "follow_turtle":
             while not self.sub_cli_trajectory.wait_for_service(timeout_sec=1.0):
                 self.get_logger().info('service not available, waiting again...')
-            req = DesiredPoseState.Request()
+            req = StateChanger.Request()
 
             req.state = "follow_turtle"
             future = self.sub_cli_position.call_async(req)
@@ -195,13 +198,12 @@ class Trajectory(Node):
 
 
 
-        
-
-
-    def FindAtoB(self,request,response):
+    async def FindAtoB(self,request,response):
         self.get_logger().info('Incoming request')
-        telloTransform = self.tf_buffer.lookup_transform('drone','world',rclpy.time.Time())
+        telloTransform = asyncio.run(self.tf_buffer.lookup_transform_async('drone','world',self.get_clock().now()))
+        self.get_logger().info('shut up')
         
+
         x_drone = telloTransform.transform.translation.x 
         y_drone = telloTransform.transform.translation.y
         z_drone = telloTransform.transform.translation.z
@@ -275,8 +277,8 @@ class Trajectory(Node):
 
 
     def drone2turtle(self):
-        world2drone = self.tf_buffer.lookup_transform("drone","world")
-        world2Turtle = self.tf_buffer.lookup_transform("turtle","world")
+        world2drone  = asyncio.run(self.tf_buffer.lookup_transform_async("drone","world",  self.get_clock().now()))
+        world2Turtle = asyncio.run(self.tf_buffer.lookup_transform_async("turtle","world",self.get_clock().now()))
 
         hover_distance = 0.5 # how fare the drone hover over the turtle in meters
         hover_frame = world2Turtle

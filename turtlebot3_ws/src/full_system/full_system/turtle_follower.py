@@ -4,14 +4,15 @@ from rclpy.node import Node
 from std_srvs.srv import Empty
 
 from personal_interface.srv import StateChanger
+import time
 
 
 class turtle_follower(Node):
     def __init__(self):
         super().__init__("turtle_follower") 
 
+        self.tarck_length = 5
         self.state = "idle"
-        self.looking = "none"
         self.meters_driven = 0
 
         self.sub_node_turtle_follower = rclpy.create_node("sub_node_turtle_follower")
@@ -19,18 +20,16 @@ class turtle_follower(Node):
         self.sub_cli_analisys = self.sub_node_turtle_follower.create_client(Empty,"calculate_target_pose")
         self.srv_state_changer = self.create_service(StateChanger,"state_changer",self.state_changer_callback)
 
-        self.turtle_follower()
+        self.state_controller()
 
 
     def state_changer_callback(self,request,response):
-
         self.state = request.state
-        if self.state == "idle" and self.looking == "left":
-            self.state = "turn_right_180"
-        elif self.state == "idle" and self.looking == "right":
-            self.state = "turn_left_90_again"
-
-        response.success = True
+        if self.state == "continue":
+            response.success = True
+        else:
+            response.success = False
+                    
         return response
 
 
@@ -45,48 +44,59 @@ class turtle_follower(Node):
 
 
 
+    def turn(self, turn_way):
 
-    def turtle_follower(self):
-        req = Empty.Request()
-        self.send_request(req)
-        return
+        if turn_way == "left":
+            deleteme = int
+            # turn left 90 degrees
+        elif turn_way == "right":
+            deleteme = int
+            # turn right 180 degrees
+
+
+
+    def drive_stright(self):
+        deleteme = int
+        # drive 1 meter
 
     def state_controller(self):
 
-        while True:        
-            if self.state == "idle":
-                continue
-            elif self.meters_driven > 5:
-                self.get_logger().info("turtle_follower: I have driven 5 meters, I am done")
+        while True:
+
+            if self.meters_driven > self.tarck_length:
                 break
+
+            # drive 1 meter 
+            self.drive_stright()
+
+            self.meters_driven += 1
+            # turn left 90 degrees
+            self.turn("left")
+
+            # send request to image analisys
+
+            while True:
+                if self.state == "continue":
+                    break
+                time.sleep(1/30)
+
+            # turn right 180 degrees
+            self.turn("right")
+
+
+            # send request to image analisys
             
-            elif self.state == "drive_stright":
-                # turtle script to drive stright 1 meter
 
-                self.state = "turn_left_90"
-                self.meters_driven += 1
-            
-            elif self.state == "turn_left_90":
-                # turtle script to turn left 90 degrees
-
-
-                req = Empty.Request()
-                self.send_request(req)
-                self.state = "idle"
-                self.looking = "left"
-            
-            elif self.state == "turn_right_180":
-                # turtle script to turn right 180 degrees
-
-                self.state = "idle"
-                self.looking = "right"
-
-            elif self.state == "turn_left_90_again":
-                # turtle script to turn left 90 degrees
-
-                self.state = "drive_stright"
-
+            while True:
+                if self.state == "continue":
+                    break
+                time.sleep(1/30)
         
+            # turn left 90 degrees
+            self.turn("left")
+
+
+
 
 
 

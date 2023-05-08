@@ -27,7 +27,7 @@ class TfListener(Node):
 
     def timer_callback(self):
         try:
-            trans = self._tf_buffer.lookup_transform(self.second_name_, self.first_name_, rclpy.time.Time())
+            trans = self._tf_buffer.lookup_transform_async(self.second_name_, self.first_name_, rclpy.time.Time())
             self.cmd_.linear.x = math.sqrt(trans.transform.translation.x ** 2 + trans.transform.translation.y ** 2)
             self.cmd_.angular.z = 4 * math.atan2(trans.transform.translation.y , trans.transform.translation.x)
             self.publisher_.publish(self.cmd_)

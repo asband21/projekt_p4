@@ -23,6 +23,7 @@ setup(
             "desired_position = full_system.desired_position:main",
             "trajectory = full_system.trajectory:main",
             "simulation_vi = full_system.simulated_vicon:main",
+            "simulated_target_request = full_system.simulated_target_request:main",
         ],
     },
 )

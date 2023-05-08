@@ -15,7 +15,7 @@ class image_analisys(Node):
 
         self.sub_cli_image_analisys = self.create_client(TargetPose,"go_to_target_pose")
 
-        self.srv_calulate_target_pose = self.create_service(Empty,"calculate_target_pose",self.calculate_target_pose_callback)
+        self.srv_calulate_target_pose = self.create_service(Empty,"calculate_target_pose",self.callback_srv_taget_pose)
 
 
 
@@ -29,7 +29,7 @@ class image_analisys(Node):
         return future.result()
     
 
-    def calculate_target_pose_callback(self,request,response):
+    def callback_srv_taget_pose(self,request,response):
         
         
         return 

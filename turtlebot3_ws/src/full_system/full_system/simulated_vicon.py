@@ -17,10 +17,18 @@ class SimulatedVicon(Node):
 
 
         self.tf_broadcaster = TransformBroadcaster(self)
+        self.pub = self.create_publisher(TransformStamped,"update",10)
 
         hz=1/30
         self.create_timer(hz,self.drone_pose)
         self.create_timer(hz,self.turtle_pose)
+        self.create_timer(hz,self.update)
+
+
+    def update(self):
+        update = TransformStamped()
+        
+        self.pub.publish(update)
 
 
     def drone_pose(self):

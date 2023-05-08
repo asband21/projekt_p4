@@ -6,12 +6,11 @@ from std_srvs.srv import Empty
 from tf2_ros import TransformException
 from tf2_ros.buffer import Buffer
 from tf2_ros.transform_listener import TransformListener
-from personal_interface.srv import DesiredPoseState
-from geometry_msgs.msg import Twist
+from personal_interface.srv import StateChanger
+from geometry_msgs.msg import Twist, TransformStamped
 
-
+import time
 import string
-
 
 
 
@@ -21,23 +20,28 @@ class DesiredPosition(Node):
         super().__init__("desired_position") 
 
         self.state = "initiation"
+        self.tf_buffer = Buffer(rclpy.duration.Duration(seconds=1.0))
+        self.tf_listener = TransformListener(self.tf_buffer, self)
         
-        
+        self.current_pose = Twist()
 
-        self.change_state = self.create_service(DesiredPoseState, 'change_state', self.state_changer)
-        self.srv_desired_pose = self.create_service(DesiredPoseState, 'change_state', self.state_changer)
+        self.srv_change_state = self.create_service(StateChanger, 'change_state', self.state_changer)
 
         self.desired_pose_sub = self.create_subscription(Twist,"desired_pose",self.trajectroy_pose,10)
 
 
-        hz = 1/30
-        self.create_timer(hz,self.desired_pose)
+        self.sub_vicon = self.create_subscription(TransformStamped,"update",self.vicon_callback,10)
 
-        self.tf_buffer = Buffer()
-        self.tf_listener = TransformListener(self.tf_buffer, self)
+
+        # hz = 1/30
+        # self.create_timer(hz,self.desired_pose)
+
 
         self.get_logger().info("Desired Position is now running")
+        
 
+    def vicon_callback(self,msg):
+        self.desired_pose()
 
 
     def desired_pose(self):
@@ -48,7 +52,7 @@ class DesiredPosition(Node):
             self.current_pose
         elif self.state == "initiation":
             #wait for trajectory.
-            self.tf_buffer.lookup_transform("drone","world",rclpy.time.Time())
+            self.tf_buffer.lookup_transform_async("drone","world",self.get_clock().now())
 
 
 
@@ -66,7 +70,7 @@ class DesiredPosition(Node):
 
 
     def turtle_wait_frame(self):
-        worldToTurtle = self.tf_buffer.lookup_transform("turtle","world")
+        worldToTurtle = self.tf_buffer.lookup_transform_async("turtle","world",self.get_clock().now())
 
         hover_distance = 0.5 # how fare the drone hover over the turtle in meters
         hover_frame = worldToTurtle
