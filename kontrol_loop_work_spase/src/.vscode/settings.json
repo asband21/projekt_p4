@@ -1,0 +1,16 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/mile/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages",
+        "/home/mile/ros2ws/install/velocity_service/lib/python3.10/site-packages",
+        "/home/mile/ros2ws/install/costom_interface/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/mile/git/projekt_p4/kontrol_loop_work_spase/install/vel_err/lib/python3.8/site-packages",
+        "/home/mile/ros2ws/install/velocity_service/lib/python3.10/site-packages",
+        "/home/mile/ros2ws/install/costom_interface/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}

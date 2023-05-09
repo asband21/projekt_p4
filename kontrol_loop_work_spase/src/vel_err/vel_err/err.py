@@ -10,6 +10,8 @@ from std_msgs.msg import Float32MultiArray
 from tf2_ros import TransformException
 from tf2_ros.buffer import Buffer
 from tf2_ros.transform_listener import TransformListener
+from costom_interface.msg import ViconInfo
+
 
 
 class FrameListener(Node):
@@ -68,6 +70,18 @@ class FrameListener(Node):
         self.get_logger().info(f"vec: {formatted_vector}")
         
 ### ---------------- emile V
+    def callback(self):
+        msg=ViconInfo()
+        msg.position.linear.x = vec[0]
+        msg.position.linear.y = vec[1]
+        msg.position.linear.z = vec[2]
+        msg.position.angular.z = vec[3]
+        msg.velocity.linear.x = vec[4]
+        msg.velocity.linear.y = vec[5]
+        msg.velocity.linear.z = vec[6]
+        msg.velocity.angular.z = vec[7]
+
+        self.pub.publish(msg)
 
 ### ----------------- 
 
