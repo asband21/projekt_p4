@@ -14,7 +14,7 @@ class request(Node):
 
         self.sub_node_simulated_vicon = rclpy.create_node("sub_node_simulated_vicon")
 
-        self.sub_cli_simulated_vicon = self.create_client(TargetPose,"go_to_target_pose")
+        self.sub_cli_simulated_vicon = self.sub_node_simulated_vicon.create_client(TargetPose,"go_to_target_pose")
 
 
 
@@ -30,6 +30,7 @@ class request(Node):
 
         future = self.sub_cli_simulated_vicon.call_async(req)
         rclpy.spin_until_future_complete(self.sub_node_simulated_vicon,future)
+        print(future.result())
         return future.result()
 
 
@@ -38,14 +39,16 @@ def main(args=None):
     
     node = request()
     
-    if input()=="1":
-        
+    if input("type 1 here: ")=="1":
         response = node.send_request()
+
         while True:
             if response.success:
                 print("Success")
+                break
             elif not response.success:
                 print("Failure")
+                break
 
     
     rclpy.shutdown()
