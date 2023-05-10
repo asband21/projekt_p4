@@ -12,13 +12,11 @@ from geometry_msgs.msg import Twist, TransformStamped
 import time
 import string
 import asyncio
-
-
+import os
 
 class DesiredPosition(Node):
     def __init__(self):
         super().__init__("desired_position") 
-
         self.transform = Twist()
 
         self.state = "initiation"
@@ -40,8 +38,7 @@ class DesiredPosition(Node):
 
 
         self.get_logger().info("Desired Position is now running")
-        
-
+    
     def updater(self,msg):
 
         self.desired_pose()
@@ -67,8 +64,11 @@ class DesiredPosition(Node):
                 
 
 
+            
 
-        self.get_logger().info("Desired Pose: {}".format(self.current_pose))
+
+        print("twist: {}".format(self.current_pose), end="\r")
+        # self.get_logger().info("Desired Pose: {}".format(self.current_pose))
 
         
 

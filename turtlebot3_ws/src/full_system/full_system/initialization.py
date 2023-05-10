@@ -1,12 +1,26 @@
 import rclpy
 from rclpy.node import Node
 
-
+import os
+from glob import glob
 from std_srvs.srv import Empty
 import launch
 import launch_ros.actions
 
 
+
+def get_launch_file_path(launch_file_name):
+    # Get the path to the directory containing this Python script
+    this_file_dir = os.path.dirname(os.path.abspath(launch_file_name))
+    
+    # this_file_dir = os.path.abspath('system.launch.py')
+
+    # Construct the path to the launch file relative to this script
+    launch_file_path = os.path.join(this_file_dir,'install',"full_system",'share', "full_system", 'launch', launch_file_name)
+    
+    # Return the absolute path to the launch file
+    return os.path.abspath(launch_file_path)
+    # return this_file_dir
 
 class initialization(Node):
     def __init__(self):
@@ -14,6 +28,8 @@ class initialization(Node):
 
         self.sub_node_initialization = rclpy.create_node("sub_node_initialization")
 
+        print(     (os.path.join('share', "full_system", 'launch'), glob(os.path.join('launch', '*launch.[pxy][yma]*'))))
+        print(get_launch_file_path("system.launch.py"))
         self.start_my_node()
 
 
@@ -31,7 +47,7 @@ class initialization(Node):
         ld = launch.LaunchDescription([
             launch.actions.IncludeLaunchDescription(
                 launch.launch_description_sources.PythonLaunchDescriptionSource(
-                    '/home/carsten/Documents/uni/p4/semester_project/hardware/projekt_p4/turtlebot3_ws/src/full_system/launch/system.launch.py'
+                    get_launch_file_path("system.launch.py")
                 )
             )
         ])
