@@ -20,6 +20,7 @@ class FrameListener(Node):
         super().__init__('oel')
         self.subscription = self.create_subscription(tf2_msgs.msg.TFMessage, 'tf', self.on_timer,10)
         self.publisher_ = self.create_publisher(Float32MultiArray, "drone_error", 10)
+        self.pub = self.create_publisher(ViconInfo, "vicon_info", 10)
 
         # Declare and acquire `target_frame` parameter
         self.target_frame = self.declare_parameter('vicon', 'Drone').get_parameter_value().string_value
@@ -68,9 +69,13 @@ class FrameListener(Node):
 
         formatted_vector = [f"{value:8.5f}" for value in vec]
         self.get_logger().info(f"vec: {formatted_vector}")
+        self.gammel_tf = copy.deepcopy(dd)
+        self.callback(vec)
         
-### ---------------- emile V
-    def callback(self):
+        #err = [1,1,1,1]
+        #self.publish_array(err)
+        
+    def callback(self, vec):
         msg=ViconInfo()
         msg.position.linear.x = vec[0]
         msg.position.linear.y = vec[1]
@@ -83,14 +88,6 @@ class FrameListener(Node):
 
         self.pub.publish(msg)
 
-### ----------------- 
-
-        self.gammel_tf = copy.deepcopy(dd)
-
-        
-        ##### error
-        err = [1,1,1,1]
-        self.publish_array(err)
     
     def publish_array(self,array):
         msg = Float32MultiArray(data=array)

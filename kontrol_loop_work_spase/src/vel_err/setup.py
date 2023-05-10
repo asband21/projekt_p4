@@ -22,7 +22,11 @@ setup(
         'console_scripts': [
             'vel = vel_err.err:main',
             'rc = vel_err.drone_rc:main',
-            'reg = vel_err.drone_rek:main'
+            'reg = vel_err.drone_rek:main',
+            "client = vel_err.first_node:main",
+            "service = vel_err.Velocities_get:main",
+            "publish = vel_err.velocity_pub:main"
+
         ],
     },
 )

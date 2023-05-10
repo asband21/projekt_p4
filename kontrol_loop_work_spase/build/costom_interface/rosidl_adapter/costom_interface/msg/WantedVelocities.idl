@@ -1,0 +1,15 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from costom_interface/msg/WantedVelocities.msg
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/Point.idl"
+
+module costom_interface {
+  module msg {
+    struct WantedVelocities {
+      string name;
+
+      geometry_msgs::msg::Point coordinates;
+    };
+  };
+};

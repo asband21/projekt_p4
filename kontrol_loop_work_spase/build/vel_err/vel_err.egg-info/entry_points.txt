@@ -1,5 +1,8 @@
 [console_scripts]
+client = vel_err.first_node:main
+publish = vel_err.velocity_pub:main
 rc = vel_err.drone_rc:main
 reg = vel_err.drone_rek:main
+service = vel_err.Velocities_get:main
 vel = vel_err.err:main
 

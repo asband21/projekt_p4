@@ -10,6 +10,8 @@ from std_msgs.msg import Float32MultiArray
 from tf2_ros import TransformException
 from tf2_ros.buffer import Buffer
 from tf2_ros.transform_listener import TransformListener
+from costom_interface.msg import ViconInfo
+
 
 
 class FrameListener(Node):
@@ -18,6 +20,7 @@ class FrameListener(Node):
         super().__init__('oel')
         self.subscription = self.create_subscription(tf2_msgs.msg.TFMessage, 'tf', self.on_timer,10)
         self.publisher_ = self.create_publisher(Float32MultiArray, "drone_error", 10)
+        self.pub = self.create_publisher(ViconInfo, "vicon_info", 10)
 
         # Declare and acquire `target_frame` parameter
         self.target_frame = self.declare_parameter('vicon', 'Drone').get_parameter_value().string_value
@@ -66,26 +69,25 @@ class FrameListener(Node):
 
         formatted_vector = [f"{value:8.5f}" for value in vec]
         self.get_logger().info(f"vec: {formatted_vector}")
-        
-        #self.get_logger().info("vec:" + str(vec))
-        
-        #self.get_logger().info("delta tid:" + str(del_tid))    
-        #self.get_logger().info("x:" + str(self.gammel_tf.msg.transform.translation.x))
-        #from_frame_rel = self.target_frame
-        """
-        self.get_logger().info("--------------------------------")
-        self.get_logger().info(str(dd.transforms[0].child_frame_id))
-        self.get_logger().info(str(dd.transforms[0].header.stamp))
-        self.get_logger().info("x:" + str(dd.transforms[0].transform.translation.x))
-        self.get_logger().info("y:" + str(dd.transforms[0].transform.translation.y))
-        self.get_logger().info("z:" + str(dd.transforms[0].transform.translation.z))
-        """
-        #self.get_logger().info(f"llll{str(from_frame_rel)}")
         self.gammel_tf = copy.deepcopy(dd)
+        self.callback(vec)
         
-        ##### error
-        err = [1,1,1,1]
-        self.publish_array(err)
+        #err = [1,1,1,1]
+        #self.publish_array(err)
+        
+    def callback(self, vec):
+        msg=ViconInfo()
+        msg.position.linear.x = vec[0]
+        msg.position.linear.y = vec[1]
+        msg.position.linear.z = vec[2]
+        msg.position.angular.z = vec[3]
+        msg.velocity.linear.x = vec[4]
+        msg.velocity.linear.y = vec[5]
+        msg.velocity.linear.z = vec[6]
+        msg.velocity.angular.z = vec[7]
+
+        self.pub.publish(msg)
+
     
     def publish_array(self,array):
         msg = Float32MultiArray(data=array)
