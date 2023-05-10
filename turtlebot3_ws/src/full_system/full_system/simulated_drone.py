@@ -16,11 +16,12 @@ class SimulatedDrone(Node):
         super().__init__("simulated_drone") 
 
 
-        self.drone = Tello()
+        # self.drone = Tello()
 
-        self.drone.connect()
+        # self.drone.connect()
 
         self.create_service(TakePicture,"take_picture",self.take_picture)
+
 
         # self.create_subscription(Twist,"drone_rc",self.callback)
 

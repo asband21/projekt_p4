@@ -11,13 +11,15 @@ from geometry_msgs.msg import Twist, TransformStamped
 
 import time
 import string
-
+import asyncio
 
 
 
 class DesiredPosition(Node):
     def __init__(self):
         super().__init__("desired_position") 
+
+        self.transform = Twist()
 
         self.state = "initiation"
         self.tf_buffer = Buffer(rclpy.duration.Duration(seconds=1.0))
@@ -30,7 +32,7 @@ class DesiredPosition(Node):
         self.desired_pose_sub = self.create_subscription(Twist,"desired_pose",self.trajectroy_pose,10)
 
 
-        self.sub_vicon = self.create_subscription(TransformStamped,"update",self.vicon_callback,10)
+        self.sub_vicon = self.create_subscription(TransformStamped,"update",self.updater,10)
 
 
         # hz = 1/30
@@ -40,8 +42,11 @@ class DesiredPosition(Node):
         self.get_logger().info("Desired Position is now running")
         
 
-    def vicon_callback(self,msg):
+    def updater(self,msg):
+
         self.desired_pose()
+
+        # asyncio.run(co)
 
 
     def desired_pose(self):
@@ -52,29 +57,38 @@ class DesiredPosition(Node):
             self.current_pose
         elif self.state == "initiation":
             #wait for trajectory.
-            self.tf_buffer.lookup_transform_async("drone","world",self.get_clock().now())
+            try:
+                pose = self.tf_buffer.lookup_transform("drone","world",rclpy.time.Time(),rclpy.time.Duration(seconds=0.1))
+                self.current_pose.linear.x = pose.transform.translation.x
+                self.current_pose.linear.y = pose.transform.translation.y
+                self.current_pose.linear.z = pose.transform.translation.z
+            except TransformException as ex:
+                self.get_logger().info("No transform from drone to world")
+                
 
 
 
-        print(self.current_pose)
+        self.get_logger().info("Desired Pose: {}".format(self.current_pose))
+
+        
 
 
 
-    def state_changer(self,request,reponse):
+    def state_changer(self,request,response):
         
         self.state = request.state
-        reponse.success = True
+        response.success = True
 
-        return reponse
+        return response
 
 
 
     def turtle_wait_frame(self):
-        worldToTurtle = self.tf_buffer.lookup_transform_async("turtle","world",self.get_clock().now())
+        worldToTurtle = self.tf_buffer.lookup_transform("turtle","world",rclpy.time.Time(),rclpy.time.Duration(seconds=0.1))
 
         hover_distance = 0.5 # how fare the drone hover over the turtle in meters
         hover_frame = worldToTurtle
-        hover_frame.transform.position.z = hover_frame.transform.position.z + hover_distance
+        hover_frame.transform.translation.z = hover_frame.transform.translation.z + hover_distance
 
         return hover_frame
 
@@ -103,7 +117,6 @@ def main(args=None):
 
     rclpy.spin(node)
 
-    node.destroy_node()
     rclpy.shutdown()
 
 if __name__ == "__main__":
