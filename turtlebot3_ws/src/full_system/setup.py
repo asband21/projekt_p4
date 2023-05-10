@@ -10,6 +10,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -25,6 +26,7 @@ setup(
             "simulation_vi = full_system.simulated_vicon:main",
             "simulated_target_request = full_system.simulated_target_request:main",
             "drone = full_system.simulated_drone:main",
+            "initialization = full_system.initialization:main",
         ],
     },
 )
