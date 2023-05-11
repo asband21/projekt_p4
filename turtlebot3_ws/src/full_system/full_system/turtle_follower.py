@@ -71,6 +71,7 @@ class turtle_follower(Node):
             while current_time-start_time > turn_time:
                 self.pub_turtle.publish(wheel)
                 current_time = time.time()
+                time.sleep(1/30)
 
             wheel.angular.z = 0.0
             self.pub_turtle.publish(wheel)
@@ -79,7 +80,7 @@ class turtle_follower(Node):
             # turn right 180 degrees 
             wheel = Twist()
 
-            turn_vel = -0.2 # unit rad/s
+            turn_vel = -1 # unit rad/s
 
             turn_angle = np.pi # unit rad
 
@@ -92,6 +93,8 @@ class turtle_follower(Node):
             while current_time-start_time > turn_time:
                 self.pub_turtle.publish(wheel)
                 current_time = time.time()
+                time.sleep(1/30)
+
 
             wheel.angular.z = 0.0
             self.pub_turtle.publish(wheel)
@@ -103,7 +106,7 @@ class turtle_follower(Node):
         # drive 1 meter
         wheel = Twist()
 
-        forward_vel = 0.2 # unit m/s
+        forward_vel = 1 # unit m/s
 
         drive_distance = 1 # unit meters
 
@@ -118,6 +121,8 @@ class turtle_follower(Node):
             self.get_logger().info("driving")
             self.pub_turtle.publish(wheel)
             current_time = time.time()
+            time.sleep(1/30)
+
 
         wheel.linear.x = 0.0
         self.pub_turtle.publish(wheel)
