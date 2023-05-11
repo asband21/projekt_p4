@@ -3,7 +3,7 @@ import rclpy
 from rclpy.node import Node
 from costom_interface.msg import ViconInfo
 from costom_interface.srv import Velocities
-
+from std_msgs.msg import Float32MultiArray
 
 class MyNode(Node):
 

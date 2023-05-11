@@ -2,7 +2,7 @@ from costom_interface.srv import Velocities
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
-
+from std_msgs.msg import Float32MultiArray
 
 
 class MinimalService(Node):
@@ -13,7 +13,6 @@ class MinimalService(Node):
         self.srv = self.create_service(Velocities, "/srv/Velocities", self.callback)
         self.time  = self.get_clock().now()
         self.get_logger().info(f"time:{self.time}")
-        
         self.time_start =self.time.nanoseconds + 1000000000*10
 
     def step_pos(self):
@@ -32,6 +31,7 @@ class MinimalService(Node):
             
     def callback(self, request, respons):
 
+        """
         position = [0,0,0,0]
         position[0] = request.position.linear.x
         position[1] = request.position.linear.y
@@ -54,22 +54,18 @@ class MinimalService(Node):
         respons.position.linear.y = req_pos[1] 
         respons.position.linear.z = req_pos[2] 
         respons.position.angular.z = req_pos[3]    
-
+        """
+        array = [0,0,0,0,0,0,0,0]
+        #respons =Float32MultiArray(data=array)
         #respons.error_position.linear.x = req_pos[0] 
         #respons.error_velocity = self.step_vel()
         return respons
 
-    
-
 def main(args=None):
     rclpy.init(args=args)
-
     minimal_service = MinimalService()
-
     rclpy.spin(minimal_service)
-
     rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()

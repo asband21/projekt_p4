@@ -12,7 +12,11 @@ module costom_interface {
       geometry_msgs::msg::Twist position;
     };
     struct Velocities_Response {
-      boolean success;
+      boolean dd;
+
+      geometry_msgs::msg::Twist error_velocity;
+
+      geometry_msgs::msg::Twist error_position;
     };
   };
 };
