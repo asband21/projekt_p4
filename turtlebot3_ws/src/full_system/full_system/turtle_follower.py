@@ -106,7 +106,7 @@ class turtle_follower(Node):
         # drive 1 meter
         wheel = Twist()
 
-        forward_vel = 1 # unit m/s
+        forward_vel = 1.0 # unit m/s
 
         drive_distance = 1 # unit meters
 
