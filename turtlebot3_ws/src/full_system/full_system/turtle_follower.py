@@ -66,11 +66,11 @@ class turtle_follower(Node):
 
             wheel.angular.z = turn_vel
 
-            start_time = self.get_clock().now()
-            current_time = self.get_clock().now()
+            start_time = time.time()
+            current_time = time.time()
             while current_time-start_time > turn_time:
                 self.pub_turtle.publish(wheel)
-                current_time = self.get_clock().now()
+                current_time = time.time()
 
             wheel.angular.z = 0.0
             self.pub_turtle.publish(wheel)
@@ -87,11 +87,11 @@ class turtle_follower(Node):
 
             wheel.angular.z = turn_vel
 
-            start_time = self.get_clock().now()
-            current_time = self.get_clock().now()
+            start_time = time.time()
+            current_time = time.time()
             while current_time-start_time > turn_time:
                 self.pub_turtle.publish(wheel)
-                current_time = self.get_clock().now()
+                current_time = time.time()
 
             wheel.angular.z = 0.0
             self.pub_turtle.publish(wheel)
@@ -111,11 +111,11 @@ class turtle_follower(Node):
 
         wheel.linear.z = forward_vel
 
-        start_time = self.get_clock().now()
-        current_time = self.get_clock().now()
+        start_time = time.time()
+        current_time = time.time()
         while current_time-start_time > turn_time:
             self.pub_turtle.publish(wheel)
-            current_time = self.get_clock().now()
+            current_time = time.time()
 
         wheel.linear.z = 0.0
         self.pub_turtle.publish(wheel)
