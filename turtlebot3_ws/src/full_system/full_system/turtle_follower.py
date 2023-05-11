@@ -21,7 +21,7 @@ class turtle_follower(Node):
 
         self.cli_analisys = self.node_turtle_follower.create_client(TakePicture,"calculate_target_pose")
         self.srv_state_changer = self.create_service(StateChanger,"state_changer",self.state_changer_callback)
-        self.pub_turtle = self.create_publisher(Twist,'cmd_vel',10)
+        self.pub_turtle = self.create_publisher(Twist,'/cmd_vel',10)
 
         self.state_controller()
 
