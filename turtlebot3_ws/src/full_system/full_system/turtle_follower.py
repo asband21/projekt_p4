@@ -40,7 +40,7 @@ class turtle_follower(Node):
         tuple: A tuple containing the time taken to travel the trajectory and the coordinates at each point along the trajectory.
         """
         distance = coord2 - coord1
-        time = distance / max_velocity
+        time = abs(distance / max_velocity)
         
         # create the time vector and calculate the coefficients of the third degree polynomial
         t = np.linspace(0, time, num=int(time)+1)
