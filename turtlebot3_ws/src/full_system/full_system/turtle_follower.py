@@ -3,8 +3,10 @@ from rclpy.node import Node
 
 from std_srvs.srv import Empty
 
-from personal_interface.srv import StateChanger
+from geometry_msgs.msg import Twist
+from personal_interface.srv import StateChanger, TakePicture
 import time
+import numpy as np
 
 
 class turtle_follower(Node):
@@ -15,10 +17,11 @@ class turtle_follower(Node):
         self.state = "idle"
         self.meters_driven = 0
 
-        self.sub_node_turtle_follower = rclpy.create_node("sub_node_turtle_follower")
+        self.node_turtle_follower = rclpy.create_node("node_turtle_follower")
 
-        self.sub_cli_analisys = self.sub_node_turtle_follower.create_client(Empty,"calculate_target_pose")
+        self.cli_analisys = self.node_turtle_follower.create_client(TakePicture,"calculate_target_pose")
         self.srv_state_changer = self.create_service(StateChanger,"state_changer",self.state_changer_callback)
+        self.pub_turtle = self.create_publisher(Twist,'cmd_vel',10)
 
         self.state_controller()
 
@@ -33,13 +36,18 @@ class turtle_follower(Node):
         return response
 
 
-    def send_request(self,request):
-        while not self.sub_cli_analisys.wait_for_service(timeout_sec=1.0):
+    def send_request(self):
+        while not self.cli_analisys.wait_for_service(timeout_sec=1.0):
             self.get_logger().info("service not available, waiting again...")
         
 
-        future = self.sub_cli_analisys.call_async(request)
-        rclpy.spin_until_future_complete(self.sub_node_turtle_follower,future)
+        request = TakePicture.Request()
+        future = self.cli_analisys.call_async(request)
+        rclpy.spin_until_future_complete(self.node_turtle_follower,future)
+
+        while future.result() == None:
+            time.sleep(1/30)
+            
         return future.result()
 
 
@@ -47,17 +55,73 @@ class turtle_follower(Node):
     def turn(self, turn_way):
 
         if turn_way == "left":
-            deleteme = int
             # turn left 90 degrees
+            wheel = Twist()
+
+            turn_vel = 0.2 # unit rad/s
+
+            turn_angle = np.pi/2 # unit rad
+
+            turn_time = turn_vel/turn_angle
+
+            wheel.angular.z = turn_vel
+
+            start_time = rclpy.time.Time()
+            current_time = rclpy.time.Time()
+            while current_time-start_time > turn_time:
+                self.pub_turtle.publish(wheel)
+                current_time = rclpy.time.Time()
+
+            wheel.angular.z = 0.0
+            self.pub_turtle.publish(wheel)
+            
         elif turn_way == "right":
-            deleteme = int
-            # turn right 180 degrees
+            # turn right 180 degrees 
+            wheel = Twist()
+
+            turn_vel = -0.2 # unit rad/s
+
+            turn_angle = np.pi # unit rad
+
+            turn_time = turn_vel/turn_angle
+
+            wheel.angular.z = turn_vel
+
+            start_time = rclpy.time.Time()
+            current_time = rclpy.time.Time()
+            while current_time-start_time > turn_time:
+                self.pub_turtle.publish(wheel)
+                current_time = rclpy.time.Time()
+
+            wheel.angular.z = 0.0
+            self.pub_turtle.publish(wheel)
+            
 
 
 
     def drive_stright(self):
-        deleteme = int
         # drive 1 meter
+        wheel = Twist()
+
+        forward_vel = 0.2 # unit m/s
+
+        drive_distance = 1 # unit meters
+
+        turn_time = forward_vel/drive_distance
+
+        wheel.linear.z = forward_vel
+
+        start_time = rclpy.time.Time()
+        current_time = rclpy.time.Time()
+        while current_time-start_time > turn_time:
+            self.pub_turtle.publish(wheel)
+            current_time = rclpy.time.Time()
+
+        wheel.linear.z = 0.0
+        self.pub_turtle.publish(wheel)
+
+
+
 
     def state_controller(self):
 
@@ -74,6 +138,7 @@ class turtle_follower(Node):
             self.turn("left")
 
             # send request to image analisys
+            self.send_request()
 
             while True:
                 if self.state == "continue":
@@ -85,7 +150,7 @@ class turtle_follower(Node):
 
 
             # send request to image analisys
-            
+            self.send_request()
 
             while True:
                 if self.state == "continue":

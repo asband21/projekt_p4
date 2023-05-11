@@ -1,53 +1,36 @@
 import rclpy
 from rclpy.node import Node
 
-from personal_interface.srv import TargetPose
+from personal_interface.srv import TargetPose, TakePicture
 from std_srvs.srv import Empty
 
 import numpy as np 
-import pyrealsense2 as rs
+import pyrealsense2.pyrealsense2 as rs
 import cv2
+
+import tf2_ros as tf2
+import tf_transformations as tf
+from tf2_ros import TransformListener
+from tf2_ros.buffer import Buffer
+from std_msgs.msg import Header
+import time
 
 
 class image_analisys(Node):
     def __init__(self):
         super().__init__("image_analisys") 
 
-        self.sub_node_image_analisys = rclpy.create_node("sub_node_image_analisys")
+        self.tf_buffer = Buffer()
+        self.tf_listener = TransformListener(self.tf_buffer,self)
 
-        self.sub_cli_image_analisys = self.create_client(TargetPose,"go_to_target_pose")
+        self.node_image_analisys = rclpy.create_node("sub_node_image_analisys")
 
-        self.srv_calulate_target_pose = self.create_service(Empty,"calculate_target_pose",self.callback_srv_taget_pose) 
+        self.cli_trajectory = self.create_client(TargetPose,"go_to_target_pose")
+
+        self.srv_calulate_target_pose = self.create_service(TakePicture,"calculate_target_pose",self.srv_take_aligment_picture) 
         self.initial_camera() 
 
 
-
-
-    def send_request(self,req):
-        while not self.sub_cli_simulated_vicon.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("service not available, waiting again...")
-        
-
-        future = self.sub_cli_simulated_vicon.call_async(req)
-        rclpy.spin_until_future_complete(self.sub_node_image_analisys,future)
-        return future.result()
-    
-
-    def callback_srv_taget_pose(self,request,response):
-        
-        
-        return 
-
-
-    def image_analisys(self):
-        req = TargetPose.Request()
-        req.target_pose.transform.translation.x = 6.0
-        req.target_pose.transform.translation.y = 1.0
-        req.target_pose.transform.translation.z = 4.0
-        req.target_pose.transform.rotation.x = 0.0
-        req.target_pose.transform.rotation.y = 0.0
-        req.target_pose.transform.rotation.z = 0.0
-        req.target_pose.transform.rotation.w = 1.0
 
     def initial_camera(self): 
         self.pipeline = rs.pipeline()
@@ -72,63 +55,117 @@ class image_analisys(Node):
         self.align = rs.align(align_to)  
         self.detector = cv2.QRCodeDetector()
 
-    def take_aligment_picture(self):
+    def srv_take_aligment_picture(self, request, response):
         # We will be removing the background of objects more than
         clipping_distance_in_meters = 2  # Unit: meter
         clipping_distance = clipping_distance_in_meters / self.depth_scale
+    
+        # Get frameset of color and depth
+        frames = self.pipeline.wait_for_frames()
+        # frames.get_depth_frame() is a 640x360 depth image
 
-        # Streaming loop
-        try:
-            # Get frameset of color and depth
-            frames = self.pipeline.wait_for_frames()
-            # frames.get_depth_frame() is a 640x360 depth image
+        # Align the depth frame to color frame
+        aligned_frames = self.align.process(frames)
 
-            # Align the depth frame to color frame
-            aligned_frames = self.align.process(frames)
+        # Get aligned frames
+        aligned_depth_frame = aligned_frames.get_depth_frame() # aligned_depth_frame is a 640x480 depth image
+        color_frame = aligned_frames.get_color_frame()
+        # Getheringng data from the imagese 
+        depth_image = np.asanyarray(aligned_depth_frame.get_data())
+        color_image = np.asanyarray(color_frame.get_data())
 
-            # Get aligned frames
-            aligned_depth_frame = aligned_frames.get_depth_frame() # aligned_depth_frame is a 640x480 depth image
-            color_frame = aligned_frames.get_color_frame()
-            # Getheringng data from the imagese 
-            depth_image = np.asanyarray(aligned_depth_frame.get_data())
-            color_image = np.asanyarray(color_frame.get_data())
+        # Remove background - Set pixels further than clipping_distance to white
+        background = 255
+        depth_image_3d = np.dstack((depth_image,depth_image,depth_image)) #depth image is 1 channel, color is 3 channels
+        bg_removed = np.where((depth_image_3d > clipping_distance) | (depth_image_3d <= 0), background, color_image) 
 
+
+        # Finding QR-Codes 
+        qr_image =  bg_removed
+        #cv2.imread('images/qr-code.png')
+        see_qr,where_qr = self.detector.detectMulti(qr_image)
+        x,y,z = self.convert_depth_frame_to_pointcloud(depth_image,self.camera_intrinsics) 
+        pointcloud = np.dstack((x,y,z)) 
+
+        if see_qr == True:  
+            set_of_qr_found_counter = 0
+            x_median = np.zeros(int(where_qr.shape[0]))
+            y_median = np.zeros(int(where_qr.shape[0]))
+            drawing = np.zeros((qr_image.shape[0],qr_image.shape[1]))
+            for i in range(where_qr.shape[0]):  
+                #Store the QR-code ceter point in median
+                x_median[i] =(where_qr[i][0][0]  + where_qr[i][1][0]  + where_qr[i][2][0]  + where_qr[i][3][0])/4 
+                y_median[i] = (where_qr[i][0][1]  + where_qr[i][1][1]  + where_qr[i][2][1]  + where_qr[i][3][1])/4 
+                ###########################################
+                for points in range(int(where_qr.shape[1])): 
+                    drawing=cv2.line(qr_image,(int(where_qr[i][points][0]),int(where_qr[i][points][1])),(int(where_qr[i][points][0]),int(where_qr[i][points][1])),(255,0,0),5) #Marking the conor of the QR-codes
+                drawing=cv2.line(qr_image,(int(x_median[i]),int(y_median[i])),(int(x_median[i]),int(y_median[i])),(0,255,0),5)  # Marking the center of the QR-codes
+                print("Center of the QR-Code = ({} , {})".format(x_median[i],y_median[i])) # Prints the centers of the QR-codes
+            print("QR-Code ::: done")
+            cv2.imwrite('~/testing_image/images/QR-code_{}.png'.format(set_of_qr_found_counter),drawing)  
+            set_of_qr_found_counter+= 1 
+
+
+            for i in range(where_qr.shape[0]):
+                point = pointcloud[y_median[i],x_median[i]]
+                self.send_request(point)
             
-            
-            
+            response.success = True 
+            return response
+        else: 
 
-            # Remove background - Set pixels further than clipping_distance to white
-            background = 255
-            depth_image_3d = np.dstack((depth_image,depth_image,depth_image)) #depth image is 1 channel, color is 3 channels
-            bg_removed = np.where((depth_image_3d > clipping_distance) | (depth_image_3d <= 0), background, color_image) 
-            # cv2.imwrite('~/tests/test_1/images/c1.png', bg_removed)  #Rember to uncomment me!!!!!!! 
-            cap = cv2.VideoCapture(bg_removed) 
+            response.success = False
+            print("No QR-Code found ....") 
+            return response
 
-
-
-            if self.detector.detect(bg_removed) == True : 
-                x,y,z = self.convert_depth_frame_to_pointcloud(bg_removed, self.camera_intrinsics) 
-                normal_vector = self.pythoMath(x,y,z)
-             
-
-            
-            """ 
-            1.  Take  a picture, with a legth of only 2 meters 
-            2.  Is there any QR-code?, yes then 
-            3.  Point clound of QR code 
-            3.5 find the orientation and postion
-            4.  !Send point to drone 
-            5.  !wait for drone  
-            6.  !Turn and repeat
-            """
-            
-            
-
-
-        finally:
-            self.pipeline.stop()
+                
 
     
+    
+
+    def send_request(self,point):
+        while not self.cli_trajectory.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info("service not available, waiting again...")
+    
+        turtleTransform = self.tf_buffer.lookup_transform('world', 'turtle', rclpy.time.Time(), rclpy.duration.Duration(seconds=0.1))
+
+        quaternion = [0, 0, 0, 1]
+        turtleTransform.transform.rotation.x = quaternion[0]
+        turtleTransform.transform.rotation.y = quaternion[1]
+        turtleTransform.transform.rotation.z = quaternion[2]
+        turtleTransform.transform.rotation.w = quaternion[3]
+
+        rotationMatrix = tf.quaternion_matrix(quaternion)
+
+        # Create homogeneous transformation matrix
+        T = np.eye(4)
+        T[:3, :3] = rotationMatrix
+        T[:3, 3] = point
+
+        
+        # move 10 cm back in the y direction
+        move_back = np.eye(4)
+        move_back[1, 3] = -0.1 # unit is meters
+        T = np.dot(T, move_back)
+
+        srv_request = TargetPose.Request()
+        srv_request.pose.position.x = T[0, 3]
+        srv_request.pose.position.y = T[1, 3]
+        srv_request.pose.position.z = T[2, 3]
+        srv_request.pose.orientation.x = quaternion[0]
+        srv_request.pose.orientation.y = quaternion[1]
+        srv_request.pose.orientation.z = quaternion[2]
+        srv_request.pose.orientation.w = quaternion[3]
+
+        future = self.cli_trajectory.call_async(srv_request)
+        rclpy.spin_until_future_complete(self.node_image_analisys,future)
+
+        while future.result() == None:
+            time.sleep(1/30)
+
+        return future.result()
+
+
     def convert_depth_frame_to_pointcloud(self, depth_image, camera_intrinsics):
         """
         Convert the depthmap to a 3D point cloud
@@ -166,35 +203,6 @@ class image_analisys(Node):
 
 
         return x,y,z 
-    
-    def pythoMath(self,x,y,z):
-        xs = x.flatten()[::40]
-        ys = y.flatten()[::40]
-        zs = z.flatten()[::40]
-        # Cleaning the images for black pixels
-        xs = [i for i in xs if i != 0]
-        ys = [i for i in ys if i != 0]
-        zs = [i for i in zs if i != 0]
-        if len(xs)<3:
-            return
-        
-        # do fit
-        tmp_A = []
-        tmp_b = []
-        for i in range(len(xs)):
-            tmp_A.append([xs[i], ys[i], 1])
-            tmp_b.append(zs[i])
-        b = np.matrix(tmp_b).T
-        A = np.matrix(tmp_A)
-
-        # Manual solution
-        fit = (A.T * A).I * A.T * b
-        errors = b - A * fit
-        residual = np.linalg.norm(errors)
-
-        return fit
-
-
 
 def main(args=None):
     rclpy.init(args=args)
