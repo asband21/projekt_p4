@@ -41,6 +41,8 @@ class turtle_follower(Node):
         """
         distance = coord2 - coord1
         time = abs((1/distance) / max_velocity)
+
+        print("time it takes: " ,time)
         
         # create the time vector and calculate the coefficients of the third degree polynomial
         t = np.linspace(0, time, num=int(time)+1)
