@@ -58,7 +58,7 @@ class turtle_follower(Node):
             # turn left 90 degrees
             wheel = Twist()
 
-            turn_vel = 0.2 # unit rad/s
+            turn_vel = 1.0 # unit rad/s
 
             turn_angle = np.pi/2 # unit rad
 
@@ -80,7 +80,7 @@ class turtle_follower(Node):
             # turn right 180 degrees 
             wheel = Twist()
 
-            turn_vel = -1 # unit rad/s
+            turn_vel = -1.0 # unit rad/s
 
             turn_angle = np.pi # unit rad
 
