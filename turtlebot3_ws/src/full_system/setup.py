@@ -32,8 +32,8 @@ setup(
             "simulated_target_request = full_system.simulated_target_request:main",
             "drone = full_system.simulated_drone:main",
             "initialization = full_system.initialization:main",
-            "test_cli = full_system.test_cli:main",
-            "test_srv = full_system.test_srv:main",
+            "turtle_follower = full_system.turtle_follower:main",
+            "test_turtle = full_system.test_turtle:main",
         ],
     },
 )
