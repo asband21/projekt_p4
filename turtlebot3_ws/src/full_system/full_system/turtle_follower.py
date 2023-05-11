@@ -144,11 +144,12 @@ class turtle_follower(Node):
             # send request to image analisys
             self.send_request()
 
-            while True:
-                if self.state == "continue":
-                    self.state = "idle"
-                    break
-                time.sleep(1/30)
+            # while True:
+            #     self.get_logger().info("waiting for state change: " + str(self.state))
+            #     if self.state == "continue":
+            #         self.state = "idle"
+            #         break
+            #     time.sleep(1/30)
 
             # turn right 180 degrees
             self.turn("right")
@@ -157,11 +158,11 @@ class turtle_follower(Node):
             # send request to image analisys
             self.send_request()
 
-            while True:
-                if self.state == "continue":
-                    self.state = "idle"
-                    break
-                time.sleep(1/30)
+            # while True:
+            #     if self.state == "continue":
+            #         self.state = "idle"
+            #         break
+            #     time.sleep(1/30)
         
             # turn left 90 degrees
             self.turn("left")

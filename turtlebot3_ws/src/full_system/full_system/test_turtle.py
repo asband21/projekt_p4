@@ -16,17 +16,17 @@ class testTurtle(Node):
 
         self.cli_turtle = self.node_turtle_follower.create_client(StateChanger,"state_changer")
 
-        self.srv_analisys = self.create_service(TakePicture,"calculate_target_pose",self.continue_path_callback)
+        self.srv_analisys = self.create_service(TakePicture,"calculate_target_pose",self.srv_take_pic)
 
 
 
-    def continue_path_callback(self,request,response):
-        self.get_logger().info("continue_path_callback has been called")
-        response.success = True
+    def srv_take_pic(self,request,response):
+        self.get_logger().info("srv_take_pic has been called")
         time.sleep(5)
+        response.success = True
         
-        send_request_result = self.send_request()
-        self.get_logger().info("send_request_result: " + str(send_request_result))
+        # send_request_result = self.send_request()
+        # self.get_logger().info("send_request_result: " + str(send_request_result))
 
         return response
 
