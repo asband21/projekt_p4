@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c
 Python.h
 -
 stdbool.h
@@ -14,31 +14,31 @@ stdbool.h
 stdint.h
 -
 rosidl_runtime_c/visibility_control.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/rosidl_runtime_c/visibility_control.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/rosidl_runtime_c/visibility_control.h
 rosidl_runtime_c/message_type_support_struct.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/rosidl_runtime_c/message_type_support_struct.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/rosidl_runtime_c/message_type_support_struct.h
 rosidl_runtime_c/service_type_support_struct.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/rosidl_runtime_c/service_type_support_struct.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/rosidl_runtime_c/service_type_support_struct.h
 rosidl_runtime_c/action_type_support_struct.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/rosidl_runtime_c/action_type_support_struct.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/rosidl_runtime_c/action_type_support_struct.h
 costom_interface/msg/detail/wanted_velocities__type_support.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/msg/detail/wanted_velocities__type_support.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/msg/detail/wanted_velocities__type_support.h
 costom_interface/msg/detail/wanted_velocities__struct.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/msg/detail/wanted_velocities__struct.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/msg/detail/wanted_velocities__struct.h
 costom_interface/msg/detail/wanted_velocities__functions.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/msg/detail/wanted_velocities__functions.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/msg/detail/wanted_velocities__functions.h
 costom_interface/msg/detail/vicon_info__type_support.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/msg/detail/vicon_info__type_support.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/msg/detail/vicon_info__type_support.h
 costom_interface/msg/detail/vicon_info__struct.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/msg/detail/vicon_info__struct.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/msg/detail/vicon_info__struct.h
 costom_interface/msg/detail/vicon_info__functions.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/msg/detail/vicon_info__functions.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/msg/detail/vicon_info__functions.h
 costom_interface/srv/detail/velocities__type_support.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/srv/detail/velocities__type_support.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/srv/detail/velocities__type_support.h
 costom_interface/srv/detail/velocities__struct.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/srv/detail/velocities__struct.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/srv/detail/velocities__struct.h
 costom_interface/srv/detail/velocities__functions.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/srv/detail/velocities__functions.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/costom_interface/srv/detail/velocities__functions.h
 
 /opt/ros/foxy/include/geometry_msgs/msg/detail/point__struct.h
 stdbool.h

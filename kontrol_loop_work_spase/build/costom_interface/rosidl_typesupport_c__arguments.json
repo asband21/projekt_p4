@@ -1,11 +1,11 @@
 {
   "package_name": "costom_interface",
-  "output_dir": "/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_typesupport_c/costom_interface",
+  "output_dir": "/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_typesupport_c/costom_interface",
   "template_dir": "/opt/ros/foxy/share/rosidl_typesupport_c/resource",
   "idl_tuples": [
-    "/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface:msg/WantedVelocities.idl",
-    "/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface:msg/ViconInfo.idl",
-    "/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface:srv/Velocities.idl"
+    "/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface:msg/WantedVelocities.idl",
+    "/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface:msg/ViconInfo.idl",
+    "/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface:srv/Velocities.idl"
   ],
   "ros_interface_dependencies": [
     "geometry_msgs:/opt/ros/foxy/share/geometry_msgs/msg/Accel.idl",
@@ -77,9 +77,9 @@
     "/opt/ros/foxy/share/rosidl_typesupport_c/resource/idl__type_support.cpp.em",
     "/opt/ros/foxy/share/rosidl_typesupport_c/resource/msg__type_support.cpp.em",
     "/opt/ros/foxy/share/rosidl_typesupport_c/resource/srv__type_support.cpp.em",
-    "/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface/msg/WantedVelocities.idl",
-    "/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface/msg/ViconInfo.idl",
-    "/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface/srv/Velocities.idl",
+    "/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface/msg/WantedVelocities.idl",
+    "/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface/msg/ViconInfo.idl",
+    "/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface/srv/Velocities.idl",
     "/opt/ros/foxy/share/geometry_msgs/msg/Accel.idl",
     "/opt/ros/foxy/share/geometry_msgs/msg/AccelStamped.idl",
     "/opt/ros/foxy/share/geometry_msgs/msg/AccelWithCovariance.idl",

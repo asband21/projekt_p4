@@ -1,8 +1,8 @@
 {
   "package_name": "costom_interface",
   "non_idl_tuples": [
-    "/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface:msg/WantedVelocities.msg",
-    "/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface:msg/ViconInfo.msg",
-    "/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface:srv/Velocities.srv"
+    "/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface:msg/WantedVelocities.msg",
+    "/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface:msg/ViconInfo.msg",
+    "/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface:srv/Velocities.srv"
   ]
 }

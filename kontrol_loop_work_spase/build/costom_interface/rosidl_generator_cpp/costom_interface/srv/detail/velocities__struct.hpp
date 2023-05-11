@@ -140,6 +140,12 @@ using Velocities_Request =
 }  // namespace costom_interface
 
 
+// Include directives for member types
+// Member 'error_velocity'
+// Member 'error_position'
+// already included above
+// #include "geometry_msgs/msg/detail/twist__struct.hpp"
+
 #ifndef _WIN32
 # define DEPRECATED__costom_interface__srv__Velocities_Response __attribute__((deprecated))
 #else
@@ -159,34 +165,38 @@ struct Velocities_Response_
   using Type = Velocities_Response_<ContainerAllocator>;
 
   explicit Velocities_Response_(rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+  : error_velocity(_init),
+    error_position(_init)
   {
-    if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
-      rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
-    {
-      this->success = false;
-    }
+    (void)_init;
   }
 
   explicit Velocities_Response_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+  : error_velocity(_alloc, _init),
+    error_position(_alloc, _init)
   {
-    (void)_alloc;
-    if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
-      rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
-    {
-      this->success = false;
-    }
+    (void)_init;
   }
 
   // field types and members
-  using _success_type =
-    bool;
-  _success_type success;
+  using _error_velocity_type =
+    geometry_msgs::msg::Twist_<ContainerAllocator>;
+  _error_velocity_type error_velocity;
+  using _error_position_type =
+    geometry_msgs::msg::Twist_<ContainerAllocator>;
+  _error_position_type error_position;
 
   // setters for named parameter idiom
-  Type & set__success(
-    const bool & _arg)
+  Type & set__error_velocity(
+    const geometry_msgs::msg::Twist_<ContainerAllocator> & _arg)
   {
-    this->success = _arg;
+    this->error_velocity = _arg;
+    return *this;
+  }
+  Type & set__error_position(
+    const geometry_msgs::msg::Twist_<ContainerAllocator> & _arg)
+  {
+    this->error_position = _arg;
     return *this;
   }
 
@@ -232,7 +242,10 @@ struct Velocities_Response_
   // comparison operators
   bool operator==(const Velocities_Response_ & other) const
   {
-    if (this->success != other.success) {
+    if (this->error_velocity != other.error_velocity) {
+      return false;
+    }
+    if (this->error_position != other.error_position) {
       return false;
     }
     return true;

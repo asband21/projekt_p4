@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface
+CMAKE_SOURCE_DIR = /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface
+CMAKE_BINARY_DIR = /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,14 +137,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface && $(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/CMakeFiles /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/costom_interface__py/CMakeFiles/progress.marks
-	cd /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface && $(MAKE) -f CMakeFiles/Makefile2 costom_interface__py/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/CMakeFiles 0
+	cd /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface && $(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/CMakeFiles /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/costom_interface__py/CMakeFiles/progress.marks
+	cd /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface && $(MAKE) -f CMakeFiles/Makefile2 costom_interface__py/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface && $(MAKE) -f CMakeFiles/Makefile2 costom_interface__py/clean
+	cd /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface && $(MAKE) -f CMakeFiles/Makefile2 costom_interface__py/clean
 .PHONY : clean
 
 # The main clean target
@@ -154,22 +154,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface && $(MAKE) -f CMakeFiles/Makefile2 costom_interface__py/preinstall
+	cd /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface && $(MAKE) -f CMakeFiles/Makefile2 costom_interface__py/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface && $(MAKE) -f CMakeFiles/Makefile2 costom_interface__py/preinstall
+	cd /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface && $(MAKE) -f CMakeFiles/Makefile2 costom_interface__py/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 costom_interface__py/CMakeFiles/costom_interface__py.dir/rule:
-	cd /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface && $(MAKE) -f CMakeFiles/Makefile2 costom_interface__py/CMakeFiles/costom_interface__py.dir/rule
+	cd /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface && $(MAKE) -f CMakeFiles/Makefile2 costom_interface__py/CMakeFiles/costom_interface__py.dir/rule
 .PHONY : costom_interface__py/CMakeFiles/costom_interface__py.dir/rule
 
 # Convenience name for target.
@@ -179,7 +179,7 @@ costom_interface__py: costom_interface__py/CMakeFiles/costom_interface__py.dir/r
 
 # fast build rule for target.
 costom_interface__py/fast:
-	cd /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface && $(MAKE) -f costom_interface__py/CMakeFiles/costom_interface__py.dir/build.make costom_interface__py/CMakeFiles/costom_interface__py.dir/build
+	cd /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface && $(MAKE) -f costom_interface__py/CMakeFiles/costom_interface__py.dir/build.make costom_interface__py/CMakeFiles/costom_interface__py.dir/build
 .PHONY : costom_interface__py/fast
 
 # Help Target
@@ -207,6 +207,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -169,16 +169,31 @@ void Velocities_Response_fini_function(void * message_memory)
   typed_message->~Velocities_Response();
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember Velocities_Response_message_member_array[1] = {
+static const ::rosidl_typesupport_introspection_cpp::MessageMember Velocities_Response_message_member_array[2] = {
   {
-    "success",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_BOOLEAN,  // type
+    "error_velocity",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_MESSAGE,  // type
     0,  // upper bound of string
-    nullptr,  // members of sub message
+    ::rosidl_typesupport_introspection_cpp::get_message_type_support_handle<geometry_msgs::msg::Twist>(),  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(costom_interface::srv::Velocities_Response, success),  // bytes offset in struct
+    offsetof(costom_interface::srv::Velocities_Response, error_velocity),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "error_position",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_MESSAGE,  // type
+    0,  // upper bound of string
+    ::rosidl_typesupport_introspection_cpp::get_message_type_support_handle<geometry_msgs::msg::Twist>(),  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(costom_interface::srv::Velocities_Response, error_position),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer
@@ -190,7 +205,7 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember Velocities_Re
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers Velocities_Response_message_members = {
   "costom_interface::srv",  // message namespace
   "Velocities_Response",  // message name
-  1,  // number of fields
+  2,  // number of fields
   sizeof(costom_interface::srv::Velocities_Response),
   Velocities_Response_message_member_array,  // message members
   Velocities_Response_init_function,  // function to initialize message memory (memory has to be allocated)

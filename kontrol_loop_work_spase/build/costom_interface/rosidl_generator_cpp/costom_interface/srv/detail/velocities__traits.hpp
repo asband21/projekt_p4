@@ -44,6 +44,12 @@ struct is_message<costom_interface::srv::Velocities_Request>
 
 }  // namespace rosidl_generator_traits
 
+// Include directives for member types
+// Member 'error_velocity'
+// Member 'error_position'
+// already included above
+// #include "geometry_msgs/msg/detail/twist__traits.hpp"
+
 namespace rosidl_generator_traits
 {
 
@@ -61,11 +67,11 @@ inline const char * name<costom_interface::srv::Velocities_Response>()
 
 template<>
 struct has_fixed_size<costom_interface::srv::Velocities_Response>
-  : std::integral_constant<bool, true> {};
+  : std::integral_constant<bool, has_fixed_size<geometry_msgs::msg::Twist>::value> {};
 
 template<>
 struct has_bounded_size<costom_interface::srv::Velocities_Response>
-  : std::integral_constant<bool, true> {};
+  : std::integral_constant<bool, has_bounded_size<geometry_msgs::msg::Twist>::value> {};
 
 template<>
 struct is_message<costom_interface::srv::Velocities_Response>

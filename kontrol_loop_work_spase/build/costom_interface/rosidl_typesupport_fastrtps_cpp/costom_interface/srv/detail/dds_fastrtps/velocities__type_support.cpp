@@ -278,6 +278,52 @@ ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_fastrtps_cp
 
 
 // forward declaration of message dependencies and their conversion functions
+namespace geometry_msgs
+{
+namespace msg
+{
+namespace typesupport_fastrtps_cpp
+{
+bool cdr_serialize(
+  const geometry_msgs::msg::Twist &,
+  eprosima::fastcdr::Cdr &);
+bool cdr_deserialize(
+  eprosima::fastcdr::Cdr &,
+  geometry_msgs::msg::Twist &);
+size_t get_serialized_size(
+  const geometry_msgs::msg::Twist &,
+  size_t current_alignment);
+size_t
+max_serialized_size_Twist(
+  bool & full_bounded,
+  size_t current_alignment);
+}  // namespace typesupport_fastrtps_cpp
+}  // namespace msg
+}  // namespace geometry_msgs
+
+namespace geometry_msgs
+{
+namespace msg
+{
+namespace typesupport_fastrtps_cpp
+{
+bool cdr_serialize(
+  const geometry_msgs::msg::Twist &,
+  eprosima::fastcdr::Cdr &);
+bool cdr_deserialize(
+  eprosima::fastcdr::Cdr &,
+  geometry_msgs::msg::Twist &);
+size_t get_serialized_size(
+  const geometry_msgs::msg::Twist &,
+  size_t current_alignment);
+size_t
+max_serialized_size_Twist(
+  bool & full_bounded,
+  size_t current_alignment);
+}  // namespace typesupport_fastrtps_cpp
+}  // namespace msg
+}  // namespace geometry_msgs
+
 
 namespace costom_interface
 {
@@ -294,8 +340,14 @@ cdr_serialize(
   const costom_interface::srv::Velocities_Response & ros_message,
   eprosima::fastcdr::Cdr & cdr)
 {
-  // Member: success
-  cdr << (ros_message.success ? true : false);
+  // Member: error_velocity
+  geometry_msgs::msg::typesupport_fastrtps_cpp::cdr_serialize(
+    ros_message.error_velocity,
+    cdr);
+  // Member: error_position
+  geometry_msgs::msg::typesupport_fastrtps_cpp::cdr_serialize(
+    ros_message.error_position,
+    cdr);
   return true;
 }
 
@@ -305,12 +357,13 @@ cdr_deserialize(
   eprosima::fastcdr::Cdr & cdr,
   costom_interface::srv::Velocities_Response & ros_message)
 {
-  // Member: success
-  {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message.success = tmp ? true : false;
-  }
+  // Member: error_velocity
+  geometry_msgs::msg::typesupport_fastrtps_cpp::cdr_deserialize(
+    cdr, ros_message.error_velocity);
+
+  // Member: error_position
+  geometry_msgs::msg::typesupport_fastrtps_cpp::cdr_deserialize(
+    cdr, ros_message.error_position);
 
   return true;
 }
@@ -328,12 +381,16 @@ get_serialized_size(
   (void)padding;
   (void)wchar_size;
 
-  // Member: success
-  {
-    size_t item_size = sizeof(ros_message.success);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
+  // Member: error_velocity
+
+  current_alignment +=
+    geometry_msgs::msg::typesupport_fastrtps_cpp::get_serialized_size(
+    ros_message.error_velocity, current_alignment);
+  // Member: error_position
+
+  current_alignment +=
+    geometry_msgs::msg::typesupport_fastrtps_cpp::get_serialized_size(
+    ros_message.error_position, current_alignment);
 
   return current_alignment - initial_alignment;
 }
@@ -353,11 +410,28 @@ max_serialized_size_Velocities_Response(
   (void)full_bounded;
 
 
-  // Member: success
+  // Member: error_velocity
   {
     size_t array_size = 1;
 
-    current_alignment += array_size * sizeof(uint8_t);
+
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment +=
+        geometry_msgs::msg::typesupport_fastrtps_cpp::max_serialized_size_Twist(
+        full_bounded, current_alignment);
+    }
+  }
+
+  // Member: error_position
+  {
+    size_t array_size = 1;
+
+
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment +=
+        geometry_msgs::msg::typesupport_fastrtps_cpp::max_serialized_size_Twist(
+        full_bounded, current_alignment);
+    }
   }
 
   return current_alignment - initial_alignment;

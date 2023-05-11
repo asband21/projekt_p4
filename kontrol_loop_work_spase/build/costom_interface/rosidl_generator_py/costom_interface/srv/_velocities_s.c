@@ -149,6 +149,14 @@ PyObject * costom_interface__srv__velocities__request__convert_to_py(void * raw_
 // already included above
 // #include "costom_interface/srv/detail/velocities__functions.h"
 
+ROSIDL_GENERATOR_C_IMPORT
+bool geometry_msgs__msg__twist__convert_from_py(PyObject * _pymsg, void * _ros_message);
+ROSIDL_GENERATOR_C_IMPORT
+PyObject * geometry_msgs__msg__twist__convert_to_py(void * raw_ros_message);
+ROSIDL_GENERATOR_C_IMPORT
+bool geometry_msgs__msg__twist__convert_from_py(PyObject * _pymsg, void * _ros_message);
+ROSIDL_GENERATOR_C_IMPORT
+PyObject * geometry_msgs__msg__twist__convert_to_py(void * raw_ros_message);
 
 ROSIDL_GENERATOR_C_EXPORT
 bool costom_interface__srv__velocities__response__convert_from_py(PyObject * _pymsg, void * _ros_message)
@@ -183,13 +191,26 @@ bool costom_interface__srv__velocities__response__convert_from_py(PyObject * _py
     assert(strncmp("costom_interface.srv._velocities.Velocities_Response", full_classname_dest, 52) == 0);
   }
   costom_interface__srv__Velocities_Response * ros_message = _ros_message;
-  {  // success
-    PyObject * field = PyObject_GetAttrString(_pymsg, "success");
+  {  // error_velocity
+    PyObject * field = PyObject_GetAttrString(_pymsg, "error_velocity");
     if (!field) {
       return false;
     }
-    assert(PyBool_Check(field));
-    ros_message->success = (Py_True == field);
+    if (!geometry_msgs__msg__twist__convert_from_py(field, &ros_message->error_velocity)) {
+      Py_DECREF(field);
+      return false;
+    }
+    Py_DECREF(field);
+  }
+  {  // error_position
+    PyObject * field = PyObject_GetAttrString(_pymsg, "error_position");
+    if (!field) {
+      return false;
+    }
+    if (!geometry_msgs__msg__twist__convert_from_py(field, &ros_message->error_position)) {
+      Py_DECREF(field);
+      return false;
+    }
     Py_DECREF(field);
   }
 
@@ -214,11 +235,28 @@ PyObject * costom_interface__srv__velocities__response__convert_to_py(void * raw
     }
   }
   costom_interface__srv__Velocities_Response * ros_message = (costom_interface__srv__Velocities_Response *)raw_ros_message;
-  {  // success
+  {  // error_velocity
     PyObject * field = NULL;
-    field = PyBool_FromLong(ros_message->success ? 1 : 0);
+    field = geometry_msgs__msg__twist__convert_to_py(&ros_message->error_velocity);
+    if (!field) {
+      return NULL;
+    }
     {
-      int rc = PyObject_SetAttrString(_pymessage, "success", field);
+      int rc = PyObject_SetAttrString(_pymessage, "error_velocity", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
+  }
+  {  // error_position
+    PyObject * field = NULL;
+    field = geometry_msgs__msg__twist__convert_to_py(&ros_message->error_position);
+    if (!field) {
+      return NULL;
+    }
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "error_position", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

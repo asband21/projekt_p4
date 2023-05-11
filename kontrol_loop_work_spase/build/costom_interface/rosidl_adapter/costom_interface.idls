@@ -1,3 +1,3 @@
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface:msg/WantedVelocities.idl
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface:msg/ViconInfo.idl
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface:srv/Velocities.idl
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface:msg/WantedVelocities.idl
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface:msg/ViconInfo.idl
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_adapter/costom_interface:srv/Velocities.idl

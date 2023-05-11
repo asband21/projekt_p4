@@ -43,19 +43,19 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface
+CMAKE_SOURCE_DIR = /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface
+CMAKE_BINARY_DIR = /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface
 
 # Utility rule file for costom_interface.
 
 # Include the progress variables for this target.
 include CMakeFiles/costom_interface.dir/progress.make
 
-CMakeFiles/costom_interface: /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface/msg/WantedVelocities.msg
-CMakeFiles/costom_interface: /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface/msg/ViconInfo.msg
-CMakeFiles/costom_interface: /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface/srv/Velocities.srv
+CMakeFiles/costom_interface: /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface/msg/WantedVelocities.msg
+CMakeFiles/costom_interface: /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface/msg/ViconInfo.msg
+CMakeFiles/costom_interface: /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface/srv/Velocities.srv
 CMakeFiles/costom_interface: rosidl_cmake/srv/Velocities_Request.msg
 CMakeFiles/costom_interface: rosidl_cmake/srv/Velocities_Response.msg
 CMakeFiles/costom_interface: /opt/ros/foxy/share/geometry_msgs/msg/Accel.idl
@@ -104,6 +104,6 @@ CMakeFiles/costom_interface.dir/clean:
 .PHONY : CMakeFiles/costom_interface.dir/clean
 
 CMakeFiles/costom_interface.dir/depend:
-	cd /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/CMakeFiles/costom_interface.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/CMakeFiles/costom_interface.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/costom_interface.dir/depend
 

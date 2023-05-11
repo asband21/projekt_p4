@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface
+CMAKE_SOURCE_DIR = /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface
+CMAKE_BINARY_DIR = /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface
 
 # Utility rule file for uninstall.
 
@@ -67,6 +67,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

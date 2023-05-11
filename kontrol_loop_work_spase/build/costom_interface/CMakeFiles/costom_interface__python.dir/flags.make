@@ -6,5 +6,5 @@ C_FLAGS = -fPIC   -Wall -Wextra
 
 C_DEFINES = -DRCUTILS_ENABLE_FAULT_INJECTION -DROS_PACKAGE_NAME=\"costom_interface\" -Dcostom_interface__python_EXPORTS
 
-C_INCLUDES = -I/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c -I/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py -I/usr/include/python3.8 -I/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_typesupport_c -isystem /opt/ros/foxy/include 
+C_INCLUDES = -I/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c -I/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py -I/usr/include/python3.8 -I/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_typesupport_c -isystem /opt/ros/foxy/include 
 

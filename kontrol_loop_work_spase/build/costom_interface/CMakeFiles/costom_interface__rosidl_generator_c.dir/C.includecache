@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/vicon_info__functions.c
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/vicon_info__functions.c
 costom_interface/msg/detail/vicon_info__functions.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/costom_interface/msg/detail/vicon_info__functions.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/costom_interface/msg/detail/vicon_info__functions.h
 assert.h
 -
 stdbool.h
@@ -18,13 +18,13 @@ stdlib.h
 string.h
 -
 rcutils/allocator.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/rcutils/allocator.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/rcutils/allocator.h
 geometry_msgs/msg/detail/twist__functions.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/geometry_msgs/msg/detail/twist__functions.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/geometry_msgs/msg/detail/twist__functions.h
 
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/wanted_velocities__functions.c
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/wanted_velocities__functions.c
 costom_interface/msg/detail/wanted_velocities__functions.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/costom_interface/msg/detail/wanted_velocities__functions.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/costom_interface/msg/detail/wanted_velocities__functions.h
 assert.h
 -
 stdbool.h
@@ -34,15 +34,15 @@ stdlib.h
 string.h
 -
 rcutils/allocator.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/rcutils/allocator.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/rcutils/allocator.h
 rosidl_runtime_c/string_functions.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/rosidl_runtime_c/string_functions.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/rosidl_runtime_c/string_functions.h
 geometry_msgs/msg/detail/point__functions.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/geometry_msgs/msg/detail/point__functions.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/msg/detail/geometry_msgs/msg/detail/point__functions.h
 
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/srv/detail/velocities__functions.c
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/srv/detail/velocities__functions.c
 costom_interface/srv/detail/velocities__functions.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/srv/detail/costom_interface/srv/detail/velocities__functions.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/srv/detail/costom_interface/srv/detail/velocities__functions.h
 assert.h
 -
 stdbool.h
@@ -52,9 +52,9 @@ stdlib.h
 string.h
 -
 rcutils/allocator.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/srv/detail/rcutils/allocator.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/srv/detail/rcutils/allocator.h
 geometry_msgs/msg/detail/twist__functions.h
-/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/srv/detail/geometry_msgs/msg/detail/twist__functions.h
+/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_c/costom_interface/srv/detail/geometry_msgs/msg/detail/twist__functions.h
 
 /opt/ros/foxy/include/geometry_msgs/msg/detail/point__functions.h
 stdbool.h

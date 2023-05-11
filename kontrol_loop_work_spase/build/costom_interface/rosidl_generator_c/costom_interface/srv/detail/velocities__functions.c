@@ -265,13 +265,28 @@ costom_interface__srv__Velocities_Request__Sequence__copy(
 }
 
 
+// Include directives for member types
+// Member `error_velocity`
+// Member `error_position`
+// already included above
+// #include "geometry_msgs/msg/detail/twist__functions.h"
+
 bool
 costom_interface__srv__Velocities_Response__init(costom_interface__srv__Velocities_Response * msg)
 {
   if (!msg) {
     return false;
   }
-  // success
+  // error_velocity
+  if (!geometry_msgs__msg__Twist__init(&msg->error_velocity)) {
+    costom_interface__srv__Velocities_Response__fini(msg);
+    return false;
+  }
+  // error_position
+  if (!geometry_msgs__msg__Twist__init(&msg->error_position)) {
+    costom_interface__srv__Velocities_Response__fini(msg);
+    return false;
+  }
   return true;
 }
 
@@ -281,7 +296,10 @@ costom_interface__srv__Velocities_Response__fini(costom_interface__srv__Velociti
   if (!msg) {
     return;
   }
-  // success
+  // error_velocity
+  geometry_msgs__msg__Twist__fini(&msg->error_velocity);
+  // error_position
+  geometry_msgs__msg__Twist__fini(&msg->error_position);
 }
 
 bool
@@ -290,8 +308,16 @@ costom_interface__srv__Velocities_Response__are_equal(const costom_interface__sr
   if (!lhs || !rhs) {
     return false;
   }
-  // success
-  if (lhs->success != rhs->success) {
+  // error_velocity
+  if (!geometry_msgs__msg__Twist__are_equal(
+      &(lhs->error_velocity), &(rhs->error_velocity)))
+  {
+    return false;
+  }
+  // error_position
+  if (!geometry_msgs__msg__Twist__are_equal(
+      &(lhs->error_position), &(rhs->error_position)))
+  {
     return false;
   }
   return true;
@@ -305,8 +331,18 @@ costom_interface__srv__Velocities_Response__copy(
   if (!input || !output) {
     return false;
   }
-  // success
-  output->success = input->success;
+  // error_velocity
+  if (!geometry_msgs__msg__Twist__copy(
+      &(input->error_velocity), &(output->error_velocity)))
+  {
+    return false;
+  }
+  // error_position
+  if (!geometry_msgs__msg__Twist__copy(
+      &(input->error_position), &(output->error_position)))
+  {
+    return false;
+  }
   return true;
 }
 

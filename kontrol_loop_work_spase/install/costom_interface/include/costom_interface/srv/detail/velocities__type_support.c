@@ -125,6 +125,16 @@ ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspecti
 // #include "costom_interface/srv/detail/velocities__struct.h"
 
 
+// Include directives for member types
+// Member `error_velocity`
+// Member `error_position`
+// already included above
+// #include "geometry_msgs/msg/twist.h"
+// Member `error_velocity`
+// Member `error_position`
+// already included above
+// #include "geometry_msgs/msg/detail/twist__rosidl_typesupport_introspection_c.h"
+
 #ifdef __cplusplus
 extern "C"
 {
@@ -144,16 +154,31 @@ void Velocities_Response__rosidl_typesupport_introspection_c__Velocities_Respons
   costom_interface__srv__Velocities_Response__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember Velocities_Response__rosidl_typesupport_introspection_c__Velocities_Response_message_member_array[1] = {
+static rosidl_typesupport_introspection_c__MessageMember Velocities_Response__rosidl_typesupport_introspection_c__Velocities_Response_message_member_array[2] = {
   {
-    "success",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_BOOLEAN,  // type
+    "error_velocity",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_MESSAGE,  // type
     0,  // upper bound of string
-    NULL,  // members of sub message
+    NULL,  // members of sub message (initialized later)
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(costom_interface__srv__Velocities_Response, success),  // bytes offset in struct
+    offsetof(costom_interface__srv__Velocities_Response, error_velocity),  // bytes offset in struct
+    NULL,  // default value
+    NULL,  // size() function pointer
+    NULL,  // get_const(index) function pointer
+    NULL,  // get(index) function pointer
+    NULL  // resize(index) function pointer
+  },
+  {
+    "error_position",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_MESSAGE,  // type
+    0,  // upper bound of string
+    NULL,  // members of sub message (initialized later)
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(costom_interface__srv__Velocities_Response, error_position),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -165,7 +190,7 @@ static rosidl_typesupport_introspection_c__MessageMember Velocities_Response__ro
 static const rosidl_typesupport_introspection_c__MessageMembers Velocities_Response__rosidl_typesupport_introspection_c__Velocities_Response_message_members = {
   "costom_interface__srv",  // message namespace
   "Velocities_Response",  // message name
-  1,  // number of fields
+  2,  // number of fields
   sizeof(costom_interface__srv__Velocities_Response),
   Velocities_Response__rosidl_typesupport_introspection_c__Velocities_Response_message_member_array,  // message members
   Velocities_Response__rosidl_typesupport_introspection_c__Velocities_Response_init_function,  // function to initialize message memory (memory has to be allocated)
@@ -183,6 +208,10 @@ static rosidl_message_type_support_t Velocities_Response__rosidl_typesupport_int
 ROSIDL_TYPESUPPORT_INTROSPECTION_C_EXPORT_costom_interface
 const rosidl_message_type_support_t *
 ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, costom_interface, srv, Velocities_Response)() {
+  Velocities_Response__rosidl_typesupport_introspection_c__Velocities_Response_message_member_array[0].members_ =
+    ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, geometry_msgs, msg, Twist)();
+  Velocities_Response__rosidl_typesupport_introspection_c__Velocities_Response_message_member_array[1].members_ =
+    ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, geometry_msgs, msg, Twist)();
   if (!Velocities_Response__rosidl_typesupport_introspection_c__Velocities_Response_message_type_support_handle.typesupport_identifier) {
     Velocities_Response__rosidl_typesupport_introspection_c__Velocities_Response_message_type_support_handle.typesupport_identifier =
       rosidl_typesupport_introspection_c__identifier;

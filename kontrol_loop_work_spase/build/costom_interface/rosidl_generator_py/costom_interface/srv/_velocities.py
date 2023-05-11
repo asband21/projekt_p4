@@ -187,6 +187,10 @@ class Metaclass_Velocities_Response(type):
             cls._TYPE_SUPPORT = module.type_support_msg__srv__velocities__response
             cls._DESTROY_ROS_MESSAGE = module.destroy_ros_message_msg__srv__velocities__response
 
+            from geometry_msgs.msg import Twist
+            if Twist.__class__._TYPE_SUPPORT is None:
+                Twist.__class__.__import_type_support__()
+
     @classmethod
     def __prepare__(cls, name, bases, **kwargs):
         # list constant names here so that they appear in the help text of
@@ -200,22 +204,28 @@ class Velocities_Response(metaclass=Metaclass_Velocities_Response):
     """Message class 'Velocities_Response'."""
 
     __slots__ = [
-        '_success',
+        '_error_velocity',
+        '_error_position',
     ]
 
     _fields_and_field_types = {
-        'success': 'boolean',
+        'error_velocity': 'geometry_msgs/Twist',
+        'error_position': 'geometry_msgs/Twist',
     }
 
     SLOT_TYPES = (
-        rosidl_parser.definition.BasicType('boolean'),  # noqa: E501
+        rosidl_parser.definition.NamespacedType(['geometry_msgs', 'msg'], 'Twist'),  # noqa: E501
+        rosidl_parser.definition.NamespacedType(['geometry_msgs', 'msg'], 'Twist'),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
         assert all('_' + key in self.__slots__ for key in kwargs.keys()), \
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
-        self.success = kwargs.get('success', bool())
+        from geometry_msgs.msg import Twist
+        self.error_velocity = kwargs.get('error_velocity', Twist())
+        from geometry_msgs.msg import Twist
+        self.error_position = kwargs.get('error_position', Twist())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -246,7 +256,9 @@ class Velocities_Response(metaclass=Metaclass_Velocities_Response):
     def __eq__(self, other):
         if not isinstance(other, self.__class__):
             return False
-        if self.success != other.success:
+        if self.error_velocity != other.error_velocity:
+            return False
+        if self.error_position != other.error_position:
             return False
         return True
 
@@ -256,17 +268,32 @@ class Velocities_Response(metaclass=Metaclass_Velocities_Response):
         return copy(cls._fields_and_field_types)
 
     @property
-    def success(self):
-        """Message field 'success'."""
-        return self._success
+    def error_velocity(self):
+        """Message field 'error_velocity'."""
+        return self._error_velocity
 
-    @success.setter
-    def success(self, value):
+    @error_velocity.setter
+    def error_velocity(self, value):
         if __debug__:
+            from geometry_msgs.msg import Twist
             assert \
-                isinstance(value, bool), \
-                "The 'success' field must be of type 'bool'"
-        self._success = value
+                isinstance(value, Twist), \
+                "The 'error_velocity' field must be a sub message of type 'Twist'"
+        self._error_velocity = value
+
+    @property
+    def error_position(self):
+        """Message field 'error_position'."""
+        return self._error_position
+
+    @error_position.setter
+    def error_position(self, value):
+        if __debug__:
+            from geometry_msgs.msg import Twist
+            assert \
+                isinstance(value, Twist), \
+                "The 'error_position' field must be a sub message of type 'Twist'"
+        self._error_position = value
 
 
 class Metaclass_Velocities(type):

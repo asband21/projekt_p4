@@ -48,12 +48,19 @@ class MinimalService(Node):
         print("velocity : ", velocity)
         
         req_pos = self.step_pos()
-        respons.error_velocity = Twist()
+        req_vel = self.step_vel()
+
         #respons = Velocities()
-        respons.position.linear.x = req_pos[0] 
-        respons.position.linear.y = req_pos[1] 
-        respons.position.linear.z = req_pos[2] 
-        respons.position.angular.z = req_pos[3]    
+        respons.error_position.linear.x =  float(req_pos[0])
+        respons.error_position.linear.y =  float(req_pos[1]) 
+        respons.error_position.linear.z =  float(req_pos[2]) 
+        respons.error_position.angular.z = float(req_pos[3])    
+
+
+        respons.error_velocity.linear.x =  float(req_vel[0]) 
+        respons.error_velocity.linear.y =  float(req_vel[1]) 
+        respons.error_velocity.linear.z =  float(req_vel[2]) 
+        respons.error_velocity.angular.z = float(req_vel[3]) 
 
         #respons.error_position.linear.x = req_pos[0] 
         #respons.error_velocity = self.step_vel()

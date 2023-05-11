@@ -42,10 +42,17 @@ typedef struct costom_interface__srv__Velocities_Request__Sequence
 
 // Constants defined in the message
 
+// Include directives for member types
+// Member 'error_velocity'
+// Member 'error_position'
+// already included above
+// #include "geometry_msgs/msg/detail/twist__struct.h"
+
 // Struct defined in srv/Velocities in the package costom_interface.
 typedef struct costom_interface__srv__Velocities_Response
 {
-  bool success;
+  geometry_msgs__msg__Twist error_velocity;
+  geometry_msgs__msg__Twist error_position;
 } costom_interface__srv__Velocities_Response;
 
 // Struct for a sequence of costom_interface__srv__Velocities_Response.

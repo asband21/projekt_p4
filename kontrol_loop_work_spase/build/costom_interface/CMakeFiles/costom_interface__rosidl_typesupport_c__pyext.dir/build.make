@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface
+CMAKE_SOURCE_DIR = /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface
+CMAKE_BINARY_DIR = /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface
 
 # Include any dependencies generated for this target.
 include CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/flags.make
 
 CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.o: CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/flags.make
 CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.o: rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.o   -c /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.o   -c /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c
 
 CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c > CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c > CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.i
 
 CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c -o CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c -o CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.s
 
 # Object files for target costom_interface__rosidl_typesupport_c__pyext
 costom_interface__rosidl_typesupport_c__pyext_OBJECTS = \
@@ -111,7 +111,7 @@ rosidl_generator_py/costom_interface/costom_interface_s__rosidl_typesupport_c.cp
 rosidl_generator_py/costom_interface/costom_interface_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so: /opt/ros/foxy/share/std_msgs/cmake/../../../lib/libstd_msgs__python.so
 rosidl_generator_py/costom_interface/costom_interface_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so: /opt/ros/foxy/share/builtin_interfaces/cmake/../../../lib/libbuiltin_interfaces__python.so
 rosidl_generator_py/costom_interface/costom_interface_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so: CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C shared library rosidl_generator_py/costom_interface/costom_interface_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C shared library rosidl_generator_py/costom_interface/costom_interface_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -124,6 +124,6 @@ CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/clean:
 .PHONY : CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/clean
 
 CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/depend:
-	cd /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/depend
 

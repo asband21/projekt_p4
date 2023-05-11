@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface
+CMAKE_SOURCE_DIR = /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface
+CMAKE_BINARY_DIR = /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface
 
 # Utility rule file for costom_interface__cpp.
 
@@ -146,8 +146,8 @@ rosidl_generator_cpp/costom_interface/msg/wanted_velocities.hpp: /opt/ros/foxy/s
 rosidl_generator_cpp/costom_interface/msg/wanted_velocities.hpp: /opt/ros/foxy/share/std_msgs/msg/UInt8MultiArray.idl
 rosidl_generator_cpp/costom_interface/msg/wanted_velocities.hpp: /opt/ros/foxy/share/builtin_interfaces/msg/Duration.idl
 rosidl_generator_cpp/costom_interface/msg/wanted_velocities.hpp: /opt/ros/foxy/share/builtin_interfaces/msg/Time.idl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code for ROS interfaces"
-	/usr/bin/python3 /opt/ros/foxy/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp --generator-arguments-file /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_cpp__arguments.json
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code for ROS interfaces"
+	/usr/bin/python3 /opt/ros/foxy/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp --generator-arguments-file /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/rosidl_generator_cpp__arguments.json
 
 rosidl_generator_cpp/costom_interface/msg/detail/wanted_velocities__builder.hpp: rosidl_generator_cpp/costom_interface/msg/wanted_velocities.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/costom_interface/msg/detail/wanted_velocities__builder.hpp
@@ -209,6 +209,6 @@ CMakeFiles/costom_interface__cpp.dir/clean:
 .PHONY : CMakeFiles/costom_interface__cpp.dir/clean
 
 CMakeFiles/costom_interface__cpp.dir/depend:
-	cd /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/CMakeFiles/costom_interface__cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/src/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/CMakeFiles/costom_interface__cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/costom_interface__cpp.dir/depend
 

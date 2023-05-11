@@ -1,8 +1,8 @@
-# Install script for directory: /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/build/costom_interface/costom_interface__py
+# Install script for directory: /home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/build/costom_interface/costom_interface__py
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/install/costom_interface")
+  set(CMAKE_INSTALL_PREFIX "/home/ubuntu/git/emil_udviklen/kontrol_loop_work_spase/install/costom_interface")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

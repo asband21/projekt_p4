@@ -277,8 +277,23 @@ extern "C"
 {
 #endif
 
+// already included above
+// #include "geometry_msgs/msg/detail/twist__functions.h"  // error_position, error_velocity
 
 // forward declare type support functions
+ROSIDL_TYPESUPPORT_FASTRTPS_C_IMPORT_costom_interface
+size_t get_serialized_size_geometry_msgs__msg__Twist(
+  const void * untyped_ros_message,
+  size_t current_alignment);
+
+ROSIDL_TYPESUPPORT_FASTRTPS_C_IMPORT_costom_interface
+size_t max_serialized_size_geometry_msgs__msg__Twist(
+  bool & full_bounded,
+  size_t current_alignment);
+
+ROSIDL_TYPESUPPORT_FASTRTPS_C_IMPORT_costom_interface
+const rosidl_message_type_support_t *
+  ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_fastrtps_c, geometry_msgs, msg, Twist)();
 
 
 using _Velocities_Response__ros_msg_type = costom_interface__srv__Velocities_Response;
@@ -292,9 +307,32 @@ static bool _Velocities_Response__cdr_serialize(
     return false;
   }
   const _Velocities_Response__ros_msg_type * ros_message = static_cast<const _Velocities_Response__ros_msg_type *>(untyped_ros_message);
-  // Field name: success
+  // Field name: error_velocity
   {
-    cdr << (ros_message->success ? true : false);
+    const message_type_support_callbacks_t * callbacks =
+      static_cast<const message_type_support_callbacks_t *>(
+      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+        rosidl_typesupport_fastrtps_c, geometry_msgs, msg, Twist
+      )()->data);
+    if (!callbacks->cdr_serialize(
+        &ros_message->error_velocity, cdr))
+    {
+      return false;
+    }
+  }
+
+  // Field name: error_position
+  {
+    const message_type_support_callbacks_t * callbacks =
+      static_cast<const message_type_support_callbacks_t *>(
+      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+        rosidl_typesupport_fastrtps_c, geometry_msgs, msg, Twist
+      )()->data);
+    if (!callbacks->cdr_serialize(
+        &ros_message->error_position, cdr))
+    {
+      return false;
+    }
   }
 
   return true;
@@ -309,11 +347,32 @@ static bool _Velocities_Response__cdr_deserialize(
     return false;
   }
   _Velocities_Response__ros_msg_type * ros_message = static_cast<_Velocities_Response__ros_msg_type *>(untyped_ros_message);
-  // Field name: success
+  // Field name: error_velocity
   {
-    uint8_t tmp;
-    cdr >> tmp;
-    ros_message->success = tmp ? true : false;
+    const message_type_support_callbacks_t * callbacks =
+      static_cast<const message_type_support_callbacks_t *>(
+      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+        rosidl_typesupport_fastrtps_c, geometry_msgs, msg, Twist
+      )()->data);
+    if (!callbacks->cdr_deserialize(
+        cdr, &ros_message->error_velocity))
+    {
+      return false;
+    }
+  }
+
+  // Field name: error_position
+  {
+    const message_type_support_callbacks_t * callbacks =
+      static_cast<const message_type_support_callbacks_t *>(
+      ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(
+        rosidl_typesupport_fastrtps_c, geometry_msgs, msg, Twist
+      )()->data);
+    if (!callbacks->cdr_deserialize(
+        cdr, &ros_message->error_position))
+    {
+      return false;
+    }
   }
 
   return true;
@@ -333,12 +392,14 @@ size_t get_serialized_size_costom_interface__srv__Velocities_Response(
   (void)padding;
   (void)wchar_size;
 
-  // field.name success
-  {
-    size_t item_size = sizeof(ros_message->success);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
+  // field.name error_velocity
+
+  current_alignment += get_serialized_size_geometry_msgs__msg__Twist(
+    &(ros_message->error_velocity), current_alignment);
+  // field.name error_position
+
+  current_alignment += get_serialized_size_geometry_msgs__msg__Twist(
+    &(ros_message->error_position), current_alignment);
 
   return current_alignment - initial_alignment;
 }
@@ -363,11 +424,27 @@ size_t max_serialized_size_costom_interface__srv__Velocities_Response(
   (void)wchar_size;
   (void)full_bounded;
 
-  // member: success
+  // member: error_velocity
   {
     size_t array_size = 1;
 
-    current_alignment += array_size * sizeof(uint8_t);
+
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment +=
+        max_serialized_size_geometry_msgs__msg__Twist(
+        full_bounded, current_alignment);
+    }
+  }
+  // member: error_position
+  {
+    size_t array_size = 1;
+
+
+    for (size_t index = 0; index < array_size; ++index) {
+      current_alignment +=
+        max_serialized_size_geometry_msgs__msg__Twist(
+        full_bounded, current_alignment);
+    }
   }
 
   return current_alignment - initial_alignment;

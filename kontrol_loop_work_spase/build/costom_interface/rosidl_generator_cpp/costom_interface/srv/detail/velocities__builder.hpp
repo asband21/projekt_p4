@@ -78,16 +78,32 @@ namespace srv
 namespace builder
 {
 
-class Init_Velocities_Response_success
+class Init_Velocities_Response_error_position
 {
 public:
-  Init_Velocities_Response_success()
+  explicit Init_Velocities_Response_error_position(::costom_interface::srv::Velocities_Response & msg)
+  : msg_(msg)
+  {}
+  ::costom_interface::srv::Velocities_Response error_position(::costom_interface::srv::Velocities_Response::_error_position_type arg)
+  {
+    msg_.error_position = std::move(arg);
+    return std::move(msg_);
+  }
+
+private:
+  ::costom_interface::srv::Velocities_Response msg_;
+};
+
+class Init_Velocities_Response_error_velocity
+{
+public:
+  Init_Velocities_Response_error_velocity()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  ::costom_interface::srv::Velocities_Response success(::costom_interface::srv::Velocities_Response::_success_type arg)
+  Init_Velocities_Response_error_position error_velocity(::costom_interface::srv::Velocities_Response::_error_velocity_type arg)
   {
-    msg_.success = std::move(arg);
-    return std::move(msg_);
+    msg_.error_velocity = std::move(arg);
+    return Init_Velocities_Response_error_position(msg_);
   }
 
 private:
@@ -105,7 +121,7 @@ template<>
 inline
 auto build<::costom_interface::srv::Velocities_Response>()
 {
-  return costom_interface::srv::builder::Init_Velocities_Response_success();
+  return costom_interface::srv::builder::Init_Velocities_Response_error_velocity();
 }
 
 }  // namespace costom_interface
