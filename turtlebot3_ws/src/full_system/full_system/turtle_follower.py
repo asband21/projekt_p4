@@ -122,7 +122,7 @@ class turtle_follower(Node):
 
 
 
-
+    #Rember to look at the state aging, depenon where the state changes
     def state_controller(self):
 
         while True:
@@ -142,6 +142,7 @@ class turtle_follower(Node):
 
             while True:
                 if self.state == "continue":
+                    self.state = "idle"
                     break
                 time.sleep(1/30)
 
@@ -154,6 +155,7 @@ class turtle_follower(Node):
 
             while True:
                 if self.state == "continue":
+                    self.state = "idle"
                     break
                 time.sleep(1/30)
         
