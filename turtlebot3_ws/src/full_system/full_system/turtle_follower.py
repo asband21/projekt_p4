@@ -108,6 +108,7 @@ class turtle_follower(Node):
         drive_distance = 1 # unit meters
 
         turn_time = forward_vel/drive_distance
+        self.get_logger().info("turn_time: " + str(turn_time))
 
         wheel.linear.x = forward_vel
 
