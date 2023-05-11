@@ -62,7 +62,7 @@ class turtle_follower(Node):
 
             turn_angle = np.pi/2 # unit rad
 
-            turn_time = turn_vel/turn_angle
+            turn_time = (1/turn_angle)/turn_vel
 
             wheel.angular.z = turn_vel
 
@@ -83,7 +83,7 @@ class turtle_follower(Node):
 
             turn_angle = np.pi # unit rad
 
-            turn_time = turn_vel/turn_angle
+            turn_time = (1/turn_angle)/turn_vel
 
             wheel.angular.z = turn_vel
 
@@ -107,7 +107,7 @@ class turtle_follower(Node):
 
         drive_distance = 1 # unit meters
 
-        turn_time = forward_vel/drive_distance
+        turn_time = (1/drive_distance)/ forward_vel
         self.get_logger().info("turn_time: " + str(turn_time))
 
         wheel.linear.x = forward_vel
