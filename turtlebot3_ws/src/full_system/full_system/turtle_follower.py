@@ -72,7 +72,7 @@ class turtle_follower(Node):
         # calculate the position of the object at each point along the trajectory
         # trajectory = 0
         # trajectory = c[0]*t**3 + c[1]*t**2 + c[2]*t + c[3]
-        velocity = 3*[0]*t**2 + 2*c[1]*t + c[2] 
+        velocity = 3*c[0]*t**2 + 2*c[1]*t + c[2] 
         # velocity.append((float(x), float(y), float(z), float(yaw)))
 
 
