@@ -127,7 +127,7 @@ class turtle_follower(Node):
             # wheel.angular.z = turn_vel
 
 
-            t,coeffecitents = self.calculate_trajectory(0,turn_angle,1)
+            t,coeffecitents = self.calculate_trajectory(0,turn_angle,turn_vel)
 
             start_time = time.time()
             current_time = time.time()
@@ -164,7 +164,7 @@ class turtle_follower(Node):
             # wheel.angular.z = turn_vel
 
 
-            t,coeffecitents = self.calculate_trajectory(0,turn_angle,1)
+            t,coeffecitents = self.calculate_trajectory(0,turn_angle,turn_vel)
 
             start_time = time.time()
             current_time = time.time()
@@ -213,7 +213,7 @@ class turtle_follower(Node):
         # # self.pub_turtle.publish(wheel)
         wheel = Twist()
 
-        drive_vel = 1.0 # unit rad/s
+        drive_vel = 0.2 # unit rad/s
 
         drive_distance = 1.0 # unit rad
 
@@ -222,7 +222,7 @@ class turtle_follower(Node):
         # wheel.angular.z = drive_vel
 
 
-        t,coeffecitents = self.calculate_trajectory(0,drive_distance,1)
+        t,coeffecitents = self.calculate_trajectory(0,drive_distance,drive_vel)
 
         start_time = time.time()
         current_time = time.time()
