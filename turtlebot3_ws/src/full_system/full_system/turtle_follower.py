@@ -26,6 +26,64 @@ class turtle_follower(Node):
         self.state_controller()
 
 
+
+    def calculate_trajectory(self,coord1, coord2, max_velocity=1):
+        """
+        Calculate the trajectory between two 1D coordinates with a maximum velocity of max_velocity.
+
+        Parameters:
+        coord1 (tuple): A tuple containing the x, y, z, and t coordinates of the starting point.
+        coord2 (tuple): A tuple containing the x, y, z, and t coordinates of the ending point.
+        max_velocity (float, optional): The maximum velocity of the object in meters per second. Defaults to 1.
+
+        Returns:
+        tuple: A tuple containing the time taken to travel the trajectory and the coordinates at each point along the trajectory.
+        """
+        distance = coord2 - coord1
+        time = distance / max_velocity
+        
+        # create the time vector and calculate the coefficients of the third degree polynomial
+        t = np.linspace(0, time, num=int(time)+1)
+        A = np.array([
+            [t[0]**3   , t[0]**2 , t[0] , 1],
+            [t[-1]**3  , t[-1]**2, t[-1], 1],
+            [3*t[0]**2 , 2*t[0]  , 1    , 0],
+            [3*t[-1]**2, 2*t[-1] , 1    , 0]
+        ])
+        b = np.array([coord1, coord2, 0, 0])
+        c = np.linalg.solve(A, b)
+        
+
+            
+        return (time, c)
+
+
+
+
+    def desired_vel(self, t, c):
+
+        # # calculate the position of the object at each point along the trajectory
+        # trajectory = []
+        # x = c[0,0]*t**3 + c[1,0]*t**2 + c[2,0]*t + c[3,0]
+        # y = c[0,1]*t**3 + c[1,1]*t**2 + c[2,1]*t + c[3,1]
+        # z = c[0,2]*t**3 + c[1,2]*t**2 + c[2,2]*t + c[3,2]
+        # trajectory.append((x, y, z, 0.0))
+
+        # calculate the position of the object at each point along the trajectory
+        # trajectory = 0
+        # trajectory = c[0]*t**3 + c[1]*t**2 + c[2]*t + c[3]
+        velocity = 3*[0]*t**2 + 2*c[1]*t + c[2] 
+        # velocity.append((float(x), float(y), float(z), float(yaw)))
+
+
+
+
+        return velocity
+
+
+
+
+
     def state_changer_callback(self,request,response):
         self.state = request.state
         if self.state == "continue":
@@ -64,68 +122,113 @@ class turtle_follower(Node):
 
             turn_time = (1/turn_angle)/turn_vel
 
-            wheel.angular.z = turn_vel
+            # wheel.angular.z = turn_vel
+
+
+            t,coeffecitents = self.calculate_trajectory(0,turn_angle,1)
 
             start_time = time.time()
             current_time = time.time()
-            while current_time-start_time > turn_time:
-                self.pub_turtle.publish(wheel)
-                current_time = time.time()
-                time.sleep(1/30)
 
-            wheel.angular.z = 0.0
-            self.pub_turtle.publish(wheel)
+            while current_time-start_time < t :
+
+                dt= current_time-start_time
+
+                vel = self.desired_vel(dt,coeffecitents)
+
+                wheel.angular.z = float(vel)
+                self.pub_turtle.publish(wheel)
+
+                time.sleep(1/30)
+                current_time = time.time()
+
+
+
             
         elif turn_way == "right":
             # turn right 180 degrees 
             wheel = Twist()
 
-            turn_vel = -1.0 # unit rad/s
+            turn_vel = 1.0 # unit rad/s
 
-            turn_angle = np.pi # unit rad
+            turn_angle = -np.pi # unit rad
 
             turn_time = (1/turn_angle)/turn_vel
 
-            wheel.angular.z = turn_vel
+            # wheel.angular.z = turn_vel
+
+
+            t,coeffecitents = self.calculate_trajectory(0,turn_angle,1)
 
             start_time = time.time()
             current_time = time.time()
-            while current_time-start_time > turn_time:
+
+            while current_time-start_time < t :
+
+                dt= current_time-start_time
+
+                vel = self.desired_vel(dt,coeffecitents)
+
+                wheel.angular.z = float(vel)
                 self.pub_turtle.publish(wheel)
-                current_time = time.time()
+
                 time.sleep(1/30)
-
-
-            wheel.angular.z = 0.0
-            self.pub_turtle.publish(wheel)
+                current_time = time.time()
             
 
 
 
     def drive_stright(self):
         # drive 1 meter
+        # # wheel = Twist()
+
+        # # forward_vel = 0.2 # unit m/s
+
+        # # drive_distance = 1 # unit meters
+
+        # # drive_time = (1/drive_distance)/ forward_vel
+        # # self.get_logger().info("drive_time: " + str(drive_time))
+
+        # # wheel.linear.x = forward_vel
+
+        # # start_time = time.time()
+        # # current_time = time.time()
+        # # while current_time-start_time < drive_time:
+        # #     self.get_logger().info("driving")
+        # #     self.pub_turtle.publish(wheel)
+        # #     current_time = time.time()
+        # #     time.sleep(1/30)
+
+
+        # # wheel.linear.x = 0.0
+        # # self.pub_turtle.publish(wheel)
         wheel = Twist()
 
-        forward_vel = 1.0 # unit m/s
+        drive_vel = 1.0 # unit rad/s
 
-        drive_distance = 1 # unit meters
+        drive_distance = 1.0 # unit rad
 
-        turn_time = (1/drive_distance)/ forward_vel
-        self.get_logger().info("turn_time: " + str(turn_time))
+        turn_time = (1/drive_distance)/drive_vel
 
-        wheel.linear.x = forward_vel
+        # wheel.angular.z = drive_vel
+
+
+        t,coeffecitents = self.calculate_trajectory(0,drive_distance,1)
 
         start_time = time.time()
         current_time = time.time()
-        while current_time-start_time < turn_time:
-            self.get_logger().info("driving")
+
+        while current_time-start_time < t :
+
+            dt= current_time-start_time
+
+            vel = self.desired_vel(dt,coeffecitents)
+
+            wheel.linear.x = float(vel)
             self.pub_turtle.publish(wheel)
-            current_time = time.time()
+
             time.sleep(1/30)
-
-
-        wheel.linear.x = 0.0
-        self.pub_turtle.publish(wheel)
+            current_time = time.time()
 
 
 
