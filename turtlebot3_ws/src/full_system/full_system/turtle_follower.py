@@ -125,8 +125,10 @@ class turtle_follower(Node):
     #Rember to look at the state aging, depenon where the state changes
     def state_controller(self):
 
+        self.get_logger().info("state_controller started")
         while True:
 
+            self.get_logger().info("state: " + self.state)
             if self.meters_driven > self.tarck_length:
                 break
 
@@ -161,6 +163,8 @@ class turtle_follower(Node):
         
             # turn left 90 degrees
             self.turn("left")
+        
+        self.get_logger().info("state_controller ended")
 
 
 
