@@ -109,7 +109,7 @@ class turtle_follower(Node):
 
         turn_time = forward_vel/drive_distance
 
-        wheel.linear.z = forward_vel
+        wheel.linear.x = forward_vel
 
         start_time = time.time()
         current_time = time.time()
@@ -118,7 +118,7 @@ class turtle_follower(Node):
             self.pub_turtle.publish(wheel)
             current_time = time.time()
 
-        wheel.linear.z = 0.0
+        wheel.linear.x = 0.0
         self.pub_turtle.publish(wheel)
 
 
