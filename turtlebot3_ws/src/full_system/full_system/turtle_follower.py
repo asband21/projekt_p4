@@ -114,6 +114,7 @@ class turtle_follower(Node):
         start_time = time.time()
         current_time = time.time()
         while current_time-start_time > turn_time:
+            self.get_logger().info("driving")
             self.pub_turtle.publish(wheel)
             current_time = time.time()
 
