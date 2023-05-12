@@ -9,6 +9,13 @@ import time
 import numpy as np
 
 
+from tf2_ros.buffer import Buffer
+from tf2_ros.transform_listener import TransformListener
+
+
+import tf_transformations as tf
+
+
 class turtle_follower(Node):
     def __init__(self):
         super().__init__("turtle_follower") 
@@ -16,6 +23,13 @@ class turtle_follower(Node):
         self.tarck_length = 5
         self.state = "idle"
         self.meters_driven = 0
+
+        self.drive_velocity = 0.2
+        self.turn_velocity = 1.0
+
+
+        self.tf_buffer = Buffer(rclpy.duration.Duration(seconds=1.0))
+        self.tf_listener = TransformListener(self.tf_buffer, self)
 
         self.node_turtle_follower = rclpy.create_node("node_turtle_follower")
 
@@ -116,36 +130,89 @@ class turtle_follower(Node):
 
         if turn_way == "left":
             # turn left 90 degrees
-            wheel = Twist()
 
-            turn_vel = 1.0 # unit rad/s
+            start_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time())
+
+            start_quat = [0,0,0,0]
+            start_quat[0] = start_transform.transform.rotation.x
+            start_quat[1] = start_transform.transform.rotation.y
+            start_quat[2] = start_transform.transform.rotation.z
+            start_quat[3] = start_transform.transform.rotation.w
+
+            start_zyz = tf.euler_from_quaternion(start_quat,axes='zyz')
+
+            start_yaw = start_zyz[0]
+
 
             turn_angle = np.pi/2 # unit rad
 
-            turn_time = (1/turn_angle)/turn_vel
-
-            # wheel.angular.z = turn_vel
 
 
-            t,coeffecitents = self.calculate_trajectory(0,turn_angle,turn_vel)
+            current_yaw = start_yaw
 
-            start_time = time.time()
-            current_time = time.time()
+            cmd_vel = Twist()
 
-            while current_time-start_time < t :
+            cmd_vel.angular.z = self.turn_velocity
+            self.pub_turtle.publish(cmd_vel)
 
-                dt= current_time-start_time
+            while abs(start_yaw-current_yaw) < turn_angle:
 
-                vel = self.desired_vel(dt,coeffecitents)
+                current_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time())
 
-                wheel.angular.z = float(vel)
-                self.pub_turtle.publish(wheel)
+                current_quat = [0,0,0,0]
+                current_quat[0] = current_transform.transform.rotation.x
+                current_quat[1] = current_transform.transform.rotation.y
+                current_quat[2] = current_transform.transform.rotation.z
+                current_quat[3] = current_transform.transform.rotation.w
 
+                current_zyz = tf.euler_from_quaternion(current_quat,axes='zyz')
+
+                current_yaw = current_zyz[2]
                 time.sleep(1/30)
-                current_time = time.time()
+
+            cmd_vel.angular.z = 0.0
+            self.pub_turtle.publish(cmd_vel)
+
+
+
+
+
+
+            # # # wheel = Twist()
+
             
-            wheel.angular.z = float(0)
-            self.pub_turtle.publish(wheel)
+
+            # # # turn_vel = 1.0 # unit rad/s
+
+            # # # turn_angle = np.pi/2 # unit rad
+
+            # # # turn_time = (1/turn_angle)/turn_vel
+
+            # # # # wheel.angular.z = turn_vel
+
+
+            # # # t,coeffecitents = self.calculate_trajectory(0,turn_angle,turn_vel)
+
+            # # # start_time = time.time()
+            # # # current_time = time.time()
+
+            # # # while current_time-start_time < t :
+
+            # # #     dt= current_time-start_time
+
+            # # #     vel = self.desired_vel(dt,coeffecitents)
+
+            # # #     wheel.angular.z = float(vel)
+            # # #     self.pub_turtle.publish(wheel)
+
+            # # #     time.sleep(1/30)
+            # # #     current_time = time.time()
+            
+            # # # wheel.angular.z = float(0)
+            # # # self.pub_turtle.publish(wheel)
+
+
+
 
 
 
@@ -153,42 +220,115 @@ class turtle_follower(Node):
             
         elif turn_way == "right":
             # turn right 180 degrees 
-            wheel = Twist()
-
-            turn_vel = 1.0 # unit rad/s
-
-            turn_angle = -np.pi # unit rad
-
-            turn_time = (1/turn_angle)/turn_vel
-
-            # wheel.angular.z = turn_vel
 
 
-            t,coeffecitents = self.calculate_trajectory(0,turn_angle,turn_vel)
+            start_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time())
 
-            start_time = time.time()
-            current_time = time.time()
+            start_quat = [0,0,0,0]
+            start_quat[0] = start_transform.transform.rotation.x
+            start_quat[1] = start_transform.transform.rotation.y
+            start_quat[2] = start_transform.transform.rotation.z
+            start_quat[3] = start_transform.transform.rotation.w
 
-            while current_time-start_time < t :
+            start_zyz = tf.euler_from_quaternion(start_quat,axes='zyz')
 
-                dt= current_time-start_time
+            start_yaw = start_zyz[0]
 
-                vel = self.desired_vel(dt,coeffecitents)
 
-                wheel.angular.z = float(vel)
-                self.pub_turtle.publish(wheel)
+            turn_angle = np.pi # unit rad
 
+
+
+            current_yaw = start_yaw
+
+            cmd_vel = Twist()
+
+            cmd_vel.angular.z = -self.turn_velocity
+            self.pub_turtle.publish(cmd_vel)
+
+            while abs(start_yaw-current_yaw) < turn_angle:
+
+                current_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time())
+
+                current_quat = [0,0,0,0]
+                current_quat[0] = current_transform.transform.rotation.x
+                current_quat[1] = current_transform.transform.rotation.y
+                current_quat[2] = current_transform.transform.rotation.z
+                current_quat[3] = current_transform.transform.rotation.w
+
+                current_zyz = tf.euler_from_quaternion(current_quat,axes='zyz')
+
+                current_yaw = current_zyz[2]
                 time.sleep(1/30)
-                current_time = time.time()
 
-            wheel.angular.z = float(0)
-            self.pub_turtle.publish(wheel)
+            cmd_vel.angular.z = 0.0
+            self.pub_turtle.publish(cmd_vel)
+
+
+            # # # wheel = Twist()
+
+            # # # turn_vel = 1.0 # unit rad/s
+
+            # # # turn_angle = -np.pi # unit rad
+
+            # # # turn_time = (1/turn_angle)/turn_vel
+
+            # # # # wheel.angular.z = turn_vel
+
+
+            # # # t,coeffecitents = self.calculate_trajectory(0,turn_angle,turn_vel)
+
+            # # # start_time = time.time()
+            # # # current_time = time.time()
+
+            # # # while current_time-start_time < t :
+
+            # # #     dt= current_time-start_time
+
+            # # #     vel = self.desired_vel(dt,coeffecitents)
+
+            # # #     wheel.angular.z = float(vel)
+            # # #     self.pub_turtle.publish(wheel)
+
+            # # #     time.sleep(1/30)
+            # # #     current_time = time.time()
+
+            # # # wheel.angular.z = float(0)
+            # # # self.pub_turtle.publish(wheel)
             
 
 
 
     def drive_stright(self):
         # drive 1 meter
+
+            start_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time())
+
+
+            drive_distance = 1.0 # unit meter
+
+
+            start_y = start_transform.transform.translation.y
+
+            cmd_vel = Twist()
+
+            cmd_vel.linear.x = self.drive_velocity
+            self.pub_turtle.publish(cmd_vel)
+
+            current_y = start_y
+
+            while abs(start_y-current_y) < drive_distance:
+
+                current_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time())
+
+
+                current_y = current_transform.transform.translation.y
+                time.sleep(1/30)
+
+            cmd_vel.linear.x = 0.0
+            self.pub_turtle.publish(cmd_vel)
+
+
         # # wheel = Twist()
 
         # # forward_vel = 0.2 # unit m/s
@@ -211,35 +351,35 @@ class turtle_follower(Node):
 
         # # wheel.linear.x = 0.0
         # # self.pub_turtle.publish(wheel)
-        wheel = Twist()
+        # # # wheel = Twist()
 
-        drive_vel = 0.2 # unit rad/s
+        # # # drive_vel = 0.2 # unit rad/s
 
-        drive_distance = 1.0 # unit rad
+        # # # drive_distance = 1.0 # unit rad
 
-        turn_time = (1/drive_distance)/drive_vel
+        # # # turn_time = (1/drive_distance)/drive_vel
 
-        # wheel.angular.z = drive_vel
+        # # # # wheel.angular.z = drive_vel
 
 
-        t,coeffecitents = self.calculate_trajectory(0,drive_distance,drive_vel)
+        # # # t,coeffecitents = self.calculate_trajectory(0,drive_distance,drive_vel)
 
-        start_time = time.time()
-        current_time = time.time()
+        # # # start_time = time.time()
+        # # # current_time = time.time()
 
-        while current_time-start_time < t :
+        # # # while current_time-start_time < t :
 
-            dt= current_time-start_time
+        # # #     dt= current_time-start_time
 
-            vel = self.desired_vel(dt,coeffecitents)
+        # # #     vel = self.desired_vel(dt,coeffecitents)
 
-            wheel.linear.x = float(vel)
-            self.pub_turtle.publish(wheel)
+        # # #     wheel.linear.x = float(vel)
+        # # #     self.pub_turtle.publish(wheel)
 
-            time.sleep(1/30)
-            current_time = time.time()
-        wheel.linear.x = float(0)
-        self.pub_turtle.publish(wheel)
+        # # #     time.sleep(1/30)
+        # # #     current_time = time.time()
+        # # # wheel.linear.x = float(0)
+        # # # self.pub_turtle.publish(wheel)
 
 
     #Rember to look at the state aging, depenon where the state changes
