@@ -7,24 +7,24 @@ def generate_launch_description():
             package='vel_err',
             namespace='vel_err',
             executable='vel',
-            name='vel'
+            name='vel_d'
         ),
          Node(
             package='vel_err',
             namespace='vel_err',
             executable='reg',
-            name='reg'
+            name='reg_d'
         ),
          Node(
             package='vel_err',
             namespace='vel_err',
             executable='service',
-            name='service'
+            name='service_d'
         ),
          Node(
             package='vel_err',
             namespace='vel_err',
-            executable='publish',
-            name='publish'
+            executable='client',
+            name='client_d'
         ),
     ])

@@ -1,8 +1,0 @@
-msg/ViconInfo.idl
-msg/ViconInfo.msg
-msg/WantedVelocities.idl
-msg/WantedVelocities.msg
-srv/Velocities.idl
-srv/Velocities.srv
-srv/Velocities_Request.msg
-srv/Velocities_Response.msg

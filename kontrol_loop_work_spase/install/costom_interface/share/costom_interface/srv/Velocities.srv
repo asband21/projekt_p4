@@ -1,6 +1,0 @@
-geometry_msgs/Twist velocity
-geometry_msgs/Twist position
-    
----
-geometry_msgs/Twist error_velocity
-geometry_msgs/Twist error_position

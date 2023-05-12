@@ -2,3 +2,8 @@
 kontrol_loop_work_spase/log/ 
 kontrol_loop_work_spase/build/ 
 kontrol_loop_work_spase/install/
+kontrol_loop_work_spase/build/
+kontrol_loop_work_spase/install/
+kontrol_loop_work_spase/src/vel_err/vel_err/build/
+kontrol_loop_work_spase/src/vel_err/vel_err/install/
+kontrol_loop_work_spase/src/vel_err/vel_err/log/

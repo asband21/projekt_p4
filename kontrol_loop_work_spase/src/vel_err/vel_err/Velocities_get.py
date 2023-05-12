@@ -3,10 +3,7 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Twist
 
-
-
 class MinimalService(Node):
-
 
     def __init__(self):
         super().__init__('minimal_service')
@@ -56,7 +53,6 @@ class MinimalService(Node):
         respons.error_position.linear.z =  float(req_pos[2]) 
         respons.error_position.angular.z = float(req_pos[3])    
 
-
         respons.error_velocity.linear.x =  float(req_vel[0]) 
         respons.error_velocity.linear.y =  float(req_vel[1]) 
         respons.error_velocity.linear.z =  float(req_vel[2]) 
@@ -66,17 +62,11 @@ class MinimalService(Node):
         #respons.error_velocity = self.step_vel()
         return respons
 
-    
-
 def main(args=None):
     rclpy.init(args=args)
-
     minimal_service = MinimalService()
-
     rclpy.spin(minimal_service)
-
     rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()

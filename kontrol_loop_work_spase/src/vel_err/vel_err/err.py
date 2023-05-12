@@ -18,7 +18,7 @@ class FrameListener(Node):
     
     def __init__(self):
         super().__init__('oel')
-        self.subscription = self.create_subscription(tf2_msgs.msg.TFMessage, 'tf', self.on_timer,10)
+        self.subscription = self.create_subscription(tf2_msgs.msg.TFMessage, '/tf', self.on_timer,10)
         self.publisher_ = self.create_publisher(Float32MultiArray, "drone_error", 10)
         self.pub = self.create_publisher(ViconInfo, "vicon_info", 10)
 
@@ -29,8 +29,8 @@ class FrameListener(Node):
 
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
-        self.get_logger().info("fldfldlf")
-    
+        self.get_logger().info("err node start")
+
     def quat2yor (self,x,y,z,w):
         return math.atan2(w*w + x*x - y*y - z*z , 2.0*(x*y + w*z))
 
@@ -47,48 +47,52 @@ class FrameListener(Node):
         vec = [0,0,0,0,0,0,0,0]
         del_tid = 0
         for tra in dd.transforms:
-            if(tra.child_frame_id == "Drone" or tra.child_frame_id == "drone" ):
+            if((tra.child_frame_id == "Drone" or tra.child_frame_id == "drone") and tra.header.frame_id == "vicon"):
                 #self.get_logger().info("x:" + str(tra.transform.translation.x))
                 vec[0] = tra.transform.translation.x
                 vec[1] = tra.transform.translation.y
                 vec[2] = tra.transform.translation.z
                 vec[3] = self.quat2yor(tra.transform.rotation.x, tra.transform.rotation.y, tra.transform.rotation.z, tra.transform.rotation.w)
                 del_tid = tra.header.stamp
+                if(del_tid == 0):
+                    self.get_logger().info(f"teamp = 0:{ter}")
+
 
         for tra in self.gammel_tf.transforms:
-            if(tra.child_frame_id == "Drone" or tra.child_frame_id == "drone" ):
-                #self.get_logger().info("x:" + str(tra.transform.translation.x))
-                if(del_tid.sec-tra.header.stamp.sec != 0):
-                    del_tid =  del_tid.nanosec - tra.header.stamp.nanosec +1000000000
-                else:
-                    del_tid =  del_tid.nanosec - tra.header.stamp.nanosec
-                vec[4] = (vec[0] - tra.transform.translation.x)/(del_tid/1000000000)
-                vec[5] = (vec[1] - tra.transform.translation.y)/(del_tid/1000000000)
-                vec[6] = (vec[2] - tra.transform.translation.z)/(del_tid/1000000000)
-                vec[7] = (vec[3] - self.quat2yor(tra.transform.rotation.x, tra.transform.rotation.y, tra.transform.rotation.z, tra.transform.rotation.w))/(del_tid/1000000000)
+            if((tra.child_frame_id == "Drone" or tra.child_frame_id == "drone") and tra.header.frame_id == "vicon"):
+                #self.get_logger().info(f"del_tid.sec-tra.header{del_tid}")
+                if(del_tid != 0):
+                    if(del_tid.sec-tra.header.stamp.sec != 0):
+                        del_tid =  del_tid.nanosec - tra.header.stamp.nanosec +1000000000
+                    else:
+                        del_tid =  del_tid.nanosec - tra.header.stamp.nanosec
+                    vec[4] = (vec[0] - tra.transform.translation.x)/(del_tid/1000000000)
+                    vec[5] = (vec[1] - tra.transform.translation.y)/(del_tid/1000000000)
+                    vec[6] = (vec[2] - tra.transform.translation.z)/(del_tid/1000000000)
+                    vec[7] = (vec[3] - self.quat2yor(tra.transform.rotation.x, tra.transform.rotation.y, tra.transform.rotation.z, tra.transform.rotation.w))/(del_tid/1000000000)
 
-        formatted_vector = [f"{value:8.5f}" for value in vec]
-        self.get_logger().info(f"vec: {formatted_vector}")
-        self.gammel_tf = copy.deepcopy(dd)
-        self.callback(vec)
-        
+                    formatted_vector = [f"{value:8.5f}" for value in vec]
+                    #self.get_logger().info(f"vec: {formatted_vector}")
+                    self.gammel_tf = copy.deepcopy(dd)
+                    self.callback(vec)
+
         #err = [1,1,1,1]
         #self.publish_array(err)
-        
+
     def callback(self, vec):
         msg=ViconInfo()
-        msg.position.linear.x = vec[0]
-        msg.position.linear.y = vec[1]
-        msg.position.linear.z = vec[2]
-        msg.position.angular.z = vec[3]
-        msg.velocity.linear.x = vec[4]
-        msg.velocity.linear.y = vec[5]
-        msg.velocity.linear.z = vec[6]
-        msg.velocity.angular.z = vec[7]
+        msg.position.linear.x = float(vec[0])
+        msg.position.linear.y = float(vec[1])
+        msg.position.linear.z = float(vec[2])
+        msg.position.angular.z = float(vec[3])
+        msg.velocity.linear.x = float(vec[4])
+        msg.velocity.linear.y = float(vec[5])
+        msg.velocity.linear.z = float(vec[6])
+        msg.velocity.angular.z = float(vec[7])
 
         self.pub.publish(msg)
 
-    
+
     def publish_array(self,array):
         msg = Float32MultiArray(data=array)
         self.publisher_.publish(msg)
