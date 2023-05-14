@@ -33,11 +33,13 @@ class MyNode(Node):
         rclpy.spin_until_future_complete(self.sub_one_node,future)
         respons= future.result()
 
-        error = [0,0,0,0,0,0,0,0]
+        error = [0,0,0,0,0,0,0,0,0]
         error[4] = float(respons.error_velocity.angular.z - msg.velocity.angular.z)
         error[5] = float(respons.error_velocity.linear.x - msg.velocity.linear.x)
         error[6] = float(respons.error_velocity.linear.y - msg.velocity.linear.y)
         error[7] = float(respons.error_velocity.linear.z - msg.velocity.linear.z)
+        
+        error[8] = msg.velocity.angular.y
         #self.get_logger().info(f"error yor{error}")
         msg = Float32MultiArray(data=error)
         self.publisher.publish(msg)

@@ -26,7 +26,6 @@ class FrameListener(Node):
         self.target_frame = self.declare_parameter('vicon', 'Drone').get_parameter_value().string_value
 
         self.gammel_tf = 0
-
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
         self.get_logger().info("err node start")
@@ -44,7 +43,7 @@ class FrameListener(Node):
                     tra.transform.translation.x = tra.transform.translation.x + 1
             return 
 
-        vec = [0,0,0,0,0,0,0,0]
+        vec = [0,0,0,0,0,0,0,0,0]
         del_tid = 0
         for tra in dd.transforms:
             if((tra.child_frame_id == "Drone" or tra.child_frame_id == "drone") and tra.header.frame_id == "vicon"):
@@ -70,7 +69,7 @@ class FrameListener(Node):
                     vec[5] = (vec[1] - tra.transform.translation.y)/(del_tid/1000000000)
                     vec[6] = (vec[2] - tra.transform.translation.z)/(del_tid/1000000000)
                     vec[7] = (vec[3] - self.quat2yor(tra.transform.rotation.x, tra.transform.rotation.y, tra.transform.rotation.z, tra.transform.rotation.w))/(del_tid/1000000000)
-
+                    vec[8] = del_tid
                     formatted_vector = [f"{value:8.5f}" for value in vec]
                     #self.get_logger().info(f"vec: {formatted_vector}")
                     self.gammel_tf = copy.deepcopy(dd)
@@ -89,6 +88,7 @@ class FrameListener(Node):
         msg.velocity.linear.y = float(vec[5])
         msg.velocity.linear.z = float(vec[6])
         msg.velocity.angular.z = float(vec[7])
+        msg.velocity.angular.y = float(vec[8])
 
         self.pub.publish(msg)
 

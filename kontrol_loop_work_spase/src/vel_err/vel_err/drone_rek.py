@@ -8,15 +8,54 @@ class MySubscriber(Node):
         super().__init__("drone_volisty_error")
         self.subscription_ = self.create_subscription(Float32MultiArray, "drone_volisty_error", self.callback, 10)
         self.publisher_ = self.create_publisher(Twist, "drone_rc", 10)
+        self.i_x = 0
+        self.i_y = 0
+        self.i_z = 0
+        self.i_w = 0
+        
+        self.d_x = 0
+        self.d_y = 0
+        self.d_z = 0
+        self.d_w = 0
 
     def callback(self, msg):
-        my_array = msg.data
-        array = my_array
-        for i in range(4):
-            array[i] = array[i]*2
+        array = msg.data
+        array[8] = array[8]/1000000000
+        array[4] = self.transfer_fun_x(array[4], array[8])
+        array[5] = self.transfer_fun_y(array[5], array[8])
+        array[6] = self.transfer_fun_z(array[6], array[8])
+        array[7] = self.transfer_fun_w(array[7], array[8])
         self.get_logger().info(f"Received: {array}")
 
         self.pub_rc(array)
+
+    def transfer_fun_x(self, val, tids_delta):
+        self.i_x = self.i_x + val*tids_delta
+        d = (val - self.d_x)/tids_delta
+        self.d_x = val
+        kp = 2
+        return kp*val
+
+    def transfer_fun_y(self, val, tids_delta):
+        self.i_y = self.i_y + val
+        d = (val - self.d_y)/tids_delta
+        self.d_y = val
+        kp = 2
+        return kp*val
+
+    def transfer_fun_z(self, val, tids_delta):
+        self.i_z = self.i_z + val
+        d = (val - self.d_z)/tids_delta
+        self.d_z = val
+        kp = 2
+        return kp*val
+
+    def transfer_fun_w(self, val, tids_delta):
+        self.i_w = self.i_w + val
+        d = (val - self.d_w)/tids_delta
+        self.d_w = val
+        kp = 2
+        return kp*val
 
     def pub_rc(self,array):
 
