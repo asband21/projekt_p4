@@ -2,6 +2,7 @@ import rclpy
 from rclpy.node import Node
 
 from personal_interface.srv import TargetPose, TakePicture
+from rclpy.publisher import Publisher
 from std_srvs.srv import Empty
 
 import numpy as np 
@@ -14,6 +15,8 @@ from tf2_ros import TransformListener
 from tf2_ros.buffer import Buffer
 from std_msgs.msg import Header
 import time
+
+from sensor_msgs.msg import CameraInfo, Image
 
 
 class image_analisys(Node):
@@ -30,6 +33,14 @@ class image_analisys(Node):
         self.srv_calulate_target_pose = self.create_service(TakePicture,"calculate_target_pose",self.srv_take_aligment_picture) 
         self.initial_camera() 
 
+        self.publisher_intrinsics = self.node_image_analisys.create_publisher(CameraInfo,"/stereo/left/camera_info",10)
+        self.publisher_rgb = self.node_image_analisys.create_publisher(Image,"/stereo/left/image_rect_color",10)
+
+
+        print("camrea : ", self.camera_intrinsics)
+        hz = 1/3
+        self.timer = self.create_timer(hz,self.publish_intrincis_and_rgb)
+
 
 
     def initial_camera(self): 
@@ -38,9 +49,9 @@ class image_analisys(Node):
         #  different resolutions of color and depth streams
         config = rs.config()
 
-        config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
+        config.enable_stream(rs.stream.depth, 320, 240, rs.format.z16, 30)
 
-        config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+        config.enable_stream(rs.stream.color, 320, 240, rs.format.bgr8, 30)
 
         # Start streaming
         profile = self.pipeline.start(config) 
@@ -54,6 +65,61 @@ class image_analisys(Node):
         align_to = rs.stream.color
         self.align = rs.align(align_to)  
         self.detector = cv2.QRCodeDetector()
+
+
+    def publish_intrincis_and_rgb(self):
+
+
+        # Get frameset of color and depth
+        frames = self.pipeline.wait_for_frames()
+        # frames.get_depth_frame() is a 640x360 depth image
+
+        # Align the depth frame to color frame
+        aligned_frames = self.align.process(frames)
+
+        # Get aligned frames
+        aligned_depth_frame = aligned_frames.get_depth_frame() # aligned_depth_frame is a 640x480 depth image
+        color_frame = aligned_frames.get_color_frame()
+
+        color_image = np.asanyarray(color_frame.get_data())
+        # Publish the data
+        msg_intrinsics = CameraInfo()
+        msg_intrinsics.header.frame_id = "camera_link"
+        msg_intrinsics.header.stamp = self.get_clock().now().to_msg()
+        # msg_intrinsics.height = self.camera_intrinsics.height
+        # msg_intrinsics.width = self.camera_intrinsics.width
+        # msg_intrinsics.distortion_model = "plumb_bob"
+        # msg_intrinsics.d = self.camera_intrinsics.coeffs
+        # msg_intrinsics.k = self.camera_intrinsics.K
+        # msg_intrinsics.r = self.camera_intrinsics.R
+        # msg_intrinsics.p = self.camera_intrinsics.p
+
+
+        self.msg_intrinsics = CameraInfo()
+        self.msg_intrinsics.width = self.camera_intrinsics.width
+        self.msg_intrinsics.height = self.camera_intrinsics.height
+        self.msg_intrinsics.distortion_model = 'plumb_bob'
+        self.msg_intrinsics.d = [0.0, 0.0, 0.0, 0.0, 0.0]
+        self.msg_intrinsics.k = [self.camera_intrinsics.fx, 0.0, self.camera_intrinsics.ppx, 0.0, self.camera_intrinsics.fy, self.camera_intrinsics.ppy, 0.0, 0.0, 1.0]
+        self.msg_intrinsics.r = [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+        self.msg_intrinsics.p = [self.camera_intrinsics.fx, 0.0, self.camera_intrinsics.ppx, 0.0, 0.0, self.camera_intrinsics.fy, self.camera_intrinsics.ppy, 0.0, 0.0, 0.0, 1.0, 0.0]
+    
+
+        self.publisher_intrinsics.publish(msg_intrinsics)
+
+        msg_rgb = Image()
+        msg_rgb.header.frame_id = "camera_link"
+        msg_rgb.header.stamp = self.get_clock().now().to_msg()
+        msg_rgb.height = color_image.shape[0]
+        msg_rgb.width = color_image.shape[1]
+        msg_rgb.encoding = "rgb8"
+        msg_rgb.data = color_image.tostring()
+        self.publisher_rgb.publish(msg_rgb)
+
+
+       
+
+
 
     def srv_take_aligment_picture(self, request, response):
         # We will be removing the background of objects more than

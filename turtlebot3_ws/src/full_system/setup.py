@@ -35,6 +35,7 @@ setup(
             "turtle_follower = full_system.turtle_follower:main",
             "test_turtle = full_system.test_turtle:main",
             "user = full_system.user_input:main",
+            "image = full_system.Image_analisys:main",
         ],
     },
 )
