@@ -17,18 +17,42 @@ class MinimalService(Node):
         self.time_start =self.time.nanoseconds + 1000000000*10
 
     def step_pos(self):
-        time_nu = self.get_clock().now()
-        if(time_nu.nanoseconds < self.time_start):
-            return [0,0,0,0]
-        else:
-            return [0,0,0,0]
+        #time_nu = self.get_clock().now()
+        desired = [3, 5, 6, 3]
+
+        error = [0, 0, 0, 0]
+        error[0] = desired[0] - self.position[0]
+        error[1] = desired[1] - self.position[1]
+        error[2] = desired[2] - self.position[2]
+        error[3] = desired[3] - self.position[3]
+
+
+        return error
+
+
+        #if(time_nu.nanoseconds < self.time_start):
+        #    return [0,0,0,0]
+        #else:
+        #    return [0,0,0,0]
 
     def step_vel(self):
-        time_nu = self.get_clock().now()
-        if(time_nu.nanoseconds < self.time_start):
-            return [0,0,0,0]
-        else:
-            return [0,0,0,1]
+        #time_nu = self.get_clock().now()
+        desired = [3, 5, 6, 3]
+
+        error = [0, 0, 0, 0]
+        error[0] = desired[0] - self.velocity[0]
+        error[1] = desired[1] - self.velocity[1]
+        error[2] = desired[2] - self.velocity[2]
+        error[3] = desired[3] - self.velocity[3]
+
+
+        return error
+
+        
+        #if(time_nu.nanoseconds < self.time_start):
+        #    return [0,0,0,0]
+        #else:
+        #    return [0,0,0,1]
             
     def callback(self, request, respons):
 
@@ -61,6 +85,8 @@ class MinimalService(Node):
         respons.error_velocity.linear.y =  float(req_vel[1]) 
         respons.error_velocity.linear.z =  float(req_vel[2]) 
         respons.error_velocity.angular.z = float(req_vel[3]) 
+
+        print("vel z angle: ", respons.error_velocity.angular.z)
 
         #respons.error_position.linear.x = req_pos[0] 
         #respons.error_velocity = self.step_vel()
