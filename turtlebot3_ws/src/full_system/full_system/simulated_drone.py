@@ -16,15 +16,20 @@ class SimulatedDrone(Node):
         super().__init__("simulated_drone") 
 
 
-        # self.drone = Tello()
+        self.drone = Tello()
 
-        # self.drone.connect()
+        self.drone.connect()
 
-        self.create_service(TakePicture,"take_picture",self.take_picture)
+        self.srv_take_picture = self.create_service(TakePicture,"take_picture",self.take_picture)
 
 
-        # self.create_subscription(Twist,"drone_rc",self.callback)
+        self.sub_rc = self.create_subscription(Twist,"drone_rc",self.callback_drone_rc,10)
 
+
+
+    def callback_drone_rc(self, msg):
+
+        self.drone.send_rc_control(msg.linear.x, msg.linear.y, msg.linear.z, msg.angular.z)
 
 
 
@@ -33,9 +38,17 @@ class SimulatedDrone(Node):
 
     def take_picture(self, request, response):
         
+        
+
+        picture =self.drone.take_picture()
+
+        with open("picture.jpg", "wb") as f:
+            f.write(picture)
+        
+
+
         response.success = True
 
-        time.sleep(5)
         return response
     
 
