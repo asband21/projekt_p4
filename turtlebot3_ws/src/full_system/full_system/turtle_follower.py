@@ -34,7 +34,7 @@ class turtle_follower(Node):
         self.node_turtle_follower = rclpy.create_node("node_turtle_follower")
 
         self.cli_analisys = self.node_turtle_follower.create_client(TakePicture,"calculate_target_pose")
-        self.srv_state_changer = self.create_service(StateChanger,"state_changer",self.state_changer_callback)
+        self.srv_turtle_state = self.create_service(StateChanger,"turtle_state",self.turtle_state_callback)
         self.pub_turtle = self.create_publisher(Twist,'/cmd_vel',10)
 
         self.state_controller()
@@ -100,14 +100,14 @@ class turtle_follower(Node):
 
 
 
-    def state_changer_callback(self,request,response):
-        self.state = request.state
-        if self.state == "continue":
-            response.success = True
-        else:
-            response.success = False
+    # def turtle_state_callback(self,request,response):
+    #     self.state = request.state
+    #     if self.state == "continue":
+    #         response.success = True
+    #     else:
+    #         response.success = False
                     
-        return response
+    #     return response
 
 
     def send_request(self):
@@ -131,7 +131,7 @@ class turtle_follower(Node):
         if turn_way == "left":
             # turn left 90 degrees
 
-            start_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time())
+            start_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=0.1))
 
             start_quat = [0,0,0,0]
             start_quat[0] = start_transform.transform.rotation.x
@@ -139,9 +139,9 @@ class turtle_follower(Node):
             start_quat[2] = start_transform.transform.rotation.z
             start_quat[3] = start_transform.transform.rotation.w
 
-            start_zyz = tf.euler_from_quaternion(start_quat,axes='zyz')
+            start_zyx = tf.euler_from_quaternion(start_quat,axes='zyx')
 
-            start_yaw = start_zyz[0]
+            start_yaw = start_zyx[0]
 
 
             turn_angle = np.pi/2 # unit rad
@@ -157,7 +157,7 @@ class turtle_follower(Node):
 
             while abs(start_yaw-current_yaw) < turn_angle:
 
-                current_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time())
+                current_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=0.1))
 
                 current_quat = [0,0,0,0]
                 current_quat[0] = current_transform.transform.rotation.x
@@ -165,9 +165,9 @@ class turtle_follower(Node):
                 current_quat[2] = current_transform.transform.rotation.z
                 current_quat[3] = current_transform.transform.rotation.w
 
-                current_zyz = tf.euler_from_quaternion(current_quat,axes='zyz')
+                current_zyx = tf.euler_from_quaternion(current_quat,axes='zyx')
 
-                current_yaw = current_zyz[2]
+                current_yaw = current_zyx[0]
                 time.sleep(1/30)
 
             cmd_vel.angular.z = 0.0
@@ -222,7 +222,7 @@ class turtle_follower(Node):
             # turn right 180 degrees 
 
 
-            start_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time())
+            start_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=0.1))
 
             start_quat = [0,0,0,0]
             start_quat[0] = start_transform.transform.rotation.x
@@ -230,9 +230,9 @@ class turtle_follower(Node):
             start_quat[2] = start_transform.transform.rotation.z
             start_quat[3] = start_transform.transform.rotation.w
 
-            start_zyz = tf.euler_from_quaternion(start_quat,axes='zyz')
+            start_zyx = tf.euler_from_quaternion(start_quat,axes='zyx')
 
-            start_yaw = start_zyz[0]
+            start_yaw = start_zyx[0]
 
 
             turn_angle = np.pi # unit rad
@@ -248,7 +248,7 @@ class turtle_follower(Node):
 
             while abs(start_yaw-current_yaw) < turn_angle:
 
-                current_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time())
+                current_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=0.1))
 
                 current_quat = [0,0,0,0]
                 current_quat[0] = current_transform.transform.rotation.x
@@ -256,9 +256,9 @@ class turtle_follower(Node):
                 current_quat[2] = current_transform.transform.rotation.z
                 current_quat[3] = current_transform.transform.rotation.w
 
-                current_zyz = tf.euler_from_quaternion(current_quat,axes='zyz')
+                current_zyx = tf.euler_from_quaternion(current_quat,axes='zyx')
 
-                current_yaw = current_zyz[2]
+                current_yaw = current_zyx[0]
                 time.sleep(1/30)
 
             cmd_vel.angular.z = 0.0
@@ -302,7 +302,7 @@ class turtle_follower(Node):
     def drive_stright(self):
         # drive 1 meter
 
-            start_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time())
+            start_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=0.1))
 
 
             drive_distance = 1.0 # unit meter
@@ -319,7 +319,7 @@ class turtle_follower(Node):
 
             while abs(start_y-current_y) < drive_distance:
 
-                current_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time())
+                current_transform = self.tf_buffer.lookup_transform("world","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=0.1))
 
 
                 current_y = current_transform.transform.translation.y
@@ -391,6 +391,10 @@ class turtle_follower(Node):
             self.get_logger().info("state: " + self.state)
             if self.meters_driven > self.tarck_length:
                 break
+
+            if self.state == "idle":
+                time.sleep(1/30)
+                continue
 
             # drive 1 meter 
             self.drive_stright()

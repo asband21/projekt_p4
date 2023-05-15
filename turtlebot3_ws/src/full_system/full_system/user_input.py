@@ -7,6 +7,7 @@ from rclpy.node import Node
 from std_srvs.srv import Empty, SetBool
 
 
+from personal_interface.srv import StateChanger
 
 
 class UserInput(Node):
@@ -17,7 +18,9 @@ class UserInput(Node):
 
         self.cli_drone2turtle = self.sub_node_user_input.create_client(SetBool,"drone2turtle")
 
-        self.srv_initiation = self.create_service(Empty,"initiation",self.callback_initiation)
+        self.cli_turtle_state = self.sub_node_user_input.create_client(StateChanger,"turtle_state")
+
+        self.srv_initiation = self.create_service(Empty,"user_input",self.callback_initiation)
 
 
 
@@ -35,16 +38,31 @@ class UserInput(Node):
         
         return future.result()
 
+    def change_turtle_state(self):
+        while not self.cli_turtle_state.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info("service not available, waiting again...")
+        
+        request = StateChanger.Request()
+        request.state = "continue"
+        future = self.cli_turtle_state.call_async(request)
+        rclpy.spin_until_future_complete(self.node_initialization,future)
+        while future.result() == None:
+            self.get_logger().info("waiting for response...")
+        
+        return future.result()
+
+
 
     def callback_initiation(self,request,response):
         print("initiation")
         
-        user_input = input("All services are up, ready to fly into position: ")
+        user_input = input("All services are up, ready to fly into position? : ")
         
         if user_input == "y":
-            self.send_request()
+            # self.send_request()
+            self.change_turtle_state()
         elif user_input == "n":
-            print("fuck off")
+            print("hello")
 
 
         return response

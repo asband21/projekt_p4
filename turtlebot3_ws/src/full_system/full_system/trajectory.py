@@ -14,7 +14,7 @@ from tf2_ros.transform_listener import TransformListener
 import math
 
 
-from personal_interface.srv import TargetPose, TakePicture, ContinuePath, StateChanger
+from personal_interface.srv import TargetPose, TakePicture, StateChanger
 
 import time
 
@@ -34,14 +34,14 @@ class Trajectory(Node):
         self.max_velocity = 0.5
 
 
-        self.tf_buffer = Buffer()
+        self.tf_buffer = Buffer(rclpy.duration.Duration(seconds=1.0))
         self.tf_listener = TransformListener(self.tf_buffer, self)
 
 
-        self.sub_node_trajectory = rclpy.create_node("sub_cli_trajectory")
+        self.node_trajectory = rclpy.create_node("cli_trajectory")
 
-        self.sub_cli_drone = self.sub_node_trajectory.create_client(TakePicture,"take_picture")
-        self.sub_cli_state = self.sub_node_trajectory.create_client(StateChanger,"change_state")
+        self.sub_cli_drone = self.node_trajectory.create_client(TakePicture,"take_picture")
+        self.sub_cli_state = self.node_trajectory.create_client(StateChanger,"change_state")
         
         self.srv_targetPose = self.create_service(TargetPose, 'go_to_target_pose', self.FindAtoB)
         self.srv_drone2turtle = self.create_service(SetBool, 'drone2turtle', self.service_drone2turtle)
@@ -72,10 +72,10 @@ class Trajectory(Node):
         # create the time vector and calculate the coefficients of the third degree polynomial
         t = np.linspace(0, time, num=int(time)+1)
         A = np.array([
-            [t[0]**3, t[0]**2, t[0], 1],
-            [t[-1]**3, t[-1]**2, t[-1], 1],
-            [3*t[0]**2, 2*t[0], 1, 0],
-            [3*t[-1]**2, 2*t[-1], 1, 0]
+            [t[0]**3   , t[0]**2 , t[0] , 1],
+            [t[-1]**3  , t[-1]**2, t[-1], 1],
+            [3*t[0]**2 , 2*t[0]  , 1    , 0],
+            [3*t[-1]**2, 2*t[-1] , 1    , 0]
         ])
         b = np.array([coord1, coord2, [0, 0, 0, 0], [0, 0, 0, 0]])
         c = np.linalg.solve(A, b)
@@ -123,7 +123,7 @@ class Trajectory(Node):
 
             req.state = "follow_trajectory"
             future = self.sub_cli_state.call_async(req)
-            rclpy.spin_until_future_complete(self.sub_node_trajectory,future)
+            rclpy.spin_until_future_complete(self.node_trajectory,future)
             response = future.result()
             print(response)
             
@@ -136,7 +136,7 @@ class Trajectory(Node):
 
             req.state = "follow_turtle"
             future = self.sub_cli_state.call_async(req)
-            rclpy.spin_until_future_complete(self.sub_node_trajectory,future)
+            rclpy.spin_until_future_complete(self.node_trajectory,future)
             response = future.result()
             print(response)
 
@@ -148,7 +148,7 @@ class Trajectory(Node):
             
             req = TakePicture.Request()
             future = self.sub_cli_drone.call_async(req)
-            rclpy.spin_until_future_complete(self.sub_node_trajectory,future)
+            rclpy.spin_until_future_complete(self.node_trajectory,future)
 
             response = future.result()
 

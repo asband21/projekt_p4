@@ -25,7 +25,7 @@ class DesiredPosition(Node):
         
         self.current_pose = Twist()
 
-        self.srv_change_state = self.create_service(StateChanger, 'change_state', self.state_changer)
+        self.srv_desrided_pose_state = self.create_service(StateChanger, 'desrided_pose_state', self.state_changer)
 
         self.desired_pose_sub = self.create_subscription(Twist,"desired_pose",self.trajectroy_pose,10)
 
