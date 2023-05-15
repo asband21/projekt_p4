@@ -49,7 +49,7 @@ class image_analisys(Node):
         #  different resolutions of color and depth streams
         config = rs.config()
 
-        config.enable_stream(rs.stream.depth, 1, 1, rs.format.z16, 5)
+        config.enable_stream(rs.stream.depth, 100, 100, rs.format.z16, 5)
 
         config.enable_stream(rs.stream.color, 320, 240, rs.format.bgr8, 10)
 
