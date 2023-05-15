@@ -27,4 +27,10 @@ def generate_launch_description():
             executable='client',
             name='client_d'
         ),
+         Node(
+            package='vel_err',
+            namespace='vel_err',
+            executable='drone',
+            name='drone_d'
+        ),
     ])

@@ -28,8 +28,8 @@ setup(
             'reg = vel_err.drone_rek:main',
             "client = vel_err.first_node:main",
             "service = vel_err.Velocities_get:main",
-            "publish = vel_err.velocity_pub:main"
-
+            "publish = vel_err.velocity_pub:main",
+            "drone = vel_err.tello_drone:main"
         ],
     },
 )
