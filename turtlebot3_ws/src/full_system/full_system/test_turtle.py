@@ -4,6 +4,8 @@ from rclpy.node import Node
 
 from personal_interface.srv import StateChanger, TakePicture
 
+from geometry_msgs.msg import Twist
+
 import time
 
 class testTurtle(Node):
@@ -17,6 +19,23 @@ class testTurtle(Node):
         self.cli_turtle = self.node_turtle_follower.create_client(StateChanger,"state_changer")
 
         self.srv_analisys = self.create_service(TakePicture,"calculate_target_pose",self.srv_take_pic)
+
+        self.pub = self.create_publisher(Twist,"cmd_vel",10)
+
+
+        vel = Twist()
+        # vel.linear.x = 0.1
+        # vel.linear.y = 0.1
+        # vel.linear.z = 0.1
+        vel.angular.z = 0.1
+
+    
+        self.pub.publish(vel)
+        time.sleep(2)
+
+        vel.linear.x = 0.0
+        vel.angular.z = 0.0
+        self.pub.publish(vel)
 
 
 

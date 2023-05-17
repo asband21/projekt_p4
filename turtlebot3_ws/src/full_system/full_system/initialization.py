@@ -32,25 +32,34 @@ class initialization(Node):
         self.cli_user_input = self.node_initialization.create_client(Empty,"user_input")
         # print(     (os.path.join('share', "full_system", 'launch'), glob(os.path.join('launch', '*launch.[pxy][yma]*'))))
         # print(get_launch_file_path("system.launch.py"))
-        self.launch()
+        # self.launch()
         self.create_all_clients()
         up = self.check_all_services()
 
         if up:
-            self.get_logger().info("All services are up, ready to fly into position? : ")
-            self.send_request(self)
+            # self.get_logger().info("All services are up, ready to fly into position? : ")
+            self.get_logger().info("All services are up, ready to drive : ")
+            self.send_request_to_user()
             
         
-
+    def send_request_to_user(self):
+        while not self.cli_user_input.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info("service not available, waiting again...")
+        
+        request = Empty.Request()
+        future = self.cli_user_input.call_async(request)
+        rclpy.spin_until_future_complete(self.node_initialization,future)
+        
+        return future.result()
 
 
     def create_all_clients(self):
         self.cli_calculate_target_pose = self.node_initialization.create_client(TakePicture,"calculate_target_pose")
         # self.cli_go_to_target_pose = self.node_initialization.create_client(TargetPose,"go_to_target_pose")
-        self.cli_desrided_pose_state = self.node_initialization.create_client(StateChanger,"desrided_pose_state")
+        # self.cli_desired_pose_state = self.node_initialization.create_client(StateChanger,"desired_pose_state")
         # self.cli_drone2turtle = self.node_initialization.create_client(Empty,"drone2turtle")
         self.cli_turtle_state = self.node_initialization.create_client(StateChanger,"turtle_state")
-        self.cli_take_picture = self.node_initialization.create_client(TakePicture,"take_picture")
+        # self.cli_take_picture = self.node_initialization.create_client(TakePicture,"take_picture")
         # self.cli_takeoff = self.node_initialization.create_client(Empty,"takeoff")
 
     def launch(self):
@@ -77,14 +86,14 @@ class initialization(Node):
             self.get_logger().info("cli_calculate_target_pose service not available, waiting again...")
         # while not self.cli_go_to_target_pose.wait_for_service(timeout_sec=1.0):
         #     self.get_logger().info("cli_go_to_target_pose service not available, waiting again...")
-        while not self.cli_desrided_pose_state.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("cli_desrided_pose_state service not available, waiting again...")
+        # while not self.cli_desired_pose_state.wait_for_service(timeout_sec=1.0):
+        #     self.get_logger().info("cli_desrided_pose_state service not available, waiting again...")
         # while not self.cli_drone2turtle.wait_for_service(timeout_sec=1.0):
         #     self.get_logger().info("cli_drone2turtle service not available, waiting again...")
         while not self.cli_turtle_state.wait_for_service(timeout_sec=1.0):
             self.get_logger().info("cli_turtle_state service not available, waiting again...")
-        while not self.cli_take_picture.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("cli_take_picture service not available, waiting again...")
+        # while not self.cli_take_picture.wait_for_service(timeout_sec=1.0):
+        #     self.get_logger().info("cli_take_picture service not available, waiting again...")
 
         return True
 

@@ -38,13 +38,12 @@ class image_analisys(Node):
         self.srv_calulate_target_pose = self.create_service(TakePicture,"calculate_target_pose",self.srv_take_aligment_picture) 
         # self.initial_camera() 
 
-        self.publisher_intrinsics = self.node_image_analisys.create_publisher(CameraInfo,"/stereo/left/camera_info",10)
-        self.publisher_rgb = self.node_image_analisys.create_publisher(Image,"/stereo/left/image_rect_color",10)
+        # self.publisher_intrinsics = self.node_image_analisys.create_publisher(CameraInfo,"/stereo/left/camera_info",10)
+        # self.publisher_rgb = self.node_image_analisys.create_publisher(Image,"/stereo/left/image_rect_color",10)
 
 
-        print("camrea : ", self.camera_intrinsics)
-        hz = 1/3
-        self.timer = self.create_timer(hz,self.publish_intrincis_and_rgb)
+        # hz = 1/3
+        # self.timer = self.create_timer(hz,self.publish_intrincis_and_rgb)
 
 
 
@@ -196,7 +195,7 @@ class image_analisys(Node):
         self.align = rs.align(align_to)  
         self.detector = cv2.QRCodeDetector()
 
-        time.sleep(1) # Give the camera time to warm up
+        time.sleep(2) # Give the camera time to warm up
 
 
 
@@ -230,7 +229,6 @@ class image_analisys(Node):
         camera_matrix = np.array([[fx, 0, cx], [0, fy, cy], [0, 0, 1]], dtype=np.float32)
 
 
-        time.sleep(1)
         # # We will be removing the background of objects more than
         # clipping_distance_in_meters = 2  # Unit: meter
         # clipping_distance = clipping_distance_in_meters / self.depth_scale
@@ -265,7 +263,7 @@ class image_analisys(Node):
                 
 
             if break_count > 10:
-                # response.success = False
+                response.success = False
                 return response
             if see_qr == False:
                 # print(see_qr)
@@ -455,13 +453,13 @@ class image_analisys(Node):
             print("know_transforms: ", know_transforms)
             print("know_transforms: ", type(know_transforms))
 
-            # response.success = True 
-            # return response
+            response.success = True 
+            return response
         else: 
 
-            # response.success = False
+            response.success = False
             print("No QR-Code found ....") 
-            # return response
+            return response
             
 
     

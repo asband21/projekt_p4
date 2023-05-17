@@ -29,16 +29,29 @@ def generate_launch_description():
         name='simulation_vi',
         output='screen'
     )
-
+    image_analisys = launch_ros.actions.Node(
+        package='full_system',
+        executable='image',
+        name='image',
+        output='screen'
+    )
+    turtle_follower = launch_ros.actions.Node(
+        package='full_system',
+        executable='turtle_follower',
+        name='turtle_follower',
+        output='screen'
+    )
 
 
     # Create the launch description
     ld = launch.LaunchDescription()
 
     # Add the node to the launch description
-    ld.add_action(drone)
-    ld.add_action(desired_position)
-    ld.add_action(trajectory)
+    # ld.add_action(drone)
+    # ld.add_action(desired_position)
+    # ld.add_action(trajectory)
+    ld.add_action(turtle_follower)
+    ld.add_action(image_analisys)
     ld.add_action(simulation_vi)
 
     return ld

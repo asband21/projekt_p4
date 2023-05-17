@@ -39,6 +39,11 @@ class turtle_follower(Node):
 
         self.state_controller()
 
+    def turtle_state_callback(self, request, response):
+        self.state = request.state
+        response.success = True
+        self.get_logger().info("state changed to: " + request.state)
+        return response
 
 
     def calculate_trajectory(self,coord1, coord2, max_velocity=1):
@@ -119,9 +124,6 @@ class turtle_follower(Node):
         future = self.cli_analisys.call_async(request)
         rclpy.spin_until_future_complete(self.node_turtle_follower,future)
 
-        while future.result() == None:
-            time.sleep(1/30)
-            
         return future.result()
 
 
@@ -388,7 +390,7 @@ class turtle_follower(Node):
         self.get_logger().info("state_controller started")
         while True:
 
-            self.get_logger().info("state: " + self.state)
+            # self.get_logger().info("state: " + self.state)
             if self.meters_driven > self.tarck_length:
                 break
 

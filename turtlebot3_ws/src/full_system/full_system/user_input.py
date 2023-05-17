@@ -14,13 +14,14 @@ class UserInput(Node):
     def __init__(self):
         super().__init__("user_input") 
 
-        self.sub_node_user_input = rclpy.create_node("sub_node_user_input")
+        self.node_user_input = rclpy.create_node("node_user_input")
 
-        self.cli_drone2turtle = self.sub_node_user_input.create_client(SetBool,"drone2turtle")
+        self.cli_drone2turtle = self.node_user_input.create_client(SetBool,"drone2turtle")
 
-        self.cli_turtle_state = self.sub_node_user_input.create_client(StateChanger,"turtle_state")
+        self.cli_turtle_state = self.node_user_input.create_client(StateChanger,"turtle_state")
 
         self.srv_initiation = self.create_service(Empty,"user_input",self.callback_initiation)
+        self.get_logger().info("user_input node is up")
 
 
 
@@ -32,7 +33,7 @@ class UserInput(Node):
         req.data = True
 
         future = self.cli_drone2turtle.call_async(req)
-        rclpy.spin_until_future_complete(self.sub_node_user_input,future)
+        rclpy.spin_until_future_complete(self.node_user_input,future)
         while future.result() == None:
             self.get_logger().info("waiting for response...")
         
@@ -45,9 +46,7 @@ class UserInput(Node):
         request = StateChanger.Request()
         request.state = "continue"
         future = self.cli_turtle_state.call_async(request)
-        rclpy.spin_until_future_complete(self.node_initialization,future)
-        while future.result() == None:
-            self.get_logger().info("waiting for response...")
+        rclpy.spin_until_future_complete(self.node_user_input,future)
         
         return future.result()
 
@@ -56,11 +55,14 @@ class UserInput(Node):
     def callback_initiation(self,request,response):
         print("initiation")
         
-        user_input = input("All services are up, ready to fly into position? : ")
+        # user_input = input("All services are up, ready to fly into position? : ")
+        user_input = input("All services are up, ready to drive? : ")
         
+        print(user_input)
         if user_input == "y":
             # self.send_request()
             self.change_turtle_state()
+            self.get_logger().info("turtle_state changed")
         elif user_input == "n":
             print("hello")
 
