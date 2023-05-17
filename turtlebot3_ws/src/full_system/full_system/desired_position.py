@@ -55,12 +55,12 @@ class DesiredPosition(Node):
         elif self.state == "initiation":
             #wait for trajectory.
             try:
-                pose = self.tf_buffer.lookup_transform("drone","world",rclpy.time.Time(),rclpy.time.Duration(seconds=0.1))
+                pose = self.tf_buffer.lookup_transform("drone","vicon",rclpy.time.Time(),rclpy.time.Duration(seconds=0.1))
                 self.current_pose.linear.x = pose.transform.translation.x
                 self.current_pose.linear.y = pose.transform.translation.y
                 self.current_pose.linear.z = pose.transform.translation.z
             except TransformException as ex:
-                self.get_logger().info("No transform from drone to world")
+                self.get_logger().info("No transform from drone to vicon")
                 
 
 
@@ -84,10 +84,10 @@ class DesiredPosition(Node):
 
 
     def turtle_wait_frame(self):
-        worldToTurtle = self.tf_buffer.lookup_transform("turtle","world",rclpy.time.Time(),rclpy.time.Duration(seconds=0.1))
+        viconToTurtle = self.tf_buffer.lookup_transform("turtle","vicon",rclpy.time.Time(),rclpy.time.Duration(seconds=0.1))
 
         hover_distance = 0.5 # how fare the drone hover over the turtle in meters
-        hover_frame = worldToTurtle
+        hover_frame = viconToTurtle
         hover_frame.transform.translation.z = hover_frame.transform.translation.z + hover_distance
 
         return hover_frame

@@ -34,7 +34,7 @@ class SimulatedVicon(Node):
     def drone_pose(self):
         drone = TransformStamped()
         head = Header()
-        head.frame_id = "world"
+        head.frame_id = "vicon"
         head.stamp = self.get_clock().now().to_msg()
 
         drone.header = head
@@ -56,7 +56,7 @@ class SimulatedVicon(Node):
         turtle = TransformStamped()
 
         head = Header()
-        head.frame_id = "world"
+        head.frame_id = "vicon"
         head.stamp = self.get_clock().now().to_msg()
 
         turtle.header = head

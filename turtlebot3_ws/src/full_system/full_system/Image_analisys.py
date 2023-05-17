@@ -127,7 +127,7 @@ class image_analisys(Node):
 
 
 
-    def target_to_world(self):
+    def target_to_vicon(self):
 
         return np.dot(self.camera_transform, self.target_transform)
 
@@ -468,7 +468,7 @@ class image_analisys(Node):
         while not self.cli_trajectory.wait_for_service(timeout_sec=1.0):
             self.get_logger().info("service not available, waiting again...")
     
-        turtleTransform = self.tf_buffer.lookup_transform('world', 'turtle', rclpy.time.Time(), rclpy.duration.Duration(seconds=0.1))
+        turtleTransform = self.tf_buffer.lookup_transform('vicon', 'turtle', rclpy.time.Time(), rclpy.duration.Duration(seconds=0.1))
 
         quaternion = [0, 0, 0, 1]
         turtleTransform.transform.rotation.x = quaternion[0]

@@ -164,7 +164,7 @@ class Trajectory(Node):
     def FindAtoB(self,request,response_request):
         self.get_logger().info('Incoming request to go to target')
 
-        telloTransform = self.tf_buffer.lookup_transform('world','drone',rclpy.time.Time(),rclpy.duration.Duration(seconds=0.1))
+        telloTransform = self.tf_buffer.lookup_transform('vicon','drone',rclpy.time.Time(),rclpy.duration.Duration(seconds=0.1))
         
 
         x_drone = telloTransform.transform.translation.x 
@@ -256,24 +256,24 @@ class Trajectory(Node):
 
     def drone2turtle(self):
         
-        world2drone  = self.tf_buffer.lookup_transform('world','drone' , rclpy.time.Time(), rclpy.duration.Duration(seconds=0.1))
-        world2Turtle = self.tf_buffer.lookup_transform('world','turtle', rclpy.time.Time(), rclpy.duration.Duration(seconds=0.1))
+        vicon2drone  = self.tf_buffer.lookup_transform('vicon','drone' , rclpy.time.Time(), rclpy.duration.Duration(seconds=0.1))
+        vicon2Turtle = self.tf_buffer.lookup_transform('vicon','turtle', rclpy.time.Time(), rclpy.duration.Duration(seconds=0.1))
 
         hover_distance = 0.5 # how fare the drone hover over the turtle in meters
-        world2Turtle.transform.translation.z += hover_distance
+        vicon2Turtle.transform.translation.z += hover_distance
 
 
         start_pose = [0,0,0,0]
-        start_pose[0] = world2drone.transform.translation.x 
-        start_pose[1] = world2drone.transform.translation.y
-        start_pose[2] = world2drone.transform.translation.z
+        start_pose[0] = vicon2drone.transform.translation.x 
+        start_pose[1] = vicon2drone.transform.translation.y
+        start_pose[2] = vicon2drone.transform.translation.z
         start_pose[3] = 0.0 
 
 
         end_pose   = [0,0,0,0]
-        end_pose[0] = world2Turtle.transform.translation.x 
-        end_pose[1] = world2Turtle.transform.translation.y
-        end_pose[2] = world2Turtle.transform.translation.z
+        end_pose[0] = vicon2Turtle.transform.translation.x 
+        end_pose[1] = vicon2Turtle.transform.translation.y
+        end_pose[2] = vicon2Turtle.transform.translation.z
         end_pose[3] = 0.0
 
  

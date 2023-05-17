@@ -16,11 +16,11 @@ def get_launch_file_path(launch_file_name):
     
     # this_file_dir = os.path.abspath('system.launch.py')
 
-    # Construct the path to the launch file relative to this script
-    launch_file_path = os.path.join(this_file_dir,'install',"full_system",'share', "full_system", 'launch', launch_file_name)
+    # # Construct the path to the launch file relative to this script
+    # launch_file_path = os.path.join(this_file_dir,'install',"full_system",'share', "full_system", 'launch', launch_file_name)
     
-    # Return the absolute path to the launch file
-    return os.path.abspath(launch_file_path)
+    # # Return the absolute path to the launch file
+    # return os.path.abspath(launch_file_path)
     # return this_file_dir
 
 class initialization(Node):
@@ -29,7 +29,7 @@ class initialization(Node):
 
         self.node_initialization = rclpy.create_node("node_initialization")
 
-        self.cli_user_input = self.node_initialization.create_client(Empty,"user_input")
+        # self.cli_user_input = self.node_initialization.create_client(Empty,"user_input")
         # print(     (os.path.join('share', "full_system", 'launch'), glob(os.path.join('launch', '*launch.[pxy][yma]*'))))
         # print(get_launch_file_path("system.launch.py"))
         # self.launch()
@@ -43,15 +43,15 @@ class initialization(Node):
 
             
         
-    def send_request_to_user(self):
-        while not self.cli_user_input.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("service not available, waiting again...")
+    # def send_request_to_user(self):
+    #     while not self.cli_user_input.wait_for_service(timeout_sec=1.0):
+    #         self.get_logger().info("service not available, waiting again...")
         
-        request = Empty.Request()
-        future = self.cli_user_input.call_async(request)
-        rclpy.spin_until_future_complete(self.node_initialization,future)
+    #     request = Empty.Request()
+    #     future = self.cli_user_input.call_async(request)
+    #     rclpy.spin_until_future_complete(self.node_initialization,future)
         
-        return future.result()
+    #     return future.result()
 
 
     def create_all_clients(self):
@@ -59,24 +59,24 @@ class initialization(Node):
         # self.cli_go_to_target_pose = self.node_initialization.create_client(TargetPose,"go_to_target_pose")
         # self.cli_desired_pose_state = self.node_initialization.create_client(StateChanger,"desired_pose_state")
         # self.cli_drone2turtle = self.node_initialization.create_client(Empty,"drone2turtle")
-        self.cli_turtle_state = self.node_initialization.create_client(StateChanger,"turtle_state")
+        self.cli_turtle_state = self.node_initialization.create_client(StateChanger,"/turtle_state")
         # self.cli_take_picture = self.node_initialization.create_client(TakePicture,"take_picture")
         # self.cli_takeoff = self.node_initialization.create_client(Empty,"takeoff")
 
-    def launch(self):
-        # Create the launch description
-        ld = launch.LaunchDescription([
-            launch.actions.IncludeLaunchDescription(
-                launch.launch_description_sources.PythonLaunchDescriptionSource(
-                    get_launch_file_path("system.launch.py")
-                )
-            )
-        ])
+    # def launch(self):
+    #     # Create the launch description
+    #     ld = launch.LaunchDescription([
+    #         launch.actions.IncludeLaunchDescription(
+    #             launch.launch_description_sources.PythonLaunchDescriptionSource(
+    #                 get_launch_file_path("system.launch.py")
+    #             )
+    #         )
+    #     ])
 
-        # Start the launch file
-        launch_service = launch.LaunchService()
-        launch_service.include_launch_description(ld)
-        launch_service.run()
+    #     # Start the launch file
+    #     launch_service = launch.LaunchService()
+    #     launch_service.include_launch_description(ld)
+    #     launch_service.run()
 
     def change_turtle_state(self):
         while not self.cli_turtle_state.wait_for_service(timeout_sec=1.0):
@@ -84,6 +84,7 @@ class initialization(Node):
         
         request = StateChanger.Request()
         request.state = "continue"
+        self.get_logger().info("request sent" + str(request))
         future = self.cli_turtle_state.call_async(request)
         rclpy.spin_until_future_complete(self.node_initialization,future)
         
@@ -98,6 +99,7 @@ class initialization(Node):
         print(user_input)
         if user_input == "y":
             # self.send_request()
+            self.get_logger().info("sending request to from user")
             self.change_turtle_state()
             self.get_logger().info("turtle_state changed")
         elif user_input == "n":
@@ -108,8 +110,8 @@ class initialization(Node):
 
 
     def check_all_services(self):
-        while not self.cli_calculate_target_pose.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("cli_calculate_target_pose service not available, waiting again...")
+        # while not self.cli_calculate_target_pose.wait_for_service(timeout_sec=1.0):
+        #     self.get_logger().info("cli_calculate_target_pose service not available, waiting again...")
         # while not self.cli_go_to_target_pose.wait_for_service(timeout_sec=1.0):
         #     self.get_logger().info("cli_go_to_target_pose service not available, waiting again...")
         # while not self.cli_desired_pose_state.wait_for_service(timeout_sec=1.0):
