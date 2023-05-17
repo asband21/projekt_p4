@@ -39,7 +39,8 @@ class initialization(Node):
         if up:
             # self.get_logger().info("All services are up, ready to fly into position? : ")
             self.get_logger().info("All services are up, ready to drive : ")
-            self.send_request_to_user()
+            self.user_input()
+
             
         
     def send_request_to_user(self):
@@ -76,6 +77,31 @@ class initialization(Node):
         launch_service = launch.LaunchService()
         launch_service.include_launch_description(ld)
         launch_service.run()
+
+    def change_turtle_state(self):
+        while not self.cli_turtle_state.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info("service not available, waiting again...")
+        
+        request = StateChanger.Request()
+        request.state = "continue"
+        future = self.cli_turtle_state.call_async(request)
+        rclpy.spin_until_future_complete(self.node_initialization,future)
+        
+        return future.result()
+
+
+    def user_input(self):
+                
+        # user_input = input("All services are up, ready to fly into position? : ")
+        user_input = input("All services are up, ready to drive? : ")
+        
+        print(user_input)
+        if user_input == "y":
+            # self.send_request()
+            self.change_turtle_state()
+            self.get_logger().info("turtle_state changed")
+        elif user_input == "n":
+            print("hello")
 
 
 
