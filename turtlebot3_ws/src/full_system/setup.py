@@ -36,6 +36,8 @@ setup(
             "test_turtle = full_system.test_turtle:main",
             "user = full_system.user_input:main",
             "image = full_system.Image_analisys:main",
+            "test_tf = full_system.sub_tf:main",
+            "srv_tf = full_system.srv_tf:main",
         ],
     },
 )

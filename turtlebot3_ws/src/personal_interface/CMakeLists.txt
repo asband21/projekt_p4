@@ -26,6 +26,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/TakePicture.srv"
   "srv/TargetPose.srv"
   "srv/StateChanger.srv"
+  "srv/Tf.srv"
   DEPENDENCIES geometry_msgs
 )
 

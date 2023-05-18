@@ -5,13 +5,14 @@ from std_srvs.srv import Empty, SetBool
 
 
 from geometry_msgs.msg import Twist
-from personal_interface.srv import StateChanger, TakePicture
+from personal_interface.srv import StateChanger, TakePicture, Tf
 import time
 import numpy as np
 
 
-from tf2_ros.buffer import Buffer
+# from tf2_ros.buffer import Buffer
 from tf2_ros.transform_listener import TransformListener
+import tf_transformations as tf
 
 import concurrent.futures
 
@@ -19,16 +20,16 @@ from std_msgs.msg import String
 
 import threading
 
-import tf_transformations as tf
+from geometry_msgs.msg import TransformStamped
 
-
+from tf2_msgs.msg import TFMessage 
 
 class turtle_follower(Node):
     def __init__(self):
         super().__init__("turtle_follower")
 
-        self.stop_flag = threading.Event()
-        self.tarck_length = 3
+        self.current_vicon2turtle = TransformStamped()
+
         self.state = "idle"
         self.msg_state = String()
         self.previous_state = "idle"
@@ -37,22 +38,27 @@ class turtle_follower(Node):
         self.drive_velocity = 0.1
         self.turn_velocity = 1.0
 
-
-        self.tf_buffer = Buffer(rclpy.duration.Duration(seconds=1.0))
-        self.tf_listener = TransformListener(self.tf_buffer, self)
-
         self.node_turtle_follower = rclpy.create_node("node_turtle_follower")
 
+
+        # # # self.tf_buffer = Buffer(rclpy.duration.Duration(seconds=1.0))
+        # # self.tf_listener = TransformListener(self.tf_buffer, self, spin_thread=True)
+
+
+        self.cli_tf = self.node_turtle_follower.create_client(Tf,"vicon2turtle")
         self.cli_analisys = self.node_turtle_follower.create_client(TakePicture,"calculate_target_pose")
         self.cli_power_motors = self.node_turtle_follower.create_client(SetBool,"motor_power")
         self.srv_turtle_state = self.create_service(StateChanger,"/turtle_state",self.turtle_state_callback)
+
+
         self.pub_turtle = self.create_publisher(Twist,'/cmd_vel',10)
-
-
         self.pub_state = self.create_publisher(String,'/turtle_state',10)
+
         self.sub_state = self.create_subscription(String,'/turtle_state',self.state_callback,10)
 
-        self.power_motors(True)
+
+
+        # self.power_motors(True)
 
 
 
@@ -69,10 +75,24 @@ class turtle_follower(Node):
         # self.state_controller()
 
 
+    def send_tf_request(self):
+        while not self.cli_tf.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info("calculate_target_pose service not available, waiting again...")
+        
+        request = Tf.Request()
+        future = self.cli_tf.call_async(request)
+        rclpy.spin_until_future_complete(self.node_turtle_follower, future)
+        
+        return future.result()
+
+
     def state_callback(self, msg):
         self.state = msg.data
 
         self.state_controller()
+
+
+
 
 
     def power_motors(self,bool):
@@ -192,7 +212,7 @@ class turtle_follower(Node):
         if turn_way == "left":
             # turn left 90 degrees
 
-            start_transform = self.tf_buffer.lookup_transform("vicon","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=1.0))
+            start_transform = self.send_tf_request().tf
 
             start_quat = [0,0,0,0]
             start_quat[0] = start_transform.transform.rotation.x
@@ -219,7 +239,7 @@ class turtle_follower(Node):
             while abs(start_yaw-current_yaw) < turn_angle:
                 self.get_logger().info("angle: " + str(abs(start_yaw-current_yaw)))
 
-                current_transform = self.tf_buffer.lookup_transform("vicon","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=1.0))
+                current_transform = self.send_tf_request().tf
 
                 current_quat = [0,0,0,0]
                 current_quat[0] = current_transform.transform.rotation.x
@@ -283,7 +303,7 @@ class turtle_follower(Node):
             # turn right 180 degrees
 
 
-            start_transform = self.tf_buffer.lookup_transform("vicon","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=1.0))
+            start_transform = self.send_tf_request().tf
 
             start_quat = [0,0,0,0]
             start_quat[0] = start_transform.transform.rotation.x
@@ -310,7 +330,7 @@ class turtle_follower(Node):
             while abs(start_yaw-current_yaw) < turn_angle:
 
                 self.get_logger().info("angle: " + str(abs(start_yaw-current_yaw)))
-                current_transform = self.tf_buffer.lookup_transform("vicon","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=1.0))
+                current_transform = self.send_tf_request().tf
 
                 current_quat = [0,0,0,0]
                 current_quat[0] = current_transform.transform.rotation.x
@@ -365,7 +385,8 @@ class turtle_follower(Node):
         # drive 1 meter
         
 
-            start_transform = self.tf_buffer.lookup_transform("vicon","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=0.1))
+            start_transform = self.send_tf_request().tf#,rclpy.duration.Duration(seconds=0.5)
+            self.get_logger().info("start_transform1234: " + str(start_transform)) 
 
 
             drive_distance = 1.0 # unit meter
@@ -385,17 +406,23 @@ class turtle_follower(Node):
             cmd_vel.linear.y = self.drive_velocity
             cmd_vel.linear.z = self.drive_velocity
             self.pub_turtle.publish(cmd_vel)
-
+            # time.sleep(4)
+            current_transform = self.send_tf_request().tf#,rclpy.duration.Duration(seconds=0.5)
+            self.get_logger().info("current_transform1234: " + str(current_transform)) 
             current_x = start_x
             current_y = start_y
             current_z = start_z
-
+            
             distance = np.sqrt((current_x - start_x)**2 + (current_y - start_y)**2 + (current_z - start_z)**2)
             while distance < drive_distance:
-                self.get_logger().info("distance1: " + str(distance)) 
-                current_transform = self.tf_buffer.lookup_transform("vicon","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=0.1))
-
+                
+                # can = self.tf_buffer.can_transform("vicon","turtle",rclpy.time.Time())
+                # self.get_logger().info("can: " + str(can)) 
+                
+                current_transform = self.send_tf_request().tf
                 # log the current transform values
+
+                self.get_logger().info("start_transform: " + str(start_transform)) 
                 self.get_logger().info("current_transform: " + str(current_transform)) 
 
 
@@ -406,8 +433,8 @@ class turtle_follower(Node):
                 current_z = current_transform.transform.translation.z
 
                 distance = np.sqrt((current_x - start_x)**2 + (current_y - start_y)**2 + (current_z - start_z)**2)
+                self.get_logger().info("distance: " + str(distance))
 
-                self.get_logger().info("distance2: " + str(distance)) 
 
                 time.sleep(1/30)
 
@@ -514,7 +541,7 @@ class turtle_follower(Node):
 
         elif self.state == "turn_left":
             self.get_logger().info("state: " + self.state)
-            self.turn_left()
+            self.turn("left")
 
             if self.previous_state == "drive_stright":
                 self.msg_state.data = "image_analisys"

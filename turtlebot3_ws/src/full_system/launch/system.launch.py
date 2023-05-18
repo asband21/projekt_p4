@@ -71,6 +71,10 @@ def generate_launch_description():
             package='full_system',
             executable='image',
         ),
+        Node(
+            package='full_system',
+            executable='srv_tf',
+        ),
         # Node(
         #     package='full_system',
         #     executable='simulation_vi',
