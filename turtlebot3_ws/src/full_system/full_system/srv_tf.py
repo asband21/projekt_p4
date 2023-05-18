@@ -16,6 +16,8 @@ class SrvTF(Node):
         self.sub_vicon2turtle = self.create_subscription(TFMessage, 'tf', self.callback_vicon2turtle, 10 )
         self.srv_vicon2turtle = self.create_service(Tf, 'vicon2turtle', self.vicon2turtle)
 
+        self.sub_vicon2drone = self.create_subscription(TFMessage, 'tf', self.callback_vicon2turtle, 10 )
+        self.srv_vicon2drone = self.create_service(Tf, 'vicon2drone', self.vicon2drone)
 
 
     def callback_vicon2turtle(self, msg):
@@ -35,6 +37,26 @@ class SrvTF(Node):
     def vicon2turtle(self, request, response):
         response.tf = self.current_vicon2turtle
         return response
+
+
+    def callback_vicon2turtle(self, msg):
+        source_frame_id = 'vicon'
+        target_frame_id = 'drone'
+        for transform in msg.transforms:
+            if (transform.header.frame_id == source_frame_id and transform.child_frame_id == target_frame_id
+            ):
+                # Found the desired transform
+                transform.transform.translation.x = -1*transform.transform.translation.x
+                transform.transform.translation.y = -1*transform.transform.translation.y
+                transform.transform.translation.z = -1*transform.transform.translation.z
+
+                self.current_vicon2drone = transform
+                break
+
+    def vicon2drone(self, request, response):
+        response.tf = self.current_vicon2drone
+        return response
+
 
 
 def main():

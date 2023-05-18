@@ -11,101 +11,44 @@ import cv2
 
 import pickle
 
-import tf2_ros as tf2
 import tf_transformations as tf
-from tf2_ros import TransformListener
-from tf2_ros.buffer import Buffer
 from std_msgs.msg import Header
 import time
 
 from sensor_msgs.msg import CameraInfo, Image
 
+from personal_interface.srv import Tf
 
 import os
 
 class image_analisys(Node):
     def __init__(self):
         super().__init__("image_analisys") 
+        self.test_number = "1"
 
         self.distination_for_test_data = "~/test_data/test_data_1/"
 
-        self.tf_buffer = Buffer(rclpy.duration.Duration(seconds=1.0))
-        self.tf_listener = TransformListener(self.tf_buffer,self)
 
         self.node_image_analisys = rclpy.create_node("node_image_analisys")
 
         self.cli_trajectory = self.create_client(TargetPose,"go_to_target_pose")
 
         self.srv_calulate_target_pose = self.create_service(TakePicture,"calculate_target_pose",self.srv_take_aligment_picture) 
-        # self.initial_camera() 
-
-        # self.publisher_intrinsics = self.node_image_analisys.create_publisher(CameraInfo,"/stereo/left/camera_info",10)
-        # self.publisher_rgb = self.node_image_analisys.create_publisher(Image,"/stereo/left/image_rect_color",10)
-
-
-        # hz = 1/3
-        # self.timer = self.create_timer(hz,self.publish_intrincis_and_rgb)
-
-
-
-    # def publish_intrincis_and_rgb(self):
-
-    #     self.initial_camera()
-
-    #     # Get frameset of color and depth
-    #     frames = self.pipeline.wait_for_frames()
-    #     # frames.get_depth_frame() is a 640x360 depth image
-
-    #     # Align the depth frame to color frame
-    #     aligned_frames = self.align.process(frames)
-
-    #     # Get aligned frames
-    #     aligned_depth_frame = aligned_frames.get_depth_frame() # aligned_depth_frame is a 640x480 depth image
-    #     color_frame = aligned_frames.get_color_frame()
-
-    #     color_image = np.asanyarray(color_frame.get_data())
-    #     # Publish the data
-    #     msg_intrinsics = CameraInfo()
-    #     msg_intrinsics.header.frame_id = "camera_link"
-    #     msg_intrinsics.header.stamp = self.get_clock().now().to_msg()
-    #     # msg_intrinsics.height = self.camera_intrinsics.height
-    #     # msg_intrinsics.width = self.camera_intrinsics.width
-    #     # msg_intrinsics.distortion_model = "plumb_bob"
-    #     # msg_intrinsics.d = self.camera_intrinsics.coeffs
-    #     # msg_intrinsics.k = self.camera_intrinsics.K
-    #     # msg_intrinsics.r = self.camera_intrinsics.R
-    #     # msg_intrinsics.p = self.camera_intrinsics.p
-
-
-    #     self.msg_intrinsics = CameraInfo()
-    #     self.msg_intrinsics.width = self.camera_intrinsics.width
-    #     self.msg_intrinsics.height = self.camera_intrinsics.height
-    #     self.msg_intrinsics.distortion_model = 'plumb_bob'
-    #     self.msg_intrinsics.d = [0.0, 0.0, 0.0, 0.0, 0.0]
-    #     self.msg_intrinsics.k = [self.camera_intrinsics.fx, 0.0, self.camera_intrinsics.ppx, 0.0, self.camera_intrinsics.fy, self.camera_intrinsics.ppy, 0.0, 0.0, 1.0]
-    #     self.msg_intrinsics.r = [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
-    #     self.msg_intrinsics.p = [self.camera_intrinsics.fx, 0.0, self.camera_intrinsics.ppx, 0.0, 0.0, self.camera_intrinsics.fy, self.camera_intrinsics.ppy, 0.0, 0.0, 0.0, 1.0, 0.0]
-    
-
-    #     self.publisher_intrinsics.publish(msg_intrinsics)
-
-    #     msg_rgb = Image()
-    #     msg_rgb.header.frame_id = "camera_link"
-    #     msg_rgb.header.stamp = self.get_clock().now().to_msg()
-    #     msg_rgb.height = color_image.shape[0]
-    #     msg_rgb.width = color_image.shape[1]
-    #     msg_rgb.encoding = "rgb8"
-    #     msg_rgb.data = color_image.tostring()
-    #     self.publisher_rgb.publish(msg_rgb)
-
-    #     self.pipeline.stop()
-
-
+        self.cli_vicon2turtle = self.node_image_analisys.create_client(Tf,"vicon2turtle")
        
+
+    def send_vicon2turtle(self):
+        while not self.cli_vicon2turtle.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info("service vicon2turtle not available, waiting again...")
+        request = Tf.Request()
+        future = self.cli_vicon2turtle.call_async(request)
+        rclpy.spin_until_future_complete(self.node_image_analisys, future)
+        return future.result().tf
 
 
 
     def transformations(self):
+
 
             target_rot_matrix = [[0.0, -0.0, -1.0],
                                 [1.0,  0.0,  0.0],
@@ -115,6 +58,8 @@ class image_analisys(Node):
             self.target_transform = np.eye(4)
             self.target_transform[:3, :3] = target_rot_matrix
             self.target_transform[:3, 3] = target_translation
+
+
 
 
             self.camera_transform = np.eye(4)
@@ -272,16 +217,6 @@ class image_analisys(Node):
                 continue
             
             print("ids: ",ids)
-            # print("where_qr: ",where_qr)
-            # print("info: ",info)
-            # print("see_qr: ",see_qr)
-        
-            # see_qr,where_qr = self.detector.detectMulti(qr_image)
-            # print("where_qr: ",where_qr)
-            # decodeMulti = self.detector.decodeMulti(qr_image, where_qr)
-
-            # print("decodeMulti: ",decodeMulti)
-            # ids = decodeMulti[1]
 
             for id in ids:
                 if id == "":
@@ -293,13 +228,9 @@ class image_analisys(Node):
             else:
                 break
 
-        know_ids = []
+        current_ids = []
         for id in ids:
-            know_ids.append( int(id))
-
-        
-
-        # create array with size of number of qr-codes
+            current_ids.append( int(id))
 
             
         # convert the image to grayscale
@@ -363,25 +294,25 @@ class image_analisys(Node):
 
 
 
-            transforms = []
+            current_transforms = []
             for i in range(len(rot)):
                 T = np.eye(4)
                 T[:3, :3] = rot_matrix[i][0]
                 T[:3, 3] = position[i]
 
-                transforms.append(T)            
+                current_transforms.append(T)            
             
-            # print("transforms: ",transforms)
+            # print("current_transforms: ",current_transforms)
 
 
 
             
-            # multiply the target_transform with the transforms
-            for i in range(len(transforms)):
-                transforms[i] = np.dot(transforms[i], self.target_transform)
-                # print("transforms: ",transforms[i])
+            # multiply the target_transform with the current_transforms
+            for i in range(len(current_transforms)):
+                current_transforms[i] = np.dot(current_transforms[i], self.target_transform)
+                # print("current_transforms: ",current_transforms[i])
 
-            targets = (know_ids, transforms)
+            targets = (current_ids, current_transforms)
             # print("target_transform: ",target_transform)
 
             # make the csv file to store the targets
