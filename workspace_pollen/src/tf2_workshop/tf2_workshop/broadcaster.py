@@ -22,7 +22,7 @@ class DynamicBroadcaster(Node):
         
         tfs = TransformStamped()
         tfs.header.stamp = self.get_clock().now().to_msg()
-        tfs.header.frame_id="world"
+        tfs.header.frame_id="vicon"
         tfs._child_frame_id = self.name_
         tfs.transform.translation.x = msg.x
         tfs.transform.translation.y = msg.y

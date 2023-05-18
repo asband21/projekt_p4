@@ -40,7 +40,7 @@ class StaticTF(Node):
 
         tfA = TransformStamped()
         tfA.header.stamp = self.get_clock().now().to_msg()
-        tfA.header.frame_id = "world"
+        tfA.header.frame_id = "vicon"
         tfA.child_frame_id = "A"
         tfA.transform.translation.x = 0.0
         tfA.transform.translation.y = -1.0
@@ -88,7 +88,7 @@ class StaticTF(Node):
 
         # tfVicon = TransformStamped()
         # tfVicon.header.stamp = self.get_clock().now().to_msg()
-        # tfVicon.header.frame_id = "world"
+        # tfVicon.header.frame_id = "vicon"
         # tfVicon.child_frame_id = "vicon"
         # tfVicon.transform.translation.x = 0.4
         # tfVicon.transform.translation.y = 0.0

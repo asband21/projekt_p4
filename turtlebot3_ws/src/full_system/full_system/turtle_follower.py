@@ -1,7 +1,8 @@
 import rclpy
 from rclpy.node import Node
 
-from std_srvs.srv import Empty
+from std_srvs.srv import Empty, SetBool
+
 
 from geometry_msgs.msg import Twist
 from personal_interface.srv import StateChanger, TakePicture
@@ -14,10 +15,12 @@ from tf2_ros.transform_listener import TransformListener
 
 import concurrent.futures
 
+from std_msgs.msg import String
 
 import threading
 
 import tf_transformations as tf
+
 
 
 class turtle_follower(Node):
@@ -27,10 +30,11 @@ class turtle_follower(Node):
         self.stop_flag = threading.Event()
         self.tarck_length = 3
         self.state = "idle"
+        self.msg_state = String()
         self.previous_state = "idle"
         self.meters_driven = 0
 
-        self.drive_velocity = 0.2
+        self.drive_velocity = 0.1
         self.turn_velocity = 1.0
 
 
@@ -40,11 +44,19 @@ class turtle_follower(Node):
         self.node_turtle_follower = rclpy.create_node("node_turtle_follower")
 
         self.cli_analisys = self.node_turtle_follower.create_client(TakePicture,"calculate_target_pose")
+        self.cli_power_motors = self.node_turtle_follower.create_client(SetBool,"motor_power")
         self.srv_turtle_state = self.create_service(StateChanger,"/turtle_state",self.turtle_state_callback)
         self.pub_turtle = self.create_publisher(Twist,'/cmd_vel',10)
 
 
-        self.create_timer(0.1, self.state_controller)
+        self.pub_state = self.create_publisher(String,'/turtle_state',10)
+        self.sub_state = self.create_subscription(String,'/turtle_state',self.state_callback,10)
+
+        self.power_motors(True)
+
+
+
+        # self.create_timer(0.1, self.state_controller)
 
 
         # self.thread = threading.Thread(target=self.state_controller)
@@ -57,14 +69,33 @@ class turtle_follower(Node):
         # self.state_controller()
 
 
-    def stop(self):
-        self.stop_flag.set()
-        self.thread.join()
+    def state_callback(self, msg):
+        self.state = msg.data
+
+        self.state_controller()
+
+
+    def power_motors(self,bool):
+        while not self.cli_power_motors.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info("motor_power service not available, waiting again...")
+        
+        request = SetBool.Request()
+        request.data = bool
+        future = self.cli_power_motors.call_async(request)
+        rclpy.spin_until_future_complete(self.node_turtle_follower, future)
+        
+        return future.result()
+
+
+    # def stop(self):
+    #     self.stop_flag.set()
+    #     self.thread.join()
 
     def turtle_state_callback(self, request, response):
         self.state = request.state
         response.success = True
         self.get_logger().info("state changed to: " + request.state)
+        self.state_controller()
         return response
 
 
@@ -186,6 +217,7 @@ class turtle_follower(Node):
             self.pub_turtle.publish(cmd_vel)
 
             while abs(start_yaw-current_yaw) < turn_angle:
+                self.get_logger().info("angle: " + str(abs(start_yaw-current_yaw)))
 
                 current_transform = self.tf_buffer.lookup_transform("vicon","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=1.0))
 
@@ -247,7 +279,6 @@ class turtle_follower(Node):
 
 
 
-
         elif turn_way == "right":
             # turn right 180 degrees
 
@@ -278,6 +309,7 @@ class turtle_follower(Node):
 
             while abs(start_yaw-current_yaw) < turn_angle:
 
+                self.get_logger().info("angle: " + str(abs(start_yaw-current_yaw)))
                 current_transform = self.tf_buffer.lookup_transform("vicon","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=1.0))
 
                 current_quat = [0,0,0,0]
@@ -331,8 +363,9 @@ class turtle_follower(Node):
 
     def drive_stright(self):
         # drive 1 meter
+        
 
-            start_transform = self.tf_buffer.lookup_transform("vicon","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=1.0))
+            start_transform = self.tf_buffer.lookup_transform("vicon","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=0.1))
 
 
             drive_distance = 1.0 # unit meter
@@ -359,9 +392,14 @@ class turtle_follower(Node):
 
             distance = np.sqrt((current_x - start_x)**2 + (current_y - start_y)**2 + (current_z - start_z)**2)
             while distance < drive_distance:
+                self.get_logger().info("distance1: " + str(distance)) 
+                current_transform = self.tf_buffer.lookup_transform("vicon","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=0.1))
 
-                current_transform = self.tf_buffer.lookup_transform("vicon","turtle",rclpy.time.Time(),rclpy.duration.Duration(seconds=1.0))
+                # log the current transform values
+                self.get_logger().info("current_transform: " + str(current_transform)) 
 
+
+                # print("current_transform: ",current_transform)
 
                 current_x = current_transform.transform.translation.x
                 current_y = current_transform.transform.translation.y
@@ -369,6 +407,7 @@ class turtle_follower(Node):
 
                 distance = np.sqrt((current_x - start_x)**2 + (current_y - start_y)**2 + (current_z - start_z)**2)
 
+                self.get_logger().info("distance2: " + str(distance)) 
 
                 time.sleep(1/30)
 
@@ -434,33 +473,84 @@ class turtle_follower(Node):
 
         self.get_logger().info("state_controller started")
 
-        if self.state == "idle":
+        if self.meters_driven >= 5:
+            
+            self.get_logger().info("state_controller ended")
             return
+
 
         if self.state == "idle":
             self.get_logger().info("state: " + self.state)
             return
+        elif self.state == "continue":
+            
+            self.msg_state.data = "drive_stright"
+            self.pub_state.publish(self.msg_state)
+
         
         elif self.state == "drive_stright":
             self.get_logger().info("state: " + self.state)
             self.drive_stright()
+            self.msg_state.data = "turn_left"
 
-            self.state = "idle"
 
             self.previous_state = "drive_stright"
+            self.meters_driven += 1
+            self.pub_state.publish(self.msg_state)
+
             return
         
+
+        elif self.state == "turn_right":
+            self.get_logger().info("state: " + self.state)
+            self.turn("right")
+
+            self.msg_state.data = "image_analisys"
+
+            self.previous_state = "turn_right"
+            self.pub_state.publish(self.msg_state)
+
+            return
+
         elif self.state == "turn_left":
             self.get_logger().info("state: " + self.state)
             self.turn_left()
-            self.state = "image_analisys"
+
+            if self.previous_state == "drive_stright":
+                self.msg_state.data = "image_analisys"
+
+
+                self.previous_state = "turn_left"
+                self.pub_state.publish(self.msg_state)
+                return
+            elif self.previous_state == "image_analisys":
+                self.msg_state.data = "drive_stright"
+
+
+                self.previous_state = "turn_left"
+                self.pub_state.publish(self.msg_state)
+                return
+
+
             return
 
         elif self.state == "image_analisys":
             self.get_logger().info("state: " + self.state)
             self.send_request()
-            self.state = "idle"
-            self.state = "drive_stright"
+            
+            
+            if self.previous_state == "turn_left":
+
+                self.msg_state.data = "turn_right"
+                self.pub_state.publish(self.msg_state)
+                return
+            elif self.previous_state == "turn_right":
+                
+                self.previous_state = "image_analisys"
+                self.msg_state.data = "turn_left"
+                self.pub_state.publish(self.msg_state)
+                return            
+            
             return
 
 

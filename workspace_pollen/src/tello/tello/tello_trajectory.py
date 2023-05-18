@@ -149,7 +149,7 @@ class tello_trajectory(Node):
                 self.pub_velocities.publish(vel)
 
                 # tfDesired.header.stamp = self.get_clock().now().to_msg()
-                # tfDesired.header.frame_id = "world"
+                # tfDesired.header.frame_id = "vicon"
                 # tfDesired.child_frame_id = "desired_pose"
                 # tfDesired.transform.translation.x = float(pos[0])
                 # tfDesired.transform.translation.y = float(pos[1])
