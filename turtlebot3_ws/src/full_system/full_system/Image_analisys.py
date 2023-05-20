@@ -24,9 +24,10 @@ import os
 class image_analisys(Node):
     def __init__(self):
         super().__init__("image_analisys") 
-        self.test_number = "1"
+        self.run_number = "2"
+        self.number_of_images_taken = 0
 
-        self.distination_for_test_data = "~/test_data/test_data_1/"
+        self.destination_for_test_data = "/home/ubuntu/tests/turtleTest"
 
 
         self.node_image_analisys = rclpy.create_node("node_image_analisys")
@@ -47,35 +48,69 @@ class image_analisys(Node):
 
 
 
-    def transformations(self):
-
-
-            target_rot_matrix = [[0.0, -0.0, -1.0],
-                                [1.0,  0.0,  0.0],
-                                [0.0, -1.0,  0.0]]
-            target_translation = [0.0, 0.0, 0.1]
-
-            self.target_transform = np.eye(4)
-            self.target_transform[:3, :3] = target_rot_matrix
-            self.target_transform[:3, 3] = target_translation
+    def vicon2qr_code(self, cam2qrcode_transform):
 
 
 
+        # the transformation from the vicon to the turtlebot
+        
+        vicon2turtle = self.send_vicon2turtle()
 
-            self.camera_transform = np.eye(4)
-            self.camera_transform[:3, :3] = np.array([[0.0, 0.0, 1.0],
-                                                    [-1.0, 0.0, 0.0],
-                                                    [0.0, -1.0, 0.0]])
-            self.camera_transform[:3, 3] = np.array([0.0, 0.0, 0.0])
+        vicon2turtle_translation = [vicon2turtle.transform.translation.x, vicon2turtle.transform.translation.y, vicon2turtle.transform.translation.z]
+
+        vicon2turtle_rot_matrix = tf.quaternion_matrix([vicon2turtle.transform.rotation.x, vicon2turtle.transform.rotation.y, vicon2turtle.transform.rotation.z, vicon2turtle.transform.rotation.w]) # if rotation is bad, this might return a wrong degrees
+
+        vicon2turtle_transform = np.eye(4)
+        vicon2turtle_transform[:3, :3] = vicon2turtle_rot_matrix[:3, :3]
+        vicon2turtle_transform[:3, 3] = vicon2turtle_translation
+
+
+        # the transformation from turtlebot to the camera
+        turtle2cam_translation = [-0.04, 0.03, 0.075]
+        turtle2cam_rot_matrix = [  [1.0,  0.0,  0.0],
+                                   [0.0,  0.8660254,  0.5],
+                                   [0.0, -0.5,  0.8660254] ]
+        
+        turtle2cam_transform = np.eye(4)
+        turtle2cam_transform[:3, :3] = turtle2cam_rot_matrix
+        turtle2cam_transform[:3, 3] = turtle2cam_translation
+
+        
+        # the transformation from vice to the camera
+        vicon2cam_transform = np.dot(vicon2turtle_transform, turtle2cam_transform)
+
+
+        # the transformation from vicon to the qr code
+        vicon2qrcode_transform = np.dot(vicon2cam_transform, cam2qrcode_transform)
+
+
+        # the transformation from the qr code to the target
+        target_rot_matrix = [[0.0, 0.0, -1.0],
+                            [1.0,  0.0,  0.0],
+                            [0.0, -1.0,  0.0]]
+        target_translation = [0.0, 0.0, 0.1]
+
+        qrcode2target_transform = np.eye(4)
+        qrcode2target_transform[:3, :3] = target_rot_matrix
+        qrcode2target_transform[:3, 3] = target_translation
+
+
+        # the transformation from vicon to the target
+        vicon2target_transform = np.dot(vicon2qrcode_transform, qrcode2target_transform)
+
+
+
+        return vicon2qrcode_transform
 
 
 
 
 
 
-    def target_to_vicon(self):
 
-        return np.dot(self.camera_transform, self.target_transform)
+
+
+
 
 
 
@@ -182,7 +217,7 @@ class image_analisys(Node):
         break_count = 0
         see_qr = False
         where_qr = None
-
+        qr_image = None
         
         while True:
             no_id = False
@@ -205,11 +240,17 @@ class image_analisys(Node):
             qr_image =  color_image
 
 
+
             see_qr, ids, where_qr, info = self.detector.detectAndDecodeMulti(qr_image)
                 
 
             if break_count > 10:
+                image_folder_path = f"{self.destination_for_test_data}/run{self.run_number}/images"
+                os.makedirs(image_folder_path, exist_ok=True)
+                cv2.imwrite(self.destination_for_test_data+ f"/run{self.run_number}/images/image_no_qr_{self.number_of_images_taken}.png", qr_image)
+            
                 response.success = False
+                self.number_of_images_taken += 1
                 return response
             if see_qr == False:
                 # print(see_qr)
@@ -294,96 +335,160 @@ class image_analisys(Node):
 
 
 
-            current_transforms = []
+            current_cam2qrcode_transforms = []
             for i in range(len(rot)):
                 T = np.eye(4)
                 T[:3, :3] = rot_matrix[i][0]
                 T[:3, 3] = position[i]
 
-                current_transforms.append(T)            
-            
-            # print("current_transforms: ",current_transforms)
-
-
-
-            
-            # multiply the target_transform with the current_transforms
-            for i in range(len(current_transforms)):
-                current_transforms[i] = np.dot(current_transforms[i], self.target_transform)
-                # print("current_transforms: ",current_transforms[i])
-
-            targets = (current_ids, current_transforms)
-            # print("target_transform: ",target_transform)
-
-            # make the csv file to store the targets
+                current_cam2qrcode_transforms.append(T)            
             
 
-            # # store the targets in a csv file
-            # with open('/home/carsten/qrcode_test/QR_code_orientation_OpenCV/QR-code.csv', 'w') as f:
-            #     writer = csv.writer(f)
-            #     writer.writerow(targets)
-            #     f.close()
+            current_vicon2qrcode = []
+            for trans in current_cam2qrcode_transforms:
+                current_vicon2qrcode.append(self.vicon2qr_code(trans))
+
+            current_targets = (current_ids, current_vicon2qrcode)
+
+                
+
+            image_folder_path = f"{self.destination_for_test_data}/run{self.run_number}/images"
+            os.makedirs(image_folder_path, exist_ok=True)
+            
+
+            folder_path = f"{self.destination_for_test_data}/run{self.run_number}/data"
+            file_name = f"test{self.run_number}.pkl"
+            file_path = os.path.join(folder_path, file_name)
 
 
-            print("targets: ",targets)
+            current_ids, current_vicon2qrcode = current_targets
 
+            # Check if the file exists
+            if not os.path.exists(file_path):
 
+                #----------------------------------------------------------------------------------#
+                #!!!!!!!!!!!!!! MAKE THE LOGIC HERE TO CALL TRAJECTORY NODE !!!!!!!!!!!!!!!!!!!!!!!#
+                #----------------------------------------------------------------------------------#
 
-            # compine the self.distinct_targets path with a file name
-            file_name = os.path.join(self.distination_for_test_data, "target1.pkl")
+                os.makedirs(folder_path, exist_ok=True)
+                
 
-            # Read the data from the file
-            with open(file_name, 'rb') as file:
-                loaded_data = pickle.load(file)
-            if loaded_data is None:
-
-
-                # Save the targets to a file
-                with open(file_name, 'wb') as file:
-                    pickle.dump(targets, file)
-
-
-                # Read the data from the file
-                with open(file_name, 'rb') as file:
-                    loaded_data = pickle.load(file)
+                # Create a file and save current_targets
+                with open(file_path, "wb") as file:
+                    pickle.dump(current_targets, file)
+                self.get_logger().info(f"File {file_name} created and saved to {folder_path}")
+                self.get_logger().info("111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111")
 
             else:
-
-
                 # Read the data from the file
-                with open(file_name, 'rb') as file:
-                    loaded_data = pickle.load(file)
+                self.get_logger().info("22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222")
+                
+                with open(file_path, "rb") as file:
+                    previous_targets = pickle.load(file)
+                
+                previous_ids, previous_vicon2qrcode = previous_targets
 
-                # loaded_data = np.vstack((loaded_data, targets))
+                # Check if current_targets is in the data
+                if not current_vicon2qrcode in previous_ids:
+                    self.get_logger().info(f"seconf if QR-code {current_ids} already in the file {file_name}")
+                    self.get_logger().info("33333333333333333333333333333333333333333333333333333333333333333333333333333333333333")
 
-                know_ids = loaded_data[0]
-                know_transforms = loaded_data[1]
+                    # Strip the data from the file based on current_targets
+                    # stripped_ids = [item for item in previous_targets[0] if item != current_targets[0]]
+                    stripped_ids = []
+                    stripped_transforms = []
+                    new_ids =[]
+                    for item in current_ids:
+                        if item not in previous_targets[0]:
+                            index =current_targets[0].index(item)
+                            stripped_transforms.append(current_vicon2qrcode[index])
+                            stripped_ids.append(item)
+                            new_ids.append(item)
+                    stripped_targers = (stripped_ids,stripped_transforms)
+                    # save the qr_image in the folder ~/test/turtleTest/run{self.run_number}/images. where the qr_image name is the ids found in it
+                    cv2.imwrite(self.destination_for_test_data+ f"/run{self.run_number}/images/image_{new_ids}.png", qr_image)
+                    path = self.destination_for_test_data+ f"/run{self.run_number}/images/image_{new_ids}.png"
+                    self.get_logger().info(f"QR-code image saved to {path}")
+                    self.get_logger().info("QR-code image saved to the folder")
+                    # cv2.imwrite(f"images{new_ids}.png", qr_image)
+                    
+                    
+                    # Save the stripped data back to the file
+                    with open(file_path, "wb") as file:
+                        pickle.dump(stripped_targers, file)
+                else:
+                    self.get_logger().info("44444444444444444444444444444444444444444444444444444444444444444444444444444444444")
+                    cv2.imwrite(self.destination_for_test_data + f"/run{self.run_number}/images/image_no_new_ids.png", qr_image)
+                    path = self.destination_for_test_data+ "/images/image_no_new_ids.png"
+                    self.get_logger().info(f"QR-code image saved to {path}")
 
-                # this is to check if the id is already in the know_ids
-                for i in range(len(targets[0])):
-                    if targets[0][i] not in know_ids:
-                        know_ids.append(targets[0][i])
-                        know_transforms.append(targets[1][i])
+                    # Save current_targets to the file
+                    with open(file_path, "wb") as file:
+                        # previous_targets.append(current_targets)
+                        pickle.dump(current_targets, file)
+                    self.get_logger().info(f"seconod else QR-code {current_targets[0]} added to the file {file_name}")
 
 
 
-                # Save the targets to a file
-                with open(file_name, 'wb') as file:
-                    pickle.dump(targets, file)
 
 
 
-            print("loaded_data: ", type(loaded_data))
+
+            # # compine the self.distinct_targets path with a file name
+            # file_name = os.path.join(self.destination_for_test_data, f"test{self.run_number}.pkl")
+
+            # # Read the data from the file
+            # with open(file_name, 'rb') as file:
+            #     previous_targets = pickle.load(file)
+            # if previous_targets is None:
+
+
+            #     # Save the current_targets to a file
+            #     with open(file_name, 'wb') as file:
+            #         pickle.dump(current_targets, file)
+
+
+            #     # Read the data from the file
+            #     with open(file_name, 'rb') as file:
+            #         previous_targets = pickle.load(file)
+
+            # else:
+
+
+            #     # Read the data from the file
+            #     with open(file_name, 'rb') as file:
+            #         previous_targets = pickle.load(file)
+
+            #     # previous_targets = np.vstack((previous_targets, current_targets))
+
+            #     know_ids = previous_targets[0]
+            #     know_transforms = previous_targets[1]
+
+            #     # this is to check if the id is already in the know_ids
+            #     for i in range(len(current_targets[0])):
+            #         if current_targets[0][i] not in know_ids:
+            #             know_ids.append(current_targets[0][i])
+            #             know_transforms.append(current_targets[1][i])
+
+
+
+            #     # Save the current_targets to a file
+            #     with open(file_name, 'wb') as file:
+            #         pickle.dump(current_targets, file)
+
+
+
+            # print("previous_targets: ", type(previous_targets))
 
             
-            know_ids = loaded_data[0]
-            know_transforms = loaded_data[1]
+            # know_ids = previous_targets[0]
+            # know_transforms = previous_targets[1]
 
-            print("know_ids: ", know_ids)
-            print("know_ids: ", type(know_ids))
+            # print("know_ids: ", know_ids)
+            # print("know_ids: ", type(know_ids))
 
-            print("know_transforms: ", know_transforms)
-            print("know_transforms: ", type(know_transforms))
+            # print("know_transforms: ", know_transforms)
+            # print("know_transforms: ", type(know_transforms))
 
             response.success = True 
             return response

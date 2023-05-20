@@ -19,10 +19,11 @@ class turtle_follower(Node):
         self.state = "idle"
         self.msg_state = String()
         self.previous_state = "idle"
+        self.how_far_to_drive = 2
         self.meters_driven = 0
 
         self.drive_velocity = 0.1
-        self.turn_velocity = 0.3
+        self.turn_velocity = 0.5
 
         self.node_turtle_follower = rclpy.create_node("node_turtle_follower")
 
@@ -98,7 +99,7 @@ class turtle_follower(Node):
 
 
     def turn(self, turn_way):
-
+        self.power_motors(True)
         if turn_way == "left":
             # turn left 90 degrees
 
@@ -113,8 +114,7 @@ class turtle_follower(Node):
             start_zyx = tf.euler_from_quaternion(start_quat,axes='rzyx')
 
 
-            start_yaw = (180/np.pi)* start_zyx[0]
-
+            start_yaw =  (180/np.pi)*start_zyx[0]#(180/np.pi)*
 
             # turn_angle = np.pi/2 # unit rad
             turn_angle = 89 # unit degrees
@@ -129,7 +129,6 @@ class turtle_follower(Node):
             self.pub_turtle.publish(cmd_vel)
 
             while abs(start_yaw-current_yaw) < turn_angle:
-                self.get_logger().info("angle: " + str(abs(start_yaw-current_yaw)))
 
                 current_transform = self.send_tf_request().tf
 
@@ -141,7 +140,9 @@ class turtle_follower(Node):
 
                 current_zyx = tf.euler_from_quaternion(current_quat,axes='rzyx')
 
-                current_yaw = (180/np.pi)* current_zyx[0]
+                current_yaw =  (180/np.pi)*current_zyx[0]#(180/np.pi)*
+
+                self.get_logger().info("angle: " + str(abs(start_yaw-current_yaw)))
                 time.sleep(1/30)
 
             cmd_vel.angular.z = 0.0
@@ -163,9 +164,7 @@ class turtle_follower(Node):
 
             start_zyx = tf.euler_from_quaternion(start_quat,axes='rzyx')
 
-            start_yaw = (180/np.pi)* start_zyx[0]
-
-
+            start_yaw =  (180/np.pi)*start_zyx[0]#(180/np.pi)*
             # turn_angle = np.pi # unit rad
             turn_angle = 179 # unit degrees
 
@@ -180,7 +179,6 @@ class turtle_follower(Node):
 
             while abs(start_yaw-current_yaw) < turn_angle:
 
-                self.get_logger().info("angle: " + str(abs(start_yaw-current_yaw)))
                 current_transform = self.send_tf_request().tf
 
                 current_quat = [0,0,0,0]
@@ -191,16 +189,19 @@ class turtle_follower(Node):
 
                 current_zyx = tf.euler_from_quaternion(current_quat,axes='rzyx')
 
-                current_yaw = (180/np.pi)* current_zyx[0]
+                current_yaw =  (180/np.pi)*current_zyx[0]#(180/np.pi)*
+                self.get_logger().info("angle: " + str(abs(start_yaw-current_yaw)))
                 time.sleep(1/30)
 
             cmd_vel.angular.z = 0.0
             self.pub_turtle.publish(cmd_vel)
+        self.power_motors(False)
 
 
 
     def drive_stright(self):
         # drive 1 meter
+            self.power_motors(True)
         
 
             start_transform = self.send_tf_request().tf
@@ -250,6 +251,7 @@ class turtle_follower(Node):
 
             cmd_vel.linear.x = 0.0
             self.pub_turtle.publish(cmd_vel)
+            self.power_motors(False)
 
 
 
@@ -258,7 +260,7 @@ class turtle_follower(Node):
 
         self.get_logger().info("state_controller started")
 
-        if self.meters_driven > 3:
+        if self.meters_driven > self.how_far_to_drive:
             
             self.get_logger().info("state_controller ended")
             return
@@ -268,8 +270,9 @@ class turtle_follower(Node):
             self.get_logger().info("state: " + self.state)
             return
         elif self.state == "continue":
-            
-            self.msg_state.data = "drive_stright"
+            self.previous_state = "continue"
+
+            self.msg_state.data = "turn_left"
             self.pub_state.publish(self.msg_state)
 
         
@@ -301,6 +304,8 @@ class turtle_follower(Node):
             self.get_logger().info("state: " + self.state)
             self.turn("left")
 
+
+
             if self.previous_state == "drive_stright":
                 self.msg_state.data = "image_analisys"
 
@@ -315,6 +320,12 @@ class turtle_follower(Node):
                 self.previous_state = "turn_left"
                 self.pub_state.publish(self.msg_state)
                 return
+            elif self.previous_state == "continue":
+                self.msg_state.data = "image_analisys"
+
+
+                self.previous_state = "turn_left"
+                self.pub_state.publish(self.msg_state)
 
 
             return

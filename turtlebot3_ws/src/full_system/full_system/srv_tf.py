@@ -12,11 +12,13 @@ from personal_interface.srv import Tf
 class SrvTF(Node):
     def __init__(self):
         super().__init__('srv_tf')
+        self.current_vicon2turtle = TransformStamped()
+        self.current_vicon2drone = TransformStamped()
 
         self.sub_vicon2turtle = self.create_subscription(TFMessage, 'tf', self.callback_vicon2turtle, 10 )
         self.srv_vicon2turtle = self.create_service(Tf, 'vicon2turtle', self.vicon2turtle)
 
-        self.sub_vicon2drone = self.create_subscription(TFMessage, 'tf', self.callback_vicon2turtle, 10 )
+        self.sub_vicon2drone = self.create_subscription(TFMessage, 'tf', self.callback_vicon2drone, 10 )
         self.srv_vicon2drone = self.create_service(Tf, 'vicon2drone', self.vicon2drone)
 
 
@@ -24,8 +26,7 @@ class SrvTF(Node):
         source_frame_id = 'vicon'
         target_frame_id = 'turtle'
         for transform in msg.transforms:
-            if (transform.header.frame_id == source_frame_id and transform.child_frame_id == target_frame_id
-            ):
+            if (transform.header.frame_id == source_frame_id and transform.child_frame_id == target_frame_id):
                 # Found the desired transform
                 transform.transform.translation.x = -1*transform.transform.translation.x
                 transform.transform.translation.y = -1*transform.transform.translation.y
@@ -39,12 +40,11 @@ class SrvTF(Node):
         return response
 
 
-    def callback_vicon2turtle(self, msg):
+    def callback_vicon2drone(self, msg):
         source_frame_id = 'vicon'
         target_frame_id = 'drone'
         for transform in msg.transforms:
-            if (transform.header.frame_id == source_frame_id and transform.child_frame_id == target_frame_id
-            ):
+            if (transform.header.frame_id == source_frame_id and transform.child_frame_id == target_frame_id):
                 # Found the desired transform
                 transform.transform.translation.x = -1*transform.transform.translation.x
                 transform.transform.translation.y = -1*transform.transform.translation.y
