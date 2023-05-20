@@ -16,8 +16,11 @@ class MinimalService(Node):
     def step_pos(self):
         time_nu = self.get_clock().now()
         if(time_nu.nanoseconds < self.time_start):
+            #return [-0.7062560518870121,-0.6353272675033671,1.5978401130440584,0]
             return [0,0,0,0]
+
         else:
+            #return [-0.7062560518870121,-0.6353272675033671,1.5978401130440584,0]
             return [0,0,0,0]
 
     def step_vel(self):
@@ -25,8 +28,23 @@ class MinimalService(Node):
         if(time_nu.nanoseconds < self.time_start):
             return [0,0,0,0]
         else:
-            return [0,0,0,1]
-            
+            self.get_logger().info(f"step")
+            return [1,0,0,0]
+#    def step_vel(self):
+#        time_nu = self.get_clock().now()
+#        time_diff = time_nu.nanoseconds - self.time_start
+#        time_diff = time_diff/(1000000000*10)
+#        
+#        if(time_nu.nanoseconds < self.time_start):
+#            return [0,0,0,0]
+#        else:
+#            return [time_diff,0,0,0]
+    def pos_reg(self, drone_pos):
+        pug = [0,0,1,0]
+        return [pug[0]-drone_pos[0], pug[1]-drone_pos[1], pug[2]-drone_pos[2],pug[0]-drone_pos[3]]
+
+
+
     def callback(self, request, respons):
 
         position = [0,0,0,0]
@@ -45,7 +63,8 @@ class MinimalService(Node):
         print("velocity : ", velocity)
         
         req_pos = self.step_pos()
-        req_vel = self.step_vel()
+        #req_vel = self.step_vel()
+        req_vel = self.pos_reg(position)
 
         #respons = Velocities()
         respons.error_position.linear.x =  float(req_pos[0])

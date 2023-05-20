@@ -1,0 +1,281 @@
+[0.135s] Invoking command in '/home/ubuntu/git/asbjoern_udv/build/costom_interface': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/opt/ros/foxy /usr/bin/cmake /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface -DCMAKE_INSTALL_PREFIX=/home/ubuntu/git/asbjoern_udv/install/costom_interface
+[0.457s] -- The C compiler identification is GNU 9.4.0
+[0.731s] -- The CXX compiler identification is GNU 9.4.0
+[0.757s] -- Check for working C compiler: /usr/bin/cc
+[1.085s] -- Check for working C compiler: /usr/bin/cc -- works
+[1.091s] -- Detecting C compiler ABI info
+[1.450s] -- Detecting C compiler ABI info - done
+[1.497s] -- Detecting C compile features
+[1.499s] -- Detecting C compile features - done
+[1.511s] -- Check for working CXX compiler: /usr/bin/c++
+[1.884s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[1.888s] -- Detecting CXX compiler ABI info
+[2.265s] -- Detecting CXX compiler ABI info - done
+[2.312s] -- Detecting CXX compile features
+[2.314s] -- Detecting CXX compile features - done
+[2.350s] -- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)
+[2.548s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[2.549s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[3.924s] -- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)
+[4.286s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.378s] -- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[5.257s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[5.553s] -- Found FastRTPS: /opt/ros/foxy/include  
+[6.276s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[6.706s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[6.920s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[7.810s] -- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)
+[9.577s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[10.116s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[10.276s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") 
+[10.303s] -- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)
+[10.459s] -- Found PythonLibs: /usr/lib/aarch64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") 
+[10.460s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[10.461s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8
+[10.461s] -- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.8.so
+[10.594s] -- Found PythonExtra: .so  
+[11.059s] -- Configuring done
+[11.377s] -- Generating done
+[11.391s] -- Build files have been written to: /home/ubuntu/git/asbjoern_udv/build/costom_interface
+[11.426s] Invoked command in '/home/ubuntu/git/asbjoern_udv/build/costom_interface' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/opt/ros/foxy /usr/bin/cmake /home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface -DCMAKE_INSTALL_PREFIX=/home/ubuntu/git/asbjoern_udv/install/costom_interface
+[11.438s] Invoking command in '/home/ubuntu/git/asbjoern_udv/build/costom_interface': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/git/asbjoern_udv/build/costom_interface -- -j4 -l4
+[11.639s] [35m[1mScanning dependencies of target costom_interface__cpp[0m
+[11.646s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[11.700s] [  4%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[13.379s] [  4%] Built target costom_interface__cpp
+[13.454s] [  6%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[13.458s] [  8%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[13.488s] [ 10%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[13.891s] [35m[1mScanning dependencies of target costom_interface__rosidl_generator_c[0m
+[14.076s] [ 12%] [32mBuilding C object CMakeFiles/costom_interface__rosidl_generator_c.dir/rosidl_generator_c/costom_interface/msg/detail/wanted_velocities__functions.c.o[0m
+[14.384s] [ 14%] [32mBuilding C object CMakeFiles/costom_interface__rosidl_generator_c.dir/rosidl_generator_c/costom_interface/msg/detail/vicon_info__functions.c.o[0m
+[14.700s] [ 17%] [32mBuilding C object CMakeFiles/costom_interface__rosidl_generator_c.dir/rosidl_generator_c/costom_interface/srv/detail/velocities__functions.c.o[0m
+[15.129s] [ 19%] [32m[1mLinking C shared library libcostom_interface__rosidl_generator_c.so[0m
+[15.241s] [35m[1mScanning dependencies of target costom_interface__rosidl_typesupport_cpp[0m
+[15.355s] [ 21%] [32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/costom_interface/msg/wanted_velocities__type_support.cpp.o[0m
+[15.412s] [ 21%] Built target costom_interface__rosidl_generator_c
+[15.454s] [35m[1mScanning dependencies of target costom_interface__rosidl_typesupport_fastrtps_cpp[0m
+[15.498s] [ 23%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[15.521s] [35m[1mScanning dependencies of target costom_interface__rosidl_typesupport_introspection_cpp[0m
+[15.602s] [ 25%] [32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/costom_interface/msg/detail/dds_fastrtps/wanted_velocities__type_support.cpp.o[0m
+[15.665s] [ 27%] [32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/costom_interface/msg/detail/wanted_velocities__type_support.cpp.o[0m
+[17.198s] [ 29%] [32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/costom_interface/msg/vicon_info__type_support.cpp.o[0m
+[17.519s] [ 31%] [32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/costom_interface/msg/detail/vicon_info__type_support.cpp.o[0m
+[17.585s] [35m[1mScanning dependencies of target costom_interface__rosidl_typesupport_introspection_c[0m
+[17.749s] [ 34%] [32mBuilding C object CMakeFiles/costom_interface__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/costom_interface/msg/detail/wanted_velocities__type_support.c.o[0m
+[18.102s] [ 36%] [32mBuilding C object CMakeFiles/costom_interface__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/costom_interface/msg/detail/vicon_info__type_support.c.o[0m
+[18.473s] [ 38%] [32mBuilding C object CMakeFiles/costom_interface__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/costom_interface/srv/detail/velocities__type_support.c.o[0m
+[18.822s] [ 40%] [32m[1mLinking C shared library libcostom_interface__rosidl_typesupport_introspection_c.so[0m
+[18.900s] [ 42%] [32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/costom_interface/msg/detail/dds_fastrtps/vicon_info__type_support.cpp.o[0m
+[19.003s] [ 44%] [32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/costom_interface/srv/velocities__type_support.cpp.o[0m
+[19.070s] [ 44%] Built target costom_interface__rosidl_typesupport_introspection_c
+[19.155s] [ 46%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[19.596s] [ 48%] [32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/costom_interface/srv/detail/velocities__type_support.cpp.o[0m
+[20.693s] [ 51%] [32m[1mLinking CXX shared library libcostom_interface__rosidl_typesupport_cpp.so[0m
+[21.035s] [35m[1mScanning dependencies of target costom_interface__rosidl_typesupport_c[0m
+[21.067s] [ 51%] Built target costom_interface__rosidl_typesupport_cpp
+[21.161s] [ 53%] [32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/costom_interface/srv/detail/dds_fastrtps/velocities__type_support.cpp.o[0m
+[21.182s] [ 55%] [32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_c.dir/rosidl_typesupport_c/costom_interface/msg/wanted_velocities__type_support.cpp.o[0m
+[21.449s] [ 57%] [32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_c.dir/rosidl_typesupport_c/costom_interface/msg/vicon_info__type_support.cpp.o[0m
+[21.527s] [ 59%] [32m[1mLinking CXX shared library libcostom_interface__rosidl_typesupport_introspection_cpp.so[0m
+[21.661s] [ 61%] [32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_c.dir/rosidl_typesupport_c/costom_interface/srv/velocities__type_support.cpp.o[0m
+[21.968s] [ 61%] Built target costom_interface__rosidl_typesupport_introspection_cpp
+[21.996s] [ 63%] [32m[1mLinking CXX shared library libcostom_interface__rosidl_typesupport_c.so[0m
+[22.186s] [ 63%] Built target costom_interface__rosidl_typesupport_c
+[23.478s] [ 65%] [32m[1mLinking CXX shared library libcostom_interface__rosidl_typesupport_fastrtps_cpp.so[0m
+[23.842s] [ 65%] Built target costom_interface__rosidl_typesupport_fastrtps_cpp
+[23.898s] [ 68%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[25.325s] [35m[1mScanning dependencies of target costom_interface__rosidl_typesupport_fastrtps_c[0m
+[25.449s] [ 70%] [32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/costom_interface/msg/detail/vicon_info__type_support_c.cpp.o[0m
+[25.457s] [ 72%] [32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/costom_interface/srv/detail/velocities__type_support_c.cpp.o[0m
+[25.463s] [ 74%] [32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/costom_interface/msg/detail/wanted_velocities__type_support_c.cpp.o[0m
+[27.553s] [ 76%] [32m[1mLinking CXX shared library libcostom_interface__rosidl_typesupport_fastrtps_c.so[0m
+[27.918s] [ 76%] Built target costom_interface__rosidl_typesupport_fastrtps_c
+[27.966s] [35m[1mScanning dependencies of target costom_interface[0m
+[28.021s] [ 76%] Built target costom_interface
+[28.072s] [35m[1mScanning dependencies of target costom_interface__py[0m
+[28.127s] [ 78%] [34m[1mGenerating Python code for ROS interfaces[0m
+[30.721s] [ 78%] Built target costom_interface__py
+[30.772s] [35m[1mScanning dependencies of target costom_interface__python[0m
+[30.899s] [ 80%] [32mBuilding C object CMakeFiles/costom_interface__python.dir/rosidl_generator_py/costom_interface/msg/_wanted_velocities_s.c.o[0m
+[30.906s] [ 82%] [32mBuilding C object CMakeFiles/costom_interface__python.dir/rosidl_generator_py/costom_interface/srv/_velocities_s.c.o[0m
+[30.917s] [ 85%] [32mBuilding C object CMakeFiles/costom_interface__python.dir/rosidl_generator_py/costom_interface/msg/_vicon_info_s.c.o[0m
+[31.410s] [ 87%] [32m[1mLinking C shared library rosidl_generator_py/costom_interface/libcostom_interface__python.so[0m
+[31.640s] [ 87%] Built target costom_interface__python
+[31.696s] [35m[1mScanning dependencies of target costom_interface__rosidl_typesupport_c__pyext[0m
+[31.697s] [35m[1mScanning dependencies of target costom_interface__rosidl_typesupport_introspection_c__pyext[0m
+[31.697s] [35m[1mScanning dependencies of target costom_interface__rosidl_typesupport_fastrtps_c__pyext[0m
+[31.809s] [ 89%] [32mBuilding C object CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.o[0m
+[31.838s] [ 91%] [32mBuilding C object CMakeFiles/costom_interface__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[31.844s] [ 93%] [32mBuilding C object CMakeFiles/costom_interface__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[32.317s] [ 95%] [32m[1mLinking C shared library rosidl_generator_py/costom_interface/costom_interface_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so[0m
+[32.328s] [ 97%] [32m[1mLinking C shared library rosidl_generator_py/costom_interface/costom_interface_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so[0m
+[32.352s] [100%] [32m[1mLinking CXX shared library rosidl_generator_py/costom_interface/costom_interface_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so[0m
+[32.616s] [100%] Built target costom_interface__rosidl_typesupport_c__pyext
+[32.628s] [100%] Built target costom_interface__rosidl_typesupport_introspection_c__pyext
+[32.758s] [100%] Built target costom_interface__rosidl_typesupport_fastrtps_c__pyext
+[32.808s] Invoked command in '/home/ubuntu/git/asbjoern_udv/build/costom_interface' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/opt/ros/foxy /usr/bin/cmake --build /home/ubuntu/git/asbjoern_udv/build/costom_interface -- -j4 -l4
+[33.462s] Invoking command in '/home/ubuntu/git/asbjoern_udv/build/costom_interface': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/opt/ros/foxy /usr/bin/cmake --install /home/ubuntu/git/asbjoern_udv/build/costom_interface
+[33.504s] -- Install configuration: ""
+[33.505s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/ament_index/resource_index/rosidl_interfaces/costom_interface
+[33.507s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface
+[33.507s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg
+[33.508s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/vicon_info.h
+[33.509s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail
+[33.509s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__functions.c
+[33.510s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__functions.h
+[33.511s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__type_support.h
+[33.512s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__struct.h
+[33.514s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__type_support.h
+[33.515s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__functions.h
+[33.516s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__functions.c
+[33.517s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__struct.h
+[33.518s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/rosidl_generator_c__visibility_control.h
+[33.519s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/wanted_velocities.h
+[33.520s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv
+[33.521s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail
+[33.521s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__functions.c
+[33.522s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__functions.h
+[33.523s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__type_support.h
+[33.524s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__struct.h
+[33.525s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/velocities.h
+[33.527s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/library_path.sh
+[33.528s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/library_path.dsv
+[33.530s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_generator_c.so
+[33.533s] -- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_generator_c.so" to ""
+[33.534s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface
+[33.534s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg
+[33.534s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail
+[33.535s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__rosidl_typesupport_fastrtps_c.h
+[33.536s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__rosidl_typesupport_fastrtps_c.h
+[33.537s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[33.538s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv
+[33.538s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail
+[33.539s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__rosidl_typesupport_fastrtps_c.h
+[33.540s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_fastrtps_c.so
+[33.543s] -- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_fastrtps_c.so" to ""
+[33.543s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface
+[33.544s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg
+[33.544s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail
+[33.544s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__rosidl_typesupport_fastrtps_cpp.hpp
+[33.545s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/dds_fastrtps
+[33.546s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__rosidl_typesupport_fastrtps_cpp.hpp
+[33.548s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[33.558s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv
+[33.559s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail
+[33.560s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__rosidl_typesupport_fastrtps_cpp.hpp
+[33.560s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/dds_fastrtps
+[33.561s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_fastrtps_cpp.so
+[33.561s] -- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_fastrtps_cpp.so" to ""
+[33.562s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface
+[33.562s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg
+[33.562s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail
+[33.563s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__type_support.c
+[33.563s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__rosidl_typesupport_introspection_c.h
+[33.564s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__type_support.c
+[33.564s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__rosidl_typesupport_introspection_c.h
+[33.565s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[33.565s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv
+[33.566s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail
+[33.566s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__rosidl_typesupport_introspection_c.h
+[33.566s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__type_support.c
+[33.567s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_introspection_c.so
+[33.568s] -- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_introspection_c.so" to ""
+[33.569s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_c.so
+[33.572s] -- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_c.so" to ""
+[33.572s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface
+[33.573s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg
+[33.573s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/vicon_info.hpp
+[33.574s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail
+[33.574s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__builder.hpp
+[33.575s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__struct.hpp
+[33.576s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__builder.hpp
+[33.577s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__traits.hpp
+[33.579s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__traits.hpp
+[33.580s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__struct.hpp
+[33.581s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/wanted_velocities.hpp
+[33.583s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv
+[33.583s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail
+[33.586s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__builder.hpp
+[33.586s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__traits.hpp
+[33.587s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__struct.hpp
+[33.587s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/velocities.hpp
+[33.588s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface
+[33.588s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg
+[33.589s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail
+[33.589s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__rosidl_typesupport_introspection_cpp.hpp
+[33.590s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__rosidl_typesupport_introspection_cpp.hpp
+[33.591s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__type_support.cpp
+[33.592s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__type_support.cpp
+[33.594s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv
+[33.595s] -- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail
+[33.595s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__rosidl_typesupport_introspection_cpp.hpp
+[33.596s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__type_support.cpp
+[33.597s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_introspection_cpp.so
+[33.600s] -- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_introspection_cpp.so" to ""
+[33.601s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_cpp.so
+[33.603s] -- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_cpp.so" to ""
+[33.604s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/pythonpath.sh
+[33.605s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/pythonpath.dsv
+[33.606s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/__init__.py
+[33.763s] Compiling '/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/__init__.py'...
+[33.783s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/msg
+[33.784s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/msg/__init__.py
+[33.785s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/msg/_vicon_info.py
+[33.786s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/msg/_wanted_velocities_s.c
+[33.788s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/msg/_vicon_info_s.c
+[33.789s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/msg/_wanted_velocities.py
+[33.791s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/srv
+[33.791s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/srv/__init__.py
+[33.793s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/srv/_velocities.py
+[33.794s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/srv/_velocities_s.c
+[33.796s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/costom_interface_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so
+[33.800s] -- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/costom_interface_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so" to ""
+[33.800s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/costom_interface_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so
+[33.804s] -- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/costom_interface_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so" to ""
+[33.805s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/costom_interface_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so
+[33.808s] -- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/costom_interface_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so" to ""
+[33.808s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__python.so
+[33.811s] -- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__python.so" to ""
+[33.812s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/msg/WantedVelocities.idl
+[33.813s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/msg/ViconInfo.idl
+[33.814s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/srv/Velocities.idl
+[33.815s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/msg/WantedVelocities.msg
+[33.816s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/msg/ViconInfo.msg
+[33.818s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/srv/Velocities.srv
+[33.819s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/srv/Velocities_Request.msg
+[33.820s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/srv/Velocities_Response.msg
+[33.822s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/ament_index/resource_index/package_run_dependencies/costom_interface
+[33.824s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/ament_index/resource_index/parent_prefix_path/costom_interface
+[33.825s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/ament_prefix_path.sh
+[33.827s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/ament_prefix_path.dsv
+[33.828s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/path.sh
+[33.829s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/path.dsv
+[33.831s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/local_setup.bash
+[33.832s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/local_setup.sh
+[33.833s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/local_setup.zsh
+[33.834s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/local_setup.dsv
+[33.835s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/package.dsv
+[33.837s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/ament_index/resource_index/packages/costom_interface
+[33.838s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_generator_cExport.cmake
+[33.840s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_generator_cExport-noconfig.cmake
+[33.841s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_introspection_cExport.cmake
+[33.843s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[33.844s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_cExport.cmake
+[33.846s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_cExport-noconfig.cmake
+[33.847s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_generator_cppExport.cmake
+[33.849s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_introspection_cppExport.cmake
+[33.851s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[33.853s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_cppExport.cmake
+[33.855s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_cppExport-noconfig.cmake
+[33.856s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/rosidl_cmake-extras.cmake
+[33.857s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/ament_cmake_export_dependencies-extras.cmake
+[33.859s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/ament_cmake_export_libraries-extras.cmake
+[33.860s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/ament_cmake_export_targets-extras.cmake
+[33.862s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/ament_cmake_export_include_directories-extras.cmake
+[33.863s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[33.865s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[33.866s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interfaceConfig.cmake
+[33.867s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interfaceConfig-version.cmake
+[33.868s] -- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/package.xml
+[33.886s] Invoked command in '/home/ubuntu/git/asbjoern_udv/build/costom_interface' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/opt/ros/foxy /usr/bin/cmake --install /home/ubuntu/git/asbjoern_udv/build/costom_interface

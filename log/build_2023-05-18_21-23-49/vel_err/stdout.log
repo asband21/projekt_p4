@@ -1,0 +1,58 @@
+running egg_info
+creating ../../../build/vel_err/vel_err.egg-info
+writing ../../../build/vel_err/vel_err.egg-info/PKG-INFO
+writing dependency_links to ../../../build/vel_err/vel_err.egg-info/dependency_links.txt
+writing entry points to ../../../build/vel_err/vel_err.egg-info/entry_points.txt
+writing requirements to ../../../build/vel_err/vel_err.egg-info/requires.txt
+writing top-level names to ../../../build/vel_err/vel_err.egg-info/top_level.txt
+writing manifest file '../../../build/vel_err/vel_err.egg-info/SOURCES.txt'
+reading manifest file '../../../build/vel_err/vel_err.egg-info/SOURCES.txt'
+writing manifest file '../../../build/vel_err/vel_err.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/ubuntu/git/asbjoern_udv/build/vel_err/build
+creating /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib
+creating /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+copying vel_err/__init__.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+copying vel_err/drone_rek.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+copying vel_err/Velocities_get.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+copying vel_err/req_vel.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+copying vel_err/tello_drone.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+copying vel_err/err.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+copying vel_err/first_node.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+running install
+running install_lib
+creating /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/__init__.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/drone_rek.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/Velocities_get.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/req_vel.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/tello_drone.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/err.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/first_node.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/drone_rek.py to drone_rek.cpython-38.pyc
+byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/Velocities_get.py to Velocities_get.cpython-38.pyc
+byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/req_vel.py to req_vel.cpython-38.pyc
+byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/tello_drone.py to tello_drone.cpython-38.pyc
+byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/err.py to err.cpython-38.pyc
+byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/first_node.py to first_node.cpython-38.pyc
+running install_data
+creating /home/ubuntu/git/asbjoern_udv/install/vel_err/share/ament_index
+creating /home/ubuntu/git/asbjoern_udv/install/vel_err/share/ament_index/resource_index
+creating /home/ubuntu/git/asbjoern_udv/install/vel_err/share/ament_index/resource_index/packages
+copying resource/vel_err -> /home/ubuntu/git/asbjoern_udv/install/vel_err/share/ament_index/resource_index/packages
+copying package.xml -> /home/ubuntu/git/asbjoern_udv/install/vel_err/share/vel_err
+creating /home/ubuntu/git/asbjoern_udv/install/vel_err/share/vel_err/launch
+copying launch/drone_regulering.launch.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/share/vel_err/launch
+running install_egg_info
+Copying ../../../build/vel_err/vel_err.egg-info to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err-0.0.0-py3.8.egg-info
+running install_scripts
+Installing client script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err
+Installing drone script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err
+Installing publish script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err
+Installing rc script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err
+Installing reg script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err
+Installing service script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err
+Installing vel script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err
+writing list of installed files to '/home/ubuntu/git/asbjoern_udv/build/vel_err/install.log'

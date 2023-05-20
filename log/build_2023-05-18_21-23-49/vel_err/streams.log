@@ -1,0 +1,60 @@
+[3.275s] Invoking command in '/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/vel_err': PYTHONPATH=/home/ubuntu/git/asbjoern_udv/build/vel_err/prefix_override:/home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/vel_err build --build-base /home/ubuntu/git/asbjoern_udv/build/vel_err/build install --record /home/ubuntu/git/asbjoern_udv/build/vel_err/install.log --install-scripts $base/lib/vel_err --single-version-externally-managed
+[4.286s] running egg_info
+[4.289s] creating ../../../build/vel_err/vel_err.egg-info
+[4.290s] writing ../../../build/vel_err/vel_err.egg-info/PKG-INFO
+[4.290s] writing dependency_links to ../../../build/vel_err/vel_err.egg-info/dependency_links.txt
+[4.292s] writing entry points to ../../../build/vel_err/vel_err.egg-info/entry_points.txt
+[4.292s] writing requirements to ../../../build/vel_err/vel_err.egg-info/requires.txt
+[4.293s] writing top-level names to ../../../build/vel_err/vel_err.egg-info/top_level.txt
+[4.298s] writing manifest file '../../../build/vel_err/vel_err.egg-info/SOURCES.txt'
+[4.447s] reading manifest file '../../../build/vel_err/vel_err.egg-info/SOURCES.txt'
+[4.451s] writing manifest file '../../../build/vel_err/vel_err.egg-info/SOURCES.txt'
+[4.452s] running build
+[4.452s] running build_py
+[4.453s] creating /home/ubuntu/git/asbjoern_udv/build/vel_err/build
+[4.454s] creating /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib
+[4.454s] creating /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+[4.455s] copying vel_err/__init__.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+[4.456s] copying vel_err/drone_rek.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+[4.457s] copying vel_err/Velocities_get.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+[4.457s] copying vel_err/req_vel.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+[4.459s] copying vel_err/tello_drone.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+[4.460s] copying vel_err/err.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+[4.460s] copying vel_err/first_node.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err
+[4.461s] running install
+[4.465s] running install_lib
+[4.469s] creating /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+[4.470s] copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/__init__.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+[4.470s] copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/drone_rek.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+[4.471s] copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/Velocities_get.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+[4.472s] copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/req_vel.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+[4.472s] copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/tello_drone.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+[4.473s] copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/err.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+[4.474s] copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/first_node.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err
+[4.477s] byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/__init__.py to __init__.cpython-38.pyc
+[4.482s] byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/drone_rek.py to drone_rek.cpython-38.pyc
+[4.485s] byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/Velocities_get.py to Velocities_get.cpython-38.pyc
+[4.488s] byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/req_vel.py to req_vel.cpython-38.pyc
+[4.490s] byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/tello_drone.py to tello_drone.cpython-38.pyc
+[4.492s] byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/err.py to err.cpython-38.pyc
+[4.495s] byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/first_node.py to first_node.cpython-38.pyc
+[4.498s] running install_data
+[4.500s] creating /home/ubuntu/git/asbjoern_udv/install/vel_err/share/ament_index
+[4.501s] creating /home/ubuntu/git/asbjoern_udv/install/vel_err/share/ament_index/resource_index
+[4.502s] creating /home/ubuntu/git/asbjoern_udv/install/vel_err/share/ament_index/resource_index/packages
+[4.502s] copying resource/vel_err -> /home/ubuntu/git/asbjoern_udv/install/vel_err/share/ament_index/resource_index/packages
+[4.503s] copying package.xml -> /home/ubuntu/git/asbjoern_udv/install/vel_err/share/vel_err
+[4.503s] creating /home/ubuntu/git/asbjoern_udv/install/vel_err/share/vel_err/launch
+[4.504s] copying launch/drone_regulering.launch.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/share/vel_err/launch
+[4.504s] running install_egg_info
+[4.510s] Copying ../../../build/vel_err/vel_err.egg-info to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err-0.0.0-py3.8.egg-info
+[4.516s] running install_scripts
+[4.588s] Installing client script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err
+[4.589s] Installing drone script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err
+[4.589s] Installing publish script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err
+[4.590s] Installing rc script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err
+[4.591s] Installing reg script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err
+[4.592s] Installing service script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err
+[4.592s] Installing vel script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err
+[4.593s] writing list of installed files to '/home/ubuntu/git/asbjoern_udv/build/vel_err/install.log'
+[4.693s] Invoked command in '/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/vel_err' returned '0': PYTHONPATH=/home/ubuntu/git/asbjoern_udv/build/vel_err/prefix_override:/home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/vel_err build --build-base /home/ubuntu/git/asbjoern_udv/build/vel_err/build install --record /home/ubuntu/git/asbjoern_udv/build/vel_err/install.log --install-scripts $base/lib/vel_err --single-version-externally-managed

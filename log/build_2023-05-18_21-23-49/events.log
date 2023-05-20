@@ -1,0 +1,695 @@
+[0.000000] (-) TimerEvent: {}
+[0.001090] (costom_interface) JobQueued: {'identifier': 'costom_interface', 'dependencies': OrderedDict()}
+[0.001466] (vel_err) JobQueued: {'identifier': 'vel_err', 'dependencies': OrderedDict()}
+[0.002253] (costom_interface) JobStarted: {'identifier': 'costom_interface'}
+[0.063072] (vel_err) JobStarted: {'identifier': 'vel_err'}
+[0.099149] (-) TimerEvent: {}
+[0.134087] (costom_interface) JobProgress: {'identifier': 'costom_interface', 'progress': 'cmake'}
+[0.135024] (costom_interface) Command: {'cmd': ['/usr/bin/cmake', '/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/costom_interface', '-DCMAKE_INSTALL_PREFIX=/home/ubuntu/git/asbjoern_udv/install/costom_interface'], 'cwd': '/home/ubuntu/git/asbjoern_udv/build/costom_interface', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'ubuntu'), ('SSH_CLIENT', '100.109.194.3 49284 22'), ('LC_TIME', 'da_DK.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/ubuntu/turtlebot3_ws/install/realsense2_camera/lib:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/ubuntu'), ('OLDPWD', '/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase'), ('SSH_TTY', '/dev/pts/1'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'da_DK.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/ubuntu/vicon/vicon_udp/install:/home/ubuntu/turtlebot3_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'ubuntu'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '3'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/ubuntu/.local/bin:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'da_DK.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'da_DK.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '1'), ('AMENT_PREFIX_PATH', '/home/ubuntu/vicon/vicon_udp/install/vicon_udp:/home/ubuntu/turtlebot3_ws/install/turtlebot3:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/home/ubuntu/turtlebot3_ws/install/realsense2_description:/home/ubuntu/turtlebot3_ws/install/realsense2_camera:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs:/home/ubuntu/turtlebot3_ws/install/ld08_driver:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'da_DK.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'da_DK.UTF-8'), ('LC_IDENTIFICATION', 'da_DK.UTF-8'), ('PWD', '/home/ubuntu/git/asbjoern_udv/build/costom_interface'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '100.109.194.3 49284 100.102.101.103 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('LDS_MODEL', 'LDS-01'), ('PYTHONPATH', '/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages::/usr/local/lib'), ('LC_NUMERIC', 'da_DK.UTF-8'), ('LC_PAPER', 'da_DK.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/ubuntu/vicon/vicon_udp/install/vicon_udp:/home/ubuntu/turtlebot3_ws/install/turtlebot3:/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/home/ubuntu/turtlebot3_ws/install/realsense2_description:/home/ubuntu/turtlebot3_ws/install/realsense2_camera:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs:/home/ubuntu/turtlebot3_ws/install/ld08_driver:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/opt/ros/foxy')]), 'shell': False}
+[0.199490] (-) TimerEvent: {}
+[0.300596] (-) TimerEvent: {}
+[0.401437] (-) TimerEvent: {}
+[0.459071] (costom_interface) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.501602] (-) TimerEvent: {}
+[0.602451] (-) TimerEvent: {}
+[0.703569] (-) TimerEvent: {}
+[0.733411] (costom_interface) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.759514] (costom_interface) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.803720] (-) TimerEvent: {}
+[0.904549] (-) TimerEvent: {}
+[1.005503] (-) TimerEvent: {}
+[1.087667] (costom_interface) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[1.093997] (costom_interface) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[1.105680] (-) TimerEvent: {}
+[1.206453] (-) TimerEvent: {}
+[1.307308] (-) TimerEvent: {}
+[1.408585] (-) TimerEvent: {}
+[1.452895] (costom_interface) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.499755] (costom_interface) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.501943] (costom_interface) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.508632] (-) TimerEvent: {}
+[1.513593] (costom_interface) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[1.608800] (-) TimerEvent: {}
+[1.709570] (-) TimerEvent: {}
+[1.810335] (-) TimerEvent: {}
+[1.886582] (costom_interface) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[1.890970] (costom_interface) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.910521] (-) TimerEvent: {}
+[2.011247] (-) TimerEvent: {}
+[2.112027] (-) TimerEvent: {}
+[2.212889] (-) TimerEvent: {}
+[2.267347] (costom_interface) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[2.313049] (-) TimerEvent: {}
+[2.314481] (costom_interface) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[2.316549] (costom_interface) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[2.352445] (costom_interface) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.11 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[2.413211] (-) TimerEvent: {}
+[2.514016] (-) TimerEvent: {}
+[2.550555] (costom_interface) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[2.551298] (costom_interface) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[2.614199] (-) TimerEvent: {}
+[2.715018] (-) TimerEvent: {}
+[2.816080] (-) TimerEvent: {}
+[2.916800] (-) TimerEvent: {}
+[3.017569] (-) TimerEvent: {}
+[3.118318] (-) TimerEvent: {}
+[3.219144] (-) TimerEvent: {}
+[3.320062] (-) TimerEvent: {}
+[3.338785] (vel_err) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../../build/vel_err', 'build', '--build-base', '/home/ubuntu/git/asbjoern_udv/build/vel_err/build', 'install', '--record', '/home/ubuntu/git/asbjoern_udv/build/vel_err/install.log', '--install-scripts', '$base/lib/vel_err', '--single-version-externally-managed'], 'cwd': '/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase/src/vel_err', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'ubuntu', 'SSH_CLIENT': '100.109.194.3 49284 22', 'LC_TIME': 'da_DK.UTF-8', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/ubuntu/turtlebot3_ws/install/realsense2_camera/lib:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib', 'MOTD_SHOWN': 'pam', 'HOME': '/home/ubuntu', 'OLDPWD': '/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase', 'SSH_TTY': '/dev/pts/1', 'ROS_PYTHON_VERSION': '3', 'LC_MONETARY': 'da_DK.UTF-8', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLCON_PREFIX_PATH': '/home/ubuntu/vicon/vicon_udp/install:/home/ubuntu/turtlebot3_ws/install', 'ROS_DISTRO': 'foxy', 'LOGNAME': 'ubuntu', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '3', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/home/ubuntu/.local/bin:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'LC_ADDRESS': 'da_DK.UTF-8', 'XDG_RUNTIME_DIR': '/run/user/1000', 'LANG': 'en_US.UTF-8', 'LC_TELEPHONE': 'da_DK.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'ROS_DOMAIN_ID': '1', 'AMENT_PREFIX_PATH': '/home/ubuntu/vicon/vicon_udp/install/vicon_udp:/home/ubuntu/turtlebot3_ws/install/turtlebot3:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/home/ubuntu/turtlebot3_ws/install/realsense2_description:/home/ubuntu/turtlebot3_ws/install/realsense2_camera:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs:/home/ubuntu/turtlebot3_ws/install/ld08_driver:/opt/ros/foxy', 'SHELL': '/bin/bash', 'LC_NAME': 'da_DK.UTF-8', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'da_DK.UTF-8', 'LC_IDENTIFICATION': 'da_DK.UTF-8', 'PWD': '/home/ubuntu/git/asbjoern_udv/build/vel_err', 'TURTLEBOT3_MODEL': 'burger', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '100.109.194.3 49284 100.102.101.103 22', 'XDG_DATA_DIRS': '/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'LDS_MODEL': 'LDS-01', 'PYTHONPATH': '/home/ubuntu/git/asbjoern_udv/build/vel_err/prefix_override:/home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages::/usr/local/lib', 'LC_NUMERIC': 'da_DK.UTF-8', 'LC_PAPER': 'da_DK.UTF-8', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/ubuntu/vicon/vicon_udp/install/vicon_udp:/home/ubuntu/turtlebot3_ws/install/turtlebot3:/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/home/ubuntu/turtlebot3_ws/install/realsense2_description:/home/ubuntu/turtlebot3_ws/install/realsense2_camera:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs:/home/ubuntu/turtlebot3_ws/install/ld08_driver'}, 'shell': False}
+[3.420391] (-) TimerEvent: {}
+[3.521541] (-) TimerEvent: {}
+[3.622706] (-) TimerEvent: {}
+[3.724630] (-) TimerEvent: {}
+[3.826348] (-) TimerEvent: {}
+[3.926199] (costom_interface) StdoutLine: {'line': b'-- Found geometry_msgs: 2.0.5 (/opt/ros/foxy/share/geometry_msgs/cmake)\n'}
+[3.926954] (-) TimerEvent: {}
+[4.030893] (-) TimerEvent: {}
+[4.133195] (-) TimerEvent: {}
+[4.234014] (-) TimerEvent: {}
+[4.287988] (costom_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[4.334152] (-) TimerEvent: {}
+[4.359139] (vel_err) StdoutLine: {'line': b'running egg_info\n'}
+[4.361543] (vel_err) StdoutLine: {'line': b'creating ../../../build/vel_err/vel_err.egg-info\n'}
+[4.362432] (vel_err) StdoutLine: {'line': b'writing ../../../build/vel_err/vel_err.egg-info/PKG-INFO\n'}
+[4.363317] (vel_err) StdoutLine: {'line': b'writing dependency_links to ../../../build/vel_err/vel_err.egg-info/dependency_links.txt\n'}
+[4.364231] (vel_err) StdoutLine: {'line': b'writing entry points to ../../../build/vel_err/vel_err.egg-info/entry_points.txt\n'}
+[4.365111] (vel_err) StdoutLine: {'line': b'writing requirements to ../../../build/vel_err/vel_err.egg-info/requires.txt\n'}
+[4.365768] (vel_err) StdoutLine: {'line': b'writing top-level names to ../../../build/vel_err/vel_err.egg-info/top_level.txt\n'}
+[4.371171] (vel_err) StdoutLine: {'line': b"writing manifest file '../../../build/vel_err/vel_err.egg-info/SOURCES.txt'\n"}
+[4.381015] (costom_interface) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.0 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[4.434322] (-) TimerEvent: {}
+[4.519465] (vel_err) StdoutLine: {'line': b"reading manifest file '../../../build/vel_err/vel_err.egg-info/SOURCES.txt'\n"}
+[4.523311] (vel_err) StdoutLine: {'line': b"writing manifest file '../../../build/vel_err/vel_err.egg-info/SOURCES.txt'\n"}
+[4.524271] (vel_err) StdoutLine: {'line': b'running build\n'}
+[4.525022] (vel_err) StdoutLine: {'line': b'running build_py\n'}
+[4.525983] (vel_err) StdoutLine: {'line': b'creating /home/ubuntu/git/asbjoern_udv/build/vel_err/build\n'}
+[4.526611] (vel_err) StdoutLine: {'line': b'creating /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib\n'}
+[4.527131] (vel_err) StdoutLine: {'line': b'creating /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err\n'}
+[4.527875] (vel_err) StdoutLine: {'line': b'copying vel_err/__init__.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err\n'}
+[4.528718] (vel_err) StdoutLine: {'line': b'copying vel_err/drone_rek.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err\n'}
+[4.529349] (vel_err) StdoutLine: {'line': b'copying vel_err/Velocities_get.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err\n'}
+[4.530014] (vel_err) StdoutLine: {'line': b'copying vel_err/req_vel.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err\n'}
+[4.531411] (vel_err) StdoutLine: {'line': b'copying vel_err/tello_drone.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err\n'}
+[4.532362] (vel_err) StdoutLine: {'line': b'copying vel_err/err.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err\n'}
+[4.533147] (vel_err) StdoutLine: {'line': b'copying vel_err/first_node.py -> /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err\n'}
+[4.534416] (vel_err) StdoutLine: {'line': b'running install\n'}
+[4.534892] (-) TimerEvent: {}
+[4.538216] (vel_err) StdoutLine: {'line': b'running install_lib\n'}
+[4.542081] (vel_err) StdoutLine: {'line': b'creating /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err\n'}
+[4.542742] (vel_err) StdoutLine: {'line': b'copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/__init__.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err\n'}
+[4.543297] (vel_err) StdoutLine: {'line': b'copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/drone_rek.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err\n'}
+[4.543831] (vel_err) StdoutLine: {'line': b'copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/Velocities_get.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err\n'}
+[4.544546] (vel_err) StdoutLine: {'line': b'copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/req_vel.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err\n'}
+[4.545225] (vel_err) StdoutLine: {'line': b'copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/tello_drone.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err\n'}
+[4.545898] (vel_err) StdoutLine: {'line': b'copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/err.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err\n'}
+[4.546608] (vel_err) StdoutLine: {'line': b'copying /home/ubuntu/git/asbjoern_udv/build/vel_err/build/lib/vel_err/first_node.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err\n'}
+[4.549379] (vel_err) StdoutLine: {'line': b'byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/__init__.py to __init__.cpython-38.pyc\n'}
+[4.554598] (vel_err) StdoutLine: {'line': b'byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/drone_rek.py to drone_rek.cpython-38.pyc\n'}
+[4.557733] (vel_err) StdoutLine: {'line': b'byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/Velocities_get.py to Velocities_get.cpython-38.pyc\n'}
+[4.560567] (vel_err) StdoutLine: {'line': b'byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/req_vel.py to req_vel.cpython-38.pyc\n'}
+[4.562613] (vel_err) StdoutLine: {'line': b'byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/tello_drone.py to tello_drone.cpython-38.pyc\n'}
+[4.564585] (vel_err) StdoutLine: {'line': b'byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/err.py to err.cpython-38.pyc\n'}
+[4.568214] (vel_err) StdoutLine: {'line': b'byte-compiling /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err/first_node.py to first_node.cpython-38.pyc\n'}
+[4.571115] (vel_err) StdoutLine: {'line': b'running install_data\n'}
+[4.573029] (vel_err) StdoutLine: {'line': b'creating /home/ubuntu/git/asbjoern_udv/install/vel_err/share/ament_index\n'}
+[4.573866] (vel_err) StdoutLine: {'line': b'creating /home/ubuntu/git/asbjoern_udv/install/vel_err/share/ament_index/resource_index\n'}
+[4.574338] (vel_err) StdoutLine: {'line': b'creating /home/ubuntu/git/asbjoern_udv/install/vel_err/share/ament_index/resource_index/packages\n'}
+[4.574973] (vel_err) StdoutLine: {'line': b'copying resource/vel_err -> /home/ubuntu/git/asbjoern_udv/install/vel_err/share/ament_index/resource_index/packages\n'}
+[4.575536] (vel_err) StdoutLine: {'line': b'copying package.xml -> /home/ubuntu/git/asbjoern_udv/install/vel_err/share/vel_err\n'}
+[4.576122] (vel_err) StdoutLine: {'line': b'creating /home/ubuntu/git/asbjoern_udv/install/vel_err/share/vel_err/launch\n'}
+[4.576675] (vel_err) StdoutLine: {'line': b'copying launch/drone_regulering.launch.py -> /home/ubuntu/git/asbjoern_udv/install/vel_err/share/vel_err/launch\n'}
+[4.577188] (vel_err) StdoutLine: {'line': b'running install_egg_info\n'}
+[4.583232] (vel_err) StdoutLine: {'line': b'Copying ../../../build/vel_err/vel_err.egg-info to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/python3.8/site-packages/vel_err-0.0.0-py3.8.egg-info\n'}
+[4.589266] (vel_err) StdoutLine: {'line': b'running install_scripts\n'}
+[4.635077] (-) TimerEvent: {}
+[4.660450] (vel_err) StdoutLine: {'line': b'Installing client script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err\n'}
+[4.661323] (vel_err) StdoutLine: {'line': b'Installing drone script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err\n'}
+[4.662155] (vel_err) StdoutLine: {'line': b'Installing publish script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err\n'}
+[4.663025] (vel_err) StdoutLine: {'line': b'Installing rc script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err\n'}
+[4.663826] (vel_err) StdoutLine: {'line': b'Installing reg script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err\n'}
+[4.664546] (vel_err) StdoutLine: {'line': b'Installing service script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err\n'}
+[4.665242] (vel_err) StdoutLine: {'line': b'Installing vel script to /home/ubuntu/git/asbjoern_udv/install/vel_err/lib/vel_err\n'}
+[4.666205] (vel_err) StdoutLine: {'line': b"writing list of installed files to '/home/ubuntu/git/asbjoern_udv/build/vel_err/install.log'\n"}
+[4.735412] (-) TimerEvent: {}
+[4.764968] (vel_err) CommandEnded: {'returncode': 0}
+[4.835789] (-) TimerEvent: {}
+[4.838981] (vel_err) JobEnded: {'identifier': 'vel_err', 'rc': 0}
+[4.935951] (-) TimerEvent: {}
+[5.036668] (-) TimerEvent: {}
+[5.137365] (-) TimerEvent: {}
+[5.238072] (-) TimerEvent: {}
+[5.259520] (costom_interface) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[5.338226] (-) TimerEvent: {}
+[5.438876] (-) TimerEvent: {}
+[5.539573] (-) TimerEvent: {}
+[5.555518] (costom_interface) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[5.639762] (-) TimerEvent: {}
+[5.740511] (-) TimerEvent: {}
+[5.841206] (-) TimerEvent: {}
+[5.942020] (-) TimerEvent: {}
+[6.042675] (-) TimerEvent: {}
+[6.143392] (-) TimerEvent: {}
+[6.244104] (-) TimerEvent: {}
+[6.278615] (costom_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[6.344293] (-) TimerEvent: {}
+[6.444993] (-) TimerEvent: {}
+[6.545686] (-) TimerEvent: {}
+[6.646379] (-) TimerEvent: {}
+[6.708484] (costom_interface) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[6.746538] (-) TimerEvent: {}
+[6.847233] (-) TimerEvent: {}
+[6.922677] (costom_interface) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") \n'}
+[6.947391] (-) TimerEvent: {}
+[7.048043] (-) TimerEvent: {}
+[7.148735] (-) TimerEvent: {}
+[7.249467] (-) TimerEvent: {}
+[7.350264] (-) TimerEvent: {}
+[7.450951] (-) TimerEvent: {}
+[7.551637] (-) TimerEvent: {}
+[7.652326] (-) TimerEvent: {}
+[7.753203] (-) TimerEvent: {}
+[7.812785] (costom_interface) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)\n'}
+[7.853372] (-) TimerEvent: {}
+[7.954073] (-) TimerEvent: {}
+[8.054760] (-) TimerEvent: {}
+[8.155448] (-) TimerEvent: {}
+[8.256211] (-) TimerEvent: {}
+[8.356998] (-) TimerEvent: {}
+[8.457737] (-) TimerEvent: {}
+[8.558455] (-) TimerEvent: {}
+[8.659184] (-) TimerEvent: {}
+[8.759894] (-) TimerEvent: {}
+[8.860615] (-) TimerEvent: {}
+[8.961306] (-) TimerEvent: {}
+[9.061979] (-) TimerEvent: {}
+[9.162680] (-) TimerEvent: {}
+[9.263437] (-) TimerEvent: {}
+[9.364669] (-) TimerEvent: {}
+[9.465346] (-) TimerEvent: {}
+[9.566032] (-) TimerEvent: {}
+[9.579465] (costom_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[9.666203] (-) TimerEvent: {}
+[9.766935] (-) TimerEvent: {}
+[9.867657] (-) TimerEvent: {}
+[9.968365] (-) TimerEvent: {}
+[10.069035] (-) TimerEvent: {}
+[10.119033] (costom_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[10.169177] (-) TimerEvent: {}
+[10.270067] (-) TimerEvent: {}
+[10.278556] (costom_interface) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[10.305476] (costom_interface) StdoutLine: {'line': b'-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)\n'}
+[10.370304] (-) TimerEvent: {}
+[10.461871] (costom_interface) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/aarch64-linux-gnu/libpython3.8.so (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[10.462777] (costom_interface) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[10.463307] (costom_interface) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8\n'}
+[10.463870] (costom_interface) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/aarch64-linux-gnu/libpython3.8.so\n'}
+[10.470479] (-) TimerEvent: {}
+[10.571225] (-) TimerEvent: {}
+[10.596409] (costom_interface) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[10.671383] (-) TimerEvent: {}
+[10.772112] (-) TimerEvent: {}
+[10.872924] (-) TimerEvent: {}
+[10.973595] (-) TimerEvent: {}
+[11.061968] (costom_interface) StdoutLine: {'line': b'-- Configuring done\n'}
+[11.073751] (-) TimerEvent: {}
+[11.174445] (-) TimerEvent: {}
+[11.275163] (-) TimerEvent: {}
+[11.375849] (-) TimerEvent: {}
+[11.379400] (costom_interface) StdoutLine: {'line': b'-- Generating done\n'}
+[11.393808] (costom_interface) StdoutLine: {'line': b'-- Build files have been written to: /home/ubuntu/git/asbjoern_udv/build/costom_interface\n'}
+[11.427811] (costom_interface) CommandEnded: {'returncode': 0}
+[11.430145] (costom_interface) JobProgress: {'identifier': 'costom_interface', 'progress': 'build'}
+[11.433142] (costom_interface) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/ubuntu/git/asbjoern_udv/build/costom_interface', '--', '-j4', '-l4'], 'cwd': '/home/ubuntu/git/asbjoern_udv/build/costom_interface', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'ubuntu'), ('SSH_CLIENT', '100.109.194.3 49284 22'), ('LC_TIME', 'da_DK.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/ubuntu/turtlebot3_ws/install/realsense2_camera/lib:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/ubuntu'), ('OLDPWD', '/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase'), ('SSH_TTY', '/dev/pts/1'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'da_DK.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/ubuntu/vicon/vicon_udp/install:/home/ubuntu/turtlebot3_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'ubuntu'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '3'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/ubuntu/.local/bin:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'da_DK.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'da_DK.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '1'), ('AMENT_PREFIX_PATH', '/home/ubuntu/vicon/vicon_udp/install/vicon_udp:/home/ubuntu/turtlebot3_ws/install/turtlebot3:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/home/ubuntu/turtlebot3_ws/install/realsense2_description:/home/ubuntu/turtlebot3_ws/install/realsense2_camera:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs:/home/ubuntu/turtlebot3_ws/install/ld08_driver:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'da_DK.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'da_DK.UTF-8'), ('LC_IDENTIFICATION', 'da_DK.UTF-8'), ('PWD', '/home/ubuntu/git/asbjoern_udv/build/costom_interface'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '100.109.194.3 49284 100.102.101.103 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('LDS_MODEL', 'LDS-01'), ('PYTHONPATH', '/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages::/usr/local/lib'), ('LC_NUMERIC', 'da_DK.UTF-8'), ('LC_PAPER', 'da_DK.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/ubuntu/vicon/vicon_udp/install/vicon_udp:/home/ubuntu/turtlebot3_ws/install/turtlebot3:/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/home/ubuntu/turtlebot3_ws/install/realsense2_description:/home/ubuntu/turtlebot3_ws/install/realsense2_camera:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs:/home/ubuntu/turtlebot3_ws/install/ld08_driver:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/opt/ros/foxy')]), 'shell': False}
+[11.476100] (-) TimerEvent: {}
+[11.577045] (-) TimerEvent: {}
+[11.641845] (costom_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target costom_interface__cpp\x1b[0m\n'}
+[11.648875] (costom_interface) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[11.677214] (-) TimerEvent: {}
+[11.702296] (costom_interface) StdoutLine: {'line': b'[  4%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[11.777419] (-) TimerEvent: {}
+[11.878311] (-) TimerEvent: {}
+[11.979177] (-) TimerEvent: {}
+[12.079899] (-) TimerEvent: {}
+[12.180667] (-) TimerEvent: {}
+[12.281426] (-) TimerEvent: {}
+[12.382221] (-) TimerEvent: {}
+[12.482940] (-) TimerEvent: {}
+[12.583679] (-) TimerEvent: {}
+[12.684366] (-) TimerEvent: {}
+[12.785009] (-) TimerEvent: {}
+[12.885672] (-) TimerEvent: {}
+[12.986432] (-) TimerEvent: {}
+[13.087223] (-) TimerEvent: {}
+[13.188373] (-) TimerEvent: {}
+[13.289402] (-) TimerEvent: {}
+[13.380693] (costom_interface) StdoutLine: {'line': b'[  4%] Built target costom_interface__cpp\n'}
+[13.389645] (-) TimerEvent: {}
+[13.456238] (costom_interface) StdoutLine: {'line': b'[  6%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[13.460567] (costom_interface) StdoutLine: {'line': b'[  8%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[13.489848] (-) TimerEvent: {}
+[13.490816] (costom_interface) StdoutLine: {'line': b'[ 10%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[13.590067] (-) TimerEvent: {}
+[13.691065] (-) TimerEvent: {}
+[13.792379] (-) TimerEvent: {}
+[13.893338] (costom_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target costom_interface__rosidl_generator_c\x1b[0m\n'}
+[13.894572] (-) TimerEvent: {}
+[14.000509] (-) TimerEvent: {}
+[14.078266] (costom_interface) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding C object CMakeFiles/costom_interface__rosidl_generator_c.dir/rosidl_generator_c/costom_interface/msg/detail/wanted_velocities__functions.c.o\x1b[0m\n'}
+[14.100718] (-) TimerEvent: {}
+[14.201959] (-) TimerEvent: {}
+[14.302789] (-) TimerEvent: {}
+[14.386852] (costom_interface) StdoutLine: {'line': b'[ 14%] \x1b[32mBuilding C object CMakeFiles/costom_interface__rosidl_generator_c.dir/rosidl_generator_c/costom_interface/msg/detail/vicon_info__functions.c.o\x1b[0m\n'}
+[14.402962] (-) TimerEvent: {}
+[14.503674] (-) TimerEvent: {}
+[14.604421] (-) TimerEvent: {}
+[14.702697] (costom_interface) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/costom_interface__rosidl_generator_c.dir/rosidl_generator_c/costom_interface/srv/detail/velocities__functions.c.o\x1b[0m\n'}
+[14.704689] (-) TimerEvent: {}
+[14.806606] (-) TimerEvent: {}
+[14.907533] (-) TimerEvent: {}
+[15.008548] (-) TimerEvent: {}
+[15.109606] (-) TimerEvent: {}
+[15.131465] (costom_interface) StdoutLine: {'line': b'[ 19%] \x1b[32m\x1b[1mLinking C shared library libcostom_interface__rosidl_generator_c.so\x1b[0m\n'}
+[15.209969] (-) TimerEvent: {}
+[15.243840] (costom_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target costom_interface__rosidl_typesupport_cpp\x1b[0m\n'}
+[15.310241] (-) TimerEvent: {}
+[15.357664] (costom_interface) StdoutLine: {'line': b'[ 21%] \x1b[32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/costom_interface/msg/wanted_velocities__type_support.cpp.o\x1b[0m\n'}
+[15.410411] (-) TimerEvent: {}
+[15.414441] (costom_interface) StdoutLine: {'line': b'[ 21%] Built target costom_interface__rosidl_generator_c\n'}
+[15.456537] (costom_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target costom_interface__rosidl_typesupport_fastrtps_cpp\x1b[0m\n'}
+[15.501038] (costom_interface) StdoutLine: {'line': b'[ 23%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[15.510652] (-) TimerEvent: {}
+[15.523858] (costom_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target costom_interface__rosidl_typesupport_introspection_cpp\x1b[0m\n'}
+[15.604515] (costom_interface) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/costom_interface/msg/detail/dds_fastrtps/wanted_velocities__type_support.cpp.o\x1b[0m\n'}
+[15.610838] (-) TimerEvent: {}
+[15.667339] (costom_interface) StdoutLine: {'line': b'[ 27%] \x1b[32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/costom_interface/msg/detail/wanted_velocities__type_support.cpp.o\x1b[0m\n'}
+[15.711070] (-) TimerEvent: {}
+[15.811941] (-) TimerEvent: {}
+[15.912885] (-) TimerEvent: {}
+[16.013733] (-) TimerEvent: {}
+[16.114603] (-) TimerEvent: {}
+[16.215524] (-) TimerEvent: {}
+[16.316421] (-) TimerEvent: {}
+[16.417313] (-) TimerEvent: {}
+[16.518194] (-) TimerEvent: {}
+[16.619108] (-) TimerEvent: {}
+[16.720014] (-) TimerEvent: {}
+[16.821026] (-) TimerEvent: {}
+[16.922001] (-) TimerEvent: {}
+[17.022902] (-) TimerEvent: {}
+[17.123856] (-) TimerEvent: {}
+[17.199394] (costom_interface) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/costom_interface/msg/vicon_info__type_support.cpp.o\x1b[0m\n'}
+[17.224245] (-) TimerEvent: {}
+[17.325303] (-) TimerEvent: {}
+[17.426187] (-) TimerEvent: {}
+[17.521537] (costom_interface) StdoutLine: {'line': b'[ 31%] \x1b[32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/costom_interface/msg/detail/vicon_info__type_support.cpp.o\x1b[0m\n'}
+[17.526425] (-) TimerEvent: {}
+[17.587564] (costom_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target costom_interface__rosidl_typesupport_introspection_c\x1b[0m\n'}
+[17.626634] (-) TimerEvent: {}
+[17.727525] (-) TimerEvent: {}
+[17.751248] (costom_interface) StdoutLine: {'line': b'[ 34%] \x1b[32mBuilding C object CMakeFiles/costom_interface__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/costom_interface/msg/detail/wanted_velocities__type_support.c.o\x1b[0m\n'}
+[17.827770] (-) TimerEvent: {}
+[17.928776] (-) TimerEvent: {}
+[18.029748] (-) TimerEvent: {}
+[18.104369] (costom_interface) StdoutLine: {'line': b'[ 36%] \x1b[32mBuilding C object CMakeFiles/costom_interface__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/costom_interface/msg/detail/vicon_info__type_support.c.o\x1b[0m\n'}
+[18.130079] (-) TimerEvent: {}
+[18.231022] (-) TimerEvent: {}
+[18.331956] (-) TimerEvent: {}
+[18.432956] (-) TimerEvent: {}
+[18.475467] (costom_interface) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding C object CMakeFiles/costom_interface__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/costom_interface/srv/detail/velocities__type_support.c.o\x1b[0m\n'}
+[18.533171] (-) TimerEvent: {}
+[18.634171] (-) TimerEvent: {}
+[18.735158] (-) TimerEvent: {}
+[18.824919] (costom_interface) StdoutLine: {'line': b'[ 40%] \x1b[32m\x1b[1mLinking C shared library libcostom_interface__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[18.835366] (-) TimerEvent: {}
+[18.902728] (costom_interface) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/costom_interface/msg/detail/dds_fastrtps/vicon_info__type_support.cpp.o\x1b[0m\n'}
+[18.935711] (-) TimerEvent: {}
+[19.005719] (costom_interface) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/costom_interface/srv/velocities__type_support.cpp.o\x1b[0m\n'}
+[19.035930] (-) TimerEvent: {}
+[19.072104] (costom_interface) StdoutLine: {'line': b'[ 44%] Built target costom_interface__rosidl_typesupport_introspection_c\n'}
+[19.136152] (-) TimerEvent: {}
+[19.157576] (costom_interface) StdoutLine: {'line': b'[ 46%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[19.236437] (-) TimerEvent: {}
+[19.337309] (-) TimerEvent: {}
+[19.438251] (-) TimerEvent: {}
+[19.539321] (-) TimerEvent: {}
+[19.597985] (costom_interface) StdoutLine: {'line': b'[ 48%] \x1b[32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/costom_interface/srv/detail/velocities__type_support.cpp.o\x1b[0m\n'}
+[19.640381] (-) TimerEvent: {}
+[19.741330] (-) TimerEvent: {}
+[19.842715] (-) TimerEvent: {}
+[19.943765] (-) TimerEvent: {}
+[20.044834] (-) TimerEvent: {}
+[20.147078] (-) TimerEvent: {}
+[20.248330] (-) TimerEvent: {}
+[20.351376] (-) TimerEvent: {}
+[20.452511] (-) TimerEvent: {}
+[20.553505] (-) TimerEvent: {}
+[20.655529] (-) TimerEvent: {}
+[20.695541] (costom_interface) StdoutLine: {'line': b'[ 51%] \x1b[32m\x1b[1mLinking CXX shared library libcostom_interface__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[20.756522] (-) TimerEvent: {}
+[20.857458] (-) TimerEvent: {}
+[20.958378] (-) TimerEvent: {}
+[21.037965] (costom_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target costom_interface__rosidl_typesupport_c\x1b[0m\n'}
+[21.058598] (-) TimerEvent: {}
+[21.067927] (costom_interface) StdoutLine: {'line': b'[ 51%] Built target costom_interface__rosidl_typesupport_cpp\n'}
+[21.158828] (-) TimerEvent: {}
+[21.163185] (costom_interface) StdoutLine: {'line': b'[ 53%] \x1b[32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/costom_interface/srv/detail/dds_fastrtps/velocities__type_support.cpp.o\x1b[0m\n'}
+[21.183955] (costom_interface) StdoutLine: {'line': b'[ 55%] \x1b[32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_c.dir/rosidl_typesupport_c/costom_interface/msg/wanted_velocities__type_support.cpp.o\x1b[0m\n'}
+[21.259051] (-) TimerEvent: {}
+[21.360104] (-) TimerEvent: {}
+[21.450532] (costom_interface) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_c.dir/rosidl_typesupport_c/costom_interface/msg/vicon_info__type_support.cpp.o\x1b[0m\n'}
+[21.460488] (-) TimerEvent: {}
+[21.529794] (costom_interface) StdoutLine: {'line': b'[ 59%] \x1b[32m\x1b[1mLinking CXX shared library libcostom_interface__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[21.560690] (-) TimerEvent: {}
+[21.661572] (-) TimerEvent: {}
+[21.663886] (costom_interface) StdoutLine: {'line': b'[ 61%] \x1b[32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_c.dir/rosidl_typesupport_c/costom_interface/srv/velocities__type_support.cpp.o\x1b[0m\n'}
+[21.761782] (-) TimerEvent: {}
+[21.862720] (-) TimerEvent: {}
+[21.963623] (-) TimerEvent: {}
+[21.970689] (costom_interface) StdoutLine: {'line': b'[ 61%] Built target costom_interface__rosidl_typesupport_introspection_cpp\n'}
+[21.998114] (costom_interface) StdoutLine: {'line': b'[ 63%] \x1b[32m\x1b[1mLinking CXX shared library libcostom_interface__rosidl_typesupport_c.so\x1b[0m\n'}
+[22.063838] (-) TimerEvent: {}
+[22.164721] (-) TimerEvent: {}
+[22.188615] (costom_interface) StdoutLine: {'line': b'[ 63%] Built target costom_interface__rosidl_typesupport_c\n'}
+[22.264881] (-) TimerEvent: {}
+[22.365905] (-) TimerEvent: {}
+[22.466718] (-) TimerEvent: {}
+[22.567499] (-) TimerEvent: {}
+[22.668226] (-) TimerEvent: {}
+[22.768935] (-) TimerEvent: {}
+[22.869668] (-) TimerEvent: {}
+[22.970422] (-) TimerEvent: {}
+[23.071162] (-) TimerEvent: {}
+[23.171909] (-) TimerEvent: {}
+[23.272700] (-) TimerEvent: {}
+[23.373487] (-) TimerEvent: {}
+[23.474243] (-) TimerEvent: {}
+[23.480421] (costom_interface) StdoutLine: {'line': b'[ 65%] \x1b[32m\x1b[1mLinking CXX shared library libcostom_interface__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[23.574461] (-) TimerEvent: {}
+[23.675281] (-) TimerEvent: {}
+[23.776195] (-) TimerEvent: {}
+[23.845070] (costom_interface) StdoutLine: {'line': b'[ 65%] Built target costom_interface__rosidl_typesupport_fastrtps_cpp\n'}
+[23.876348] (-) TimerEvent: {}
+[23.900134] (costom_interface) StdoutLine: {'line': b'[ 68%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[23.976497] (-) TimerEvent: {}
+[24.077267] (-) TimerEvent: {}
+[24.178140] (-) TimerEvent: {}
+[24.278843] (-) TimerEvent: {}
+[24.379515] (-) TimerEvent: {}
+[24.480216] (-) TimerEvent: {}
+[24.580872] (-) TimerEvent: {}
+[24.681522] (-) TimerEvent: {}
+[24.782178] (-) TimerEvent: {}
+[24.882862] (-) TimerEvent: {}
+[24.983501] (-) TimerEvent: {}
+[25.084149] (-) TimerEvent: {}
+[25.184967] (-) TimerEvent: {}
+[25.285798] (-) TimerEvent: {}
+[25.327730] (costom_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target costom_interface__rosidl_typesupport_fastrtps_c\x1b[0m\n'}
+[25.386000] (-) TimerEvent: {}
+[25.451562] (costom_interface) StdoutLine: {'line': b'[ 70%] \x1b[32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/costom_interface/msg/detail/vicon_info__type_support_c.cpp.o\x1b[0m\n'}
+[25.459106] (costom_interface) StdoutLine: {'line': b'[ 72%] \x1b[32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/costom_interface/srv/detail/velocities__type_support_c.cpp.o\x1b[0m\n'}
+[25.465933] (costom_interface) StdoutLine: {'line': b'[ 74%] \x1b[32mBuilding CXX object CMakeFiles/costom_interface__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/costom_interface/msg/detail/wanted_velocities__type_support_c.cpp.o\x1b[0m\n'}
+[25.486241] (-) TimerEvent: {}
+[25.590379] (-) TimerEvent: {}
+[25.691145] (-) TimerEvent: {}
+[25.791977] (-) TimerEvent: {}
+[25.892884] (-) TimerEvent: {}
+[25.993792] (-) TimerEvent: {}
+[26.094664] (-) TimerEvent: {}
+[26.195531] (-) TimerEvent: {}
+[26.296733] (-) TimerEvent: {}
+[26.397541] (-) TimerEvent: {}
+[26.498506] (-) TimerEvent: {}
+[26.599390] (-) TimerEvent: {}
+[26.700266] (-) TimerEvent: {}
+[26.801088] (-) TimerEvent: {}
+[26.901897] (-) TimerEvent: {}
+[27.002737] (-) TimerEvent: {}
+[27.103811] (-) TimerEvent: {}
+[27.204687] (-) TimerEvent: {}
+[27.305555] (-) TimerEvent: {}
+[27.406889] (-) TimerEvent: {}
+[27.507972] (-) TimerEvent: {}
+[27.554853] (costom_interface) StdoutLine: {'line': b'[ 76%] \x1b[32m\x1b[1mLinking CXX shared library libcostom_interface__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[27.608149] (-) TimerEvent: {}
+[27.708928] (-) TimerEvent: {}
+[27.809818] (-) TimerEvent: {}
+[27.910635] (-) TimerEvent: {}
+[27.920722] (costom_interface) StdoutLine: {'line': b'[ 76%] Built target costom_interface__rosidl_typesupport_fastrtps_c\n'}
+[27.968654] (costom_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target costom_interface\x1b[0m\n'}
+[28.010879] (-) TimerEvent: {}
+[28.023296] (costom_interface) StdoutLine: {'line': b'[ 76%] Built target costom_interface\n'}
+[28.074516] (costom_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target costom_interface__py\x1b[0m\n'}
+[28.111084] (-) TimerEvent: {}
+[28.129396] (costom_interface) StdoutLine: {'line': b'[ 78%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[28.211229] (-) TimerEvent: {}
+[28.311930] (-) TimerEvent: {}
+[28.412788] (-) TimerEvent: {}
+[28.513461] (-) TimerEvent: {}
+[28.614131] (-) TimerEvent: {}
+[28.714809] (-) TimerEvent: {}
+[28.815513] (-) TimerEvent: {}
+[28.916266] (-) TimerEvent: {}
+[29.016957] (-) TimerEvent: {}
+[29.117631] (-) TimerEvent: {}
+[29.218360] (-) TimerEvent: {}
+[29.319081] (-) TimerEvent: {}
+[29.419808] (-) TimerEvent: {}
+[29.520469] (-) TimerEvent: {}
+[29.621114] (-) TimerEvent: {}
+[29.721774] (-) TimerEvent: {}
+[29.822483] (-) TimerEvent: {}
+[29.923863] (-) TimerEvent: {}
+[30.024774] (-) TimerEvent: {}
+[30.125472] (-) TimerEvent: {}
+[30.226167] (-) TimerEvent: {}
+[30.327143] (-) TimerEvent: {}
+[30.428045] (-) TimerEvent: {}
+[30.529180] (-) TimerEvent: {}
+[30.630396] (-) TimerEvent: {}
+[30.723994] (costom_interface) StdoutLine: {'line': b'[ 78%] Built target costom_interface__py\n'}
+[30.730563] (-) TimerEvent: {}
+[30.774602] (costom_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target costom_interface__python\x1b[0m\n'}
+[30.830710] (-) TimerEvent: {}
+[30.901228] (costom_interface) StdoutLine: {'line': b'[ 80%] \x1b[32mBuilding C object CMakeFiles/costom_interface__python.dir/rosidl_generator_py/costom_interface/msg/_wanted_velocities_s.c.o\x1b[0m\n'}
+[30.908907] (costom_interface) StdoutLine: {'line': b'[ 82%] \x1b[32mBuilding C object CMakeFiles/costom_interface__python.dir/rosidl_generator_py/costom_interface/srv/_velocities_s.c.o\x1b[0m\n'}
+[30.919584] (costom_interface) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding C object CMakeFiles/costom_interface__python.dir/rosidl_generator_py/costom_interface/msg/_vicon_info_s.c.o\x1b[0m\n'}
+[30.930932] (-) TimerEvent: {}
+[31.032256] (-) TimerEvent: {}
+[31.133410] (-) TimerEvent: {}
+[31.234384] (-) TimerEvent: {}
+[31.335333] (-) TimerEvent: {}
+[31.412642] (costom_interface) StdoutLine: {'line': b'[ 87%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/costom_interface/libcostom_interface__python.so\x1b[0m\n'}
+[31.435511] (-) TimerEvent: {}
+[31.536371] (-) TimerEvent: {}
+[31.637329] (-) TimerEvent: {}
+[31.642550] (costom_interface) StdoutLine: {'line': b'[ 87%] Built target costom_interface__python\n'}
+[31.698376] (costom_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target costom_interface__rosidl_typesupport_c__pyext\x1b[0m\n'}
+[31.699367] (costom_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target costom_interface__rosidl_typesupport_introspection_c__pyext\x1b[0m\n'}
+[31.699931] (costom_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target costom_interface__rosidl_typesupport_fastrtps_c__pyext\x1b[0m\n'}
+[31.737542] (-) TimerEvent: {}
+[31.811523] (costom_interface) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/costom_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[31.837759] (-) TimerEvent: {}
+[31.840487] (costom_interface) StdoutLine: {'line': b'[ 91%] \x1b[32mBuilding C object CMakeFiles/costom_interface__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[31.845994] (costom_interface) StdoutLine: {'line': b'[ 93%] \x1b[32mBuilding C object CMakeFiles/costom_interface__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/costom_interface/_costom_interface_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[31.937977] (-) TimerEvent: {}
+[32.038829] (-) TimerEvent: {}
+[32.139630] (-) TimerEvent: {}
+[32.240735] (-) TimerEvent: {}
+[32.319041] (costom_interface) StdoutLine: {'line': b'[ 95%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/costom_interface/costom_interface_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so\x1b[0m\n'}
+[32.330764] (costom_interface) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/costom_interface/costom_interface_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so\x1b[0m\n'}
+[32.340942] (-) TimerEvent: {}
+[32.352823] (costom_interface) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX shared library rosidl_generator_py/costom_interface/costom_interface_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so\x1b[0m\n'}
+[32.441534] (-) TimerEvent: {}
+[32.543026] (-) TimerEvent: {}
+[32.617990] (costom_interface) StdoutLine: {'line': b'[100%] Built target costom_interface__rosidl_typesupport_c__pyext\n'}
+[32.630018] (costom_interface) StdoutLine: {'line': b'[100%] Built target costom_interface__rosidl_typesupport_introspection_c__pyext\n'}
+[32.643286] (-) TimerEvent: {}
+[32.744101] (-) TimerEvent: {}
+[32.761039] (costom_interface) StdoutLine: {'line': b'[100%] Built target costom_interface__rosidl_typesupport_fastrtps_c__pyext\n'}
+[32.809985] (costom_interface) CommandEnded: {'returncode': 0}
+[32.844466] (-) TimerEvent: {}
+[32.945388] (-) TimerEvent: {}
+[33.046400] (-) TimerEvent: {}
+[33.147131] (-) TimerEvent: {}
+[33.247859] (-) TimerEvent: {}
+[33.348654] (-) TimerEvent: {}
+[33.411273] (costom_interface) JobProgress: {'identifier': 'costom_interface', 'progress': 'install'}
+[33.449016] (-) TimerEvent: {}
+[33.457459] (costom_interface) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/ubuntu/git/asbjoern_udv/build/costom_interface'], 'cwd': '/home/ubuntu/git/asbjoern_udv/build/costom_interface', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'ubuntu'), ('SSH_CLIENT', '100.109.194.3 49284 22'), ('LC_TIME', 'da_DK.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/ubuntu/turtlebot3_ws/install/realsense2_camera/lib:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/ubuntu'), ('OLDPWD', '/home/ubuntu/git/asbjoern_udv/kontrol_loop_work_spase'), ('SSH_TTY', '/dev/pts/1'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'da_DK.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/ubuntu/vicon/vicon_udp/install:/home/ubuntu/turtlebot3_ws/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'ubuntu'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '3'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/home/ubuntu/.local/bin:/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'da_DK.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'da_DK.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '1'), ('AMENT_PREFIX_PATH', '/home/ubuntu/vicon/vicon_udp/install/vicon_udp:/home/ubuntu/turtlebot3_ws/install/turtlebot3:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/home/ubuntu/turtlebot3_ws/install/realsense2_description:/home/ubuntu/turtlebot3_ws/install/realsense2_camera:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs:/home/ubuntu/turtlebot3_ws/install/ld08_driver:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'da_DK.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'da_DK.UTF-8'), ('LC_IDENTIFICATION', 'da_DK.UTF-8'), ('PWD', '/home/ubuntu/git/asbjoern_udv/build/costom_interface'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '100.109.194.3 49284 100.102.101.103 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('LDS_MODEL', 'LDS-01'), ('PYTHONPATH', '/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example/lib/python3.8/site-packages:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages::/usr/local/lib'), ('LC_NUMERIC', 'da_DK.UTF-8'), ('LC_PAPER', 'da_DK.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/ubuntu/vicon/vicon_udp/install/vicon_udp:/home/ubuntu/turtlebot3_ws/install/turtlebot3:/home/ubuntu/turtlebot3_ws/install/turtlebot3_bringup:/home/ubuntu/turtlebot3_ws/install/turtlebot3_node:/home/ubuntu/turtlebot3_ws/install/turtlebot3_description:/home/ubuntu/turtlebot3_ws/install/realsense2_description:/home/ubuntu/turtlebot3_ws/install/realsense2_camera:/home/ubuntu/turtlebot3_ws/install/realsense2_camera_msgs:/home/ubuntu/turtlebot3_ws/install/ld08_driver:/home/ubuntu/turtlebot3_ws/install/turtlebot3_teleop:/home/ubuntu/turtlebot3_ws/install/turtlebot3_example:/opt/ros/foxy')]), 'shell': False}
+[33.506980] (costom_interface) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[33.507921] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/ament_index/resource_index/rosidl_interfaces/costom_interface\n'}
+[33.509282] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface\n'}
+[33.509944] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg\n'}
+[33.510503] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/vicon_info.h\n'}
+[33.511408] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail\n'}
+[33.512038] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__functions.c\n'}
+[33.513204] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__functions.h\n'}
+[33.514195] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__type_support.h\n'}
+[33.515180] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__struct.h\n'}
+[33.516237] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__type_support.h\n'}
+[33.517283] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__functions.h\n'}
+[33.518358] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__functions.c\n'}
+[33.519398] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__struct.h\n'}
+[33.520443] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/rosidl_generator_c__visibility_control.h\n'}
+[33.521422] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/wanted_velocities.h\n'}
+[33.522263] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv\n'}
+[33.523031] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail\n'}
+[33.523858] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__functions.c\n'}
+[33.524849] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__functions.h\n'}
+[33.526105] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__type_support.h\n'}
+[33.527164] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__struct.h\n'}
+[33.528206] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/velocities.h\n'}
+[33.529840] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/library_path.sh\n'}
+[33.531147] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/library_path.dsv\n'}
+[33.532872] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_generator_c.so\n'}
+[33.535578] (costom_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_generator_c.so" to ""\n'}
+[33.536245] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface\n'}
+[33.536814] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg\n'}
+[33.537249] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail\n'}
+[33.537614] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__rosidl_typesupport_fastrtps_c.h\n'}
+[33.538364] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__rosidl_typesupport_fastrtps_c.h\n'}
+[33.539499] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[33.540479] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv\n'}
+[33.540971] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail\n'}
+[33.541386] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__rosidl_typesupport_fastrtps_c.h\n'}
+[33.542786] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_fastrtps_c.so\n'}
+[33.545417] (costom_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[33.545998] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface\n'}
+[33.546419] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg\n'}
+[33.546823] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail\n'}
+[33.547229] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[33.548103] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/dds_fastrtps\n'}
+[33.548869] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[33.549284] (-) TimerEvent: {}
+[33.550418] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[33.560693] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv\n'}
+[33.561625] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail\n'}
+[33.562165] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[33.562823] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/dds_fastrtps\n'}
+[33.563319] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_fastrtps_cpp.so\n'}
+[33.563718] (costom_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[33.564302] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface\n'}
+[33.564725] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg\n'}
+[33.565272] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail\n'}
+[33.565662] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__type_support.c\n'}
+[33.566131] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__rosidl_typesupport_introspection_c.h\n'}
+[33.566510] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__type_support.c\n'}
+[33.566961] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__rosidl_typesupport_introspection_c.h\n'}
+[33.567374] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[33.567767] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv\n'}
+[33.568139] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail\n'}
+[33.568743] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__rosidl_typesupport_introspection_c.h\n'}
+[33.569218] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__type_support.c\n'}
+[33.569601] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_introspection_c.so\n'}
+[33.571119] (costom_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_introspection_c.so" to ""\n'}
+[33.571793] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_c.so\n'}
+[33.574257] (costom_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_c.so" to ""\n'}
+[33.574890] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface\n'}
+[33.575450] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg\n'}
+[33.575877] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/vicon_info.hpp\n'}
+[33.576445] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail\n'}
+[33.576964] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__builder.hpp\n'}
+[33.577972] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__struct.hpp\n'}
+[33.579040] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__builder.hpp\n'}
+[33.580071] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__traits.hpp\n'}
+[33.581256] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__traits.hpp\n'}
+[33.582871] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__struct.hpp\n'}
+[33.583547] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/wanted_velocities.hpp\n'}
+[33.585108] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv\n'}
+[33.585855] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail\n'}
+[33.588187] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__builder.hpp\n'}
+[33.588992] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__traits.hpp\n'}
+[33.589467] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__struct.hpp\n'}
+[33.589879] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/velocities.hpp\n'}
+[33.590427] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface\n'}
+[33.591025] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg\n'}
+[33.591527] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail\n'}
+[33.591963] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__rosidl_typesupport_introspection_cpp.hpp\n'}
+[33.592766] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__rosidl_typesupport_introspection_cpp.hpp\n'}
+[33.594010] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/wanted_velocities__type_support.cpp\n'}
+[33.595158] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/msg/detail/vicon_info__type_support.cpp\n'}
+[33.596715] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv\n'}
+[33.597378] (costom_interface) StdoutLine: {'line': b'-- Up-to-date: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail\n'}
+[33.597816] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__rosidl_typesupport_introspection_cpp.hpp\n'}
+[33.598374] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/include/costom_interface/srv/detail/velocities__type_support.cpp\n'}
+[33.599992] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_introspection_cpp.so\n'}
+[33.602690] (costom_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[33.603320] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_cpp.so\n'}
+[33.605781] (costom_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__rosidl_typesupport_cpp.so" to ""\n'}
+[33.606349] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/pythonpath.sh\n'}
+[33.607456] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/pythonpath.dsv\n'}
+[33.609071] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/__init__.py\n'}
+[33.649472] (-) TimerEvent: {}
+[33.750181] (-) TimerEvent: {}
+[33.764788] (costom_interface) StdoutLine: {'line': b"Compiling '/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/__init__.py'...\n"}
+[33.786043] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/msg\n'}
+[33.786790] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/msg/__init__.py\n'}
+[33.787829] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/msg/_vicon_info.py\n'}
+[33.789051] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/msg/_wanted_velocities_s.c\n'}
+[33.790602] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/msg/_vicon_info_s.c\n'}
+[33.791798] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/msg/_wanted_velocities.py\n'}
+[33.793332] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/srv\n'}
+[33.794118] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/srv/__init__.py\n'}
+[33.795249] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/srv/_velocities.py\n'}
+[33.796486] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/srv/_velocities_s.c\n'}
+[33.798636] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/costom_interface_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so\n'}
+[33.802198] (costom_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/costom_interface_s__rosidl_typesupport_fastrtps_c.cpython-38-aarch64-linux-gnu.so" to ""\n'}
+[33.803266] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/costom_interface_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so\n'}
+[33.806525] (costom_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/costom_interface_s__rosidl_typesupport_introspection_c.cpython-38-aarch64-linux-gnu.so" to ""\n'}
+[33.807454] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/costom_interface_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so\n'}
+[33.810544] (costom_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/python3.8/site-packages/costom_interface/costom_interface_s__rosidl_typesupport_c.cpython-38-aarch64-linux-gnu.so" to ""\n'}
+[33.811169] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__python.so\n'}
+[33.813681] (costom_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/ubuntu/git/asbjoern_udv/install/costom_interface/lib/libcostom_interface__python.so" to ""\n'}
+[33.814374] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/msg/WantedVelocities.idl\n'}
+[33.815574] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/msg/ViconInfo.idl\n'}
+[33.816981] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/srv/Velocities.idl\n'}
+[33.818087] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/msg/WantedVelocities.msg\n'}
+[33.819227] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/msg/ViconInfo.msg\n'}
+[33.820392] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/srv/Velocities.srv\n'}
+[33.821519] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/srv/Velocities_Request.msg\n'}
+[33.823112] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/srv/Velocities_Response.msg\n'}
+[33.824870] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/ament_index/resource_index/package_run_dependencies/costom_interface\n'}
+[33.826624] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/ament_index/resource_index/parent_prefix_path/costom_interface\n'}
+[33.827989] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/ament_prefix_path.sh\n'}
+[33.829364] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/ament_prefix_path.dsv\n'}
+[33.830666] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/path.sh\n'}
+[33.831897] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/environment/path.dsv\n'}
+[33.833252] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/local_setup.bash\n'}
+[33.834469] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/local_setup.sh\n'}
+[33.835585] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/local_setup.zsh\n'}
+[33.836781] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/local_setup.dsv\n'}
+[33.837881] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/package.dsv\n'}
+[33.839379] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/ament_index/resource_index/packages/costom_interface\n'}
+[33.841150] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_generator_cExport.cmake\n'}
+[33.842468] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_generator_cExport-noconfig.cmake\n'}
+[33.844035] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_introspection_cExport.cmake\n'}
+[33.845612] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[33.847157] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_cExport.cmake\n'}
+[33.848568] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[33.850074] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_generator_cppExport.cmake\n'}
+[33.850553] (-) TimerEvent: {}
+[33.851837] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[33.853707] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[33.855289] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_cppExport.cmake\n'}
+[33.857244] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interface__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[33.858716] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/rosidl_cmake-extras.cmake\n'}
+[33.860042] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[33.861533] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[33.862924] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[33.864308] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[33.865717] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[33.867229] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[33.868605] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interfaceConfig.cmake\n'}
+[33.869613] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/cmake/costom_interfaceConfig-version.cmake\n'}
+[33.870800] (costom_interface) StdoutLine: {'line': b'-- Installing: /home/ubuntu/git/asbjoern_udv/install/costom_interface/share/costom_interface/package.xml\n'}
+[33.877681] (costom_interface) CommandEnded: {'returncode': 0}
+[33.950901] (-) TimerEvent: {}
+[34.051637] (-) TimerEvent: {}
+[34.152586] (-) TimerEvent: {}
+[34.253377] (-) TimerEvent: {}
+[34.354137] (-) TimerEvent: {}
+[34.454891] (-) TimerEvent: {}
+[34.558592] (-) TimerEvent: {}
+[34.624379] (costom_interface) JobEnded: {'identifier': 'costom_interface', 'rc': 0}
+[34.628302] (-) EventReactorShutdown: {}

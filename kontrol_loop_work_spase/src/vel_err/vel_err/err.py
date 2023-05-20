@@ -29,12 +29,14 @@ class FrameListener(Node):
         self.tf_buffer = Buffer()
         self.tf_listener = TransformListener(self.tf_buffer, self)
         self.get_logger().info("err node start")
+        self.vec_gam = [0,0,0,0,0,0,0,0,0]
 
     def quat2yor (self,x,y,z,w):
         return math.atan2(w*w + x*x - y*y - z*z , 2.0*(x*y + w*z))
 
     def on_timer(self, dd):
 
+        #
         if self.gammel_tf == 0:
             self.gammel_tf = copy.deepcopy(dd)
             #dd.transform.translation.x = dd.transform.translation.x+2
@@ -70,7 +72,17 @@ class FrameListener(Node):
                     vec[6] = (vec[2] - tra.transform.translation.z)/(del_tid/1000000000)
                     vec[7] = (vec[3] - self.quat2yor(tra.transform.rotation.x, tra.transform.rotation.y, tra.transform.rotation.z, tra.transform.rotation.w))/(del_tid/1000000000)
                     vec[8] = del_tid
-                    formatted_vector = [f"{value:8.5f}" for value in vec]
+                    if 30000000/8 > del_tid:
+                        vec = self.vec_gam[:]
+                        self.get_logger().info(f"vec:{vec}")
+                    else:
+                        self.vec_gam = vec[:]
+                    #for i in range(8):
+                    #    if vec[i] > 2:
+                    #        vec[i] = 2
+                    #    if vec[i] < -2:
+                    #        vec[i] = -2
+                    #formatted_vector = [f"{value:8.5f}" for value in vec]
                     #self.get_logger().info(f"vec: {formatted_vector}")
                     self.gammel_tf = copy.deepcopy(dd)
                     self.callback(vec)

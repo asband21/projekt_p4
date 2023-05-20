@@ -1,0 +1,15 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from costom_interface/msg/ViconInfo.msg
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/Twist.idl"
+
+module costom_interface {
+  module msg {
+    struct ViconInfo {
+      geometry_msgs::msg::Twist velocity;
+
+      geometry_msgs::msg::Twist position;
+    };
+  };
+};
