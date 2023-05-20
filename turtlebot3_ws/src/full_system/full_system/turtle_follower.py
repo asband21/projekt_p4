@@ -122,13 +122,28 @@ class turtle_follower(Node):
 
 
             current_yaw = start_yaw
+            previous_yaw = start_yaw
 
             cmd_vel = Twist()
 
             cmd_vel.angular.z = self.turn_velocity
             self.pub_turtle.publish(cmd_vel)
 
-            while abs(start_yaw-current_yaw) < turn_angle:
+            while abs(start_yaw-current_yaw) < turn_angle or abs(previous_yaw-current_yaw) > 20:
+
+                previous_transform = self.send_tf_request().tf
+
+                previous_quat = [0,0,0,0]
+                previous_quat[0] = previous_transform.transform.rotation.x
+                previous_quat[1] = previous_transform.transform.rotation.y
+                previous_quat[2] = previous_transform.transform.rotation.z
+                previous_quat[3] = previous_transform.transform.rotation.w
+
+                previous_zyx = tf.euler_from_quaternion(previous_quat,axes='rzyx')
+
+                previous_yaw =  (180/np.pi)*previous_zyx[0]#(180/np.pi)*
+
+                time.sleep(1/30)
 
                 current_transform = self.send_tf_request().tf
 
@@ -142,8 +157,9 @@ class turtle_follower(Node):
 
                 current_yaw =  (180/np.pi)*current_zyx[0]#(180/np.pi)*
 
+
+                self.get_logger().info("angle diff: " + str(abs(previous_yaw-current_yaw)))
                 self.get_logger().info("angle: " + str(abs(start_yaw-current_yaw)))
-                time.sleep(1/30)
 
             cmd_vel.angular.z = 0.0
             self.pub_turtle.publish(cmd_vel)
@@ -171,13 +187,28 @@ class turtle_follower(Node):
 
 
             current_yaw = start_yaw
+            previous_yaw = start_yaw
 
             cmd_vel = Twist()
 
             cmd_vel.angular.z = -self.turn_velocity
             self.pub_turtle.publish(cmd_vel)
 
-            while abs(start_yaw-current_yaw) < turn_angle:
+            while abs(start_yaw-current_yaw) < turn_angle or abs(previous_yaw-current_yaw) > 20:
+
+                previous_transform = self.send_tf_request().tf
+
+                previous_quat = [0,0,0,0]
+                previous_quat[0] = previous_transform.transform.rotation.x
+                previous_quat[1] = previous_transform.transform.rotation.y
+                previous_quat[2] = previous_transform.transform.rotation.z
+                previous_quat[3] = previous_transform.transform.rotation.w
+
+                previous_zyx = tf.euler_from_quaternion(previous_quat,axes='rzyx')
+
+                previous_yaw =  (180/np.pi)*previous_zyx[0]#(180/np.pi)*
+
+                time.sleep(1/30)
 
                 current_transform = self.send_tf_request().tf
 
@@ -190,8 +221,11 @@ class turtle_follower(Node):
                 current_zyx = tf.euler_from_quaternion(current_quat,axes='rzyx')
 
                 current_yaw =  (180/np.pi)*current_zyx[0]#(180/np.pi)*
+
+
+                self.get_logger().info("angle diff: " + str(abs(previous_yaw-current_yaw)))
                 self.get_logger().info("angle: " + str(abs(start_yaw-current_yaw)))
-                time.sleep(1/30)
+
 
             cmd_vel.angular.z = 0.0
             self.pub_turtle.publish(cmd_vel)

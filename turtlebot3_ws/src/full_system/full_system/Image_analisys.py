@@ -24,7 +24,7 @@ import os
 class image_analisys(Node):
     def __init__(self):
         super().__init__("image_analisys") 
-        self.run_number = "2"
+        self.run_number = "5"
         self.number_of_images_taken = 0
 
         self.destination_for_test_data = "/home/ubuntu/tests/turtleTest"
@@ -67,12 +67,17 @@ class image_analisys(Node):
 
         # the transformation from turtlebot to the camera
         turtle2cam_translation = [-0.04, 0.03, 0.075]
-        turtle2cam_rot_matrix = [  [1.0,  0.0,  0.0],
-                                   [0.0,  0.8660254,  0.5],
-                                   [0.0, -0.5,  0.8660254] ]
+        rotation_x = np.radians(-30)
+        turtle2cam_rot_matrix = tf.euler_matrix(rotation_x, 0.0, 0.0, 'sxyz')
+
+        self.get_logger().info(f"turtle2cam_rot_matrix: {turtle2cam_rot_matrix}")
+
+        # turtle2cam_rot_matrix = [  [1.0,  0.0,  0.0],
+        #                            [0.0,  0.8660254,  0.5],
+        #                            [0.0, -0.5,  0.8660254] ]
         
         turtle2cam_transform = np.eye(4)
-        turtle2cam_transform[:3, :3] = turtle2cam_rot_matrix
+        turtle2cam_transform[:3, :3] = turtle2cam_rot_matrix[:3, :3]
         turtle2cam_transform[:3, 3] = turtle2cam_translation
 
         
@@ -159,9 +164,9 @@ class image_analisys(Node):
         #  different resolutions of color and depth streams
         config = rs.config()
 
-        config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
+        config.enable_stream(rs.stream.depth, 1280, 720, rs.format.z16, 30)
 
-        config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+        config.enable_stream(rs.stream.color, 1280, 720, rs.format.bgr8, 30)
 
         # Start streaming
         profile = self.pipeline.start(config) 
@@ -251,6 +256,7 @@ class image_analisys(Node):
             
                 response.success = False
                 self.number_of_images_taken += 1
+                self.pipeline.stop()
                 return response
             if see_qr == False:
                 # print(see_qr)
@@ -361,7 +367,6 @@ class image_analisys(Node):
             file_path = os.path.join(folder_path, file_name)
 
 
-            current_ids, current_vicon2qrcode = current_targets
 
             # Check if the file exists
             if not os.path.exists(file_path):
@@ -387,35 +392,47 @@ class image_analisys(Node):
                     previous_targets = pickle.load(file)
                 
                 previous_ids, previous_vicon2qrcode = previous_targets
+                current_ids, current_vicon2qrcode = current_targets
+
+
+                ids_in_previous = set(previous_ids).intersection(set(current_ids))
+                self.get_logger().info(f"ids_in_previous {ids_in_previous}")
+
+                new_ids = set(current_ids) - ids_in_previous
+                self.get_logger().info(f"new_ids {new_ids}")
 
                 # Check if current_targets is in the data
-                if not current_vicon2qrcode in previous_ids:
+                if new_ids:
                     self.get_logger().info(f"seconf if QR-code {current_ids} already in the file {file_name}")
                     self.get_logger().info("33333333333333333333333333333333333333333333333333333333333333333333333333333333333333")
 
-                    # Strip the data from the file based on current_targets
-                    # stripped_ids = [item for item in previous_targets[0] if item != current_targets[0]]
-                    stripped_ids = []
-                    stripped_transforms = []
-                    new_ids =[]
-                    for item in current_ids:
-                        if item not in previous_targets[0]:
-                            index =current_targets[0].index(item)
-                            stripped_transforms.append(current_vicon2qrcode[index])
-                            stripped_ids.append(item)
-                            new_ids.append(item)
-                    stripped_targers = (stripped_ids,stripped_transforms)
+
+
+                    # Create a dictionary mapping IDs to their corresponding data
+                    current_data_dict = dict(zip(current_ids, current_vicon2qrcode))
+
+                    for id in new_ids:
+                        previous_ids.append(id)
+                        previous_vicon2qrcode.append(current_data_dict[id])
+
+                    # for id in new_ids:
+                    #     current_index = current_ids.index(id)
+
+                    #     previous_ids.append(current_ids[current_index])
+                    #     previous_vicon2qrcode.append(current_vicon2qrcode[current_index])
+
+
                     # save the qr_image in the folder ~/test/turtleTest/run{self.run_number}/images. where the qr_image name is the ids found in it
                     cv2.imwrite(self.destination_for_test_data+ f"/run{self.run_number}/images/image_{new_ids}.png", qr_image)
                     path = self.destination_for_test_data+ f"/run{self.run_number}/images/image_{new_ids}.png"
                     self.get_logger().info(f"QR-code image saved to {path}")
-                    self.get_logger().info("QR-code image saved to the folder")
-                    # cv2.imwrite(f"images{new_ids}.png", qr_image)
-                    
+
+                    updated_targets = (previous_ids, previous_vicon2qrcode)
+
                     
                     # Save the stripped data back to the file
                     with open(file_path, "wb") as file:
-                        pickle.dump(stripped_targers, file)
+                        pickle.dump(updated_targets, file)
                 else:
                     self.get_logger().info("44444444444444444444444444444444444444444444444444444444444444444444444444444444444")
                     cv2.imwrite(self.destination_for_test_data + f"/run{self.run_number}/images/image_no_new_ids.png", qr_image)
@@ -491,11 +508,14 @@ class image_analisys(Node):
             # print("know_transforms: ", type(know_transforms))
 
             response.success = True 
+            self.pipeline.stop()
+            
             return response
         else: 
 
             response.success = False
             print("No QR-Code found ....") 
+            self.pipeline.stop()
             return response
             
 

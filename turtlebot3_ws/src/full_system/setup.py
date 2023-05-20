@@ -38,6 +38,9 @@ setup(
             "image = full_system.Image_analisys:main",
             "test_tf = full_system.sub_tf:main",
             "srv_tf = full_system.srv_tf:main",
+            "debug_qrcode_tf = full_system.qr_tf_pub:main",
+            "get_world_tags = full_system.world_targets:main",
+            "world_tag_read_tf = full_system.world_tag_read_tf:main",
         ],
     },
 )

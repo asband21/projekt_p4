@@ -6,7 +6,7 @@ from tf2_msgs.msg import TFMessage
 from geometry_msgs.msg import TransformStamped
 from personal_interface.srv import Tf
 
-
+import tf_transformations as tf
 
 
 class SrvTF(Node):
@@ -27,11 +27,6 @@ class SrvTF(Node):
         target_frame_id = 'turtle'
         for transform in msg.transforms:
             if (transform.header.frame_id == source_frame_id and transform.child_frame_id == target_frame_id):
-                # Found the desired transform
-                transform.transform.translation.x = -1*transform.transform.translation.x
-                transform.transform.translation.y = -1*transform.transform.translation.y
-                transform.transform.translation.z = -1*transform.transform.translation.z
-
                 self.current_vicon2turtle = transform
                 break
 
@@ -45,11 +40,6 @@ class SrvTF(Node):
         target_frame_id = 'drone'
         for transform in msg.transforms:
             if (transform.header.frame_id == source_frame_id and transform.child_frame_id == target_frame_id):
-                # Found the desired transform
-                transform.transform.translation.x = -1*transform.transform.translation.x
-                transform.transform.translation.y = -1*transform.transform.translation.y
-                transform.transform.translation.z = -1*transform.transform.translation.z
-
                 self.current_vicon2drone = transform
                 break
 

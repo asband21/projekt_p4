@@ -3,14 +3,14 @@ import os
 
 # Read data from pickle file and print it
 
-
+num = "5"
 
 # Get the path of the current directory
-dir_path = os.path.dirname(os.path.realpath("test1.pkl"))
+dir_path = os.path.dirname(os.path.realpath(f"test{num}.pkl"))
 
 
 # Open the pickle file
-with open("/home/ubuntu/tests/turtleTest/run1/data/test1.pkl", 'rb') as f:
+with open(f"/home/ubuntu/tests/turtleTest/run{num}/data/test{num}.pkl", 'rb') as f:
     data = pickle.load(f)
 
 # Print the data
