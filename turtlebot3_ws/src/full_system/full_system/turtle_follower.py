@@ -134,10 +134,11 @@ class turtle_follower(Node):
                 # else:
                 #     cmd_vel.angular.z = -self.turn_velocity
                 
-                if abs(error) > 2:
-                    cmd_vel.angular.z = 2.0
+                if abs(error) > 1:
+                    cmd_vel.angular.z = 1.0
                 else:
                     cmd_vel.angular.z = error
+                    
 
                 self.get_logger().info("cmd_vel: " + str(cmd_vel.angular.z))
                 self.pub_turtle.publish(cmd_vel)
@@ -164,8 +165,8 @@ class turtle_follower(Node):
                 # else:
                 #     cmd_vel.angular.z = -self.turn_velocity
 
-                if abs(error) > 2:
-                    cmd_vel.angular.z = 2.0
+                if abs(error) > 1:
+                    cmd_vel.angular.z = 1.0
                 else:
                     cmd_vel.angular.z = error
 
