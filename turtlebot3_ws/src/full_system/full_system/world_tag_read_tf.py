@@ -13,13 +13,11 @@ import tf_transformations as tf
 
 import numpy as np
 
+import os
 class TFPublisher(Node):
 
     def __init__(self):
         super().__init__('qr_tf_pub')
-
-
-        self.run_number = "5"
         
         self.tf_broadcaster = TransformBroadcaster(self)
         self.tf_msg = TransformStamped()
@@ -27,17 +25,22 @@ class TFPublisher(Node):
 
         self.create_timer(1, self.timer_callback)
 
-        self.destination_for_test_data = "/home/ubuntu/tests/turtleTest"
+        self.mode = "wolrd"
 
-        folder_path = f"{self.destination_for_test_data}/run{self.run_number}/data"
-        file_name = f"test{self.run_number}.pkl"
-        self.file_path = os.path.join(folder_path, file_name)
+        # make sure the file exists, if not create it
+        
+
+        
 
 
     def timer_callback(self):
         try:
-            with open("/home/ubuntu/tests/turtleTest/world_targets.pkl", 'rb') as f:
-                self.data = pickle.load(f)
+            if self.mode == "cal":
+                with open("/home/ubuntu/tests/turtleTest/calibration_turtle2cam.pkl", 'rb') as f:
+                    self.data = pickle.load(f)
+            else:
+                with open("/home/ubuntu/tests/turtleTest/world_targets.pkl", 'rb') as f:
+                    self.data = pickle.load(f)
         except Exception as e:
             print(e)
             return

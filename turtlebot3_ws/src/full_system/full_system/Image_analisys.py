@@ -24,7 +24,10 @@ import os
 class image_analisys(Node):
     def __init__(self):
         super().__init__("image_analisys") 
-        self.run_number = "5"
+        
+        self.run_number = "7"
+
+
         self.number_of_images_taken = 0
 
         self.destination_for_test_data = "/home/ubuntu/tests/turtleTest"
@@ -65,24 +68,64 @@ class image_analisys(Node):
         vicon2turtle_transform[:3, 3] = vicon2turtle_translation
 
 
-        # the transformation from turtlebot to the camera
-        turtle2cam_translation = [-0.04, 0.03, 0.075]
-        rotation_x = np.radians(-30)
-        turtle2cam_rot_matrix = tf.euler_matrix(rotation_x, 0.0, 0.0, 'sxyz')
+        # # the transformation from turtlebot to the camera
+        # turtle2cam_translation = [-0.04, 0.03, 0.075]
+        # rotation_x = np.radians(-30)
+        # turtle2cam_rot_matrix = tf.euler_matrix(rotation_x, 0.0, 0.0, 'sxyz')
 
-        self.get_logger().info(f"turtle2cam_rot_matrix: {turtle2cam_rot_matrix}")
+        # self.get_logger().info(f"turtle2cam_rot_matrix: {turtle2cam_rot_matrix}")
 
         # turtle2cam_rot_matrix = [  [1.0,  0.0,  0.0],
         #                            [0.0,  0.8660254,  0.5],
         #                            [0.0, -0.5,  0.8660254] ]
         
-        turtle2cam_transform = np.eye(4)
-        turtle2cam_transform[:3, :3] = turtle2cam_rot_matrix[:3, :3]
-        turtle2cam_transform[:3, 3] = turtle2cam_translation
+        # turtle2cam_transform = np.eye(4)
+        # turtle2cam_transform[:3, :3] = turtle2cam_rot_matrix[:3, :3]
+        # turtle2cam_transform[:3, 3] = turtle2cam_translation
+
+
+
+        # Open the pickle file
+        with open("/home/ubuntu/tests/turtleTest/calibration_turtle2cam.pkl", 'rb') as f:
+            data = pickle.load(f)
+
+
+        ids, transforms = data
+
+
+
+        vicon2turtle = transforms[0]
+        vicon2ref_object = transforms[1]
+
+
+        # find the inverse of vicont2turtle
+        turtle2vicon = np.linalg.inv(vicon2turtle)
+
+        # find the transform from turtle to ref_object
+        turtle2ref_object = np.matmul(turtle2vicon, vicon2ref_object)
+
+
+        # find the transform from ref_object to marker. 
+        ref_object2marker = np.eye(4)
+        ref_object2marker[0:3,3] = [23.0196, -18.5049, -4.73885] # unit mm: This data is taken from the vicon object list, where you can see the position of the marker to the given object you are looking at.
+        ref_object2marker[0:3,3] = ref_object2marker[0:3,3]/1000 # change unit mm to m 
+
+
+        # find the transform from turtle to marker
+        turtle2marker = np.matmul(turtle2ref_object, ref_object2marker)
+
+        marker2cam = np.eye(4)
+        marker2cam[0,3] = 0.024 # unit m
+
+
+        # find the transform from turtle to cam
+        turtle2cam = np.matmul(turtle2marker, marker2cam)
+
+
 
         
         # the transformation from vice to the camera
-        vicon2cam_transform = np.dot(vicon2turtle_transform, turtle2cam_transform)
+        vicon2cam_transform = np.dot(vicon2turtle_transform, turtle2cam)
 
 
         # the transformation from vicon to the qr code
@@ -381,6 +424,8 @@ class image_analisys(Node):
                 # Create a file and save current_targets
                 with open(file_path, "wb") as file:
                     pickle.dump(current_targets, file)
+                cv2.imwrite(self.destination_for_test_data+ f"/run{self.run_number}/images/image_{ids}.png", qr_image)
+                
                 self.get_logger().info(f"File {file_name} created and saved to {folder_path}")
                 self.get_logger().info("111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111")
 
@@ -415,12 +460,6 @@ class image_analisys(Node):
                         previous_ids.append(id)
                         previous_vicon2qrcode.append(current_data_dict[id])
 
-                    # for id in new_ids:
-                    #     current_index = current_ids.index(id)
-
-                    #     previous_ids.append(current_ids[current_index])
-                    #     previous_vicon2qrcode.append(current_vicon2qrcode[current_index])
-
 
                     # save the qr_image in the folder ~/test/turtleTest/run{self.run_number}/images. where the qr_image name is the ids found in it
                     cv2.imwrite(self.destination_for_test_data+ f"/run{self.run_number}/images/image_{new_ids}.png", qr_image)
@@ -449,63 +488,6 @@ class image_analisys(Node):
 
 
 
-
-
-            # # compine the self.distinct_targets path with a file name
-            # file_name = os.path.join(self.destination_for_test_data, f"test{self.run_number}.pkl")
-
-            # # Read the data from the file
-            # with open(file_name, 'rb') as file:
-            #     previous_targets = pickle.load(file)
-            # if previous_targets is None:
-
-
-            #     # Save the current_targets to a file
-            #     with open(file_name, 'wb') as file:
-            #         pickle.dump(current_targets, file)
-
-
-            #     # Read the data from the file
-            #     with open(file_name, 'rb') as file:
-            #         previous_targets = pickle.load(file)
-
-            # else:
-
-
-            #     # Read the data from the file
-            #     with open(file_name, 'rb') as file:
-            #         previous_targets = pickle.load(file)
-
-            #     # previous_targets = np.vstack((previous_targets, current_targets))
-
-            #     know_ids = previous_targets[0]
-            #     know_transforms = previous_targets[1]
-
-            #     # this is to check if the id is already in the know_ids
-            #     for i in range(len(current_targets[0])):
-            #         if current_targets[0][i] not in know_ids:
-            #             know_ids.append(current_targets[0][i])
-            #             know_transforms.append(current_targets[1][i])
-
-
-
-            #     # Save the current_targets to a file
-            #     with open(file_name, 'wb') as file:
-            #         pickle.dump(current_targets, file)
-
-
-
-            # print("previous_targets: ", type(previous_targets))
-
-            
-            # know_ids = previous_targets[0]
-            # know_transforms = previous_targets[1]
-
-            # print("know_ids: ", know_ids)
-            # print("know_ids: ", type(know_ids))
-
-            # print("know_transforms: ", know_transforms)
-            # print("know_transforms: ", type(know_transforms))
 
             response.success = True 
             self.pipeline.stop()

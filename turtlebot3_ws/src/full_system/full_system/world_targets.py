@@ -19,7 +19,13 @@ class tag(Node):
     def __init__(self):
         super().__init__('tag')
         self.ids = [1,2,3,4,5,6]
-        self.file_path = "/home/ubuntu/tests/turtleTest/world_targets.pkl"
+
+        mode = ""
+
+        if mode == "cal":
+            self.file_path = "/home/ubuntu/tests/turtleTest/calibration_turtle2cam.pkl"
+        else:
+            self.file_path = "/home/ubuntu/tests/turtleTest/world_targets.pkl"
 
 
         self.create_subscription(TFMessage, 'tf', self.callback, 10 )    

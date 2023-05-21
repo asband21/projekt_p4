@@ -10,6 +10,51 @@ from std_msgs.msg import String
 from geometry_msgs.msg import TransformStamped
 
 
+class PID:
+    """
+    Discrete PID control
+    """
+    def __init__(self, P=0.0, I=0.0, D=0.0, Derivator=0, Integrator=0, Integrator_max=10, Integrator_min=-10):
+        self.Kp = P
+        self.Ki = I
+        self.Kd = D
+        self.Derivator = Derivator
+        self.Integrator = Integrator
+        self.Integrator_max = Integrator_max
+        self.Integrator_min = Integrator_min
+        self.set_point = 0.0
+        self.error = 0.0
+
+    def update(self, current_value):
+        self.error = self.set_point - current_value
+        if self.error > pi:  # specific design for circular situation
+            self.error = self.error - 2*pi
+        elif self.error < -pi:
+            self.error = self.error + 2*pi
+        self.P_value = self.Kp * self.error
+        self.D_value = self.Kd * ( self.error - self.Derivator)
+        self.Derivator = self.error
+        self.Integrator = self.Integrator + self.error
+        if self.Integrator > self.Integrator_max:
+            self.Integrator = self.Integrator_max
+        elif self.Integrator < self.Integrator_min:
+            self.Integrator = self.Integrator_min
+        self.I_value = self.Integrator * self.Ki
+        PID = self.P_value + self.I_value + self.D_value
+        return PID
+
+    def setPoint(self, set_point):
+        self.set_point = set_point
+        self.Derivator = 0
+        self.Integrator = 0
+
+    def setPID(self, set_P=0.0, set_I=0.0, set_D=0.0):
+        self.Kp = set_P
+        self.Ki = set_I
+        self.Kd = set_D
+
+
+
 class turtle_follower(Node):
     def __init__(self):
         super().__init__("turtle_follower")
@@ -98,93 +143,131 @@ class turtle_follower(Node):
         return future.result()
 
 
-    def turn(self, turn_way):
+    def get_current_yaw(self):
+        transform = self.send_tf_request().tf
+
+        quat = [transform.transform.rotation.x,
+                transform.transform.rotation.y,
+                transform.transform.rotation.z,
+                transform.transform.rotation.w]
+
+        yaw,_,_ = tf.euler_from_quaternion(quat, axes='rzyx')
+
+        if yaw < 0:
+            yaw = yaw + 2*np.pi
+        # mapped_yaw = (np.degrees(yaw) + 180) % 360
+        # mapped_yaw = (yaw + np.pi) % 2*np.pi
+
+        return np.degrees(yaw)
+
+
+
+
+
+    def turn(self, turn):
+        self.power_motors(True)
+        angle = self.get_current_yaw()
+        if turn == "left":
+            if angle > 270:
+                angle = angle - 270
+            else:
+                angle = angle + 90
+            
+            while abs(self.get_current_yaw() - angle) > 1:
+                self.get_logger().info("angle: " + str(angle))
+                self.get_logger().info("current_yaw: " + str(self.get_current_yaw()))
+                error = angle - self.get_current_yaw()
+                error = error * 0.1
+                self.get_logger().info("error: " + str(error))
+                cmd_vel = Twist()
+                if error > 0:
+                    cmd_vel.angular.z = self.turn_velocity
+                else:
+                    cmd_vel.angular.z = -self.turn_velocity
+                self.get_logger().info("cmd_vel: " + str(cmd_vel.angular.z))
+                self.pub_turtle.publish(cmd_vel)
+            cmd_vel = Twist()
+            cmd_vel.angular.z = 0.0
+            self.pub_turtle.publish(cmd_vel)
+        
+        if turn == "right":
+
+            if angle > 180:
+                angle = angle -180
+            else:
+                angle = angle + 180
+
+            while abs(self.get_current_yaw() - angle) > 1:
+                self.get_logger().info("angle: " + str(angle))
+                self.get_logger().info("current_yaw: " + str(self.get_current_yaw()))
+                error = angle - self.get_current_yaw()
+                error = error * 0.1
+                self.get_logger().info("error: " + str(error))
+                cmd_vel = Twist()
+                if error > 0:
+                    cmd_vel.angular.z = self.turn_velocity
+                else:
+                    cmd_vel.angular.z = -self.turn_velocity
+                self.get_logger().info("cmd_vel: " + str(cmd_vel.angular.z))
+                self.pub_turtle.publish(cmd_vel)
+            cmd_vel = Twist()
+            cmd_vel.angular.z = 0.0
+            self.pub_turtle.publish(cmd_vel)
+        self.power_motors(False)
+
+
+    def turn_2(self, turn_way):
         self.power_motors(True)
         if turn_way == "left":
             # turn left 90 degrees
-
-            start_transform = self.send_tf_request().tf
-
-            start_quat = [0,0,0,0]
-            start_quat[0] = start_transform.transform.rotation.x
-            start_quat[1] = start_transform.transform.rotation.y
-            start_quat[2] = start_transform.transform.rotation.z
-            start_quat[3] = start_transform.transform.rotation.w
-
-            start_zyx = tf.euler_from_quaternion(start_quat,axes='rzyx')
-
-
-            start_yaw =  (180/np.pi)*start_zyx[0]#(180/np.pi)*
-
+            start_yaw =  self.get_current_yaw()
             # turn_angle = np.pi/2 # unit rad
             turn_angle = 89 # unit degrees
-
-
 
             current_yaw = start_yaw
             previous_yaw = start_yaw
 
             cmd_vel = Twist()
-
             cmd_vel.angular.z = self.turn_velocity
             self.pub_turtle.publish(cmd_vel)
 
-            while abs(start_yaw-current_yaw) < turn_angle or abs(previous_yaw-current_yaw) > 20:
+            total_angle_diff = 0
+            
+            while total_angle_diff < turn_angle:
 
-                previous_transform = self.send_tf_request().tf
-
-                previous_quat = [0,0,0,0]
-                previous_quat[0] = previous_transform.transform.rotation.x
-                previous_quat[1] = previous_transform.transform.rotation.y
-                previous_quat[2] = previous_transform.transform.rotation.z
-                previous_quat[3] = previous_transform.transform.rotation.w
-
-                previous_zyx = tf.euler_from_quaternion(previous_quat,axes='rzyx')
-
-                previous_yaw =  (180/np.pi)*previous_zyx[0]#(180/np.pi)*
-
+                previous_yaw =  self.get_current_yaw()
                 time.sleep(1/30)
+                current_yaw = self.get_current_yaw()
 
-                current_transform = self.send_tf_request().tf
-
-                current_quat = [0,0,0,0]
-                current_quat[0] = current_transform.transform.rotation.x
-                current_quat[1] = current_transform.transform.rotation.y
-                current_quat[2] = current_transform.transform.rotation.z
-                current_quat[3] = current_transform.transform.rotation.w
-
-                current_zyx = tf.euler_from_quaternion(current_quat,axes='rzyx')
-
-                current_yaw =  (180/np.pi)*current_zyx[0]#(180/np.pi)*
+                self.get_logger().info("current_yaw: " + str(current_yaw))
+                angle_diff = abs(previous_yaw - current_yaw)
+                # total_angle_diff = abs(start_yaw - current_yaw)
+                total_angle_diff += angle_diff
 
 
-                self.get_logger().info("angle diff: " + str(abs(previous_yaw-current_yaw)))
-                self.get_logger().info("angle: " + str(abs(start_yaw-current_yaw)))
+                self.get_logger().info("1111111111111angle diff: " + str(angle_diff))
+                self.get_logger().info("1111111111111angle: " + str(total_angle_diff))
+
+                # # Handle large yaw differences
+                # if angle_diff > 180:
+                #     if current_yaw < start_yaw:
+                #         total_angle_diff -= 360
+                #     else:
+                #         total_angle_diff += 360
+
+
+
+                self.get_logger().info("2222222222222angle diff: " + str(angle_diff))
+                self.get_logger().info("2222222222222angle: " + str(total_angle_diff))
 
             cmd_vel.angular.z = 0.0
             self.pub_turtle.publish(cmd_vel)
 
-
-
         elif turn_way == "right":
             # turn right 180 degrees
-
-
-            start_transform = self.send_tf_request().tf
-
-            start_quat = [0,0,0,0]
-            start_quat[0] = start_transform.transform.rotation.x
-            start_quat[1] = start_transform.transform.rotation.y
-            start_quat[2] = start_transform.transform.rotation.z
-            start_quat[3] = start_transform.transform.rotation.w
-
-            start_zyx = tf.euler_from_quaternion(start_quat,axes='rzyx')
-
-            start_yaw =  (180/np.pi)*start_zyx[0]#(180/np.pi)*
+            start_yaw =  self.get_current_yaw()
             # turn_angle = np.pi # unit rad
             turn_angle = 179 # unit degrees
-
-
 
             current_yaw = start_yaw
             previous_yaw = start_yaw
@@ -193,38 +276,35 @@ class turtle_follower(Node):
 
             cmd_vel.angular.z = -self.turn_velocity
             self.pub_turtle.publish(cmd_vel)
+            total_angle_diff = 0  
 
-            while abs(start_yaw-current_yaw) < turn_angle or abs(previous_yaw-current_yaw) > 20:
-
-                previous_transform = self.send_tf_request().tf
-
-                previous_quat = [0,0,0,0]
-                previous_quat[0] = previous_transform.transform.rotation.x
-                previous_quat[1] = previous_transform.transform.rotation.y
-                previous_quat[2] = previous_transform.transform.rotation.z
-                previous_quat[3] = previous_transform.transform.rotation.w
-
-                previous_zyx = tf.euler_from_quaternion(previous_quat,axes='rzyx')
-
-                previous_yaw =  (180/np.pi)*previous_zyx[0]#(180/np.pi)*
-
+            while total_angle_diff < turn_angle or abs(previous_yaw-current_yaw) > 20:
+                previous_yaw =  self.get_current_yaw()
                 time.sleep(1/30)
-
-                current_transform = self.send_tf_request().tf
-
-                current_quat = [0,0,0,0]
-                current_quat[0] = current_transform.transform.rotation.x
-                current_quat[1] = current_transform.transform.rotation.y
-                current_quat[2] = current_transform.transform.rotation.z
-                current_quat[3] = current_transform.transform.rotation.w
-
-                current_zyx = tf.euler_from_quaternion(current_quat,axes='rzyx')
-
-                current_yaw =  (180/np.pi)*current_zyx[0]#(180/np.pi)*
+                current_yaw = self.get_current_yaw()
+                self.get_logger().info("current_yaw: " + str(current_yaw))
 
 
-                self.get_logger().info("angle diff: " + str(abs(previous_yaw-current_yaw)))
-                self.get_logger().info("angle: " + str(abs(start_yaw-current_yaw)))
+                angle_diff = abs(previous_yaw - current_yaw)
+                # total_angle_diff = abs(start_yaw - current_yaw)
+                total_angle_diff += angle_diff
+        
+        
+
+                self.get_logger().info("1111111111111angle diff: " + str(angle_diff))
+                self.get_logger().info("1111111111111angle: " + str(total_angle_diff))
+
+                # # Handle large yaw differences
+                # if angle_diff > 180:
+                #     if current_yaw < start_yaw:
+                #         total_angle_diff -= 360
+                #     else:
+                #         total_angle_diff += 360
+
+
+
+                self.get_logger().info("2222222222222angle diff: " + str(angle_diff))
+                self.get_logger().info("2222222222222angle: " + str(total_angle_diff))
 
 
             cmd_vel.angular.z = 0.0
@@ -404,5 +484,8 @@ def main(args=None):
 
 if __name__ == "__main__":
     main()
+
+
+
 
 
