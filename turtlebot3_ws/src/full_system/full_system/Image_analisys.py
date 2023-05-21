@@ -25,7 +25,7 @@ class image_analisys(Node):
     def __init__(self):
         super().__init__("image_analisys") 
         
-        self.run_number = "7"
+        self.run_number = "1"
 
 
         self.number_of_images_taken = 0

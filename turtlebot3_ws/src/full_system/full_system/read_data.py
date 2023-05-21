@@ -3,7 +3,7 @@ import os
 
 # Read data from pickle file and print it
 
-num = "7"
+num = "1"
 
 # Get the path of the current directory
 dir_path = os.path.dirname(os.path.realpath(f"test{num}.pkl"))
