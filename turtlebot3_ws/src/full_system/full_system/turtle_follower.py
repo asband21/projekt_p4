@@ -118,7 +118,7 @@ class turtle_follower(Node):
         angle = self.get_current_yaw()
 
         max_vel = 1.0
-        min_vel = 0.2
+        min_vel = 0.3
 
         if turn == "left":
             if angle > 270:
