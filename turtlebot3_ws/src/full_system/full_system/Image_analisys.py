@@ -329,15 +329,15 @@ class image_analisys(Node):
 
         ret = []
         rot = []
-        trans = []
+        pos = []
         for points in where_qr:
             ret.append(cv2.solvePnP(qr_edges, points, camera_matrix, distorsion)[0])
             rot.append(cv2.solvePnP(qr_edges, points, camera_matrix, distorsion)[1])
-            trans.append(cv2.solvePnP(qr_edges, points, camera_matrix, distorsion)[2])
+            pos.append(cv2.solvePnP(qr_edges, points, camera_matrix, distorsion)[2])
 
         # print("ret: ",ret)
         # print("rot: ",rot)
-        # print("trans: ",trans)
+        # print("pos: ",pos)
 
         rot_matrix = []
         for rot_vec in rot:
@@ -346,7 +346,7 @@ class image_analisys(Node):
         # print("rot_matrix: ",rot_matrix[0])
 
         for i in range(len(rot)):
-            cv2.drawFrameAxes(qr_image,camera_matrix,distorsion,rot[i],trans[i],1,5)
+            cv2.drawFrameAxes(qr_image,camera_matrix,distorsion,rot[i],pos[i],1,5)
 
 
 
