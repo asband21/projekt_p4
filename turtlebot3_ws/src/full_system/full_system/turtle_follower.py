@@ -116,6 +116,10 @@ class turtle_follower(Node):
     def turn(self, turn):
         self.power_motors(True)
         angle = self.get_current_yaw()
+
+        max_vel = 1.0
+        min_vel = 0.2
+
         if turn == "left":
             if angle > 270:
                 angle = angle - 270
@@ -136,15 +140,15 @@ class turtle_follower(Node):
                 
                 if abs(error) > 1:
                     if error > 0:
-                        cmd_vel.angular.z = 1.0
+                        cmd_vel.angular.z = max_vel
                     else:
-                        cmd_vel.angular.z = -1.0
+                        cmd_vel.angular.z = -max_vel
 
                 elif abs(error) < 0.1:
                     if error > 0:
-                        cmd_vel.angular.z = 0.1
+                        cmd_vel.angular.z = min_vel
                     else:
-                        cmd_vel.angular.z = -0.1
+                        cmd_vel.angular.z = -min_vel
                 else:
 
                     cmd_vel.angular.z = error
@@ -177,15 +181,15 @@ class turtle_follower(Node):
 
                 if abs(error) > 1:
                     if error > 0:
-                        cmd_vel.angular.z = 1.0
+                        cmd_vel.angular.z = max_vel
                     else:
-                        cmd_vel.angular.z = -1.0
+                        cmd_vel.angular.z = -max_vel
 
                 elif abs(error) < 0.1:
                     if error > 0:
-                        cmd_vel.angular.z = 0.1
+                        cmd_vel.angular.z = min_vel
                     else:
-                        cmd_vel.angular.z = -0.1
+                        cmd_vel.angular.z = -min_vel
                 else:
 
                     cmd_vel.angular.z = error
