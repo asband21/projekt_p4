@@ -236,10 +236,11 @@ class image_analisys(Node):
         distorsion = np.array([0.0, 0.0, 0.0, 0.0, 0.0])
 
         #Selected coordinate points for each corner of QR code.
+        size = 0.1778 # QR code size in meters
         qr_edges = np.array([[0,0,0],
-                            [0,1,0],
-                            [1,1,0],
-                            [1,0,0]], dtype = 'float32').reshape((4,1,3))
+                            [0,size,0],
+                            [size,size,0],
+                            [size,0,0]], dtype = 'float32').reshape((4,1,3))
 
         # Intel RealSense D435 intrinsic parameters
         width = 640
