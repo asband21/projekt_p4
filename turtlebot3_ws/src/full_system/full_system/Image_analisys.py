@@ -376,6 +376,8 @@ class image_analisys(Node):
 
 
 
+            pos = np.squeeze(pos).reshape(-1, 3)
+
             current_cam2qrcode_transforms = []
             for i in range(len(rot)):
                 T = np.eye(4)

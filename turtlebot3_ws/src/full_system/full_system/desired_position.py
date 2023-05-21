@@ -34,6 +34,7 @@ class DesiredPosition(Node):
 
 
         self.sub_vicon = self.create_subscription(TransformStamped,"update",self.updater,10)
+        self.create_timer(1/60,self.updater)
 
 
         # hz = 1/30
