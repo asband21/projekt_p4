@@ -369,14 +369,6 @@ class image_analisys(Node):
                 #Store the QR-code ceter point in median
                 x_median[i] = (where_qr[i][0][0]  + where_qr[i][1][0]  + where_qr[i][2][0]  + where_qr[i][3][0])/4 
                 y_median[i] = (where_qr[i][0][1]  + where_qr[i][1][1]  + where_qr[i][2][1]  + where_qr[i][3][1])/4 
-                ###########################################
-            #     for points in range(int(where_qr.shape[1])): 
-            #         drawing=cv2.line(qr_image,(int(where_qr[i][points][0]),int(where_qr[i][points][1])),(int(where_qr[i][points][0]),int(where_qr[i][points][1])),(255,0,0),5) #Marking the conor of the QR-codes
-            #     drawing=cv2.line(qr_image,(int(x_median[i]),int(y_median[i])),(int(x_median[i]),int(y_median[i])),(0,255,0),5)  # Marking the center of the QR-codes
-            #     print("Center of the QR-Code = ({} , {})".format(x_median[i],y_median[i])) # Prints the centers of the QR-codes
-            # print("QR-Code ::: done")
-            # cv2.imwrite('~/testing_image/images/QR-code_{}.png'.format(set_of_qr_found_counter),drawing)  
-            # set_of_qr_found_counter+= 1 
 
             position = []
             for i in range(where_qr.shape[0]):
@@ -388,7 +380,7 @@ class image_analisys(Node):
             for i in range(len(rot)):
                 T = np.eye(4)
                 T[:3, :3] = rot_matrix[i][0]
-                T[:3, 3] = position[i]
+                T[:3, 3] = pos[i]
 
                 current_cam2qrcode_transforms.append(T)            
             
