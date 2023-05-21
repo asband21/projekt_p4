@@ -110,14 +110,8 @@ class turtle_follower(Node):
 
         if yaw < 0:
             yaw = yaw + 2*np.pi
-        # mapped_yaw = (np.degrees(yaw) + 180) % 360
-        # mapped_yaw = (yaw + np.pi) % 2*np.pi
 
         return np.degrees(yaw)
-
-
-
-
 
     def turn(self, turn):
         self.power_motors(True)
@@ -135,10 +129,13 @@ class turtle_follower(Node):
                 error = error * 0.1
                 self.get_logger().info("error: " + str(error))
                 cmd_vel = Twist()
-                if error > 0:
-                    cmd_vel.angular.z = self.turn_velocity
-                else:
-                    cmd_vel.angular.z = -self.turn_velocity
+                # if error > 0:
+                #     cmd_vel.angular.z = self.turn_velocity
+                # else:
+                #     cmd_vel.angular.z = -self.turn_velocity
+                
+
+                cmd_vel.angular.z = error
                 self.get_logger().info("cmd_vel: " + str(cmd_vel.angular.z))
                 self.pub_turtle.publish(cmd_vel)
             cmd_vel = Twist()
@@ -159,113 +156,18 @@ class turtle_follower(Node):
                 error = error * 0.1
                 self.get_logger().info("error: " + str(error))
                 cmd_vel = Twist()
-                if error > 0:
-                    cmd_vel.angular.z = self.turn_velocity
-                else:
-                    cmd_vel.angular.z = -self.turn_velocity
+                # if error > 0:
+                #     cmd_vel.angular.z = self.turn_velocity
+                # else:
+                #     cmd_vel.angular.z = -self.turn_velocity
+
+                cmd_vel.angular.z = error
                 self.get_logger().info("cmd_vel: " + str(cmd_vel.angular.z))
                 self.pub_turtle.publish(cmd_vel)
             cmd_vel = Twist()
             cmd_vel.angular.z = 0.0
             self.pub_turtle.publish(cmd_vel)
         self.power_motors(False)
-
-
-    def turn_2(self, turn_way):
-        self.power_motors(True)
-        if turn_way == "left":
-            # turn left 90 degrees
-            start_yaw =  self.get_current_yaw()
-            # turn_angle = np.pi/2 # unit rad
-            turn_angle = 89 # unit degrees
-
-            current_yaw = start_yaw
-            previous_yaw = start_yaw
-
-            cmd_vel = Twist()
-            cmd_vel.angular.z = self.turn_velocity
-            self.pub_turtle.publish(cmd_vel)
-
-            total_angle_diff = 0
-            
-            while total_angle_diff < turn_angle:
-
-                previous_yaw =  self.get_current_yaw()
-                time.sleep(1/30)
-                current_yaw = self.get_current_yaw()
-
-                self.get_logger().info("current_yaw: " + str(current_yaw))
-                angle_diff = abs(previous_yaw - current_yaw)
-                # total_angle_diff = abs(start_yaw - current_yaw)
-                total_angle_diff += angle_diff
-
-
-                self.get_logger().info("1111111111111angle diff: " + str(angle_diff))
-                self.get_logger().info("1111111111111angle: " + str(total_angle_diff))
-
-                # # Handle large yaw differences
-                # if angle_diff > 180:
-                #     if current_yaw < start_yaw:
-                #         total_angle_diff -= 360
-                #     else:
-                #         total_angle_diff += 360
-
-
-
-                self.get_logger().info("2222222222222angle diff: " + str(angle_diff))
-                self.get_logger().info("2222222222222angle: " + str(total_angle_diff))
-
-            cmd_vel.angular.z = 0.0
-            self.pub_turtle.publish(cmd_vel)
-
-        elif turn_way == "right":
-            # turn right 180 degrees
-            start_yaw =  self.get_current_yaw()
-            # turn_angle = np.pi # unit rad
-            turn_angle = 179 # unit degrees
-
-            current_yaw = start_yaw
-            previous_yaw = start_yaw
-
-            cmd_vel = Twist()
-
-            cmd_vel.angular.z = -self.turn_velocity
-            self.pub_turtle.publish(cmd_vel)
-            total_angle_diff = 0  
-
-            while total_angle_diff < turn_angle or abs(previous_yaw-current_yaw) > 20:
-                previous_yaw =  self.get_current_yaw()
-                time.sleep(1/30)
-                current_yaw = self.get_current_yaw()
-                self.get_logger().info("current_yaw: " + str(current_yaw))
-
-
-                angle_diff = abs(previous_yaw - current_yaw)
-                # total_angle_diff = abs(start_yaw - current_yaw)
-                total_angle_diff += angle_diff
-        
-        
-
-                self.get_logger().info("1111111111111angle diff: " + str(angle_diff))
-                self.get_logger().info("1111111111111angle: " + str(total_angle_diff))
-
-                # # Handle large yaw differences
-                # if angle_diff > 180:
-                #     if current_yaw < start_yaw:
-                #         total_angle_diff -= 360
-                #     else:
-                #         total_angle_diff += 360
-
-
-
-                self.get_logger().info("2222222222222angle diff: " + str(angle_diff))
-                self.get_logger().info("2222222222222angle: " + str(total_angle_diff))
-
-
-            cmd_vel.angular.z = 0.0
-            self.pub_turtle.publish(cmd_vel)
-        self.power_motors(False)
-
 
 
     def drive_stright(self):
