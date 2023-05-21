@@ -135,7 +135,10 @@ class turtle_follower(Node):
                 #     cmd_vel.angular.z = -self.turn_velocity
                 
                 if abs(error) > 1:
-                    cmd_vel.angular.z = 1.0
+                    if error > 0:
+                        cmd_vel.angular.z = 1.0
+                    else:
+                        cmd_vel.angular.z = -1.0
                 else:
                     cmd_vel.angular.z = error
                     
@@ -166,7 +169,10 @@ class turtle_follower(Node):
                 #     cmd_vel.angular.z = -self.turn_velocity
 
                 if abs(error) > 1:
-                    cmd_vel.angular.z = 1.0
+                    if error > 0:    
+                        cmd_vel.angular.z = 1.0
+                    else:
+                        cmd_vel.angular.z = -1.0
                 else:
                     cmd_vel.angular.z = error
 
