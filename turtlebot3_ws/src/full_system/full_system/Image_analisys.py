@@ -408,6 +408,8 @@ class image_analisys(Node):
 
                 # point_ = [point.z, -point.x, -point.y]
 
+                depth_scale = self.pipeline.get_active_profile().get_device().first_depth_sensor().get_depth_scale()
+
 
                 width = self.depth_frame_.width
                 u = int(x_median[i])
@@ -419,7 +421,7 @@ class image_analisys(Node):
                 y = point_cloud[index][1]
                 z = point_cloud[index][2]
 
-                point_  = [x, y, z]
+                point_  = [x, y, z]*1000
 
                 position.append(point_)
 
