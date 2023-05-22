@@ -408,24 +408,24 @@ class image_analisys(Node):
 
                 # point_ = [point.z, -point.x, -point.y]
 
-                depth_scale = self.pipeline.get_active_profile().get_device().first_depth_sensor().get_depth_scale()
+                # depth_scale = self.pipeline.get_active_profile().get_device().first_depth_sensor().get_depth_scale()
 
 
-                width = self.depth_frame_.width
-                u = int(x_median[i])
-                v = int(y_median[i])
-                index = u + v * width
+                # width = self.depth_frame_.width
+                # u = int(x_median[i])
+                # v = int(y_median[i])
+                # index = u + v * width
 
-                point_cloud = np.asanyarray(points.get_vertices())
-                x = point_cloud[index][0]
-                y = point_cloud[index][1]
-                z = point_cloud[index][2]
+                # point_cloud = np.asanyarray(points.get_vertices())
+                # x = point_cloud[index][0]
+                # y = point_cloud[index][1]
+                # z = point_cloud[index][2]
 
-                point_  = [x*1, y*1, z*1]
+                # point_  = [x*1, y*1, z*1]
 
-                position.append(point_)
+                # position.append(point_)
 
-                # position.append(pointcloud[int(y_median[i]),int(x_median[i])])
+                position.append(pointcloud[int(y_median[i]),int(x_median[i])])
 
             self.get_logger().info("position: " + str(position))
 
