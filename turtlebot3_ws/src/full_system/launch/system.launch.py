@@ -3,6 +3,7 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 
 def generate_launch_description():
+    run_number = 1
     return LaunchDescription([
         Node(
             package='full_system',
@@ -11,7 +12,7 @@ def generate_launch_description():
         Node(
             package='full_system',
             executable='image',
-            parameters=[{'run_number': input}]
+            parameters=[{'run_number': run_number}]
         ),
         Node(
             package='full_system',
@@ -24,7 +25,7 @@ def generate_launch_description():
         Node(
             package='full_system',
             executable='qr_tf_pub',
-            parameters=[{'run_number': input}]
+            parameters=[{'run_number': run_number}]
         ),
         Node(
             package='full_system',
