@@ -141,15 +141,15 @@ class turtle_follower(Node):
                 
                 if abs(error) > 1:
                     if error > 0:
-                        cmd_vel.angular.z = -max_vel
-                    else:
                         cmd_vel.angular.z = max_vel
+                    else:
+                        cmd_vel.angular.z = -max_vel
 
                 elif abs(error) < 0.1:
                     if error > 0:
-                        cmd_vel.angular.z = -min_vel
-                    else:
                         cmd_vel.angular.z = min_vel
+                    else:
+                        cmd_vel.angular.z = -min_vel
                 else:
 
                     cmd_vel.angular.z = error
@@ -183,15 +183,15 @@ class turtle_follower(Node):
 
                 if abs(error) > 1:
                     if error > 0:
-                        cmd_vel.angular.z = max_vel
-                    else:
                         cmd_vel.angular.z = -max_vel
+                    else:
+                        cmd_vel.angular.z = max_vel
 
                 elif abs(error) < 0.1:
                     if error > 0:
-                        cmd_vel.angular.z = min_vel
-                    else:
                         cmd_vel.angular.z = -min_vel
+                    else:
+                        cmd_vel.angular.z = min_vel
                 else:
 
                     cmd_vel.angular.z = error
