@@ -25,7 +25,10 @@ class image_analisys(Node):
     def __init__(self):
         super().__init__("image_analisys") 
         
-        self.run_number = "3"
+        # add a run number parameter to the node
+        self.declare_parameter("run_number", 0)
+        self.run_number = self.get_parameter("run_number").get_parameter_value().integer_value
+
 
 
         self.number_of_images_taken = 0

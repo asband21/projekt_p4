@@ -18,8 +18,11 @@ class TFPublisher(Node):
     def __init__(self):
         super().__init__('qr_tf_pub')
 
+        self.declare_parameter("run_number", 0)
+        self.run_number = self.get_parameter("run_number").get_parameter_value().integer_value
 
-        self.run_number = "3"
+
+        # self.run_number = "3"
         
         self.tf_broadcaster = TransformBroadcaster(self)
         self.tf_msg = TransformStamped()
