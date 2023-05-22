@@ -26,8 +26,12 @@ print(current_data_dict)
 
 new_ids = list(current_data_dict.keys())
 new_transforms = list(current_data_dict.values())
-print(new_ids)
-print(new_transforms)
+
+new_data = (new_ids, new_transforms)
+
+with open("/home/ubuntu/tests/turtleTest/world_targets.pkl", 'wb') as f:
+    pickle.dump(new_data, f)
+
 
 # Print the data
 print(data)
