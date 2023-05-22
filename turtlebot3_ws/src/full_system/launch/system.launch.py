@@ -2,9 +2,15 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from launch.substitutions import LaunchConfiguration
+from launch.actions import DeclareLaunchArgument
 
 def generate_launch_description():
     return LaunchDescription([
+        DeclareLaunchArgument(
+            'run_number',
+            default_value='1',
+            description='the run number'
+        ),
         Node(
             package='full_system',
             executable='turtle_follower',
