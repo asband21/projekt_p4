@@ -25,10 +25,11 @@ class image_analisys(Node):
     def __init__(self):
         super().__init__("image_analisys") 
         
-        # accept arguments from the launch file to set the run number
-        self.declare_parameter("run_number")
-        self.run_number = self.get_parameter("run_number").value
-        
+        # # accept arguments from the launch file to set the run number
+        # self.declare_parameter("run_number")
+        # self.run_number = self.get_parameter("run_number").value
+
+        self.run_number = "3"
 
         
 
@@ -227,6 +228,7 @@ class image_analisys(Node):
         # Getting the depth sensor's depth scale (see rs-align example for explanation)
         depth_sensor = profile.get_device().first_depth_sensor()
         self.depth_scale = depth_sensor.get_depth_scale()
+
         align_to = rs.stream.color
         self.align = rs.align(align_to)  
         self.detector = cv2.QRCodeDetector()
@@ -289,8 +291,15 @@ class image_analisys(Node):
             aligned_depth_frame = aligned_frames.get_depth_frame() # aligned_depth_frame is a 640x480 depth image
             color_frame = aligned_frames.get_color_frame()
             # Getheringng data from the imagese 
+
+
+            depth_profile = aligned_depth_frame.get_profile()
+            depth_intrinsics = depth_profile.as_video_stream_profile().get_intrinsics()
+
             depth_image = np.asanyarray(aligned_depth_frame.get_data())
             color_image = np.asanyarray(color_frame.get_data())
+
+
 
 
             # Finding QR-Codes 
@@ -381,7 +390,12 @@ class image_analisys(Node):
 
             position = []
             for i in range(where_qr.shape[0]):
-                position.append(pointcloud[int(y_median[i]),int(x_median[i])])
+                depth_scale = self.pipeline.get_active_profile().get_device().first_depth_sensor().get_depth_scale()
+                depth_point = rs.rs2_deproject_pixel_to_point(depth_intrinsics, [int(y_median[i]), int(x_median[i])], depth_scale)
+
+                position.append(depth_point)
+
+                # position.append(pointcloud[int(y_median[i]),int(x_median[i])])
 
 
 
