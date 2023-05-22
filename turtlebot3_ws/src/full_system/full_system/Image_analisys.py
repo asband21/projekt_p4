@@ -399,14 +399,27 @@ class image_analisys(Node):
 
             position = []
             for i in range(where_qr.shape[0]):
-                depth_scale = self.pipeline.get_active_profile().get_device().first_depth_sensor().get_depth_scale()
-                self.get_logger().info("depth_scale: " + str(depth_scale))
-                depth_point = rs.rs2_deproject_pixel_to_point(depth_intrinsics, [int(x_median[i]),int(y_median[i])], depth_scale)
+                # depth_scale = self.pipeline.get_active_profile().get_device().first_depth_sensor().get_depth_scale()
+                # self.get_logger().info("depth_scale: " + str(depth_scale))
+                # depth_point = rs.rs2_deproject_pixel_to_point(depth_intrinsics, [int(x_median[i]),int(y_median[i])], depth_scale)
 
-                depth = self.depth_frame_.get_distance(int(x_median[i]), int(y_median[i]))
-                point = points.get_point(int(x_median[i]), int(y_median[i]))
+                # depth = self.depth_frame_.get_distance(int(x_median[i]), int(y_median[i]))
+                # point = points.get_point(int(x_median[i]), int(y_median[i]))
 
-                point_ = [point.z, -point.x, -point.y]
+                # point_ = [point.z, -point.x, -point.y]
+
+
+                width = self.depth_frame_.width
+                u = int(x_median[i])
+                v = int(y_median[i])
+                index = u + v * width
+
+                point_cloud = np.asanyarray(points.get_vertices())
+                x = point_cloud[index][0]
+                y = point_cloud[index][1]
+                z = point_cloud[index][2]
+
+                point_  = [x, y, z]
 
                 position.append(point_)
 
