@@ -215,10 +215,11 @@ class image_analisys(Node):
         #  different resolutions of color and depth streams
         config = rs.config()
 
-        config.enable_stream(rs.stream.depth, 1280, 720, rs.format.z16, 30)
+        # config.enable_stream(rs.stream.depth, 1280, 720, rs.format.z16, 30)
+        # config.enable_stream(rs.stream.color, 1280, 720, rs.format.bgr8, 30)
 
-        config.enable_stream(rs.stream.color, 1280, 720, rs.format.bgr8, 30)
-
+        config.enable_stream(rs.stream.depth, 0, 0, rs.format.z16, 30)
+        config.enable_stream(rs.stream.color, 0, 0, rs.format.bgr8, 30)
         # Start streaming
         profile = self.pipeline.start(config) 
 
@@ -283,6 +284,9 @@ class image_analisys(Node):
             # Get frameset of color and depth
             frames = self.pipeline.wait_for_frames()
             # frames.get_depth_frame() is a 640x360 depth image
+
+            self.depth_frame_ = frames.get_depth_frame()
+            self.color_frame_ = frames.get_color_frame()
 
             # Align the depth frame to color frame
             aligned_frames = self.align.process(frames)
@@ -378,6 +382,11 @@ class image_analisys(Node):
         x,y,z = self.convert_depth_frame_to_pointcloud(depth_image,self.camera_intrinsics) 
         pointcloud = np.dstack((x,y,z)) 
 
+        pc = rs.pointcloud()
+        points = pc.calculate(self.depth_frame_)
+        pc.map_to(self.color_frame_)
+
+
         if see_qr == True:  
             # set_of_qr_found_counter = 0
             x_median = np.zeros(int(where_qr.shape[0]))
@@ -394,7 +403,12 @@ class image_analisys(Node):
                 self.get_logger().info("depth_scale: " + str(depth_scale))
                 depth_point = rs.rs2_deproject_pixel_to_point(depth_intrinsics, [int(x_median[i]),int(y_median[i])], depth_scale)
 
-                position.append(depth_point)
+                depth = self.depth_frame_.get_distance(int(y_median[i]), int(x_median[i]))
+                point = points.get_point(int(y_median[i]), int(x_median[i]))
+
+                point_ = [point.z, -point.x, -point.y]
+
+                position.append(point_)
 
                 # position.append(pointcloud[int(y_median[i]),int(x_median[i])])
 
