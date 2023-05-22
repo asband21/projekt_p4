@@ -33,7 +33,7 @@ class DesiredPosition(Node):
         self.desired_pose_sub = self.create_subscription(Twist,"desired_pose",self.trajectroy_pose,10)
 
 
-        self.sub_vicon = self.create_subscription(TransformStamped,"update",self.updater,10)
+        # self.sub_vicon = self.create_subscription(TransformStamped,"update",self.updater,10)
         self.create_timer(1/60,self.updater)
 
 
@@ -43,7 +43,7 @@ class DesiredPosition(Node):
 
         self.get_logger().info("Desired Position is now running")
     
-    def updater(self,msg):
+    def updater(self):
 
         self.desired_pose()
 
