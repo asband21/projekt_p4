@@ -27,7 +27,7 @@ class image_analisys(Node):
         
         # add a run number parameter to the node
         self.declare_parameter("run_number", 0)
-        self.run_number = self.get_parameter("run_number").get_parameter_value().integer_value
+        self.run_number = self.get_parameter("run_number")
 
 
 

@@ -19,7 +19,7 @@ class TFPublisher(Node):
         super().__init__('qr_tf_pub')
 
         self.declare_parameter("run_number", 0)
-        self.run_number = self.get_parameter("run_number").get_parameter_value().integer_value
+        self.run_number = self.get_parameter("run_number")
 
 
         # self.run_number = "3"
