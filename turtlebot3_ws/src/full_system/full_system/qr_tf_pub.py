@@ -18,9 +18,10 @@ class TFPublisher(Node):
     def __init__(self):
         super().__init__('qr_tf_pub')
 
-        self.declare_parameter("run_number", 0)
-        self.run_number = self.get_parameter("run_number")
-
+        # accept arguments from the launch file to set the run number
+        self.declare_parameter("run_number")
+        self.run_number = self.get_parameter("run_number").value
+        
 
         # self.run_number = "3"
         
