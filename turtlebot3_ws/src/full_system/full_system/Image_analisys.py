@@ -25,11 +25,11 @@ class image_analisys(Node):
     def __init__(self):
         super().__init__("image_analisys") 
         
-        # # accept arguments from the launch file to set the run number
-        # self.declare_parameter("run_number")
-        # self.run_number = self.get_parameter("run_number").value
+        # accept arguments from the launch file to set the run number
+        self.declare_parameter("run_number")
+        self.run_number = self.get_parameter("run_number").value
 
-        self.run_number = "3"
+        # self.run_number = "3"
 
         
 
