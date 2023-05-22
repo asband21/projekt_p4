@@ -403,8 +403,8 @@ class image_analisys(Node):
                 self.get_logger().info("depth_scale: " + str(depth_scale))
                 depth_point = rs.rs2_deproject_pixel_to_point(depth_intrinsics, [int(x_median[i]),int(y_median[i])], depth_scale)
 
-                depth = self.depth_frame_.get_distance(int(y_median[i]), int(x_median[i]))
-                point = points.get_point(int(y_median[i]), int(x_median[i]))
+                depth = self.depth_frame_.get_distance(int(x_median[i]), int(y_median[i]))
+                point = points.get_point(int(x_median[i]), int(y_median[i]))
 
                 point_ = [point.z, -point.x, -point.y]
 
