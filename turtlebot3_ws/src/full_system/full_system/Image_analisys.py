@@ -421,7 +421,7 @@ class image_analisys(Node):
                 y = point_cloud[index][1]
                 z = point_cloud[index][2]
 
-                point_  = [x, y, z]*1000
+                point_  = [x*1000, y*1000, z*1000]
 
                 position.append(point_)
 
