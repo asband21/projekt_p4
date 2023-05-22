@@ -53,7 +53,7 @@ class DesiredPosition(Node):
 
     def vicon2drone_tf_request(self):
         while not self.cli_tf_vicon2drone.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("calculate_target_pose service not available, waiting again...")
+            self.get_logger().info("vicon2drone_tf_request service not available, waiting again...")
         
         request = Tf.Request()
         future = self.cli_tf_vicon2drone.call_async(request)
@@ -65,7 +65,7 @@ class DesiredPosition(Node):
 
     def vicon2turtle_tf_request(self):
         while not self.cli_tf_vicon2turtle.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info("calculate_target_pose service not available, waiting again...")
+            self.get_logger().info("vicon2turtle_tf_request service not available, waiting again...")
         
         request = Tf.Request()
         future = self.cli_tf_vicon2turtle.call_async(request)
@@ -97,8 +97,6 @@ class DesiredPosition(Node):
             
 
 
-        print("twist: {}".format(self.desired_drone_pose), end="\r")
-        # self.get_logger().info("Desired Pose: {}".format(self.desired_drone_pose))
 
         
 
