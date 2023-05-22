@@ -6,11 +6,11 @@ from launch.actions import DeclareLaunchArgument
 
 def generate_launch_description():
     return LaunchDescription([
-        DeclareLaunchArgument(
-            'run_number',
-            default_value='1',
-            description='the run number'
-        ),
+        # DeclareLaunchArgument(
+        #     'run_number',
+        #     default_value='1',
+        #     description='the run number'
+        # ),
         Node(
             package='full_system',
             executable='turtle_follower',
@@ -18,7 +18,7 @@ def generate_launch_description():
         Node(
             package='full_system',
             executable='image',
-            parameters=[{'run_number': LaunchConfiguration('run_number')}]
+            # parameters=[{'run_number': LaunchConfiguration('run_number')}]
         ),
         Node(
             package='full_system',
@@ -31,7 +31,7 @@ def generate_launch_description():
         Node(
             package='full_system',
             executable='qr_tf_pub',
-            parameters=[{'run_number': LaunchConfiguration('run_number')}]
+            # parameters=[{'run_number': LaunchConfiguration('run_number')}]
 
         ),
         Node(
