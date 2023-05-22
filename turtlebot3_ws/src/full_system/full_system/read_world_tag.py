@@ -10,6 +10,12 @@ id_to_delete = 5
 with open("/home/ubuntu/tests/turtleTest/world_targets.pkl", 'rb') as f:
     data = pickle.load(f)
 
+# Print the data
+print(data)
+
+# Print the type of the data
+print(type(data))
+
 ids, transforms = data
 
 
@@ -29,15 +35,18 @@ new_transforms = list(current_data_dict.values())
 
 new_data = (new_ids, new_transforms)
 
+
 with open("/home/ubuntu/tests/turtleTest/world_targets.pkl", 'wb') as f:
     pickle.dump(new_data, f)
 
 
-# Print the data
-print(data)
 
-# Print the type of the data
-print(type(data))
+
+# Print the new_data
+print(new_data)
+
+# Print the type of the new_data
+print(type(new_data))
 
 
 
