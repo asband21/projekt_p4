@@ -34,27 +34,27 @@ class MySubscriber(Node):
         d = (val - self.d_x)/tids_delta
         self.d_x = val
         kp = 200
-        return kp*val + self.i_x
+        return - kp*val - 2*self.i_x
 
     def transfer_fun_y(self, val, tids_delta):
         self.i_y = self.i_y + val
         d = (val - self.d_y)/tids_delta
         self.d_y = val
         kp = 200
-        return kp*val + self.i_y
+        return - kp*val - 2*self.i_y
 
     def transfer_fun_z(self, val, tids_delta):
         self.i_z = self.i_z + val
         d = (val - self.d_z)/tids_delta
         self.d_z = val
         kp = 200
-        return kp*val
+        return kp*val +0.5*self.i_y
 
     def transfer_fun_w(self, val, tids_delta):
         self.i_w = self.i_w + val
         d = (val - self.d_w)/tids_delta
         self.d_w = val
-        kp = -50
+        kp = 50
         return kp*val
 
     def pub_rc(self,array):

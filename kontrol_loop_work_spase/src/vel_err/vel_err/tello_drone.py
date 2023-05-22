@@ -9,7 +9,7 @@ class SimulatedDrone(Node):
         super().__init__("simulated_drone") 
 
         self.til = True
-        #self.til = False
+#        self.til = False
         if self.til:
             self.drone = Tello()
             self.drone.connect()
@@ -27,7 +27,7 @@ class SimulatedDrone(Node):
         #    self.h = 1
         #    self.drone.takeoff()
         if self.til:
-            self.get_logger().info("rc :")
+            #self.get_logger().info("rc :")
             self.h = self.h*-1
             if self.h > 0:
                 self.drone.send_rc_control(int(msg.linear.x), int(msg.linear.y), int(msg.linear.z), int(msg.angular.z))

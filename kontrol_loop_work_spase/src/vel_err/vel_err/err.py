@@ -34,8 +34,20 @@ class FrameListener(Node):
     def quat2yor (self,x,y,z,w):
         return math.atan2(w*w + x*x - y*y - z*z , 2.0*(x*y + w*z))
 
-    def on_timer(self, dd):
 
+    def rotate_vector(self, vector, angle):
+        x, y = vector
+        angle_rad = math.radians(angle)
+        cos_theta = math.cos(angle_rad)
+        sin_theta = math.sin(angle_rad)
+
+        rotated_x = x * cos_theta - y * sin_theta
+        rotated_y = x * sin_theta + y * cos_theta
+
+        rotated_vector = (rotated_x, rotated_y)
+        return rotated_vector
+
+    def on_timer(self, dd):
         #
         if self.gammel_tf == 0:
             self.gammel_tf = copy.deepcopy(dd)
@@ -57,7 +69,10 @@ class FrameListener(Node):
                 del_tid = tra.header.stamp
                 if(del_tid == 0):
                     self.get_logger().info(f"teamp = 0:{ter}")
-
+                ## roter til lokal frem
+                m = self.rotate_vector([vec[0],vec[1]],vec[3])
+                vec[0] = m[0]
+                vec[1] = m[1]
 
         for tra in self.gammel_tf.transforms:
             if((tra.child_frame_id == "Drone" or tra.child_frame_id == "drone") and tra.header.frame_id == "vicon"):
@@ -67,6 +82,8 @@ class FrameListener(Node):
                         del_tid =  del_tid.nanosec - tra.header.stamp.nanosec +1000000000
                     else:
                         del_tid =  del_tid.nanosec - tra.header.stamp.nanosec
+                    if del_tid == 0:
+                        continue
                     vec[4] = (vec[0] - tra.transform.translation.x)/(del_tid/1000000000)
                     vec[5] = (vec[1] - tra.transform.translation.y)/(del_tid/1000000000)
                     vec[6] = (vec[2] - tra.transform.translation.z)/(del_tid/1000000000)
