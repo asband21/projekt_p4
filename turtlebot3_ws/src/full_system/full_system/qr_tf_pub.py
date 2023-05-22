@@ -22,8 +22,9 @@ class TFPublisher(Node):
         # self.declare_parameter("run_number")
         # self.run_number = self.get_parameter("run_number").value
         
+        num = input("Enter run number: ")
 
-        self.run_number = "3"
+        self.run_number = num
         
         self.tf_broadcaster = TransformBroadcaster(self)
         self.tf_msg = TransformStamped()
