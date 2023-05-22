@@ -126,7 +126,7 @@ class turtle_follower(Node):
             else:
                 angle = angle + 90
             
-            while abs(self.get_current_yaw() - angle) > 1:
+            while abs(self.get_current_yaw() - angle)*0.1 > 1:
                 self.get_logger().info("eroror" + str(self.get_current_yaw() - angle))
                 # self.get_logger().info("angle: " + str(angle))
                 # self.get_logger().info("current_yaw: " + str(self.get_current_yaw()))
@@ -168,7 +168,7 @@ class turtle_follower(Node):
             else:
                 angle = angle + 180
 
-            while abs(self.get_current_yaw() - angle) > 1:
+            while abs(self.get_current_yaw() - angle)*0.1 > 1:
                 self.get_logger().info("eroror" + str(self.get_current_yaw() - angle))
                 # self.get_logger().info("angle: " + str(angle))
                 # self.get_logger().info("current_yaw: " + str(self.get_current_yaw()))
