@@ -391,7 +391,7 @@ class image_analisys(Node):
             position = []
             for i in range(where_qr.shape[0]):
                 depth_scale = self.pipeline.get_active_profile().get_device().first_depth_sensor().get_depth_scale()
-                depth_point = rs.rs2_deproject_pixel_to_point(depth_intrinsics, [int(y_median[i]), int(x_median[i])], depth_scale)
+                depth_point = rs.rs2_deproject_pixel_to_point(depth_intrinsics, [int(x_median[i]),int(y_median[i])], depth_scale)
 
                 position.append(depth_point)
 
