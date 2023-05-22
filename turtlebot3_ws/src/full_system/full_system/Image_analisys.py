@@ -397,7 +397,7 @@ class image_analisys(Node):
 
                 # position.append(pointcloud[int(y_median[i]),int(x_median[i])])
 
-
+            self.get_logger().info("position: " + str(position))
 
             pos = np.squeeze(pos).reshape(-1, 3)
 
