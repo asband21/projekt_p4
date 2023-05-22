@@ -1,9 +1,9 @@
 
 from launch import LaunchDescription
 from launch_ros.actions import Node
+input = input("Enter the run number: ")
 
 def generate_launch_description():
-    input = input("Enter the run number: ")
     return LaunchDescription([
         Node(
             package='full_system',
