@@ -24,6 +24,10 @@ for id in ids:
 
 print(current_data_dict)
 
+new_ids = list(current_data_dict.keys())
+new_transforms = list(current_data_dict.values())
+print(new_ids)
+print(new_transforms)
 
 # Print the data
 print(data)
