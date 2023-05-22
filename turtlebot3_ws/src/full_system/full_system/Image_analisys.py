@@ -237,7 +237,7 @@ class image_analisys(Node):
 
         #Selected coordinate points for each corner of QR code.
         # size = 0.1778 # QR code size in meters
-        size = 0.25 # QR code size in meters
+        size = 0.22 # QR code size in meters
         qr_edges = np.array([[0,0,0],
                             [0,size,0],
                             [size,size,0],
@@ -474,11 +474,6 @@ class image_analisys(Node):
                     path = self.destination_for_test_data+ "/images/image_no_new_ids.png"
                     self.get_logger().info(f"QR-code image saved to {path}")
 
-                    # Save current_targets to the file
-                    with open(file_path, "wb") as file:
-                        # previous_targets.append(current_targets)
-                        pickle.dump(current_targets, file)
-                    self.get_logger().info(f"seconod else QR-code {current_targets[0]} added to the file {file_name}")
 
 
 
