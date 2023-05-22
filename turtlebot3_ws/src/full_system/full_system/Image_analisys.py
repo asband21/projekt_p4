@@ -25,7 +25,7 @@ class image_analisys(Node):
     def __init__(self):
         super().__init__("image_analisys") 
         
-        self.run_number = "1"
+        self.run_number = "2"
 
 
         self.number_of_images_taken = 0
@@ -384,7 +384,7 @@ class image_analisys(Node):
             for i in range(len(rot)):
                 T = np.eye(4)
                 T[:3, :3] = rot_matrix[i][0]
-                T[:3, 3] = pos[i]
+                T[:3, 3] = position[i] # change this to position to use the pointcloud data or pos to use the solvePnP data
 
                 current_cam2qrcode_transforms.append(T)            
             
