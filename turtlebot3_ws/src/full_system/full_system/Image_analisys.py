@@ -236,7 +236,8 @@ class image_analisys(Node):
         distorsion = np.array([0.0, 0.0, 0.0, 0.0, 0.0])
 
         #Selected coordinate points for each corner of QR code.
-        size = 0.1778 # QR code size in meters
+        # size = 0.1778 # QR code size in meters
+        size = 0.18 # QR code size in meters
         qr_edges = np.array([[0,0,0],
                             [0,size,0],
                             [size,size,0],
