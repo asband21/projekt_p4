@@ -24,10 +24,14 @@ def generate_launch_description():
             package='full_system',
             executable='srv_tf',
         ),
-        # Node(
-        #     package='full_system',
-        #     executable='desired_position',
-        # ),
+        Node(
+            package='full_system',
+            executable='desired_position',
+        ),
+        Node(
+            package='full_system',
+            executable='initialization',
+        ),
         # Node(
         #     package='full_system',
         #     executable='qr_tf_pub',
