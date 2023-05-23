@@ -27,6 +27,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/TargetPose.srv"
   "srv/StateChanger.srv"
   "srv/Tf.srv"
+  "srv/DesiredTwistPosition.srv"
   DEPENDENCIES geometry_msgs
 )
 
