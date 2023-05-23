@@ -140,7 +140,7 @@ class DesiredPosition(Node):
         twitst.linear.y = hover_frame.transform.translation.y
         twitst.linear.z = hover_frame.transform.translation.z
         twitst.angular.z = yaw
-        
+
 
 
         return hover_frame
@@ -154,10 +154,10 @@ class DesiredPosition(Node):
     def service_for_desired_pose(self, request, response):
 
 
-        response.pose.linear.x  = self.desired_drone_pose.linear.x
-        response.pose.linear.y  = self.desired_drone_pose.linear.y
-        response.pose.linear.z  = self.desired_drone_pose.linear.z
-        response.pose.angular.z = self.desired_drone_pose.angular.z
+        response.desired_position.linear.x  = self.desired_drone_pose.linear.x
+        response.desired_position.linear.y  = self.desired_drone_pose.linear.y
+        response.desired_position.linear.z  = self.desired_drone_pose.linear.z
+        response.desired_position.angular.z = self.desired_drone_pose.angular.z
         # response.pose.angular.z = 0
 
         return response
