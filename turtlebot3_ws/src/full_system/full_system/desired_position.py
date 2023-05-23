@@ -6,8 +6,10 @@ from std_srvs.srv import Empty
 from tf2_ros import TransformException
 from tf2_ros.buffer import Buffer
 from tf2_ros.transform_listener import TransformListener
-from personal_interface.srv import StateChanger, Tf
+from personal_interface.srv import StateChanger, Tf, DesiredTwistPosition
 from geometry_msgs.msg import Twist, TransformStamped
+
+import tf_transformations as tf
 
 import time
 import string
@@ -25,6 +27,9 @@ class DesiredPosition(Node):
         self.desired_drone_pose = Twist()
 
         self.node_desired_position = rclpy.create_node("node_desired_position")
+
+
+        self.srv_desrided_pose = self.create_service(DesiredTwistPosition,"desired_pose",self.desired_pose)
 
         self.srv_desrided_pose_state = self.create_service(StateChanger, 'desrided_pose_state', self.state_changer)
         self.cli_tf_vicon2turtle = self.node_desired_position.create_client(Tf,"vicon2turtle")
@@ -118,6 +123,26 @@ class DesiredPosition(Node):
         hover_frame = vicon2Turtle
         hover_frame.transform.translation.z = hover_frame.transform.translation.z + hover_distance
 
+        quat = [hover_frame.transform.rotation.x,
+                hover_frame.transform.rotation.y,
+                hover_frame.transform.rotation.z,
+                hover_frame.transform.rotation.w]
+
+        yaw,_,_ = tf.euler_from_quaternion(quat, axes='rzyx')
+
+        if yaw < 0:
+            yaw = yaw + 2*np.pi
+
+
+
+        twitst = Twist()
+        twitst.linear.x = hover_frame.transform.translation.x
+        twitst.linear.y = hover_frame.transform.translation.y
+        twitst.linear.z = hover_frame.transform.translation.z
+        twitst.angular.z = yaw
+        
+
+
         return hover_frame
 
 
@@ -133,6 +158,7 @@ class DesiredPosition(Node):
         response.pose.linear.y  = self.desired_drone_pose.linear.y
         response.pose.linear.z  = self.desired_drone_pose.linear.z
         response.pose.angular.z = self.desired_drone_pose.angular.z
+        # response.pose.angular.z = 0
 
         return response
 
