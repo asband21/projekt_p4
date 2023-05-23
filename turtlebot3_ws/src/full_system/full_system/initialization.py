@@ -22,7 +22,9 @@ class initialization(Node):
 
         if up:
             # self.get_logger().info("All services are up, ready to fly into position? : ")
-            self.get_logger().info("All services are up, ready to drive : ")
+            self.get_logger().info("All services are up, ready to drive")
+            self.change_turtle_state()
+
             # self.user_input()
 
             
