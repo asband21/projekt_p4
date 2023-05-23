@@ -23,7 +23,7 @@ class initialization(Node):
         if up:
             # self.get_logger().info("All services are up, ready to fly into position? : ")
             self.get_logger().info("All services are up, ready to drive : ")
-            self.user_input()
+            # self.user_input()
 
             
         
