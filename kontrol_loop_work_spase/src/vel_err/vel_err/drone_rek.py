@@ -6,7 +6,7 @@ from geometry_msgs.msg import Twist
 class MySubscriber(Node):
     def __init__(self):
         super().__init__("drone_volisty_error")
-        self.subscription_ = self.create_subscription(Float32MultiArray, "drone_volisty_error", self.callback, 10)
+        self.subscription_ = self.create_subscription(Float32MultiArray, "drone_velocity_error", self.callback, 10)
         self.publisher_ = self.create_publisher(Twist, "drone_rc", 10)
         self.i_x = 1
         self.i_y = 1
@@ -31,21 +31,21 @@ class MySubscriber(Node):
 
     def transfer_fun_x(self, val, tids_delta):
         self.i_x = self.i_x + val*tids_delta
-        d = (val - self.d_x)/tids_delta
+        #d = (val - self.d_x)/tids_delta
         self.d_x = val
         kp = 200
         return - kp*val - 2*self.i_x
 
     def transfer_fun_y(self, val, tids_delta):
         self.i_y = self.i_y + val
-        d = (val - self.d_y)/tids_delta
+        #d = (val - self.d_y)/tids_delta
         self.d_y = val
         kp = 200
         return - kp*val - 2*self.i_y
 
     def transfer_fun_z(self, val, tids_delta):
         self.i_z = self.i_z + val
-        d = (val - self.d_z)/tids_delta
+        #d = (val - self.d_z)/tids_delta
         self.d_z = val
         kp = 200
         return kp*val +0.5*self.i_y

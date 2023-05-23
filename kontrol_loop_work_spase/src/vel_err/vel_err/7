@@ -17,7 +17,7 @@ class MinimalService(Node):
         self.time  = self.get_clock().now()
         self.get_logger().info(f"time:{self.time}")
         
-        self.time_start =self.time.nanoseconds + 1000000000*2
+        self.time_start =self.time.nanoseconds + 1000000000*25
         self.pug_tel = 0
         self.i_x = 0
         self.i_y = 0
@@ -83,41 +83,41 @@ class MinimalService(Node):
 
     def transfer_fun_x(self, val, tids_delta):
         self.i_x = self.i_x + val*tids_delta
-#        d = (val - self.d_x)/tids_delta
+        d = (val - self.d_x)/tids_delta
         self.d_x = val
-        kp = 0.8
-        return kp*val  + self.i_x*0.02
+        kp = 1.5
+        return kp*val  #+ self.i_x*0.01
 
     def transfer_fun_y(self, val, tids_delta):
         self.i_y = self.i_x + val*tids_delta
-#        d = (val - self.d_y)/tids_delta
+        d = (val - self.d_y)/tids_delta
         self.d_x = val
-        kp = 0.8
-        return kp*val + self.i_y*0.04
+        kp = 1.5
+        return kp*val   #+self.i_y*0.01
 
     def transfer_fun_z(self, val, tids_delta):
         self.i_z = self.i_x + val*tids_delta
- #       d = (val - self.d_z)/tids_delta
+        d = (val - self.d_z)/tids_delta
         self.d_x = val
         kp = 1.5
         return kp*val #- self.i_z
 
     def transfer_fun_yore(self, val, tids_delta):
         self.i_yor = self.i_x + val*tids_delta
-#        d = (val - self.d_yor)/tids_delta
+        d = (val - self.d_yor)/tids_delta
         self.d_x = val
         kp = 1.5
         return kp*val #- self.i_x$
 
-    def step_ramp(self):
-        time_nu = self.get_clock().now()
-        time_diff = time_nu.nanoseconds - self.time_start
-        time_diff = time_diff/(1000000000*10)
-        
-        if(time_nu.nanoseconds < self.time_start):
-            return [0,0,0,0]
-        else:
-            return [time_diff,0,0,0]
+#    def step_vel(self):
+#        time_nu = self.get_clock().now()
+#        time_diff = time_nu.nanoseconds - self.time_start
+#        time_diff = time_diff/(1000000000*10)
+#        
+#        if(time_nu.nanoseconds < self.time_start):
+#            return [0,0,0,0]
+#        else:
+#            return [time_diff,0,0,0]
 
     def pos_reg(self,pug,drone_pos):
         #pug = [0,0,1,0]
@@ -160,15 +160,11 @@ class MinimalService(Node):
         print("position : ", position)
         print("velocity : ", velocity)
         
-        #req_pos = self.step_ramp()
-        #req_pos = self.tule_pos()
+        req_pos = self.tule_pos()
         #req_pos = self.to_pungter_skift_pos(20)
-        req_pos = self.sin_pos()
+        #req_pos = self.sin_pos()
         #req_pos = self.step_pos()
-
-
         #req_vel = self.step_vel()
-        #req_vel = self.step_ramp()
         req_vel = self.pos_reg(req_pos,position)
 
         #respons = Velocities()

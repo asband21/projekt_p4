@@ -12,7 +12,7 @@ class MyNode(Node):
         self.sub_one_node = rclpy.create_node("sub_one_node")
         self.cli_subnode = self.sub_one_node.create_client(Velocities, "/srv/Velocities")
         self.sub_vel = self.create_subscription(ViconInfo, "vicon_info", self.callback_velocities_request, 10)
-        self.publisher = self.create_publisher(Float32MultiArray, "drone_volisty_error", 10)
+        self.publisher = self.create_publisher(Float32MultiArray, "drone_velocity_error", 10)
 
         #save error
         self.filename_error = "error.csv"
