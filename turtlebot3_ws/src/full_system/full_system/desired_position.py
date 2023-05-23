@@ -9,6 +9,7 @@ from tf2_ros.transform_listener import TransformListener
 from personal_interface.srv import StateChanger, Tf, DesiredTwistPosition
 from geometry_msgs.msg import Twist, TransformStamped
 
+from tf2_msgs.msg import TFMessage
 import tf_transformations as tf
 
 import time
@@ -29,7 +30,7 @@ class DesiredPosition(Node):
         self.node_desired_position = rclpy.create_node("node_desired_position")
 
 
-        self.srv_desrided_pose = self.create_service(DesiredTwistPosition,"desired_pose",self.service_for_desired_pose)
+        self.srv_desired_pose = self.create_service(DesiredTwistPosition,"desired_pose",self.service_for_desired_pose)
 
         self.srv_desrided_pose_state = self.create_service(StateChanger, 'desrided_pose_state', self.state_changer)
         self.cli_tf_vicon2turtle = self.node_desired_position.create_client(Tf,"vicon2turtle")
@@ -37,9 +38,10 @@ class DesiredPosition(Node):
 
         self.desired_pose_sub = self.create_subscription(Twist,"desired_pose",self.trajectroy_pose,10)
 
+        self.sub_tf = self.create_subscription(TFMessage,"/tf",self.updater,10)
 
         # self.sub_vicon = self.create_subscription(TransformStamped,"update",self.updater,10)
-        self.create_timer(1/60,self.updater)
+        # self.create_timer(1/30,self.updater)
 
 
         # hz = 1/30
@@ -48,7 +50,7 @@ class DesiredPosition(Node):
 
         self.get_logger().info("Desired Position is now running")
     
-    def updater(self):
+    def updater(self,msg):
 
         self.desired_pose()
 
@@ -143,7 +145,7 @@ class DesiredPosition(Node):
 
 
 
-        return hover_frame
+        return twitst
 
 
     def trajectroy_pose(self,msg):
