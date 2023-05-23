@@ -29,7 +29,7 @@ class DesiredPosition(Node):
         self.node_desired_position = rclpy.create_node("node_desired_position")
 
 
-        self.srv_desrided_pose = self.create_service(DesiredTwistPosition,"desired_pose",self.desired_pose)
+        self.srv_desrided_pose = self.create_service(DesiredTwistPosition,"desired_pose",self.service_for_desired_pose)
 
         self.srv_desrided_pose_state = self.create_service(StateChanger, 'desrided_pose_state', self.state_changer)
         self.cli_tf_vicon2turtle = self.node_desired_position.create_client(Tf,"vicon2turtle")
