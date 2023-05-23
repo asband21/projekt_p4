@@ -39,17 +39,25 @@ class DesiredPosition(Node):
         self.desired_pose_sub = self.create_subscription(Twist,"desired_pose",self.trajectroy_pose,10)
 
         self.sub_tf = self.create_subscription(TFMessage,"/tf",self.updater,10)
-
-        # self.sub_vicon = self.create_subscription(TransformStamped,"update",self.updater,10)
-        # self.create_timer(1/30,self.updater)
-
-
-        # hz = 1/30
-        # self.create_timer(hz,self.desired_pose)
-
-
         self.get_logger().info("Desired Position is now running")
+
+
+
+
+    # # # #     self.node_desired_pose = rclpy.create_node("node_desired_pose")
+    # # # #     self.cli_desired_pose = self.node_desired_pose.create_client(DesiredTwistPosition,"desired_pose")
+
     
+    # # # # def get_desired_pose(self):
+    # # # #     while not self.cli_desired_pose.wait_for_service(timeout_sec=1.0):
+    # # # #         self.get_logger().info("desired_pose service not available, waiting again...")
+        
+    # # # #     request = DesiredTwistPosition.Request()
+    # # # #     future = self.cli_desired_pose.call_async(request)
+    # # # #     rclpy.spin_until_future_complete(self.node_desired_position, future)
+        
+    # # # #     return future.result().desired_position
+
     def updater(self,msg):
 
         self.desired_pose()
