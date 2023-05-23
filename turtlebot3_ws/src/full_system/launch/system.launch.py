@@ -8,7 +8,7 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument(
             'run_number',
-            default_value='1',
+            default_value='0',
             description='the run number'
         ),
         Node(
