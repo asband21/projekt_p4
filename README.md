@@ -1,2 +1,2 @@
 # projekt_p4
-P4 gruppen rasporistorie i Software and Automation Frameworks
+in the videos folder can all the videos taken during testing be seen
